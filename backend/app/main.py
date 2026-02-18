@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,16 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 def create_app() -> FastAPI:
-    app = FastAPI(title=settings.app_name, debug=settings.debug)
     auto_refresh_task: asyncio.Task | None = None
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
 
     async def _auto_refresh_loop() -> None:
         interval_seconds = max(1, settings.market_auto_refresh_interval_minutes) * 60
@@ -47,8 +39,8 @@ def create_app() -> FastAPI:
 
             await asyncio.sleep(interval_seconds)
 
-    @app.on_event("startup")
-    async def _startup() -> None:
+    @asynccontextmanager
+    async def lifespan(_app: FastAPI):
         nonlocal auto_refresh_task
         init_db()
 
@@ -60,18 +52,27 @@ def create_app() -> FastAPI:
                 settings.market_auto_refresh_limit,
             )
 
-    @app.on_event("shutdown")
-    async def _shutdown() -> None:
-        nonlocal auto_refresh_task
+        try:
+            yield
+        finally:
+            if auto_refresh_task is not None:
+                auto_refresh_task.cancel()
+                try:
+                    await auto_refresh_task
+                except asyncio.CancelledError:
+                    pass
+                finally:
+                    auto_refresh_task = None
 
-        if auto_refresh_task is not None:
-            auto_refresh_task.cancel()
-            try:
-                await auto_refresh_task
-            except asyncio.CancelledError:
-                pass
-            finally:
-                auto_refresh_task = None
+    app = FastAPI(title=settings.app_name, debug=settings.debug, lifespan=lifespan)
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     app.include_router(router, prefix="/api")
     return app
