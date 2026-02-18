@@ -685,6 +685,10 @@ final class APIClient {
         return http
     }
 
+    func resolve(query: String) async throws -> [TonieCandidate] {
+        try await resolveTonie(query: query)
+    }
+
     func resolveTonie(query: String) async throws -> [TonieCandidate] {
         guard let url = makeURL(path: "/tonies/resolve") else {
             throw APIError.invalidURL
@@ -735,14 +739,16 @@ final class APIClient {
     }
 
     func fetchPricing(tonieId: String, condition: TonieCondition) async throws -> PriceTriple? {
+        try? await fetchPricingOrThrow(tonieId: tonieId, condition: condition)
+    }
+
+    func fetchPricingOrThrow(tonieId: String, condition: TonieCondition) async throws -> PriceTriple {
         guard let url = makeURL(path: "/pricing/\(tonieId)?condition=\(condition.apiValue)") else {
-            return nil
+            throw APIError.invalidURL
         }
 
         let (data, response) = try await URLSession.shared.data(from: url)
-        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
-            return nil
-        }
+        try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode(PricingResponse.self, from: data)
         return PriceTriple(
@@ -947,9 +953,9 @@ struct LoginView: View {
 struct MainTabView: View {
     var body: some View {
         TabView {
-            PricingView()
+            ResolveView()
                 .tabItem {
-                    Label("Preis", systemImage: "tag")
+                    Label("Resolve", systemImage: "magnifyingglass")
                 }
 
             WatchlistView()
