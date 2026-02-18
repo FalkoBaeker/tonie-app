@@ -463,10 +463,38 @@ extension Double {
     }
 }
 
+// MARK: - API Config
+
+enum AppConfig {
+    private static let simulatorDefault = "http://127.0.0.1:8787/api"
+    private static let deviceDefault = "http://192.168.178.100:8787/api"
+
+    static var apiBaseURL: String {
+        if let env = ProcessInfo.processInfo.environment["TF_API_BASE_URL"], !env.isEmpty {
+            return env
+        }
+
+        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_API_BASE_URL") as? String,
+           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return plistValue
+        }
+
+        #if targetEnvironment(simulator)
+        return simulatorDefault
+        #else
+        return deviceDefault
+        #endif
+    }
+}
+
 // MARK: - API Client
 
 final class APIClient {
-    private let baseURL = "http://127.0.0.1:8787/api"
+    private let baseURL: String
+
+    init(baseURL: String = AppConfig.apiBaseURL) {
+        self.baseURL = baseURL
+    }
 
     struct ResolveResponse: Decodable {
         struct CandidateDTO: Decodable {

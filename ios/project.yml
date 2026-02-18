@@ -24,6 +24,9 @@ targets:
         INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_CFBundleDisplayName: Tonie Finder
+        INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads: YES
+        "INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphonesimulator*]": "http://127.0.0.1:8787/api"
+        "INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]": "http://192.168.178.100:8787/api"
         TARGETED_DEVICE_FAMILY: "1,2"
     scheme:
       testTargets: []
