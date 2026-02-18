@@ -1106,13 +1106,14 @@ struct PricingView: View {
 
                                     Divider()
                                     if let tier = p.qualityTier {
-                                        let label: String
-                                        switch tier {
-                                        case "high": label = "Preisqualität: Hoch"
-                                        case "medium": label = "Preisqualität: Mittel"
-                                        default: label = "Preisqualität: Niedrig"
-                                        }
-                                        Text(label)
+                                        Text({
+                                            switch tier {
+                                            case "high": return "Preisqualität: Hoch"
+                                            case "medium": return "Preisqualität: Mittel"
+                                            default: return "Preisqualität: Niedrig"
+                                            }
+                                        }())
+
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }
