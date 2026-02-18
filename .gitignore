@@ -10,3 +10,4 @@ COVERAGE_REPORT.md
 
 # macOS
 .DS_Store
+backend/.env
