@@ -57,10 +57,26 @@ def init_db() -> None:
                 title TEXT NOT NULL,
                 condition TEXT NOT NULL,
                 last_fair_price REAL NOT NULL,
+                target_price_eur REAL,
                 created_at TEXT NOT NULL,
                 updated_at TEXT NOT NULL,
                 FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
                 UNIQUE(user_id, tonie_id, condition)
+            );
+
+            CREATE TABLE IF NOT EXISTS watchlist_alerts (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                watchlist_item_id INTEGER NOT NULL,
+                alert_type TEXT NOT NULL,
+                message TEXT NOT NULL,
+                current_price_eur REAL NOT NULL,
+                previous_price_eur REAL,
+                target_price_eur REAL,
+                is_read INTEGER NOT NULL DEFAULT 0,
+                created_at TEXT NOT NULL,
+                FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
+                FOREIGN KEY(watchlist_item_id) REFERENCES watchlist_items(id) ON DELETE CASCADE
             );
 
             CREATE TABLE IF NOT EXISTS market_listings (
@@ -107,6 +123,8 @@ def init_db() -> None:
 
             CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(user_id);
             CREATE INDEX IF NOT EXISTS idx_watchlist_user_id ON watchlist_items(user_id);
+            CREATE INDEX IF NOT EXISTS idx_watchlist_alerts_user_created ON watchlist_alerts(user_id, created_at DESC);
+            CREATE INDEX IF NOT EXISTS idx_watchlist_alerts_user_read_created ON watchlist_alerts(user_id, is_read, created_at DESC);
             CREATE INDEX IF NOT EXISTS idx_market_tonie_fetched ON market_listings(tonie_id, fetched_at DESC);
             CREATE INDEX IF NOT EXISTS idx_pricing_events_created ON pricing_events(created_at DESC);
             CREATE INDEX IF NOT EXISTS idx_pricing_events_source_created ON pricing_events(source, created_at DESC);
@@ -115,6 +133,12 @@ def init_db() -> None:
             CREATE INDEX IF NOT EXISTS idx_refresh_runs_status ON refresh_runs(status, started_at DESC);
             """
         )
+
+        # Lightweight schema migration for existing DBs.
+        try:
+            conn.execute("ALTER TABLE watchlist_items ADD COLUMN target_price_eur REAL")
+        except sqlite3.OperationalError:
+            pass
 
 
 def _hash_password(password: str, salt_hex: str | None = None) -> str:
@@ -229,7 +253,7 @@ def list_watchlist_items(user_id: int) -> list[dict]:
     with _connect() as conn:
         rows = conn.execute(
             """
-            SELECT id, tonie_id, title, condition, last_fair_price, updated_at
+            SELECT id, tonie_id, title, condition, last_fair_price, target_price_eur, updated_at
             FROM watchlist_items
             WHERE user_id = ?
             ORDER BY updated_at DESC
@@ -244,6 +268,7 @@ def list_watchlist_items(user_id: int) -> list[dict]:
             "title": str(r["title"]),
             "condition": str(r["condition"]),
             "last_fair_price": float(r["last_fair_price"]),
+            "target_price_eur": float(r["target_price_eur"]) if r["target_price_eur"] is not None else None,
             "updated_at": str(r["updated_at"]),
         }
         for r in rows
@@ -256,6 +281,7 @@ def upsert_watchlist_item(
     title: str,
     condition: str,
     last_fair_price: float,
+    target_price_eur: float | None = None,
 ) -> dict:
     now = _now_iso()
 
@@ -270,26 +296,26 @@ def upsert_watchlist_item(
             conn.execute(
                 """
                 UPDATE watchlist_items
-                SET title = ?, last_fair_price = ?, updated_at = ?
+                SET title = ?, last_fair_price = ?, target_price_eur = ?, updated_at = ?
                 WHERE id = ?
                 """,
-                (title, last_fair_price, now, item_id),
+                (title, last_fair_price, target_price_eur, now, item_id),
             )
         else:
             cursor = conn.execute(
                 """
                 INSERT INTO watchlist_items(
-                    user_id, tonie_id, title, condition, last_fair_price, created_at, updated_at
+                    user_id, tonie_id, title, condition, last_fair_price, target_price_eur, created_at, updated_at
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """,
-                (user_id, tonie_id, title, condition, last_fair_price, now, now),
+                (user_id, tonie_id, title, condition, last_fair_price, target_price_eur, now, now),
             )
             item_id = int(cursor.lastrowid)
 
         row = conn.execute(
             """
-            SELECT id, tonie_id, title, condition, last_fair_price, updated_at
+            SELECT id, tonie_id, title, condition, last_fair_price, target_price_eur, updated_at
             FROM watchlist_items
             WHERE id = ? AND user_id = ?
             """,
@@ -305,6 +331,7 @@ def upsert_watchlist_item(
         "title": str(row["title"]),
         "condition": str(row["condition"]),
         "last_fair_price": float(row["last_fair_price"]),
+        "target_price_eur": float(row["target_price_eur"]) if row["target_price_eur"] is not None else None,
         "updated_at": str(row["updated_at"]),
     }
 
@@ -349,7 +376,7 @@ def update_watchlist_item_price(
 
         row = conn.execute(
             """
-            SELECT id, tonie_id, title, condition, last_fair_price, updated_at
+            SELECT id, tonie_id, title, condition, last_fair_price, target_price_eur, updated_at
             FROM watchlist_items
             WHERE id = ? AND user_id = ?
             """,
@@ -365,8 +392,111 @@ def update_watchlist_item_price(
         "title": str(row["title"]),
         "condition": str(row["condition"]),
         "last_fair_price": float(row["last_fair_price"]),
+        "target_price_eur": float(row["target_price_eur"]) if row["target_price_eur"] is not None else None,
         "updated_at": str(row["updated_at"]),
     }
+
+
+def create_watchlist_alert(
+    *,
+    user_id: int,
+    watchlist_item_id: int,
+    alert_type: str,
+    message: str,
+    current_price_eur: float,
+    previous_price_eur: float | None = None,
+    target_price_eur: float | None = None,
+) -> dict:
+    init_db()
+    created_at = _now_iso()
+
+    with _connect() as conn:
+        cursor = conn.execute(
+            """
+            INSERT INTO watchlist_alerts(
+                user_id, watchlist_item_id, alert_type, message,
+                current_price_eur, previous_price_eur, target_price_eur,
+                is_read, created_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)
+            """,
+            (
+                user_id,
+                watchlist_item_id,
+                str(alert_type),
+                str(message),
+                float(current_price_eur),
+                float(previous_price_eur) if previous_price_eur is not None else None,
+                float(target_price_eur) if target_price_eur is not None else None,
+                created_at,
+            ),
+        )
+        alert_id = int(cursor.lastrowid)
+
+    return {
+        "id": alert_id,
+        "user_id": int(user_id),
+        "watchlist_item_id": int(watchlist_item_id),
+        "alert_type": str(alert_type),
+        "message": str(message),
+        "current_price_eur": float(current_price_eur),
+        "previous_price_eur": float(previous_price_eur) if previous_price_eur is not None else None,
+        "target_price_eur": float(target_price_eur) if target_price_eur is not None else None,
+        "is_read": False,
+        "created_at": created_at,
+    }
+
+
+def list_watchlist_alerts(*, user_id: int, unread_only: bool = False, limit: int = 200) -> list[dict]:
+    init_db()
+
+    where_clause = "WHERE a.user_id = ?"
+    params: list[object] = [int(user_id)]
+    if unread_only:
+        where_clause += " AND a.is_read = 0"
+
+    with _connect() as conn:
+        rows = conn.execute(
+            f"""
+            SELECT
+                a.id,
+                a.watchlist_item_id,
+                a.alert_type,
+                a.message,
+                a.current_price_eur,
+                a.previous_price_eur,
+                a.target_price_eur,
+                a.is_read,
+                a.created_at,
+                w.tonie_id,
+                w.title,
+                w.condition
+            FROM watchlist_alerts a
+            JOIN watchlist_items w ON w.id = a.watchlist_item_id
+            {where_clause}
+            ORDER BY a.created_at DESC, a.id DESC
+            LIMIT ?
+            """,
+            (*params, max(1, int(limit))),
+        ).fetchall()
+
+    return [
+        {
+            "id": int(row["id"]),
+            "watchlist_item_id": int(row["watchlist_item_id"]),
+            "tonie_id": str(row["tonie_id"]),
+            "title": str(row["title"]),
+            "condition": str(row["condition"]),
+            "alert_type": str(row["alert_type"]),
+            "message": str(row["message"]),
+            "current_price_eur": float(row["current_price_eur"]),
+            "previous_price_eur": float(row["previous_price_eur"]) if row["previous_price_eur"] is not None else None,
+            "target_price_eur": float(row["target_price_eur"]) if row["target_price_eur"] is not None else None,
+            "is_read": bool(row["is_read"]),
+            "created_at": str(row["created_at"]),
+        }
+        for row in rows
+    ]
 
 
 def _to_iso(value: str | datetime | None) -> str | None:

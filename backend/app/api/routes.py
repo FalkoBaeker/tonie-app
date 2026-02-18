@@ -14,6 +14,7 @@ from app.services.persistence import (
     authenticate_user,
     create_session,
     create_user,
+    create_watchlist_alert,
     delete_session,
     delete_watchlist_item,
     get_fresh_listing_counts,
@@ -22,6 +23,7 @@ from app.services.persistence import (
     get_pricing_quality_status,
     get_user_by_token,
     list_refresh_runs,
+    list_watchlist_alerts,
     list_watchlist_items,
     update_watchlist_item_price,
     upsert_watchlist_item,
@@ -109,6 +111,7 @@ class WatchlistAddRequest(BaseModel):
     tonie_id: str = Field(min_length=2)
     title: str | None = None
     condition: Condition = Condition.good
+    target_price_eur: float | None = Field(default=None, gt=0)
 
 
 class WatchlistItemResponse(BaseModel):
@@ -117,7 +120,23 @@ class WatchlistItemResponse(BaseModel):
     title: str
     condition: Condition
     last_fair_price: float
+    target_price_eur: float | None = None
     updated_at: str
+
+
+class WatchlistAlertResponse(BaseModel):
+    id: int
+    watchlist_item_id: int
+    tonie_id: str
+    title: str
+    condition: Condition
+    alert_type: str
+    message: str
+    current_price_eur: float
+    previous_price_eur: float | None = None
+    target_price_eur: float | None = None
+    is_read: bool
+    created_at: str
 
 
 class MarketCacheStatusResponse(BaseModel):
@@ -303,7 +322,31 @@ def _watchlist_item_response(item: dict) -> WatchlistItemResponse:
         title=str(item["title"]),
         condition=_condition_from_raw(str(item["condition"])),
         last_fair_price=float(item["last_fair_price"]),
+        target_price_eur=(
+            float(item["target_price_eur"]) if item.get("target_price_eur") is not None else None
+        ),
         updated_at=str(item["updated_at"]),
+    )
+
+
+def _watchlist_alert_response(item: dict) -> WatchlistAlertResponse:
+    return WatchlistAlertResponse(
+        id=int(item["id"]),
+        watchlist_item_id=int(item["watchlist_item_id"]),
+        tonie_id=str(item["tonie_id"]),
+        title=str(item["title"]),
+        condition=_condition_from_raw(str(item["condition"])),
+        alert_type=str(item["alert_type"]),
+        message=str(item["message"]),
+        current_price_eur=float(item["current_price_eur"]),
+        previous_price_eur=(
+            float(item["previous_price_eur"]) if item.get("previous_price_eur") is not None else None
+        ),
+        target_price_eur=(
+            float(item["target_price_eur"]) if item.get("target_price_eur") is not None else None
+        ),
+        is_read=bool(item.get("is_read", False)),
+        created_at=str(item["created_at"]),
     )
 
 
@@ -679,19 +722,63 @@ async def watchlist(
         refreshed: list[dict] = []
         for item in items:
             condition = str(item.get("condition", "good"))
+            previous_price = float(item.get("last_fair_price") or 0.0)
+            target_price = item.get("target_price_eur")
+
             price = await compute_prices_for_tonie(
                 tonie_id=str(item["tonie_id"]),
                 condition=condition,
             )
+            current_price = float(price.fair)
+
             updated = update_watchlist_item_price(
                 user_id=user_id,
                 item_id=int(item["id"]),
-                last_fair_price=price.fair,
+                last_fair_price=current_price,
             )
+
+            if target_price is not None and current_price <= float(target_price):
+                create_watchlist_alert(
+                    user_id=user_id,
+                    watchlist_item_id=int(item["id"]),
+                    alert_type="price_below_target",
+                    message=(
+                        f"{item['title']}: {current_price:.2f} EUR <= target {float(target_price):.2f} EUR"
+                    ),
+                    current_price_eur=current_price,
+                    previous_price_eur=previous_price if previous_price > 0 else None,
+                    target_price_eur=float(target_price),
+                )
+
+            if previous_price > 0:
+                drop_ratio = (previous_price - current_price) / previous_price
+                if drop_ratio >= 0.15:
+                    create_watchlist_alert(
+                        user_id=user_id,
+                        watchlist_item_id=int(item["id"]),
+                        alert_type="price_drop_15pct",
+                        message=(
+                            f"{item['title']}: price drop {drop_ratio * 100:.1f}% "
+                            f"({previous_price:.2f} -> {current_price:.2f} EUR)"
+                        ),
+                        current_price_eur=current_price,
+                        previous_price_eur=previous_price,
+                        target_price_eur=(float(target_price) if target_price is not None else None),
+                    )
+
             refreshed.append(updated if updated is not None else item)
         items = refreshed
 
     return [_watchlist_item_response(item) for item in items]
+
+
+@router.get("/watchlist/alerts", response_model=list[WatchlistAlertResponse])
+async def watchlist_alerts(
+    unread_only: bool = Query(default=False),
+    user: dict = Depends(require_user),
+) -> list[WatchlistAlertResponse]:
+    rows = list_watchlist_alerts(user_id=int(user["id"]), unread_only=unread_only)
+    return [_watchlist_alert_response(row) for row in rows]
 
 
 @router.post("/watchlist", response_model=WatchlistItemResponse)
@@ -719,6 +806,7 @@ async def watchlist_add(
         title=title,
         condition=payload.condition.value,
         last_fair_price=fair,
+        target_price_eur=payload.target_price_eur,
     )
 
     return _watchlist_item_response(item)
