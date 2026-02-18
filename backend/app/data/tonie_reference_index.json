@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "generated_at": "2026-02-17T00:28:20.989626+00:00",
+  "reference_root": "/Users/berlin/.openclaw/workspace/tonie-app/backend/app/data/tonie_refs",
+  "reference_count": 2,
+  "tonie_count": 2,
+  "scanned_files": 2,
+  "skipped_files": 0,
+  "references": [
+    {
+      "tonie_id": "tn_018",
+      "title": "Kreativ-Tonie Rot",
+      "path": "tn_018/ref_red.png",
+      "dhash": "684c96968e691200",
+      "mean_rgb": [
+        0.832387,
+        0.132801,
+        0.0
+      ]
+    },
+    {
+      "tonie_id": "tn_019",
+      "title": "Kreativ-Tonie Grün",
+      "path": "tn_019/ref_green.png",
+      "dhash": "6896969696966802",
+      "mean_rgb": [
+        0.0,
+        0.602972,
+        0.354768
+      ]
+    }
+  ]
+}

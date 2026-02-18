@@ -1,0 +1,158 @@
+[
+  {
+    "id": "tn_001",
+    "title": "Der Löwe, der nicht schreiben konnte",
+    "series": "Klassiker",
+    "aliases": ["Löwe der nicht schreiben konnte", "Der Lowe der nicht schreiben konnte"]
+  },
+  {
+    "id": "tn_002",
+    "title": "Die Eule mit der Beule",
+    "series": "Klassiker",
+    "aliases": ["Eule mit der Beule"]
+  },
+  {
+    "id": "tn_003",
+    "title": "Peppa Wutz – Gute Nacht Geschichten",
+    "series": "Peppa Wutz",
+    "aliases": ["Peppa Gute Nacht", "Peppa Wutz Gute Nacht"]
+  },
+  {
+    "id": "tn_004",
+    "title": "Peppa Wutz – Die Ritterburg",
+    "series": "Peppa Wutz",
+    "aliases": ["Peppa Ritterburg"]
+  },
+  {
+    "id": "tn_005",
+    "title": "Paw Patrol – Der Delfin-Freund",
+    "series": "Paw Patrol",
+    "aliases": ["Paw Patrol Delfin"]
+  },
+  {
+    "id": "tn_006",
+    "title": "Paw Patrol – Der Piratenschatz",
+    "series": "Paw Patrol",
+    "aliases": ["Paw Patrol Piratenschatz"]
+  },
+  {
+    "id": "tn_007",
+    "title": "Bibi Blocksberg – Hexen gibt es doch",
+    "series": "Bibi Blocksberg",
+    "aliases": ["Bibi Hexen gibt es doch"]
+  },
+  {
+    "id": "tn_008",
+    "title": "Bibi Blocksberg – Der verhexte Wandertag",
+    "series": "Bibi Blocksberg",
+    "aliases": ["Bibi verhexter Wandertag"]
+  },
+  {
+    "id": "tn_009",
+    "title": "Bibi & Tina – Das Fohlen",
+    "series": "Bibi & Tina",
+    "aliases": ["Bibi und Tina Das Fohlen"]
+  },
+  {
+    "id": "tn_010",
+    "title": "Bibi & Tina – Der verschwundene Pokal",
+    "series": "Bibi & Tina",
+    "aliases": ["Bibi und Tina Pokal"]
+  },
+  {
+    "id": "tn_011",
+    "title": "Die drei ??? Kids – Panik im Paradies",
+    "series": "Die drei ??? Kids",
+    "aliases": ["Drei Fragezeichen Kids Panik im Paradies"]
+  },
+  {
+    "id": "tn_012",
+    "title": "Die drei ??? Kids – In der Schatzhöhle",
+    "series": "Die drei ??? Kids",
+    "aliases": ["Drei Fragezeichen Kids Schatzhohle"]
+  },
+  {
+    "id": "tn_013",
+    "title": "Disney – Die Eiskönigin",
+    "series": "Disney",
+    "aliases": ["Frozen", "Disney Frozen"]
+  },
+  {
+    "id": "tn_014",
+    "title": "Disney – Rapunzel",
+    "series": "Disney",
+    "aliases": ["Tangled", "Disney Rapunzel"]
+  },
+  {
+    "id": "tn_015",
+    "title": "Disney – Arielle",
+    "series": "Disney",
+    "aliases": ["Arielle die Meerjungfrau", "Disney Arielle"]
+  },
+  {
+    "id": "tn_016",
+    "title": "Benjamin Blümchen – Der Zoo-Kindergarten",
+    "series": "Benjamin Blümchen",
+    "aliases": ["Benjamin Blümchen Zoo Kindergarten"]
+  },
+  {
+    "id": "tn_017",
+    "title": "Benjamin Blümchen – Der kleine Elefant",
+    "series": "Benjamin Blümchen",
+    "aliases": ["Benjamin Blümchen kleiner Elefant"]
+  },
+  {
+    "id": "tn_018",
+    "title": "Kreativ-Tonie Rot",
+    "series": "Kreativ-Tonie",
+    "aliases": ["Creative Tonie Rot", "Kreativ Tonie Rot"]
+  },
+  {
+    "id": "tn_019",
+    "title": "Kreativ-Tonie Grün",
+    "series": "Kreativ-Tonie",
+    "aliases": ["Creative Tonie Grün", "Kreativ Tonie Grun"]
+  },
+  {
+    "id": "tn_020",
+    "title": "Kreativ-Tonie Blau",
+    "series": "Kreativ-Tonie",
+    "aliases": ["Creative Tonie Blau", "Kreativ Tonie Blau"]
+  },
+  {
+    "id": "tn_021",
+    "title": "Schlummerbande – Einschlafmelodien",
+    "series": "Schlummerbande",
+    "aliases": ["Schlummerbande", "Einschlafmelodien"]
+  },
+  {
+    "id": "tn_022",
+    "title": "Schlummerbande – Gute Nacht Lieder",
+    "series": "Schlummerbande",
+    "aliases": ["Schlummerbande Gute Nacht"]
+  },
+  {
+    "id": "tn_023",
+    "title": "Feuerwehrmann Sam – In Pontypandy ist was los",
+    "series": "Feuerwehrmann Sam",
+    "aliases": ["Feuerwehrmann Sam Pontypandy"]
+  },
+  {
+    "id": "tn_024",
+    "title": "Miraculous – Geschichten von Ladybug und Cat Noir",
+    "series": "Miraculous",
+    "aliases": ["Ladybug Tonie", "Cat Noir Tonie"]
+  },
+  {
+    "id": "tn_025",
+    "title": "Lichterkinder – Die besten Bewegungslieder",
+    "series": "Lichterkinder",
+    "aliases": ["Lichterkinder Bewegungslieder"]
+  },
+  {
+    "id": "tn_026",
+    "title": "Der Grüffelo",
+    "series": "Klassiker",
+    "aliases": ["Gruffelo", "Der Gruffelo", "Grüffelo"]
+  }
+]

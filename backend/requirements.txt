@@ -1,0 +1,14 @@
+fastapi==0.116.1
+uvicorn[standard]==0.35.0
+pydantic==2.11.7
+pydantic-settings==2.10.1
+sqlalchemy==2.0.43
+asyncpg==0.30.0
+redis==6.4.0
+python-dotenv==1.1.1
+httpx==0.28.1
+beautifulsoup4==4.13.4
+rapidfuzz==3.14.0
+orjson==3.11.2
+python-multipart==0.0.20
+Pillow==11.3.0

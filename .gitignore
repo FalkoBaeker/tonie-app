@@ -1,0 +1,12 @@
+# Python
+backend/.venv/
+**/__pycache__/
+**/*.pyc
+
+# Local databases / outputs
+backend/*.db
+backend/outputs/
+COVERAGE_REPORT.md
+
+# macOS
+.DS_Store

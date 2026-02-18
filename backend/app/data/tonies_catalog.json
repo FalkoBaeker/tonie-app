@@ -1,0 +1,5473 @@
+[
+  {
+    "id": "tn_001",
+    "title": "Der Löwe, der nicht schreiben konnte",
+    "series": "Klassiker",
+    "aliases": [
+      "Löwe der nicht schreiben konnte",
+      "Der Lowe der nicht schreiben konnte"
+    ]
+  },
+  {
+    "id": "tn_002",
+    "title": "Die Eule mit der Beule",
+    "series": "Klassiker",
+    "aliases": [
+      "Eule mit der Beule"
+    ]
+  },
+  {
+    "id": "tn_003",
+    "title": "Peppa Wutz – Gute Nacht Geschichten",
+    "series": "Peppa Wutz",
+    "aliases": [
+      "Peppa Gute Nacht",
+      "Peppa Wutz Gute Nacht"
+    ]
+  },
+  {
+    "id": "tn_004",
+    "title": "Peppa Wutz – Die Ritterburg",
+    "series": "Peppa Wutz",
+    "aliases": [
+      "Peppa Ritterburg"
+    ]
+  },
+  {
+    "id": "tn_005",
+    "title": "Paw Patrol – Der Delfin-Freund",
+    "series": "Paw Patrol",
+    "aliases": [
+      "Paw Patrol Delfin"
+    ]
+  },
+  {
+    "id": "tn_006",
+    "title": "Paw Patrol – Der Piratenschatz",
+    "series": "Paw Patrol",
+    "aliases": [
+      "Paw Patrol Piratenschatz"
+    ]
+  },
+  {
+    "id": "tn_007",
+    "title": "Bibi Blocksberg – Hexen gibt es doch",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Bibi Hexen gibt es doch"
+    ]
+  },
+  {
+    "id": "tn_008",
+    "title": "Bibi Blocksberg – Der verhexte Wandertag",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Bibi verhexter Wandertag"
+    ]
+  },
+  {
+    "id": "tn_009",
+    "title": "Bibi & Tina – Das Fohlen",
+    "series": "Bibi & Tina",
+    "aliases": [
+      "Bibi und Tina Das Fohlen"
+    ]
+  },
+  {
+    "id": "tn_010",
+    "title": "Bibi & Tina – Der verschwundene Pokal",
+    "series": "Bibi & Tina",
+    "aliases": [
+      "Bibi und Tina Pokal"
+    ]
+  },
+  {
+    "id": "tn_011",
+    "title": "Die drei ??? Kids – Panik im Paradies",
+    "series": "Die drei ??? Kids",
+    "aliases": [
+      "Drei Fragezeichen Kids Panik im Paradies"
+    ]
+  },
+  {
+    "id": "tn_012",
+    "title": "Die drei ??? Kids – In der Schatzhöhle",
+    "series": "Die drei ??? Kids",
+    "aliases": [
+      "Drei Fragezeichen Kids Schatzhohle"
+    ]
+  },
+  {
+    "id": "tn_013",
+    "title": "Disney – Die Eiskönigin",
+    "series": "Disney",
+    "aliases": [
+      "Frozen",
+      "Disney Frozen"
+    ]
+  },
+  {
+    "id": "tn_014",
+    "title": "Disney – Rapunzel",
+    "series": "Disney",
+    "aliases": [
+      "Tangled",
+      "Disney Rapunzel"
+    ]
+  },
+  {
+    "id": "tn_015",
+    "title": "Disney – Arielle",
+    "series": "Disney",
+    "aliases": [
+      "Arielle die Meerjungfrau",
+      "Disney Arielle"
+    ]
+  },
+  {
+    "id": "tn_016",
+    "title": "Benjamin Blümchen – Der Zoo-Kindergarten",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Benjamin Blümchen Zoo Kindergarten"
+    ]
+  },
+  {
+    "id": "tn_017",
+    "title": "Benjamin Blümchen – Der kleine Elefant",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Benjamin Blümchen kleiner Elefant"
+    ]
+  },
+  {
+    "id": "tn_018",
+    "title": "Kreativ-Tonie Rot",
+    "series": "Kreativ-Tonie",
+    "aliases": [
+      "Creative Tonie Rot",
+      "Kreativ Tonie Rot"
+    ]
+  },
+  {
+    "id": "tn_019",
+    "title": "Kreativ-Tonie Grün",
+    "series": "Kreativ-Tonie",
+    "aliases": [
+      "Creative Tonie Grün",
+      "Kreativ Tonie Grun"
+    ]
+  },
+  {
+    "id": "tn_020",
+    "title": "Kreativ-Tonie Blau",
+    "series": "Kreativ-Tonie",
+    "aliases": [
+      "Creative Tonie Blau",
+      "Kreativ Tonie Blau"
+    ]
+  },
+  {
+    "id": "tn_021",
+    "title": "Schlummerbande – Einschlafmelodien",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerbande",
+      "Einschlafmelodien"
+    ]
+  },
+  {
+    "id": "tn_022",
+    "title": "Schlummerbande – Gute Nacht Lieder",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerbande Gute Nacht"
+    ]
+  },
+  {
+    "id": "tn_023",
+    "title": "Feuerwehrmann Sam – In Pontypandy ist was los",
+    "series": "Feuerwehrmann Sam",
+    "aliases": [
+      "Feuerwehrmann Sam Pontypandy"
+    ]
+  },
+  {
+    "id": "tn_024",
+    "title": "Miraculous – Geschichten von Ladybug und Cat Noir",
+    "series": "Miraculous",
+    "aliases": [
+      "Ladybug Tonie",
+      "Cat Noir Tonie"
+    ]
+  },
+  {
+    "id": "tn_025",
+    "title": "Lichterkinder – Die besten Bewegungslieder",
+    "series": "Lichterkinder",
+    "aliases": [
+      "Lichterkinder Bewegungslieder"
+    ]
+  },
+  {
+    "id": "tn_026",
+    "title": "Der Grüffelo",
+    "series": "Klassiker",
+    "aliases": [
+      "Gruffelo",
+      "Der Gruffelo",
+      "Grüffelo"
+    ]
+  },
+  {
+    "id": "tn_027",
+    "title": "100% Wolf - Das Original-Hörspiel zum Kinofilm",
+    "series": "100% Wolf",
+    "aliases": [
+      "100% Wolf - Das Original-Hörspiel zum Kinofilm",
+      "100% Wolf - Das Original-Hoerspiel zum Kinofilm"
+    ]
+  },
+  {
+    "id": "tn_028",
+    "title": "101 Dalmatiner",
+    "series": "101 Dalmatiner",
+    "aliases": [
+      "101 Dalmatiner"
+    ]
+  },
+  {
+    "id": "tn_029",
+    "title": "101 Dalmatiner – [EN] 101 Dalmatians",
+    "series": "101 Dalmatiner",
+    "aliases": [
+      "[EN] 101 Dalmatians",
+      "101 Dalmatiner [EN] 101 Dalmatians"
+    ]
+  },
+  {
+    "id": "tn_030",
+    "title": "Adventskalender 2025 – Flöckchen und die verschwundenen Weihnachtslichter",
+    "series": "Adventskalender",
+    "aliases": [
+      "Adventskalender 2025 – Flöckchen und die verschwundenen Weihnachtslichter",
+      "Adventskalender 2025 – Floeckchen und die verschwundenen Weihnachtslichter"
+    ]
+  },
+  {
+    "id": "tn_031",
+    "title": "Adventskalender – Ein Fest für die Waldfreunde",
+    "series": "Adventskalender",
+    "aliases": [
+      "Ein Fest für die Waldfreunde",
+      "Ein Fest fuer die Waldfreunde",
+      "Adventskalender Ein Fest für die Waldfreunde",
+      "Adventskalender Ein Fest fuer die Waldfreunde"
+    ]
+  },
+  {
+    "id": "tn_032",
+    "title": "Adventskalender – Wünsch dir was, kleines Rentier - Adventskalender-Weihnachtshörspiel",
+    "series": "Adventskalender",
+    "aliases": [
+      "Wünsch dir was, kleines Rentier - Adventskalender-Weihnachtshörspiel",
+      "Wuensch dir was, kleines Rentier - Adventskalender-Weihnachtshoerspiel",
+      "Adventskalender Wünsch dir was, kleines Rentier - Adventskalender-Weihnachtshörspiel",
+      "Adventskalender Wuensch dir was, kleines Rentier - Adventskalender-Weihnachtshoerspiel"
+    ]
+  },
+  {
+    "id": "tn_033",
+    "title": "Affenzahn – Die Abenteuer von Affenzahn",
+    "series": "Affenzahn",
+    "aliases": [
+      "Die Abenteuer von Affenzahn",
+      "Affenzahn Die Abenteuer von Affenzahn"
+    ]
+  },
+  {
+    "id": "tn_034",
+    "title": "Aladdin – [EN] Aladdin",
+    "series": "Aladdin",
+    "aliases": [
+      "[EN] Aladdin",
+      "Aladdin [EN] Aladdin"
+    ]
+  },
+  {
+    "id": "tn_035",
+    "title": "Aladdin",
+    "series": "Aladdin",
+    "aliases": [
+      "Aladdin"
+    ]
+  },
+  {
+    "id": "tn_036",
+    "title": "Alea Aquarius – Die Magie der Nixen",
+    "series": "Alea Aquarius",
+    "aliases": [
+      "Die Magie der Nixen",
+      "Alea Aquarius Die Magie der Nixen"
+    ]
+  },
+  {
+    "id": "tn_037",
+    "title": "Alles steht Kopf",
+    "series": "Alles steht Kopf",
+    "aliases": [
+      "Alles steht Kopf"
+    ]
+  },
+  {
+    "id": "tn_038",
+    "title": "Anne Kaffeekanne – 12 Lieder zum Singen, Spielen und Tanzen",
+    "series": "Anne Kaffeekanne",
+    "aliases": [
+      "12 Lieder zum Singen, Spielen und Tanzen",
+      "Anne Kaffeekanne 12 Lieder zum Singen, Spielen und Tanzen"
+    ]
+  },
+  {
+    "id": "tn_039",
+    "title": "Arielle, die Meerjungfrau – [EN] The Little Mermaid",
+    "series": "Arielle, die Meerjungfrau",
+    "aliases": [
+      "[EN] The Little Mermaid",
+      "Arielle, die Meerjungfrau [EN] The Little Mermaid"
+    ]
+  },
+  {
+    "id": "tn_040",
+    "title": "Arielle die Meerjungfrau",
+    "series": "Arielle, die Meerjungfrau",
+    "aliases": [
+      "Arielle die Meerjungfrau"
+    ]
+  },
+  {
+    "id": "tn_041",
+    "title": "Aristocats",
+    "series": "Aristocats",
+    "aliases": [
+      "Aristocats"
+    ]
+  },
+  {
+    "id": "tn_042",
+    "title": "Asterix - Die Odyssee",
+    "series": "Asterix",
+    "aliases": [
+      "Asterix - Die Odyssee"
+    ]
+  },
+  {
+    "id": "tn_043",
+    "title": "Asterix, der Gallier",
+    "series": "Asterix",
+    "aliases": [
+      "Asterix, der Gallier"
+    ]
+  },
+  {
+    "id": "tn_044",
+    "title": "Asterix – Die goldene Sichel",
+    "series": "Asterix",
+    "aliases": [
+      "Die goldene Sichel",
+      "Asterix Die goldene Sichel"
+    ]
+  },
+  {
+    "id": "tn_045",
+    "title": "Bakabu – Beste Freunde",
+    "series": "Bakabu",
+    "aliases": [
+      "Beste Freunde",
+      "Bakabu Beste Freunde"
+    ]
+  },
+  {
+    "id": "tn_046",
+    "title": "Bambi – [EN] Bambi",
+    "series": "Bambi",
+    "aliases": [
+      "[EN] Bambi",
+      "Bambi [EN] Bambi"
+    ]
+  },
+  {
+    "id": "tn_047",
+    "title": "Bambi",
+    "series": "Bambi",
+    "aliases": [
+      "Bambi"
+    ]
+  },
+  {
+    "id": "tn_048",
+    "title": "Barbie – Princess Adventure",
+    "series": "Barbie",
+    "aliases": [
+      "Princess Adventure",
+      "Barbie Princess Adventure"
+    ]
+  },
+  {
+    "id": "tn_049",
+    "title": "Batman™",
+    "series": "Batman",
+    "aliases": [
+      "Batman™",
+      "BatmanTM"
+    ]
+  },
+  {
+    "id": "tn_050",
+    "title": "Beethoven für Kids - Gelesen von Daniel Hope",
+    "series": "Beethoven für Kids",
+    "aliases": [
+      "Beethoven für Kids - Gelesen von Daniel Hope",
+      "Beethoven fuer Kids - Gelesen von Daniel Hope"
+    ]
+  },
+  {
+    "id": "tn_051",
+    "title": "Benjamin Blümchen – Benjamin als Baggerfahrer",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Benjamin als Baggerfahrer",
+      "Benjamin Blümchen Benjamin als Baggerfahrer",
+      "Benjamin Bluemchen Benjamin als Baggerfahrer"
+    ]
+  },
+  {
+    "id": "tn_052",
+    "title": "Benjamin Blümchen – Benjamin als Weihnachtsmann",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Benjamin als Weihnachtsmann",
+      "Benjamin Blümchen Benjamin als Weihnachtsmann",
+      "Benjamin Bluemchen Benjamin als Weihnachtsmann"
+    ]
+  },
+  {
+    "id": "tn_053",
+    "title": "Benjamin Blümchen als Ritter",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Benjamin Blümchen als Ritter",
+      "Benjamin Bluemchen als Ritter"
+    ]
+  },
+  {
+    "id": "tn_054",
+    "title": "Benjamin Blümchen – Die Märchennacht im Zoo",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Die Märchennacht im Zoo",
+      "Die Maerchennacht im Zoo",
+      "Benjamin Blümchen Die Märchennacht im Zoo",
+      "Benjamin Bluemchen Die Maerchennacht im Zoo"
+    ]
+  },
+  {
+    "id": "tn_055",
+    "title": "Benjamin Blümchen – Ein Törööö für alle Fälle",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Ein Törööö für alle Fälle",
+      "Ein Toeroeoeoe fuer alle Faelle",
+      "Benjamin Blümchen Ein Törööö für alle Fälle",
+      "Benjamin Bluemchen Ein Toeroeoeoe fuer alle Faelle"
+    ]
+  },
+  {
+    "id": "tn_056",
+    "title": "Benjamin Blümchen – Gute-Nacht-Geschichten - Plüsch",
+    "series": "Benjamin Blümchen",
+    "aliases": [
+      "Gute-Nacht-Geschichten - Plüsch",
+      "Gute-Nacht-Geschichten - Pluesch",
+      "Benjamin Blümchen Gute-Nacht-Geschichten - Plüsch",
+      "Benjamin Bluemchen Gute-Nacht-Geschichten - Pluesch"
+    ]
+  },
+  {
+    "id": "tn_057",
+    "title": "Bewegungsgeschichten mit Affe Marty - Mit lustigen Übungen zum Mitspielen",
+    "series": "Bewegungsgeschichten mit Affe Marty",
+    "aliases": [
+      "Bewegungsgeschichten mit Affe Marty - Mit lustigen Übungen zum Mitspielen",
+      "Bewegungsgeschichten mit Affe Marty - Mit lustigen Uebungen zum Mitspielen"
+    ]
+  },
+  {
+    "id": "tn_058",
+    "title": "Bibi & Tina – Das Waisenfohlen",
+    "series": "Bibi & Tina",
+    "aliases": [
+      "Das Waisenfohlen",
+      "Bibi & Tina Das Waisenfohlen"
+    ]
+  },
+  {
+    "id": "tn_059",
+    "title": "Bibi & Tina – Die Heukrise (Neuauflage 2025)",
+    "series": "Bibi & Tina",
+    "aliases": [
+      "Die Heukrise (Neuauflage 2025)",
+      "Bibi & Tina Die Heukrise (Neuauflage 2025)"
+    ]
+  },
+  {
+    "id": "tn_060",
+    "title": "Bibi & Tina – Die verlorene Freundschaft (Neuauflage 2025)",
+    "series": "Bibi & Tina",
+    "aliases": [
+      "Die verlorene Freundschaft (Neuauflage 2025)",
+      "Bibi & Tina Die verlorene Freundschaft (Neuauflage 2025)"
+    ]
+  },
+  {
+    "id": "tn_061",
+    "title": "Bibi & Tina – Die Waschbären sind los",
+    "series": "Bibi & Tina",
+    "aliases": [
+      "Die Waschbären sind los",
+      "Die Waschbaeren sind los",
+      "Bibi & Tina Die Waschbären sind los",
+      "Bibi & Tina Die Waschbaeren sind los"
+    ]
+  },
+  {
+    "id": "tn_062",
+    "title": "Bibi & Tina – Die Wildpferde – Teil 1",
+    "series": "Bibi & Tina",
+    "aliases": [
+      "Die Wildpferde – Teil 1",
+      "Bibi & Tina Die Wildpferde – Teil 1"
+    ]
+  },
+  {
+    "id": "tn_063",
+    "title": "Bibi Blocksberg – Ausgehext!",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Ausgehext!",
+      "Bibi Blocksberg Ausgehext!"
+    ]
+  },
+  {
+    "id": "tn_064",
+    "title": "Bibi Blocksberg – Die große Hexenparty",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Die große Hexenparty",
+      "Die grosse Hexenparty",
+      "Bibi Blocksberg Die große Hexenparty",
+      "Bibi Blocksberg Die grosse Hexenparty"
+    ]
+  },
+  {
+    "id": "tn_065",
+    "title": "Bibi Blocksberg – Die Junghexenbande",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Die Junghexenbande",
+      "Bibi Blocksberg Die Junghexenbande"
+    ]
+  },
+  {
+    "id": "tn_066",
+    "title": "Bibi Blocksberg – Die Prinzessinnen von Thunderstorm",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Die Prinzessinnen von Thunderstorm",
+      "Bibi Blocksberg Die Prinzessinnen von Thunderstorm"
+    ]
+  },
+  {
+    "id": "tn_067",
+    "title": "Bibi Blocksberg – Hexenbesengeschichten - Plüsch",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Hexenbesengeschichten - Plüsch",
+      "Hexenbesengeschichten - Pluesch",
+      "Bibi Blocksberg Hexenbesengeschichten - Plüsch",
+      "Bibi Blocksberg Hexenbesengeschichten - Pluesch"
+    ]
+  },
+  {
+    "id": "tn_068",
+    "title": "Bibi Blocksberg – Mami spielt verrückt",
+    "series": "Bibi Blocksberg",
+    "aliases": [
+      "Mami spielt verrückt",
+      "Mami spielt verrueckt",
+      "Bibi Blocksberg Mami spielt verrückt",
+      "Bibi Blocksberg Mami spielt verrueckt"
+    ]
+  },
+  {
+    "id": "tn_069",
+    "title": "Billie, der Regenbogentiger",
+    "series": "Billie, der Regenbogentiger",
+    "aliases": [
+      "Billie, der Regenbogentiger"
+    ]
+  },
+  {
+    "id": "tn_070",
+    "title": "Bitte nicht öffnen – Bissig!",
+    "series": "Bitte nicht öffnen",
+    "aliases": [
+      "Bissig!",
+      "Bitte nicht öffnen Bissig!",
+      "Bitte nicht oeffnen Bissig!"
+    ]
+  },
+  {
+    "id": "tn_071",
+    "title": "Bob der Baumeister – Bob der Küchenmeister",
+    "series": "Bob der Baumeister",
+    "aliases": [
+      "Bob der Küchenmeister",
+      "Bob der Kuechenmeister",
+      "Bob der Baumeister Bob der Küchenmeister",
+      "Bob der Baumeister Bob der Kuechenmeister"
+    ]
+  },
+  {
+    "id": "tn_072",
+    "title": "Bobo Siebenschläfer – Bobo beim Kinderarzt und weitere Folgen",
+    "series": "Bobo Siebenschläfer",
+    "aliases": [
+      "Bobo beim Kinderarzt und weitere Folgen",
+      "Bobo Siebenschläfer Bobo beim Kinderarzt und weitere Folgen",
+      "Bobo Siebenschlaefer Bobo beim Kinderarzt und weitere Folgen"
+    ]
+  },
+  {
+    "id": "tn_073",
+    "title": "Bobo Siebenschläfer – Bobo feiert Kindergeburtstag",
+    "series": "Bobo Siebenschläfer",
+    "aliases": [
+      "Bobo feiert Kindergeburtstag",
+      "Bobo Siebenschläfer Bobo feiert Kindergeburtstag",
+      "Bobo Siebenschlaefer Bobo feiert Kindergeburtstag"
+    ]
+  },
+  {
+    "id": "tn_074",
+    "title": "Bobo Siebenschläfer – Bobos Ausflug zum Spielplatz",
+    "series": "Bobo Siebenschläfer",
+    "aliases": [
+      "Bobos Ausflug zum Spielplatz",
+      "Bobo Siebenschläfer Bobos Ausflug zum Spielplatz",
+      "Bobo Siebenschlaefer Bobos Ausflug zum Spielplatz"
+    ]
+  },
+  {
+    "id": "tn_075",
+    "title": "Bullerbü – Immer lustig in Bullerbü",
+    "series": "Bullerbü",
+    "aliases": [
+      "Immer lustig in Bullerbü",
+      "Immer lustig in Bullerbue",
+      "Bullerbü Immer lustig in Bullerbü",
+      "Bullerbue Immer lustig in Bullerbue"
+    ]
+  },
+  {
+    "id": "tn_076",
+    "title": "Bummelkasten – Irgendwas Bestimmtes",
+    "series": "Bummelkasten",
+    "aliases": [
+      "Irgendwas Bestimmtes",
+      "Bummelkasten Irgendwas Bestimmtes"
+    ]
+  },
+  {
+    "id": "tn_077",
+    "title": "Caillou – Sternschnuppen und weitere Geschichten",
+    "series": "Caillou",
+    "aliases": [
+      "Sternschnuppen und weitere Geschichten",
+      "Caillou Sternschnuppen und weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_078",
+    "title": "Cap und Capper",
+    "series": "Cap und Capper",
+    "aliases": [
+      "Cap und Capper"
+    ]
+  },
+  {
+    "id": "tn_079",
+    "title": "Cars – [EN] Cars 2",
+    "series": "Cars",
+    "aliases": [
+      "[EN] Cars 2",
+      "Cars [EN] Cars 2"
+    ]
+  },
+  {
+    "id": "tn_080",
+    "title": "Cars",
+    "series": "Cars",
+    "aliases": [
+      "Cars"
+    ]
+  },
+  {
+    "id": "tn_081",
+    "title": "Cars 2",
+    "series": "Cars",
+    "aliases": [
+      "Cars 2"
+    ]
+  },
+  {
+    "id": "tn_082",
+    "title": "Cinderella – [FR] Cendrillon",
+    "series": "Cinderella",
+    "aliases": [
+      "[FR] Cendrillon",
+      "Cinderella [FR] Cendrillon"
+    ]
+  },
+  {
+    "id": "tn_083",
+    "title": "Cinderella",
+    "series": "Cinderella",
+    "aliases": [
+      "Cinderella"
+    ]
+  },
+  {
+    "id": "tn_084",
+    "title": "Coco – [EN] Coco",
+    "series": "Coco",
+    "aliases": [
+      "[EN] Coco",
+      "Coco [EN] Coco"
+    ]
+  },
+  {
+    "id": "tn_085",
+    "title": "Coco",
+    "series": "Coco",
+    "aliases": [
+      "Coco"
+    ]
+  },
+  {
+    "id": "tn_086",
+    "title": "Cocomelon – [EN] Getting Ready with JJ",
+    "series": "Cocomelon",
+    "aliases": [
+      "[EN] Getting Ready with JJ",
+      "Cocomelon [EN] Getting Ready with JJ"
+    ]
+  },
+  {
+    "id": "tn_087",
+    "title": "Cocomelon – [EN] Outdoor Adventures with JJ",
+    "series": "Cocomelon",
+    "aliases": [
+      "[EN] Outdoor Adventures with JJ",
+      "Cocomelon [EN] Outdoor Adventures with JJ"
+    ]
+  },
+  {
+    "id": "tn_088",
+    "title": "Cocomelon – Mit JJ durch den Tag",
+    "series": "Cocomelon",
+    "aliases": [
+      "Mit JJ durch den Tag",
+      "Cocomelon Mit JJ durch den Tag"
+    ]
+  },
+  {
+    "id": "tn_089",
+    "title": "Cocomelon – Raus in die Welt mit JJ",
+    "series": "Cocomelon",
+    "aliases": [
+      "Raus in die Welt mit JJ",
+      "Cocomelon Raus in die Welt mit JJ"
+    ]
+  },
+  {
+    "id": "tn_090",
+    "title": "Cocomelon – Spiel und Spaß mit JJ",
+    "series": "Cocomelon",
+    "aliases": [
+      "Spiel und Spaß mit JJ",
+      "Spiel und Spass mit JJ",
+      "Cocomelon Spiel und Spaß mit JJ",
+      "Cocomelon Spiel und Spass mit JJ"
+    ]
+  },
+  {
+    "id": "tn_091",
+    "title": "Conni auf dem Bauernhof / Conni und das neue Baby (Neuauflage 2023)",
+    "series": "Conni",
+    "aliases": [
+      "Conni auf dem Bauernhof / Conni und das neue Baby (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_092",
+    "title": "Conni backt Pizza / Conni lernt Rad fahren",
+    "series": "Conni",
+    "aliases": [
+      "Conni backt Pizza / Conni lernt Rad fahren"
+    ]
+  },
+  {
+    "id": "tn_093",
+    "title": "Conni kommt in den Kindergarten/ Conni geht aufs Töpfchen",
+    "series": "Conni",
+    "aliases": [
+      "Conni kommt in den Kindergarten/ Conni geht aufs Töpfchen",
+      "Conni kommt in den Kindergarten/ Conni geht aufs Toepfchen"
+    ]
+  },
+  {
+    "id": "tn_094",
+    "title": "Das Dschungelbuch – [EN] The Jungle Book",
+    "series": "Das Dschungelbuch",
+    "aliases": [
+      "[EN] The Jungle Book",
+      "Das Dschungelbuch [EN] The Jungle Book"
+    ]
+  },
+  {
+    "id": "tn_095",
+    "title": "Das Dschungelbuch – [FR] Le Livre De La Jungle",
+    "series": "Das Dschungelbuch",
+    "aliases": [
+      "[FR] Le Livre De La Jungle",
+      "Das Dschungelbuch [FR] Le Livre De La Jungle"
+    ]
+  },
+  {
+    "id": "tn_096",
+    "title": "Das Dschungelbuch",
+    "series": "Das Dschungelbuch",
+    "aliases": [
+      "Das Dschungelbuch"
+    ]
+  },
+  {
+    "id": "tn_097",
+    "title": "Das kleine Böse Buch",
+    "series": "Das kleine Böse Buch",
+    "aliases": [
+      "Das kleine Böse Buch",
+      "Das kleine Boese Buch"
+    ]
+  },
+  {
+    "id": "tn_098",
+    "title": "Das kleine Gespenst (Neuauflage 2022)",
+    "series": "Das kleine Gespenst",
+    "aliases": [
+      "Das kleine Gespenst (Neuauflage 2022)"
+    ]
+  },
+  {
+    "id": "tn_099",
+    "title": "Das kleine Hörbuch vom großen Glück - Die Glücksfee",
+    "series": "Das kleine Hörbuch vom großen Glück",
+    "aliases": [
+      "Das kleine Hörbuch vom großen Glück - Die Glücksfee",
+      "Das kleine Hoerbuch vom grossen Glueck - Die Gluecksfee"
+    ]
+  },
+  {
+    "id": "tn_100",
+    "title": "Das magische Baumhaus – Im Tal der Dinosaurier",
+    "series": "Das magische Baumhaus",
+    "aliases": [
+      "Im Tal der Dinosaurier",
+      "Das magische Baumhaus Im Tal der Dinosaurier"
+    ]
+  },
+  {
+    "id": "tn_101",
+    "title": "Das NEINhorn & Das NEINhorn und die SchLANGEWEILE",
+    "series": "Das NEINhorn",
+    "aliases": [
+      "Das NEINhorn & Das NEINhorn und die SchLANGEWEILE"
+    ]
+  },
+  {
+    "id": "tn_102",
+    "title": "Das Sams – Am Samstag kam das Sams zurück",
+    "series": "Das Sams",
+    "aliases": [
+      "Am Samstag kam das Sams zurück",
+      "Am Samstag kam das Sams zurueck",
+      "Das Sams Am Samstag kam das Sams zurück",
+      "Das Sams Am Samstag kam das Sams zurueck"
+    ]
+  },
+  {
+    "id": "tn_103",
+    "title": "Das Sams – Eine Woche voller Samstage",
+    "series": "Das Sams",
+    "aliases": [
+      "Eine Woche voller Samstage",
+      "Das Sams Eine Woche voller Samstage"
+    ]
+  },
+  {
+    "id": "tn_104",
+    "title": "DC - Batwheels",
+    "series": "DC: Batwheels",
+    "aliases": [
+      "DC - Batwheels"
+    ]
+  },
+  {
+    "id": "tn_105",
+    "title": "Deine Freunde – Das Gelbe von Drei",
+    "series": "Deine Freunde",
+    "aliases": [
+      "Das Gelbe von Drei",
+      "Deine Freunde Das Gelbe von Drei"
+    ]
+  },
+  {
+    "id": "tn_106",
+    "title": "Der glückliche Löwe",
+    "series": "Der glückliche Löwe",
+    "aliases": [
+      "Der glückliche Löwe",
+      "Der glueckliche Loewe"
+    ]
+  },
+  {
+    "id": "tn_107",
+    "title": "Der Grolltroll – Das Liederalbum",
+    "series": "Der Grolltroll",
+    "aliases": [
+      "Der Grolltroll – Das Liederalbum"
+    ]
+  },
+  {
+    "id": "tn_108",
+    "title": "Der Grüffelo – Das Grüffelokind",
+    "series": "Der Grüffelo",
+    "aliases": [
+      "Das Grüffelokind",
+      "Das Grueffelokind",
+      "Der Grüffelo Das Grüffelokind",
+      "Der Grueffelo Das Grueffelokind"
+    ]
+  },
+  {
+    "id": "tn_109",
+    "title": "Der Grüffelo & Das Grüffelokind (Relaunch 2026)",
+    "series": "Der Grüffelo",
+    "aliases": [
+      "Der Grüffelo & Das Grüffelokind (Relaunch 2026)",
+      "Der Grueffelo & Das Grueffelokind (Relaunch 2026)"
+    ]
+  },
+  {
+    "id": "tn_110",
+    "title": "Der kleine Drache Kokosnuss – Hörspiel zur TV-Serie 04",
+    "series": "Der kleine Drache Kokosnuss",
+    "aliases": [
+      "Hörspiel zur TV-Serie 04",
+      "Hörspiel zur TV-Serie 04",
+      "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 04",
+      "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 04"
+    ]
+  },
+  {
+    "id": "tn_111",
+    "title": "Der kleine Drache Kokosnuss – Hörspiel zur TV-Serie 01",
+    "series": "Der kleine Drache Kokosnuss",
+    "aliases": [
+      "Hörspiel zur TV-Serie 01",
+      "Hoerspiel zur TV-Serie 01",
+      "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 01",
+      "Der kleine Drache Kokosnuss Hoerspiel zur TV-Serie 01"
+    ]
+  },
+  {
+    "id": "tn_112",
+    "title": "Der kleine Drache Kokosnuss – Hörspiel zur TV-Serie 02",
+    "series": "Der kleine Drache Kokosnuss",
+    "aliases": [
+      "Hörspiel zur TV-Serie 02",
+      "Hoerspiel zur TV-Serie 02",
+      "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 02",
+      "Der kleine Drache Kokosnuss Hoerspiel zur TV-Serie 02"
+    ]
+  },
+  {
+    "id": "tn_113",
+    "title": "Der kleine Drache Kokosnuss – Hörspiel zur TV-Serie 03",
+    "series": "Der kleine Drache Kokosnuss",
+    "aliases": [
+      "Hörspiel zur TV-Serie 03",
+      "Hoerspiel zur TV-Serie 03",
+      "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 03",
+      "Der kleine Drache Kokosnuss Hoerspiel zur TV-Serie 03"
+    ]
+  },
+  {
+    "id": "tn_114",
+    "title": "Der kleine Elefant, der so gerne einschlafen möchte",
+    "series": "Der kleine Elefant",
+    "aliases": [
+      "Der kleine Elefant, der so gerne einschlafen möchte",
+      "Der kleine Elefant, der so gerne einschlafen moechte"
+    ]
+  },
+  {
+    "id": "tn_115",
+    "title": "Der kleine Hui Buh – Schatzjagd im Museum/Magische Meisterschaft",
+    "series": "Der kleine Hui Buh",
+    "aliases": [
+      "Schatzjagd im Museum/Magische Meisterschaft",
+      "Der kleine Hui Buh Schatzjagd im Museum/Magische Meisterschaft"
+    ]
+  },
+  {
+    "id": "tn_116",
+    "title": "Der kleine Hui Buh – Wie Hui Buh seine Rasselkette bekam/Die Halloween-Party",
+    "series": "Der kleine Hui Buh",
+    "aliases": [
+      "Wie Hui Buh seine Rasselkette bekam/Die Halloween-Party",
+      "Der kleine Hui Buh Wie Hui Buh seine Rasselkette bekam/Die Halloween-Party"
+    ]
+  },
+  {
+    "id": "tn_117",
+    "title": "Der kleine Nick ist der Beste",
+    "series": "Der kleine Nick",
+    "aliases": [
+      "Der kleine Nick ist der Beste"
+    ]
+  },
+  {
+    "id": "tn_118",
+    "title": "Der kleine Prinz (Neuauflage 2025)",
+    "series": "Der kleine Prinz",
+    "aliases": [
+      "Der kleine Prinz (Neuauflage 2025)"
+    ]
+  },
+  {
+    "id": "tn_119",
+    "title": "Der kleine Rabe Socke – Alles erlaubt?",
+    "series": "Der kleine Rabe Socke",
+    "aliases": [
+      "Alles erlaubt?",
+      "Der kleine Rabe Socke Alles erlaubt?"
+    ]
+  },
+  {
+    "id": "tn_120",
+    "title": "Der kleine Rabe Socke – Alles Schule!",
+    "series": "Der kleine Rabe Socke",
+    "aliases": [
+      "Alles Schule!",
+      "Der kleine Rabe Socke Alles Schule!"
+    ]
+  },
+  {
+    "id": "tn_121",
+    "title": "Der kleine Rabe Socke – Alles vermurkst!",
+    "series": "Der kleine Rabe Socke",
+    "aliases": [
+      "Alles vermurkst!",
+      "Der kleine Rabe Socke Alles vermurkst!"
+    ]
+  },
+  {
+    "id": "tn_122",
+    "title": "Der kleine Siebenschläfer – Die Geschichte vom kleinen Siebenschläfer, der nicht einschlafen konnte",
+    "series": "Der kleine Siebenschläfer",
+    "aliases": [
+      "Die Geschichte vom kleinen Siebenschläfer, der nicht einschlafen konnte",
+      "Die Geschichte vom kleinen Siebenschlaefer, der nicht einschlafen konnte",
+      "Der kleine Siebenschläfer Die Geschichte vom kleinen Siebenschläfer, der nicht einschlafen konnte",
+      "Der kleine Siebenschlaefer Die Geschichte vom kleinen Siebenschlaefer, der nicht einschlafen konnte"
+    ]
+  },
+  {
+    "id": "tn_123",
+    "title": "Der kleine Wassermann (Neuauflage 2022)",
+    "series": "Der kleine Wassermann",
+    "aliases": [
+      "Der kleine Wassermann (Neuauflage 2022)"
+    ]
+  },
+  {
+    "id": "tn_124",
+    "title": "Der König der Löwen – [EN] The Lion King",
+    "series": "Der König der Löwen",
+    "aliases": [
+      "[EN] The Lion King",
+      "Der König der Löwen [EN] The Lion King",
+      "Der Koenig der Loewen [EN] The Lion King"
+    ]
+  },
+  {
+    "id": "tn_125",
+    "title": "Der König der Löwen",
+    "series": "Der König der Löwen",
+    "aliases": [
+      "Der König der Löwen",
+      "Der Koenig der Loewen"
+    ]
+  },
+  {
+    "id": "tn_126",
+    "title": "Der Löwe in dir und andere Geschichten",
+    "series": "Der Löwe in dir",
+    "aliases": [
+      "Der Löwe in dir und andere Geschichten",
+      "Der Loewe in dir und andere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_127",
+    "title": "Der magische Blumenladen – Ein Geheimnis kommt selten allein",
+    "series": "Der magische Blumenladen",
+    "aliases": [
+      "Ein Geheimnis kommt selten allein",
+      "Der magische Blumenladen Ein Geheimnis kommt selten allein"
+    ]
+  },
+  {
+    "id": "tn_128",
+    "title": "Der Regenbogenfisch",
+    "series": "Der Regenbogenfisch",
+    "aliases": [
+      "Der Regenbogenfisch"
+    ]
+  },
+  {
+    "id": "tn_129",
+    "title": "Der Räuber Hotzenplotz",
+    "series": "Der Räuber Hotzenplotz",
+    "aliases": [
+      "Der Räuber Hotzenplotz",
+      "Der Raeuber Hotzenplotz"
+    ]
+  },
+  {
+    "id": "tn_130",
+    "title": "Der Räuber Hotzenplotz – Neues vom Räuber Hotzenplotz",
+    "series": "Der Räuber Hotzenplotz",
+    "aliases": [
+      "Neues vom Räuber Hotzenplotz",
+      "Neues vom Raeuber Hotzenplotz",
+      "Der Räuber Hotzenplotz Neues vom Räuber Hotzenplotz",
+      "Der Raeuber Hotzenplotz Neues vom Raeuber Hotzenplotz"
+    ]
+  },
+  {
+    "id": "tn_131",
+    "title": "Der Räuber Hotzenplotz – Schluss mit der Räuberei",
+    "series": "Der Räuber Hotzenplotz",
+    "aliases": [
+      "Schluss mit der Räuberei",
+      "Schluss mit der Raeuberei",
+      "Der Räuber Hotzenplotz Schluss mit der Räuberei",
+      "Der Raeuber Hotzenplotz Schluss mit der Raeuberei"
+    ]
+  },
+  {
+    "id": "tn_132",
+    "title": "Der Räuber Hotzenplotz – Und die Mondrakete",
+    "series": "Der Räuber Hotzenplotz",
+    "aliases": [
+      "Und die Mondrakete",
+      "Der Räuber Hotzenplotz Und die Mondrakete",
+      "Der Raeuber Hotzenplotz Und die Mondrakete"
+    ]
+  },
+  {
+    "id": "tn_133",
+    "title": "Der Sternenmann – Lieder und Hörspiel zur guten Nacht",
+    "series": "Der Sternenmann",
+    "aliases": [
+      "Lieder und Hörspiel zur guten Nacht",
+      "Lieder und Hoerspiel zur guten Nacht",
+      "Der Sternenmann Lieder und Hörspiel zur guten Nacht",
+      "Der Sternenmann Lieder und Hoerspiel zur guten Nacht"
+    ]
+  },
+  {
+    "id": "tn_134",
+    "title": "Der Traumzauberbaum – Geschichtenlieder",
+    "series": "Der Traumzauberbaum",
+    "aliases": [
+      "Geschichtenlieder",
+      "Der Traumzauberbaum Geschichtenlieder"
+    ]
+  },
+  {
+    "id": "tn_135",
+    "title": "Die Biene Maja – [EN] The birth of Maya",
+    "series": "Die Biene Maja",
+    "aliases": [
+      "[EN] The birth of Maya",
+      "Die Biene Maja [EN] The birth of Maya"
+    ]
+  },
+  {
+    "id": "tn_136",
+    "title": "Die Biene Maja – [FR] Maya L'Abeille",
+    "series": "Die Biene Maja",
+    "aliases": [
+      "[FR] Maya L'Abeille",
+      "Die Biene Maja [FR] Maya L'Abeille"
+    ]
+  },
+  {
+    "id": "tn_137",
+    "title": "Die Biene Maja – Der Bienentanz",
+    "series": "Die Biene Maja",
+    "aliases": [
+      "Der Bienentanz",
+      "Die Biene Maja Der Bienentanz"
+    ]
+  },
+  {
+    "id": "tn_138",
+    "title": "Die Biene Maja – Der Schmetterlingsball",
+    "series": "Die Biene Maja",
+    "aliases": [
+      "Der Schmetterlingsball",
+      "Die Biene Maja Der Schmetterlingsball"
+    ]
+  },
+  {
+    "id": "tn_139",
+    "title": "Die Biene Maja – Majas Geburt",
+    "series": "Die Biene Maja",
+    "aliases": [
+      "Majas Geburt",
+      "Die Biene Maja Majas Geburt"
+    ]
+  },
+  {
+    "id": "tn_140",
+    "title": "Die drei !!! – Das Geheimnis der alten Villa",
+    "series": "Die drei !!!",
+    "aliases": [
+      "Das Geheimnis der alten Villa",
+      "Die drei !!! Das Geheimnis der alten Villa"
+    ]
+  },
+  {
+    "id": "tn_141",
+    "title": "Die drei !!! – Das rote Phantom",
+    "series": "Die drei !!!",
+    "aliases": [
+      "Das rote Phantom",
+      "Die drei !!! Das rote Phantom"
+    ]
+  },
+  {
+    "id": "tn_142",
+    "title": "Die drei !!! – Mission Pferdeshow",
+    "series": "Die drei !!!",
+    "aliases": [
+      "Mission Pferdeshow",
+      "Die drei !!! Mission Pferdeshow"
+    ]
+  },
+  {
+    "id": "tn_143",
+    "title": "Die drei ??? – Der Super-Papagei",
+    "series": "Die drei ???",
+    "aliases": [
+      "Der Super-Papagei",
+      "Die drei ??? Der Super-Papagei"
+    ]
+  },
+  {
+    "id": "tn_144",
+    "title": "Die drei ??? Kids – Invasion der Fliegen",
+    "series": "Die drei ??? Kids",
+    "aliases": [
+      "Invasion der Fliegen",
+      "Die drei ??? Kids Invasion der Fliegen"
+    ]
+  },
+  {
+    "id": "tn_145",
+    "title": "Die drei ??? Kids – Radio Rocky Beach",
+    "series": "Die drei ??? Kids",
+    "aliases": [
+      "Radio Rocky Beach",
+      "Die drei ??? Kids Radio Rocky Beach"
+    ]
+  },
+  {
+    "id": "tn_146",
+    "title": "Die drei Räuber",
+    "series": "Die drei Räuber",
+    "aliases": [
+      "Die drei Räuber",
+      "Die drei Raeuber"
+    ]
+  },
+  {
+    "id": "tn_147",
+    "title": "Die Eiskönigin II – [EN] Frozen 2",
+    "series": "Die Eiskönigin II",
+    "aliases": [
+      "[EN] Frozen 2",
+      "Die Eiskönigin II [EN] Frozen 2",
+      "Die Eiskoenigin II [EN] Frozen 2"
+    ]
+  },
+  {
+    "id": "tn_148",
+    "title": "Die Eiskönigin II – Die Eiskönigin 2",
+    "series": "Die Eiskönigin II",
+    "aliases": [
+      "Die Eiskönigin 2",
+      "Die Eiskoenigin 2",
+      "Die Eiskönigin II Die Eiskönigin 2",
+      "Die Eiskoenigin II Die Eiskoenigin 2"
+    ]
+  },
+  {
+    "id": "tn_149",
+    "title": "Die Eiskönigin – Olaf taut auf – [EN] Olaf's Frozen Adventure",
+    "series": "Die Eiskönigin – Olaf taut auf",
+    "aliases": [
+      "[EN] Olaf's Frozen Adventure",
+      "Die Eiskönigin – Olaf taut auf [EN] Olaf's Frozen Adventure",
+      "Die Eiskoenigin – Olaf taut auf [EN] Olaf's Frozen Adventure"
+    ]
+  },
+  {
+    "id": "tn_150",
+    "title": "Die Eiskönigin - Olaf taut auf",
+    "series": "Die Eiskönigin – Olaf taut auf",
+    "aliases": [
+      "Die Eiskönigin - Olaf taut auf",
+      "Die Eiskoenigin - Olaf taut auf"
+    ]
+  },
+  {
+    "id": "tn_151",
+    "title": "Die Eiskönigin – Völlig unverfroren – [EN] Frozen",
+    "series": "Die Eiskönigin – Völlig unverfroren",
+    "aliases": [
+      "[EN] Frozen",
+      "Die Eiskönigin – Völlig unverfroren [EN] Frozen",
+      "Die Eiskoenigin – Voellig unverfroren [EN] Frozen"
+    ]
+  },
+  {
+    "id": "tn_152",
+    "title": "Die Eiskönigin – Völlig unverfroren – [FR] La Reine Des Neiges",
+    "series": "Die Eiskönigin – Völlig unverfroren",
+    "aliases": [
+      "[FR] La Reine Des Neiges",
+      "Die Eiskönigin – Völlig unverfroren [FR] La Reine Des Neiges",
+      "Die Eiskoenigin – Voellig unverfroren [FR] La Reine Des Neiges"
+    ]
+  },
+  {
+    "id": "tn_153",
+    "title": "Die Eiskönigin – Völlig unverfroren – Die Eiskönigin",
+    "series": "Die Eiskönigin – Völlig unverfroren",
+    "aliases": [
+      "Die Eiskönigin",
+      "Die Eiskoenigin",
+      "Die Eiskönigin – Völlig unverfroren Die Eiskönigin",
+      "Die Eiskoenigin – Voellig unverfroren Die Eiskoenigin"
+    ]
+  },
+  {
+    "id": "tn_154",
+    "title": "Die Fuchsbande – Der Skandal im Hof/Die Spur des Riesen",
+    "series": "Die Fuchsbande",
+    "aliases": [
+      "Der Skandal im Hof/Die Spur des Riesen",
+      "Die Fuchsbande Der Skandal im Hof/Die Spur des Riesen"
+    ]
+  },
+  {
+    "id": "tn_155",
+    "title": "Die Geggis – Das kleine Ich bin Ich/Die Geggis",
+    "series": "Die Geggis",
+    "aliases": [
+      "Das kleine Ich bin Ich/Die Geggis",
+      "Die Geggis Das kleine Ich bin Ich/Die Geggis"
+    ]
+  },
+  {
+    "id": "tn_156",
+    "title": "Die Glubschis – Miss Crayon auf heißer Spur",
+    "series": "Die Glubschis",
+    "aliases": [
+      "Miss Crayon auf heißer Spur",
+      "Miss Crayon auf heisser Spur",
+      "Die Glubschis Miss Crayon auf heißer Spur",
+      "Die Glubschis Miss Crayon auf heisser Spur"
+    ]
+  },
+  {
+    "id": "tn_157",
+    "title": "Die Gäng – D!e Gäng",
+    "series": "Die Gäng",
+    "aliases": [
+      "D!e Gäng",
+      "D!e Gaeng",
+      "Die Gäng D!e Gäng",
+      "Die Gaeng D!e Gaeng"
+    ]
+  },
+  {
+    "id": "tn_158",
+    "title": "Die Haferhorde – Flausen im Schopf",
+    "series": "Die Haferhorde",
+    "aliases": [
+      "Flausen im Schopf",
+      "Die Haferhorde Flausen im Schopf"
+    ]
+  },
+  {
+    "id": "tn_159",
+    "title": "Die Haferhorde – Immer den Nüstern nach",
+    "series": "Die Haferhorde",
+    "aliases": [
+      "Immer den Nüstern nach",
+      "Immer den Nuestern nach",
+      "Die Haferhorde Immer den Nüstern nach",
+      "Die Haferhorde Immer den Nuestern nach"
+    ]
+  },
+  {
+    "id": "tn_160",
+    "title": "Die Haferhorde – Volle Mähne!",
+    "series": "Die Haferhorde",
+    "aliases": [
+      "Volle Mähne!",
+      "Volle Maehne!",
+      "Die Haferhorde Volle Mähne!",
+      "Die Haferhorde Volle Maehne!"
+    ]
+  },
+  {
+    "id": "tn_161",
+    "title": "Die Häschenschule – Die neue Häschenschule",
+    "series": "Die Häschenschule",
+    "aliases": [
+      "Die neue Häschenschule",
+      "Die neue Haeschenschule",
+      "Die Häschenschule Die neue Häschenschule",
+      "Die Haeschenschule Die neue Haeschenschule"
+    ]
+  },
+  {
+    "id": "tn_162",
+    "title": "Die kleine Eule – Die Eule mit der Beule",
+    "series": "Die kleine Eule",
+    "aliases": [
+      "Die Eule mit der Beule",
+      "Die kleine Eule Die Eule mit der Beule"
+    ]
+  },
+  {
+    "id": "tn_163",
+    "title": "Die kleine Eule feiert Weihnachten",
+    "series": "Die kleine Eule",
+    "aliases": [
+      "Die kleine Eule feiert Weihnachten"
+    ]
+  },
+  {
+    "id": "tn_164",
+    "title": "Die kleine Eule singt und tanzt – Das 2. Liederalbum",
+    "series": "Die kleine Eule",
+    "aliases": [
+      "Die kleine Eule singt und tanzt – Das 2. Liederalbum"
+    ]
+  },
+  {
+    "id": "tn_165",
+    "title": "Die kleine Eule – Gute Nacht, kleine Eule",
+    "series": "Die kleine Eule",
+    "aliases": [
+      "Gute Nacht, kleine Eule",
+      "Die kleine Eule Gute Nacht, kleine Eule"
+    ]
+  },
+  {
+    "id": "tn_166",
+    "title": "Die kleine Eule – Liederalbum",
+    "series": "Die kleine Eule",
+    "aliases": [
+      "Liederalbum",
+      "Die kleine Eule Liederalbum"
+    ]
+  },
+  {
+    "id": "tn_167",
+    "title": "Die kleine Hexe",
+    "series": "Die kleine Hexe",
+    "aliases": [
+      "Die kleine Hexe"
+    ]
+  },
+  {
+    "id": "tn_168",
+    "title": "Die kleine Hexe – Die neugierige kleine Hexe / Die kleine Hexe hat Geburtstag",
+    "series": "Die kleine Hexe",
+    "aliases": [
+      "Die neugierige kleine Hexe / Die kleine Hexe hat Geburtstag",
+      "Die kleine Hexe Die neugierige kleine Hexe / Die kleine Hexe hat Geburtstag"
+    ]
+  },
+  {
+    "id": "tn_169",
+    "title": "Die kleine Hummel Bommel / Die kleine Hummel Bommel sucht das Glück",
+    "series": "Die kleine Hummel Bommel",
+    "aliases": [
+      "Die kleine Hummel Bommel / Die kleine Hummel Bommel sucht das Glück",
+      "Die kleine Hummel Bommel / Die kleine Hummel Bommel sucht das Glueck"
+    ]
+  },
+  {
+    "id": "tn_170",
+    "title": "Die kleine Raupe Nimmersatt – Schlaf gut! Die kleine Raupe Nimmersatt und weitere Geschichten",
+    "series": "Die kleine Raupe Nimmersatt",
+    "aliases": [
+      "Schlaf gut! Die kleine Raupe Nimmersatt und weitere Geschichten",
+      "Die kleine Raupe Nimmersatt Schlaf gut! Die kleine Raupe Nimmersatt und weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_171",
+    "title": "Die kleine Schnecke Monika Häuschen – Warum stolpern Tausendfüßler nicht?",
+    "series": "Die kleine Schnecke Monika Häuschen",
+    "aliases": [
+      "Warum stolpern Tausendfüßler nicht?",
+      "Warum stolpern Tausendfuessler nicht?",
+      "Die kleine Schnecke Monika Häuschen Warum stolpern Tausendfüßler nicht?",
+      "Die kleine Schnecke Monika Haeuschen Warum stolpern Tausendfuessler nicht?"
+    ]
+  },
+  {
+    "id": "tn_172",
+    "title": "Die Monster AG – [EN] Monsters Inc.",
+    "series": "Die Monster AG",
+    "aliases": [
+      "[EN] Monsters Inc.",
+      "Die Monster AG [EN] Monsters Inc."
+    ]
+  },
+  {
+    "id": "tn_173",
+    "title": "Die Monster AG",
+    "series": "Die Monster AG",
+    "aliases": [
+      "Die Monster AG"
+    ]
+  },
+  {
+    "id": "tn_174",
+    "title": "Die Monster AG – Die Monster Uni",
+    "series": "Die Monster AG",
+    "aliases": [
+      "Die Monster Uni",
+      "Die Monster AG Die Monster Uni"
+    ]
+  },
+  {
+    "id": "tn_175",
+    "title": "Die Olchi-Detektive – Das Erbe der Piraten",
+    "series": "Die Olchi-Detektive",
+    "aliases": [
+      "Das Erbe der Piraten",
+      "Die Olchi-Detektive Das Erbe der Piraten"
+    ]
+  },
+  {
+    "id": "tn_176",
+    "title": "Die Olchi-Detektive – Ritter der Popelrunde",
+    "series": "Die Olchi-Detektive",
+    "aliases": [
+      "Ritter der Popelrunde",
+      "Die Olchi-Detektive Ritter der Popelrunde"
+    ]
+  },
+  {
+    "id": "tn_177",
+    "title": "Die Olchis auf Geburtstagsreise",
+    "series": "Die Olchis",
+    "aliases": [
+      "Die Olchis auf Geburtstagsreise"
+    ]
+  },
+  {
+    "id": "tn_178",
+    "title": "Die Olchis und der schwarze Pirat",
+    "series": "Die Olchis",
+    "aliases": [
+      "Die Olchis und der schwarze Pirat"
+    ]
+  },
+  {
+    "id": "tn_179",
+    "title": "Die Olchis werden Fußballmeister",
+    "series": "Die Olchis",
+    "aliases": [
+      "Die Olchis werden Fußballmeister",
+      "Die Olchis werden Fussballmeister"
+    ]
+  },
+  {
+    "id": "tn_180",
+    "title": "Die Playmos – Das Turnier auf der Königsritterburg",
+    "series": "Die Playmos",
+    "aliases": [
+      "Das Turnier auf der Königsritterburg",
+      "Das Turnier auf der Koenigsritterburg",
+      "Die Playmos Das Turnier auf der Königsritterburg",
+      "Die Playmos Das Turnier auf der Koenigsritterburg"
+    ]
+  },
+  {
+    "id": "tn_181",
+    "title": "Die Playmos – Der Ball im Prinzessinnen-Schloss",
+    "series": "Die Playmos",
+    "aliases": [
+      "Der Ball im Prinzessinnen-Schloss",
+      "Die Playmos Der Ball im Prinzessinnen-Schloss"
+    ]
+  },
+  {
+    "id": "tn_182",
+    "title": "Die Playmos – Der Schatz der Teufelsinsel",
+    "series": "Die Playmos",
+    "aliases": [
+      "Der Schatz der Teufelsinsel",
+      "Die Playmos Der Schatz der Teufelsinsel"
+    ]
+  },
+  {
+    "id": "tn_183",
+    "title": "Die Playmos – Großbrand in der Feuerwache",
+    "series": "Die Playmos",
+    "aliases": [
+      "Großbrand in der Feuerwache",
+      "Grossbrand in der Feuerwache",
+      "Die Playmos Großbrand in der Feuerwache",
+      "Die Playmos Grossbrand in der Feuerwache"
+    ]
+  },
+  {
+    "id": "tn_184",
+    "title": "Die Playmos – Licht aus dem Drachenland",
+    "series": "Die Playmos",
+    "aliases": [
+      "Licht aus dem Drachenland",
+      "Die Playmos Licht aus dem Drachenland"
+    ]
+  },
+  {
+    "id": "tn_185",
+    "title": "Die Punkies – Bühne frei für die Punkies",
+    "series": "Die Punkies",
+    "aliases": [
+      "Bühne frei für die Punkies",
+      "Buehne frei fuer die Punkies",
+      "Die Punkies Bühne frei für die Punkies",
+      "Die Punkies Buehne frei fuer die Punkies"
+    ]
+  },
+  {
+    "id": "tn_186",
+    "title": "Die Schlümpfe – [FR] Les Schtroumpfs Et Le Livre Qui Dit Tout",
+    "series": "Die Schlümpfe",
+    "aliases": [
+      "[FR] Les Schtroumpfs Et Le Livre Qui Dit Tout",
+      "Die Schlümpfe [FR] Les Schtroumpfs Et Le Livre Qui Dit Tout",
+      "Die Schluempfe [FR] Les Schtroumpfs Et Le Livre Qui Dit Tout"
+    ]
+  },
+  {
+    "id": "tn_187",
+    "title": "Die Schlümpfe – Der doppelte Papa Schlumpf & 3 weitere schlumpfige Abenteuer",
+    "series": "Die Schlümpfe",
+    "aliases": [
+      "Der doppelte Papa Schlumpf & 3 weitere schlumpfige Abenteuer",
+      "Die Schlümpfe Der doppelte Papa Schlumpf & 3 weitere schlumpfige Abenteuer",
+      "Die Schluempfe Der doppelte Papa Schlumpf & 3 weitere schlumpfige Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_188",
+    "title": "Die Schlümpfe – Ein tollpatschiger Held & 3 weitere schlumpfige Abenteuer",
+    "series": "Die Schlümpfe",
+    "aliases": [
+      "Ein tollpatschiger Held & 3 weitere schlumpfige Abenteuer",
+      "Die Schlümpfe Ein tollpatschiger Held & 3 weitere schlumpfige Abenteuer",
+      "Die Schluempfe Ein tollpatschiger Held & 3 weitere schlumpfige Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_189",
+    "title": "Die Schlümpfe – Ein unwiderschlumpfliches Lächeln & 3 weitere schlumpfige Abenteuer",
+    "series": "Die Schlümpfe",
+    "aliases": [
+      "Ein unwiderschlumpfliches Lächeln & 3 weitere schlumpfige Abenteuer",
+      "Ein unwiderschlumpfliches Laecheln & 3 weitere schlumpfige Abenteuer",
+      "Die Schlümpfe Ein unwiderschlumpfliches Lächeln & 3 weitere schlumpfige Abenteuer",
+      "Die Schluempfe Ein unwiderschlumpfliches Laecheln & 3 weitere schlumpfige Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_190",
+    "title": "Die Schlümpfe – Hefty Schlumpf - Wer ist heftiger? & 3 weitere schlumpfige Abenteuer",
+    "series": "Die Schlümpfe",
+    "aliases": [
+      "Hefty Schlumpf - Wer ist heftiger? & 3 weitere schlumpfige Abenteuer",
+      "Die Schlümpfe Hefty Schlumpf - Wer ist heftiger? & 3 weitere schlumpfige Abenteuer",
+      "Die Schluempfe Hefty Schlumpf - Wer ist heftiger? & 3 weitere schlumpfige Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_191",
+    "title": "Die Schule der magischen Tiere",
+    "series": "Die Schule der magischen Tiere",
+    "aliases": [
+      "Die Schule der magischen Tiere"
+    ]
+  },
+  {
+    "id": "tn_192",
+    "title": "Die Schöne und das Biest – [EN] Beauty and the Beast",
+    "series": "Die Schöne und das Biest",
+    "aliases": [
+      "[EN] Beauty and the Beast",
+      "Die Schöne und das Biest [EN] Beauty and the Beast",
+      "Die Schoene und das Biest [EN] Beauty and the Beast"
+    ]
+  },
+  {
+    "id": "tn_193",
+    "title": "Die Schöne und das Biest – [FR] La Belle Et La Bête",
+    "series": "Die Schöne und das Biest",
+    "aliases": [
+      "[FR] La Belle Et La Bête",
+      "Die Schöne und das Biest [FR] La Belle Et La Bête",
+      "Die Schoene und das Biest [FR] La Belle Et La Bête"
+    ]
+  },
+  {
+    "id": "tn_194",
+    "title": "Die Schöne und das Biest",
+    "series": "Die Schöne und das Biest",
+    "aliases": [
+      "Die Schöne und das Biest",
+      "Die Schoene und das Biest"
+    ]
+  },
+  {
+    "id": "tn_195",
+    "title": "Die Sendung mit dem Elefanten – Schlaf schön! (Neuauflage 2023)",
+    "series": "Die Sendung mit dem Elefanten",
+    "aliases": [
+      "Schlaf schön! (Neuauflage 2023)",
+      "Schlaf schoen! (Neuauflage 2023)",
+      "Die Sendung mit dem Elefanten Schlaf schön! (Neuauflage 2023)",
+      "Die Sendung mit dem Elefanten Schlaf schoen! (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_196",
+    "title": "Die unendliche Geschichte – Teil 1: Die große Suche",
+    "series": "Die unendliche Geschichte",
+    "aliases": [
+      "Teil 1: Die große Suche",
+      "Teil 1: Die grosse Suche",
+      "Die unendliche Geschichte Teil 1: Die große Suche",
+      "Die unendliche Geschichte Teil 1: Die grosse Suche"
+    ]
+  },
+  {
+    "id": "tn_197",
+    "title": "Die Unglaublichen – The Incredibles",
+    "series": "Die Unglaublichen",
+    "aliases": [
+      "Die Unglaublichen – The Incredibles"
+    ]
+  },
+  {
+    "id": "tn_198",
+    "title": "DIKKA – Oh Yeah!",
+    "series": "DIKKA",
+    "aliases": [
+      "Oh Yeah!",
+      "DIKKA Oh Yeah!"
+    ]
+  },
+  {
+    "id": "tn_199",
+    "title": "Dino Ranch – Mächtig Ärger für Jon & 3 weitere Abenteuer",
+    "series": "Dino Ranch",
+    "aliases": [
+      "Mächtig Ärger für Jon & 3 weitere Abenteuer",
+      "Maechtig Aerger fuer Jon & 3 weitere Abenteuer",
+      "Dino Ranch Mächtig Ärger für Jon & 3 weitere Abenteuer",
+      "Dino Ranch Maechtig Aerger fuer Jon & 3 weitere Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_200",
+    "title": "Doc McStuffins, Spielzeugärztin – [EN] Doc McStuffins",
+    "series": "Doc McStuffins, Spielzeugärztin",
+    "aliases": [
+      "[EN] Doc McStuffins",
+      "Doc McStuffins, Spielzeugärztin [EN] Doc McStuffins",
+      "Doc McStuffins, Spielzeugaerztin [EN] Doc McStuffins"
+    ]
+  },
+  {
+    "id": "tn_201",
+    "title": "Doc McStuffins, Spielzeugärztin – Buh machst du! & 3 weitere Geschichten",
+    "series": "Doc McStuffins, Spielzeugärztin",
+    "aliases": [
+      "Buh machst du! & 3 weitere Geschichten",
+      "Doc McStuffins, Spielzeugärztin Buh machst du! & 3 weitere Geschichten",
+      "Doc McStuffins, Spielzeugaerztin Buh machst du! & 3 weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_202",
+    "title": "Dora",
+    "series": "Dora",
+    "aliases": [
+      "Dora"
+    ]
+  },
+  {
+    "id": "tn_203",
+    "title": "Dornröschen",
+    "series": "Dornröschen",
+    "aliases": [
+      "Dornröschen",
+      "Dornroeschen"
+    ]
+  },
+  {
+    "id": "tn_204",
+    "title": "Dr. Brumm steckt fest/Dr. Brumm geht baden",
+    "series": "Dr. Brumm",
+    "aliases": [
+      "Dr. Brumm steckt fest/Dr. Brumm geht baden"
+    ]
+  },
+  {
+    "id": "tn_205",
+    "title": "Drachenzähmen leicht gemacht – [EN] How to train your Dragon",
+    "series": "Drachenzähmen leicht gemacht",
+    "aliases": [
+      "[EN] How to train your Dragon",
+      "Drachenzähmen leicht gemacht [EN] How to train your Dragon",
+      "Drachenzaehmen leicht gemacht [EN] How to train your Dragon"
+    ]
+  },
+  {
+    "id": "tn_206",
+    "title": "Drachenzähmen leicht gemacht 1",
+    "series": "Drachenzähmen leicht gemacht",
+    "aliases": [
+      "Drachenzähmen leicht gemacht 1",
+      "Drachenzaehmen leicht gemacht 1"
+    ]
+  },
+  {
+    "id": "tn_207",
+    "title": "Drachenzähmen leicht gemacht 2",
+    "series": "Drachenzähmen leicht gemacht",
+    "aliases": [
+      "Drachenzähmen leicht gemacht 2",
+      "Drachenzaehmen leicht gemacht 2"
+    ]
+  },
+  {
+    "id": "tn_208",
+    "title": "Dreamworks – [EN] Spirit – Riding Free",
+    "series": "Dreamworks",
+    "aliases": [
+      "[EN] Spirit – Riding Free",
+      "Dreamworks [EN] Spirit – Riding Free"
+    ]
+  },
+  {
+    "id": "tn_209",
+    "title": "DuckTales – Woohoo! / Die Suche nach Atlantis",
+    "series": "DuckTales",
+    "aliases": [
+      "Woohoo! / Die Suche nach Atlantis",
+      "DuckTales Woohoo! / Die Suche nach Atlantis"
+    ]
+  },
+  {
+    "id": "tn_210",
+    "title": "Dumbo",
+    "series": "Dumbo",
+    "aliases": [
+      "Dumbo"
+    ]
+  },
+  {
+    "id": "tn_211",
+    "title": "Ein Freund wie kein Anderer",
+    "series": "Ein Freund wie kein anderer",
+    "aliases": [
+      "Ein Freund wie kein Anderer"
+    ]
+  },
+  {
+    "id": "tn_212",
+    "title": "Ella in der Schule",
+    "series": "Ella",
+    "aliases": [
+      "Ella in der Schule"
+    ]
+  },
+  {
+    "id": "tn_213",
+    "title": "Elmar – [EN] Elmer and Friends Story Collection",
+    "series": "Elmar",
+    "aliases": [
+      "[EN] Elmer and Friends Story Collection",
+      "Elmar [EN] Elmer and Friends Story Collection"
+    ]
+  },
+  {
+    "id": "tn_214",
+    "title": "Elmar – Kunterbunte Geschichten",
+    "series": "Elmar",
+    "aliases": [
+      "Kunterbunte Geschichten",
+      "Elmar Kunterbunte Geschichten"
+    ]
+  },
+  {
+    "id": "tn_215",
+    "title": "Emil Grünbär – Janoschs Emil Grünbär und die Bande – Abenteuer im Wald",
+    "series": "Emil Grünbär",
+    "aliases": [
+      "Janoschs Emil Grünbär und die Bande – Abenteuer im Wald",
+      "Janoschs Emil Gruenbaer und die Bande – Abenteuer im Wald",
+      "Emil Grünbär Janoschs Emil Grünbär und die Bande – Abenteuer im Wald",
+      "Emil Gruenbaer Janoschs Emil Gruenbaer und die Bande – Abenteuer im Wald"
+    ]
+  },
+  {
+    "id": "tn_216",
+    "title": "Encanto",
+    "series": "Encanto",
+    "aliases": [
+      "Encanto"
+    ]
+  },
+  {
+    "id": "tn_217",
+    "title": "Erdbeerinchen Erdbeerfee – Zauberhafte Geschichten aus dem Erdbeergarten",
+    "series": "Erdbeerinchen Erdbeerfee",
+    "aliases": [
+      "Zauberhafte Geschichten aus dem Erdbeergarten",
+      "Erdbeerinchen Erdbeerfee Zauberhafte Geschichten aus dem Erdbeergarten"
+    ]
+  },
+  {
+    "id": "tn_218",
+    "title": "Eule findet den Beat – Auf Europatour",
+    "series": "Eule findet den Beat",
+    "aliases": [
+      "Auf Europatour",
+      "Eule findet den Beat Auf Europatour"
+    ]
+  },
+  {
+    "id": "tn_219",
+    "title": "Eule findet den Beat – Ein Entdeckerflug durch die Musikwelt",
+    "series": "Eule findet den Beat",
+    "aliases": [
+      "Ein Entdeckerflug durch die Musikwelt",
+      "Eule findet den Beat Ein Entdeckerflug durch die Musikwelt"
+    ]
+  },
+  {
+    "id": "tn_220",
+    "title": "Eule findet den Beat – Mit Gefühl",
+    "series": "Eule findet den Beat",
+    "aliases": [
+      "Mit Gefühl",
+      "Mit Gefuehl",
+      "Eule findet den Beat Mit Gefühl",
+      "Eule findet den Beat Mit Gefuehl"
+    ]
+  },
+  {
+    "id": "tn_221",
+    "title": "Europa-Park – Ed & Edda – Grand Prix of Europe",
+    "series": "Europa-Park",
+    "aliases": [
+      "Ed & Edda – Grand Prix of Europe",
+      "Europa-Park Ed & Edda – Grand Prix of Europe"
+    ]
+  },
+  {
+    "id": "tn_222",
+    "title": "Fantasia – [EN] Fantasia",
+    "series": "Fantasia",
+    "aliases": [
+      "[EN] Fantasia",
+      "Fantasia [EN] Fantasia"
+    ]
+  },
+  {
+    "id": "tn_223",
+    "title": "Fantasia",
+    "series": "Fantasia",
+    "aliases": [
+      "Fantasia"
+    ]
+  },
+  {
+    "id": "tn_224",
+    "title": "Fantasiereisen mit Faultier Mo – 8 besondere Orte zum Entspannen",
+    "series": "Fantasiereisen mit Faultier Mo",
+    "aliases": [
+      "8 besondere Orte zum Entspannen",
+      "Fantasiereisen mit Faultier Mo 8 besondere Orte zum Entspannen"
+    ]
+  },
+  {
+    "id": "tn_225",
+    "title": "Felix – Briefe von Felix",
+    "series": "Felix",
+    "aliases": [
+      "Briefe von Felix",
+      "Felix Briefe von Felix"
+    ]
+  },
+  {
+    "id": "tn_226",
+    "title": "Felix – Weltbeste Briefe von Felix",
+    "series": "Felix",
+    "aliases": [
+      "Weltbeste Briefe von Felix",
+      "Felix Weltbeste Briefe von Felix"
+    ]
+  },
+  {
+    "id": "tn_227",
+    "title": "Feuerwehrmann Sam – [EN] The Pontypandy Pack",
+    "series": "Feuerwehrmann Sam",
+    "aliases": [
+      "[EN] The Pontypandy Pack",
+      "Feuerwehrmann Sam [EN] The Pontypandy Pack"
+    ]
+  },
+  {
+    "id": "tn_228",
+    "title": "Feuerwehrmann Sam – Eine Insel voller Abenteuer",
+    "series": "Feuerwehrmann Sam",
+    "aliases": [
+      "Eine Insel voller Abenteuer",
+      "Feuerwehrmann Sam Eine Insel voller Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_229",
+    "title": "Feuerwehrmann Sam – Wettlauf gegen die Zeit!",
+    "series": "Feuerwehrmann Sam",
+    "aliases": [
+      "Wettlauf gegen die Zeit!",
+      "Feuerwehrmann Sam Wettlauf gegen die Zeit!"
+    ]
+  },
+  {
+    "id": "tn_230",
+    "title": "Findet Nemo – Findet Dorie",
+    "series": "Findet Nemo",
+    "aliases": [
+      "Findet Dorie",
+      "Findet Nemo Findet Dorie"
+    ]
+  },
+  {
+    "id": "tn_231",
+    "title": "Findet Nemo",
+    "series": "Findet Nemo",
+    "aliases": [
+      "Findet Nemo"
+    ]
+  },
+  {
+    "id": "tn_232",
+    "title": "Frederick und seine Mäusefreunde",
+    "series": "Frederick",
+    "aliases": [
+      "Frederick und seine Mäusefreunde",
+      "Frederick und seine Maeusefreunde"
+    ]
+  },
+  {
+    "id": "tn_233",
+    "title": "Fredrik Vahle – Zugabe",
+    "series": "Fredrik Vahle",
+    "aliases": [
+      "Zugabe",
+      "Fredrik Vahle Zugabe"
+    ]
+  },
+  {
+    "id": "tn_234",
+    "title": "Furzipups, der Knatterdrache – Furzipups - 3 Geschichten und 6 Songs",
+    "series": "Furzipups, der Knatterdrache",
+    "aliases": [
+      "Furzipups - 3 Geschichten und 6 Songs",
+      "Furzipups, der Knatterdrache Furzipups - 3 Geschichten und 6 Songs"
+    ]
+  },
+  {
+    "id": "tn_235",
+    "title": "Fünf Freunde auf der Suche nach Timmy",
+    "series": "Fünf Freunde",
+    "aliases": [
+      "Fünf Freunde auf der Suche nach Timmy",
+      "Fuenf Freunde auf der Suche nach Timmy"
+    ]
+  },
+  {
+    "id": "tn_236",
+    "title": "Fünf Freunde und das versunkene Schiff",
+    "series": "Fünf Freunde",
+    "aliases": [
+      "Fünf Freunde und das versunkene Schiff",
+      "Fuenf Freunde und das versunkene Schiff"
+    ]
+  },
+  {
+    "id": "tn_237",
+    "title": "Fünf Freunde und der Großalarm in Kirrin",
+    "series": "Fünf Freunde",
+    "aliases": [
+      "Fünf Freunde und der Großalarm in Kirrin",
+      "Fuenf Freunde und der Grossalarm in Kirrin"
+    ]
+  },
+  {
+    "id": "tn_238",
+    "title": "Fünf Freunde und die doppelte Erfindung",
+    "series": "Fünf Freunde",
+    "aliases": [
+      "Fünf Freunde und die doppelte Erfindung",
+      "Fuenf Freunde und die doppelte Erfindung"
+    ]
+  },
+  {
+    "id": "tn_239",
+    "title": "Fünf Freunde und die verlassene Jagdhütte",
+    "series": "Fünf Freunde",
+    "aliases": [
+      "Fünf Freunde und die verlassene Jagdhütte",
+      "Fuenf Freunde und die verlassene Jagdhuette"
+    ]
+  },
+  {
+    "id": "tn_240",
+    "title": "Für Hund und Katz ist auch noch Platz/Wo ist Mami?",
+    "series": "Für Hund und Katz ist auch noch Platz",
+    "aliases": [
+      "Für Hund und Katz ist auch noch Platz/Wo ist Mami?",
+      "Fuer Hund und Katz ist auch noch Platz/Wo ist Mami?"
+    ]
+  },
+  {
+    "id": "tn_241",
+    "title": "Gabby's Dollhouse – Das Raumschiff / Gabby hat einen Schluckauf",
+    "series": "Gabby's Dollhouse",
+    "aliases": [
+      "Das Raumschiff / Gabby hat einen Schluckauf",
+      "Gabby's Dollhouse Das Raumschiff / Gabby hat einen Schluckauf"
+    ]
+  },
+  {
+    "id": "tn_242",
+    "title": "Gabby's Dollhouse – Der Cupcake-Baum / Die Puppenhausdetektive",
+    "series": "Gabby's Dollhouse",
+    "aliases": [
+      "Der Cupcake-Baum / Die Puppenhausdetektive",
+      "Gabby's Dollhouse Der Cupcake-Baum / Die Puppenhausdetektive"
+    ]
+  },
+  {
+    "id": "tn_243",
+    "title": "Gabby's Dollhouse – Eröffnungsfeier im Puppenhaus / Kitty Fees Übernachtungsparty",
+    "series": "Gabby's Dollhouse",
+    "aliases": [
+      "Eröffnungsfeier im Puppenhaus / Kitty Fees Übernachtungsparty",
+      "Eroeffnungsfeier im Puppenhaus / Kitty Fees Uebernachtungsparty",
+      "Gabby's Dollhouse Eröffnungsfeier im Puppenhaus / Kitty Fees Übernachtungsparty",
+      "Gabby's Dollhouse Eroeffnungsfeier im Puppenhaus / Kitty Fees Uebernachtungsparty"
+    ]
+  },
+  {
+    "id": "tn_244",
+    "title": "Gabby's Dollhouse – Gabby, ich habe die Kätzchen geschrumpft! / Der Eisbär Pete",
+    "series": "Gabby's Dollhouse",
+    "aliases": [
+      "Gabby, ich habe die Kätzchen geschrumpft! / Der Eisbär Pete",
+      "Gabby, ich habe die Kaetzchen geschrumpft! / Der Eisbaer Pete",
+      "Gabby's Dollhouse Gabby, ich habe die Kätzchen geschrumpft! / Der Eisbär Pete",
+      "Gabby's Dollhouse Gabby, ich habe die Kaetzchen geschrumpft! / Der Eisbaer Pete"
+    ]
+  },
+  {
+    "id": "tn_245",
+    "title": "Geschichten vom Löwen – Die Geschichte vom Löwen, der nicht schreiben konnte und zwei weitere Löwengeschichten",
+    "series": "Geschichten vom Löwen",
+    "aliases": [
+      "Die Geschichte vom Löwen, der nicht schreiben konnte und zwei weitere Löwengeschichten",
+      "Die Geschichte vom Loewen, der nicht schreiben konnte und zwei weitere Loewengeschichten",
+      "Geschichten vom Löwen Die Geschichte vom Löwen, der nicht schreiben konnte und zwei weitere Löwengeschichten",
+      "Geschichten vom Loewen Die Geschichte vom Loewen, der nicht schreiben konnte und zwei weitere Loewengeschichten"
+    ]
+  },
+  {
+    "id": "tn_246",
+    "title": "Gigantosaurus – Mazus Mutprobe",
+    "series": "Gigantosaurus",
+    "aliases": [
+      "Mazus Mutprobe",
+      "Gigantosaurus Mazus Mutprobe"
+    ]
+  },
+  {
+    "id": "tn_247",
+    "title": "Giraffenaffen – Die Giraffenaffen Lieblingslieder",
+    "series": "Giraffenaffen",
+    "aliases": [
+      "Die Giraffenaffen Lieblingslieder",
+      "Giraffenaffen Die Giraffenaffen Lieblingslieder"
+    ]
+  },
+  {
+    "id": "tn_248",
+    "title": "Giraffenaffen – Die Giraffenaffen Partyhits",
+    "series": "Giraffenaffen",
+    "aliases": [
+      "Die Giraffenaffen Partyhits",
+      "Giraffenaffen Die Giraffenaffen Partyhits"
+    ]
+  },
+  {
+    "id": "tn_249",
+    "title": "Gloria Glühwürmchen – Bezaubernde Gutenachtgeschichten",
+    "series": "Gloria Glühwürmchen",
+    "aliases": [
+      "Bezaubernde Gutenachtgeschichten",
+      "Gloria Glühwürmchen Bezaubernde Gutenachtgeschichten",
+      "Gloria Gluehwuermchen Bezaubernde Gutenachtgeschichten"
+    ]
+  },
+  {
+    "id": "tn_250",
+    "title": "Green Team - Mission: Rettung an Land mit Nina dem roten Panda",
+    "series": "Green Team",
+    "aliases": [
+      "Green Team - Mission: Rettung an Land mit Nina dem roten Panda"
+    ]
+  },
+  {
+    "id": "tn_251",
+    "title": "Green Team - Mission: Rettung im Wasser mit Bobby, der Meeresschildkröte",
+    "series": "Green Team",
+    "aliases": [
+      "Green Team - Mission: Rettung im Wasser mit Bobby, der Meeresschildkröte",
+      "Green Team - Mission: Rettung im Wasser mit Bobby, der Meeresschildkroete"
+    ]
+  },
+  {
+    "id": "tn_252",
+    "title": "Green Team - Mission: Rettung in den Bergen mit Uli, dem Leoparden",
+    "series": "Green Team",
+    "aliases": [
+      "Green Team - Mission: Rettung in den Bergen mit Uli, dem Leoparden"
+    ]
+  },
+  {
+    "id": "tn_253",
+    "title": "Green Team - Mission: Rettung in der Luft mit John, der Schneeeule",
+    "series": "Green Team",
+    "aliases": [
+      "Green Team - Mission: Rettung in der Luft mit John, der Schneeeule"
+    ]
+  },
+  {
+    "id": "tn_254",
+    "title": "Greg's Tagebuch – Von Idioten umzingelt",
+    "series": "Greg's Tagebuch",
+    "aliases": [
+      "Von Idioten umzingelt",
+      "Greg's Tagebuch Von Idioten umzingelt"
+    ]
+  },
+  {
+    "id": "tn_255",
+    "title": "Griechische Sagen",
+    "series": "Griechische Sagen",
+    "aliases": [
+      "Griechische Sagen"
+    ]
+  },
+  {
+    "id": "tn_256",
+    "title": "Gus, der klitzekleine Ritter – Die Legende von Gus und drei weitere Geschichten",
+    "series": "Gus, der klitzekleine Ritter",
+    "aliases": [
+      "Die Legende von Gus und drei weitere Geschichten",
+      "Gus, der klitzekleine Ritter Die Legende von Gus und drei weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_257",
+    "title": "Gute Nacht, Gorilla und weitere Einschlafhörspiele",
+    "series": "Gute Nacht, Gorilla",
+    "aliases": [
+      "Gute Nacht, Gorilla und weitere Einschlafhörspiele",
+      "Gute Nacht, Gorilla und weitere Einschlafhoerspiele"
+    ]
+  },
+  {
+    "id": "tn_258",
+    "title": "Hanni und Nanni im Hochzeitsrausch",
+    "series": "Hanni und Nanni",
+    "aliases": [
+      "Hanni und Nanni im Hochzeitsrausch"
+    ]
+  },
+  {
+    "id": "tn_259",
+    "title": "Hanni und Nanni voll im Trend",
+    "series": "Hanni und Nanni",
+    "aliases": [
+      "Hanni und Nanni voll im Trend"
+    ]
+  },
+  {
+    "id": "tn_260",
+    "title": "Hasenkind – Nur noch kurz die Ohren kraulen? Hasenkinds Mitmach-Geschichten",
+    "series": "Hasenkind",
+    "aliases": [
+      "Nur noch kurz die Ohren kraulen? Hasenkinds Mitmach-Geschichten",
+      "Hasenkind Nur noch kurz die Ohren kraulen? Hasenkinds Mitmach-Geschichten"
+    ]
+  },
+  {
+    "id": "tn_261",
+    "title": "Heavysaurus – Pommesgabel - Best of Dino Metal (Neuauflage 2025)",
+    "series": "Heavysaurus",
+    "aliases": [
+      "Pommesgabel - Best of Dino Metal (Neuauflage 2025)",
+      "Heavysaurus Pommesgabel - Best of Dino Metal (Neuauflage 2025)"
+    ]
+  },
+  {
+    "id": "tn_262",
+    "title": "Heidi – Die Reise zum Großvater",
+    "series": "Heidi",
+    "aliases": [
+      "Die Reise zum Großvater",
+      "Die Reise zum Grossvater",
+      "Heidi Die Reise zum Großvater",
+      "Heidi Die Reise zum Grossvater"
+    ]
+  },
+  {
+    "id": "tn_263",
+    "title": "Heidi – Ein Wolf im Dörfli",
+    "series": "Heidi",
+    "aliases": [
+      "Ein Wolf im Dörfli",
+      "Ein Wolf im Doerfli",
+      "Heidi Ein Wolf im Dörfli",
+      "Heidi Ein Wolf im Doerfli"
+    ]
+  },
+  {
+    "id": "tn_264",
+    "title": "Heidi – Freunde für immer",
+    "series": "Heidi",
+    "aliases": [
+      "Freunde für immer",
+      "Freunde fuer immer",
+      "Heidi Freunde für immer",
+      "Heidi Freunde fuer immer"
+    ]
+  },
+  {
+    "id": "tn_265",
+    "title": "Hercules",
+    "series": "Hercules",
+    "aliases": [
+      "Hercules"
+    ]
+  },
+  {
+    "id": "tn_266",
+    "title": "herrH – Emma, die Ente – Das Beste von herrH",
+    "series": "herrH",
+    "aliases": [
+      "Emma, die Ente – Das Beste von herrH",
+      "herrH Emma, die Ente – Das Beste von herrH"
+    ]
+  },
+  {
+    "id": "tn_267",
+    "title": "Heule Eule und andere Geschichten – Die Hörspiele",
+    "series": "Heule Eule",
+    "aliases": [
+      "Heule Eule und andere Geschichten – Die Hörspiele",
+      "Heule Eule und andere Geschichten – Die Hoerspiele"
+    ]
+  },
+  {
+    "id": "tn_268",
+    "title": "Hot Wheels",
+    "series": "Hot Wheels",
+    "aliases": [
+      "Hot Wheels"
+    ]
+  },
+  {
+    "id": "tn_269",
+    "title": "Hurra Kinderlieder - Best of",
+    "series": "Hurra Kinderlieder",
+    "aliases": [
+      "Hurra Kinderlieder - Best of"
+    ]
+  },
+  {
+    "id": "tn_270",
+    "title": "Ich - einfach unverbesserlich – [EN] The Junior Novel",
+    "series": "Ich - einfach unverbesserlich",
+    "aliases": [
+      "[EN] The Junior Novel",
+      "Ich - einfach unverbesserlich [EN] The Junior Novel"
+    ]
+  },
+  {
+    "id": "tn_271",
+    "title": "Ich - einfach unverbesserlich 1",
+    "series": "Ich - einfach unverbesserlich",
+    "aliases": [
+      "Ich - einfach unverbesserlich 1"
+    ]
+  },
+  {
+    "id": "tn_272",
+    "title": "Ich – Einfach unverbesserlich 4",
+    "series": "Ich - einfach unverbesserlich",
+    "aliases": [
+      "Ich – Einfach unverbesserlich 4"
+    ]
+  },
+  {
+    "id": "tn_273",
+    "title": "Jan & Henry – 8 Rätsel und 2 Lieder",
+    "series": "Jan & Henry",
+    "aliases": [
+      "8 Rätsel und 2 Lieder",
+      "8 Raetsel und 2 Lieder",
+      "Jan & Henry 8 Rätsel und 2 Lieder",
+      "Jan & Henry 8 Raetsel und 2 Lieder"
+    ]
+  },
+  {
+    "id": "tn_274",
+    "title": "Jan Tenner - Planet der 1000 Wunder",
+    "series": "Jan Tenner",
+    "aliases": [
+      "Jan Tenner - Planet der 1000 Wunder"
+    ]
+  },
+  {
+    "id": "tn_275",
+    "title": "Janosch – Als Tiger und Bär beinahe das Beste verpassten",
+    "series": "Janosch",
+    "aliases": [
+      "Als Tiger und Bär beinahe das Beste verpassten",
+      "Als Tiger und Baer beinahe das Beste verpassten",
+      "Janosch Als Tiger und Bär beinahe das Beste verpassten",
+      "Janosch Als Tiger und Baer beinahe das Beste verpassten"
+    ]
+  },
+  {
+    "id": "tn_276",
+    "title": "Janosch – Ich mach dich gesund, sagte der Bär",
+    "series": "Janosch",
+    "aliases": [
+      "Ich mach dich gesund, sagte der Bär",
+      "Ich mach dich gesund, sagte der Baer",
+      "Janosch Ich mach dich gesund, sagte der Bär",
+      "Janosch Ich mach dich gesund, sagte der Baer"
+    ]
+  },
+  {
+    "id": "tn_277",
+    "title": "Janosch – Oh, wie schön ist Panama",
+    "series": "Janosch",
+    "aliases": [
+      "Oh, wie schön ist Panama",
+      "Oh, wie schoen ist Panama",
+      "Janosch Oh, wie schön ist Panama",
+      "Janosch Oh, wie schoen ist Panama"
+    ]
+  },
+  {
+    "id": "tn_278",
+    "title": "Janosch – Post für den Tiger",
+    "series": "Janosch",
+    "aliases": [
+      "Post für den Tiger",
+      "Post fuer den Tiger",
+      "Janosch Post für den Tiger",
+      "Janosch Post fuer den Tiger"
+    ]
+  },
+  {
+    "id": "tn_279",
+    "title": "Jasmin",
+    "series": "Jasmin",
+    "aliases": [
+      "Jasmin"
+    ]
+  },
+  {
+    "id": "tn_280",
+    "title": "Jim Knopf – Teil 1: Von Lummerland bis China",
+    "series": "Jim Knopf",
+    "aliases": [
+      "Teil 1: Von Lummerland bis China",
+      "Jim Knopf Teil 1: Von Lummerland bis China"
+    ]
+  },
+  {
+    "id": "tn_281",
+    "title": "JoNaLu – Lu kann nicht schlafen & eine weitere Geschichte",
+    "series": "JoNaLu",
+    "aliases": [
+      "Lu kann nicht schlafen & eine weitere Geschichte",
+      "JoNaLu Lu kann nicht schlafen & eine weitere Geschichte"
+    ]
+  },
+  {
+    "id": "tn_282",
+    "title": "Jurassic World: Neue Abenteuer – Folge 1: Camp Kreidezeit / Geheimnisse",
+    "series": "Jurassic World: Neue Abenteuer",
+    "aliases": [
+      "Folge 1: Camp Kreidezeit / Geheimnisse",
+      "Jurassic World: Neue Abenteuer Folge 1: Camp Kreidezeit / Geheimnisse"
+    ]
+  },
+  {
+    "id": "tn_283",
+    "title": "Kai Lüftners Kürbiskopp – Ein musikalisches Roadmovie",
+    "series": "Kai Lüftners Kürbiskopp",
+    "aliases": [
+      "Ein musikalisches Roadmovie",
+      "Kai Lüftners Kürbiskopp Ein musikalisches Roadmovie",
+      "Kai Lueftners Kuerbiskopp Ein musikalisches Roadmovie"
+    ]
+  },
+  {
+    "id": "tn_284",
+    "title": "Karmas Welt",
+    "series": "Karmas Welt",
+    "aliases": [
+      "Karmas Welt"
+    ]
+  },
+  {
+    "id": "tn_285",
+    "title": "Kasperli – Es hät en Dieb im Zoo! / D Insle vom Pirat Ohnibart",
+    "series": "Kasperli",
+    "aliases": [
+      "Es hät en Dieb im Zoo! / D Insle vom Pirat Ohnibart",
+      "Es haet en Dieb im Zoo! / D Insle vom Pirat Ohnibart",
+      "Kasperli Es hät en Dieb im Zoo! / D Insle vom Pirat Ohnibart",
+      "Kasperli Es haet en Dieb im Zoo! / D Insle vom Pirat Ohnibart"
+    ]
+  },
+  {
+    "id": "tn_286",
+    "title": "Kikaninchen – Die Mischung macht’s!",
+    "series": "Kikaninchen",
+    "aliases": [
+      "Die Mischung macht’s!",
+      "Kikaninchen Die Mischung macht’s!"
+    ]
+  },
+  {
+    "id": "tn_287",
+    "title": "Kinderliederzug – Bitte alle einsteigen!",
+    "series": "Kinderliederzug",
+    "aliases": [
+      "Bitte alle einsteigen!",
+      "Kinderliederzug Bitte alle einsteigen!"
+    ]
+  },
+  {
+    "id": "tn_288",
+    "title": "KLE!NE EXPERTEN ... begleiten Elefanten",
+    "series": "KLE!NE EXPERTEN",
+    "aliases": [
+      "KLE!NE EXPERTEN ... begleiten Elefanten"
+    ]
+  },
+  {
+    "id": "tn_289",
+    "title": "KLE!NE EXPERTEN ... galoppieren mit Pferden",
+    "series": "KLE!NE EXPERTEN",
+    "aliases": [
+      "KLE!NE EXPERTEN ... galoppieren mit Pferden"
+    ]
+  },
+  {
+    "id": "tn_290",
+    "title": "KLE!NE EXPERTEN muhen mit Kühen",
+    "series": "KLE!NE EXPERTEN",
+    "aliases": [
+      "KLE!NE EXPERTEN muhen mit Kühen",
+      "KLE!NE EXPERTEN muhen mit Kuehen"
+    ]
+  },
+  {
+    "id": "tn_291",
+    "title": "KLE!NE EXPERTEN tauchen mit Walen",
+    "series": "KLE!NE EXPERTEN",
+    "aliases": [
+      "KLE!NE EXPERTEN tauchen mit Walen"
+    ]
+  },
+  {
+    "id": "tn_292",
+    "title": "KLE!NE EXPERTEN treffen auf Dinosaurier",
+    "series": "KLE!NE EXPERTEN",
+    "aliases": [
+      "KLE!NE EXPERTEN treffen auf Dinosaurier"
+    ]
+  },
+  {
+    "id": "tn_293",
+    "title": "Kleiner Eisbär – Lars, hilf mir fliegen!/ Lars rettet die Rentiere",
+    "series": "Kleiner Eisbär",
+    "aliases": [
+      "Lars, hilf mir fliegen!/ Lars rettet die Rentiere",
+      "Kleiner Eisbär Lars, hilf mir fliegen!/ Lars rettet die Rentiere",
+      "Kleiner Eisbaer Lars, hilf mir fliegen!/ Lars rettet die Rentiere"
+    ]
+  },
+  {
+    "id": "tn_294",
+    "title": "Kleiner Eisbär – Lars, lass mich nicht allein! / Lars und der Angsthase",
+    "series": "Kleiner Eisbär",
+    "aliases": [
+      "Lars, lass mich nicht allein! / Lars und der Angsthase",
+      "Kleiner Eisbär Lars, lass mich nicht allein! / Lars und der Angsthase",
+      "Kleiner Eisbaer Lars, lass mich nicht allein! / Lars und der Angsthase"
+    ]
+  },
+  {
+    "id": "tn_295",
+    "title": "Kosmo und Klax – Freundschaftsgeschichten",
+    "series": "Kosmo und Klax",
+    "aliases": [
+      "Freundschaftsgeschichten",
+      "Kosmo und Klax Freundschaftsgeschichten"
+    ]
+  },
+  {
+    "id": "tn_296",
+    "title": "Kung Fu Panda",
+    "series": "Kung Fu Panda",
+    "aliases": [
+      "Kung Fu Panda"
+    ]
+  },
+  {
+    "id": "tn_297",
+    "title": "Käpt'n Blaubär – Seemannsgarn",
+    "series": "Käpt'n Blaubär",
+    "aliases": [
+      "Seemannsgarn",
+      "Käpt'n Blaubär Seemannsgarn",
+      "Kaept'n Blaubaer Seemannsgarn"
+    ]
+  },
+  {
+    "id": "tn_298",
+    "title": "Käpt'n Sharky und das Seeungeheuer",
+    "series": "Käpt'n Sharky",
+    "aliases": [
+      "Käpt'n Sharky und das Seeungeheuer",
+      "Kaept'n Sharky und das Seeungeheuer"
+    ]
+  },
+  {
+    "id": "tn_299",
+    "title": "Käpt’n Sharky und das Geheimnis der Schatzinsel",
+    "series": "Käpt'n Sharky",
+    "aliases": [
+      "Käpt’n Sharky und das Geheimnis der Schatzinsel",
+      "Kaept’n Sharky und das Geheimnis der Schatzinsel"
+    ]
+  },
+  {
+    "id": "tn_300",
+    "title": "Küken Pitti – Oster- und Frühlingsgeschichten",
+    "series": "Küken Pitti",
+    "aliases": [
+      "Oster- und Frühlingsgeschichten",
+      "Oster- und Fruehlingsgeschichten",
+      "Küken Pitti Oster- und Frühlingsgeschichten",
+      "Kueken Pitti Oster- und Fruehlingsgeschichten"
+    ]
+  },
+  {
+    "id": "tn_301",
+    "title": "Küss den Frosch – [EN] The Princess and the Frog",
+    "series": "Küss den Frosch",
+    "aliases": [
+      "[EN] The Princess and the Frog",
+      "Küss den Frosch [EN] The Princess and the Frog",
+      "Kuess den Frosch [EN] The Princess and the Frog"
+    ]
+  },
+  {
+    "id": "tn_302",
+    "title": "Küss den Frosch",
+    "series": "Küss den Frosch",
+    "aliases": [
+      "Küss den Frosch",
+      "Kuess den Frosch"
+    ]
+  },
+  {
+    "id": "tn_303",
+    "title": "Lalalinos – Die beste Band in Bumbaloo (Akio)",
+    "series": "Lalalinos",
+    "aliases": [
+      "Die beste Band in Bumbaloo (Akio)",
+      "Lalalinos Die beste Band in Bumbaloo (Akio)"
+    ]
+  },
+  {
+    "id": "tn_304",
+    "title": "Lalalinos – Es groovt in Bumbaloo (Scout)",
+    "series": "Lalalinos",
+    "aliases": [
+      "Es groovt in Bumbaloo (Scout)",
+      "Lalalinos Es groovt in Bumbaloo (Scout)"
+    ]
+  },
+  {
+    "id": "tn_305",
+    "title": "Lalalinos - Bumbaloo Beats (Cosmo)",
+    "series": "Lalalinos",
+    "aliases": [
+      "Lalalinos - Bumbaloo Beats (Cosmo)"
+    ]
+  },
+  {
+    "id": "tn_306",
+    "title": "Lassie – Freunde fürs Leben",
+    "series": "Lassie",
+    "aliases": [
+      "Freunde fürs Leben",
+      "Freunde fuers Leben",
+      "Lassie Freunde fürs Leben",
+      "Lassie Freunde fuers Leben"
+    ]
+  },
+  {
+    "id": "tn_307",
+    "title": "Lauras Stern – Die allererste Bilderbuch Geschichte & Glitzernde Gutenacht-Geschichten",
+    "series": "Lauras Stern",
+    "aliases": [
+      "Die allererste Bilderbuch Geschichte & Glitzernde Gutenacht-Geschichten",
+      "Lauras Stern Die allererste Bilderbuch Geschichte & Glitzernde Gutenacht-Geschichten"
+    ]
+  },
+  {
+    "id": "tn_308",
+    "title": "LEAs Welt",
+    "series": "LEA",
+    "aliases": [
+      "LEAs Welt"
+    ]
+  },
+  {
+    "id": "tn_309",
+    "title": "Leo Lausemaus – Das Original-Hörspiel zu den Büchern 1",
+    "series": "Leo Lausemaus",
+    "aliases": [
+      "Das Original-Hörspiel zu den Büchern 1",
+      "Das Original-Hoerspiel zu den Buechern 1",
+      "Leo Lausemaus Das Original-Hörspiel zu den Büchern 1",
+      "Leo Lausemaus Das Original-Hoerspiel zu den Buechern 1"
+    ]
+  },
+  {
+    "id": "tn_310",
+    "title": "Leo Lausemaus – Das Original-Hörspiel zu den Büchern 2",
+    "series": "Leo Lausemaus",
+    "aliases": [
+      "Das Original-Hörspiel zu den Büchern 2",
+      "Das Original-Hoerspiel zu den Buechern 2",
+      "Leo Lausemaus Das Original-Hörspiel zu den Büchern 2",
+      "Leo Lausemaus Das Original-Hoerspiel zu den Buechern 2"
+    ]
+  },
+  {
+    "id": "tn_311",
+    "title": "Leo Lausemaus – Das Original-Hörspiel zu den Büchern 3",
+    "series": "Leo Lausemaus",
+    "aliases": [
+      "Das Original-Hörspiel zu den Büchern 3",
+      "Das Original-Hoerspiel zu den Buechern 3",
+      "Leo Lausemaus Das Original-Hörspiel zu den Büchern 3",
+      "Leo Lausemaus Das Original-Hoerspiel zu den Buechern 3"
+    ]
+  },
+  {
+    "id": "tn_312",
+    "title": "Leos Tag – 1, 2, 3, sei beim Aufräumen dabei!",
+    "series": "Leos Tag",
+    "aliases": [
+      "1, 2, 3, sei beim Aufräumen dabei!",
+      "1, 2, 3, sei beim Aufraeumen dabei!",
+      "Leos Tag 1, 2, 3, sei beim Aufräumen dabei!",
+      "Leos Tag 1, 2, 3, sei beim Aufraeumen dabei!"
+    ]
+  },
+  {
+    "id": "tn_313",
+    "title": "Leos Tag – Achtung, fertig, Zähneputzen!",
+    "series": "Leos Tag",
+    "aliases": [
+      "Achtung, fertig, Zähneputzen!",
+      "Achtung, fertig, Zaehneputzen!",
+      "Leos Tag Achtung, fertig, Zähneputzen!",
+      "Leos Tag Achtung, fertig, Zaehneputzen!"
+    ]
+  },
+  {
+    "id": "tn_314",
+    "title": "Leos Tag – Es ist so weit – Badezeit!",
+    "series": "Leos Tag",
+    "aliases": [
+      "Es ist so weit – Badezeit!",
+      "Leos Tag Es ist so weit – Badezeit!"
+    ]
+  },
+  {
+    "id": "tn_315",
+    "title": "Leos Tag – Hoppala, wer schnieft denn da?",
+    "series": "Leos Tag",
+    "aliases": [
+      "Hoppala, wer schnieft denn da?",
+      "Leos Tag Hoppala, wer schnieft denn da?"
+    ]
+  },
+  {
+    "id": "tn_316",
+    "title": "Leos Tag – Windel, Töpfchen, Klo - das geht so!",
+    "series": "Leos Tag",
+    "aliases": [
+      "Windel, Töpfchen, Klo - das geht so!",
+      "Windel, Toepfchen, Klo - das geht so!",
+      "Leos Tag Windel, Töpfchen, Klo - das geht so!",
+      "Leos Tag Windel, Toepfchen, Klo - das geht so!"
+    ]
+  },
+  {
+    "id": "tn_317",
+    "title": "Lichterkinder – Die besten Spiel- und Bewegungslieder",
+    "series": "Lichterkinder",
+    "aliases": [
+      "Die besten Spiel- und Bewegungslieder",
+      "Lichterkinder Die besten Spiel- und Bewegungslieder"
+    ]
+  },
+  {
+    "id": "tn_318",
+    "title": "Lichterkinder – Die besten Weihnachts- und Winterlieder",
+    "series": "Lichterkinder",
+    "aliases": [
+      "Die besten Weihnachts- und Winterlieder",
+      "Lichterkinder Die besten Weihnachts- und Winterlieder"
+    ]
+  },
+  {
+    "id": "tn_319",
+    "title": "Lichterkinder – Laternen- und Herbstlieder",
+    "series": "Lichterkinder",
+    "aliases": [
+      "Laternen- und Herbstlieder",
+      "Lichterkinder Laternen- und Herbstlieder"
+    ]
+  },
+  {
+    "id": "tn_320",
+    "title": "Lichterkinder Schlaflieder",
+    "series": "Lichterkinder",
+    "aliases": [
+      "Lichterkinder Schlaflieder"
+    ]
+  },
+  {
+    "id": "tn_321",
+    "title": "Lieblings-Kinderlieder – [EN] Bedtime & Lullabies",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "[EN] Bedtime & Lullabies",
+      "Lieblings-Kinderlieder [EN] Bedtime & Lullabies"
+    ]
+  },
+  {
+    "id": "tn_322",
+    "title": "Lieblings-Kinderlieder – [EN] Playtime & Action Songs",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "[EN] Playtime & Action Songs",
+      "Lieblings-Kinderlieder [EN] Playtime & Action Songs"
+    ]
+  },
+  {
+    "id": "tn_323",
+    "title": "Lieblings-Kinderlieder – [FR] De Noël",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "[FR] De Noël",
+      "Lieblings-Kinderlieder [FR] De Noël"
+    ]
+  },
+  {
+    "id": "tn_324",
+    "title": "Lieblings-Kinderlieder – [FR] Pour Faire la Fête",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "[FR] Pour Faire la Fête",
+      "Lieblings-Kinderlieder [FR] Pour Faire la Fête"
+    ]
+  },
+  {
+    "id": "tn_325",
+    "title": "Lieblings-Kinderlieder – [FR] Pour S'Endormir",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "[FR] Pour S'Endormir",
+      "Lieblings-Kinderlieder [FR] Pour S'Endormir"
+    ]
+  },
+  {
+    "id": "tn_326",
+    "title": "Lieblings-Kinderlieder – [FR] À Mimer",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "[FR] À Mimer",
+      "Lieblings-Kinderlieder [FR] À Mimer"
+    ]
+  },
+  {
+    "id": "tn_327",
+    "title": "Lieblings-Kinderlieder – Englische Kinderlieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Englische Kinderlieder",
+      "Lieblings-Kinderlieder Englische Kinderlieder"
+    ]
+  },
+  {
+    "id": "tn_328",
+    "title": "Lieblings-Kinderlieder – Europäische Kinderlieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Europäische Kinderlieder",
+      "Europaeische Kinderlieder",
+      "Lieblings-Kinderlieder Europäische Kinderlieder",
+      "Lieblings-Kinderlieder Europaeische Kinderlieder"
+    ]
+  },
+  {
+    "id": "tn_329",
+    "title": "Lieblings-Kinderlieder – Frühlingslieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Frühlingslieder",
+      "Fruehlingslieder",
+      "Lieblings-Kinderlieder Frühlingslieder",
+      "Lieblings-Kinderlieder Fruehlingslieder"
+    ]
+  },
+  {
+    "id": "tn_330",
+    "title": "Lieblings-Kinderlieder – Geburtstagslieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Geburtstagslieder",
+      "Lieblings-Kinderlieder Geburtstagslieder"
+    ]
+  },
+  {
+    "id": "tn_331",
+    "title": "Lieblings-Kinderlieder – Halloween & Spuk",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Halloween & Spuk",
+      "Lieblings-Kinderlieder Halloween & Spuk"
+    ]
+  },
+  {
+    "id": "tn_332",
+    "title": "Lieblings-Kinderlieder – Herbst- und Laternenlieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Herbst- und Laternenlieder",
+      "Lieblings-Kinderlieder Herbst- und Laternenlieder"
+    ]
+  },
+  {
+    "id": "tn_333",
+    "title": "Lieblings-Kinderlieder – Jahreszeitenlieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Jahreszeitenlieder",
+      "Lieblings-Kinderlieder Jahreszeitenlieder"
+    ]
+  },
+  {
+    "id": "tn_334",
+    "title": "Lieblings-Kinderlieder – Karnevalslieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Karnevalslieder",
+      "Lieblings-Kinderlieder Karnevalslieder"
+    ]
+  },
+  {
+    "id": "tn_335",
+    "title": "Lieblings-Kinderlieder – Kindergartenlieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Kindergartenlieder",
+      "Lieblings-Kinderlieder Kindergartenlieder"
+    ]
+  },
+  {
+    "id": "tn_336",
+    "title": "Lieblings-Kinderlieder – Reiselieder (Neuauflage 2023)",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Reiselieder (Neuauflage 2023)",
+      "Lieblings-Kinderlieder Reiselieder (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_337",
+    "title": "Lieblings-Kinderlieder – Schlaflieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Schlaflieder",
+      "Lieblings-Kinderlieder Schlaflieder"
+    ]
+  },
+  {
+    "id": "tn_338",
+    "title": "Lieblings-Kinderlieder – Schlaflieder 2",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Schlaflieder 2",
+      "Lieblings-Kinderlieder Schlaflieder 2"
+    ]
+  },
+  {
+    "id": "tn_339",
+    "title": "Lieblings-Kinderlieder – Spiel- und Bewegungslieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Spiel- und Bewegungslieder",
+      "Lieblings-Kinderlieder Spiel- und Bewegungslieder"
+    ]
+  },
+  {
+    "id": "tn_340",
+    "title": "Lieblings-Kinderlieder – Spiel- und Bewegungslieder 2 (Neuauflage 2023)",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Spiel- und Bewegungslieder 2 (Neuauflage 2023)",
+      "Lieblings-Kinderlieder Spiel- und Bewegungslieder 2 (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_341",
+    "title": "Lieblings-Kinderlieder – Tierlieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Tierlieder",
+      "Lieblings-Kinderlieder Tierlieder"
+    ]
+  },
+  {
+    "id": "tn_342",
+    "title": "Lieblings-Kinderlieder – Weihnachtslieder",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Weihnachtslieder",
+      "Lieblings-Kinderlieder Weihnachtslieder"
+    ]
+  },
+  {
+    "id": "tn_343",
+    "title": "Lieblings-Kinderlieder – Weihnachtslieder 2",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Weihnachtslieder 2",
+      "Lieblings-Kinderlieder Weihnachtslieder 2"
+    ]
+  },
+  {
+    "id": "tn_344",
+    "title": "Lieblings-Kinderlieder – Zähllieder (Neuauflage 2023)",
+    "series": "Lieblings-Kinderlieder",
+    "aliases": [
+      "Zähllieder (Neuauflage 2023)",
+      "Zaehllieder (Neuauflage 2023)",
+      "Lieblings-Kinderlieder Zähllieder (Neuauflage 2023)",
+      "Lieblings-Kinderlieder Zaehllieder (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_345",
+    "title": "Lieblings-Klassiker – [FR] Les Fables De La Fontaine",
+    "series": "Lieblings-Klassiker",
+    "aliases": [
+      "[FR] Les Fables De La Fontaine",
+      "Lieblings-Klassiker [FR] Les Fables De La Fontaine"
+    ]
+  },
+  {
+    "id": "tn_346",
+    "title": "Lieblings-Klassiker – Alice im Wunderland und zwei weitere Klassiker",
+    "series": "Lieblings-Klassiker",
+    "aliases": [
+      "Alice im Wunderland und zwei weitere Klassiker",
+      "Lieblings-Klassiker Alice im Wunderland und zwei weitere Klassiker"
+    ]
+  },
+  {
+    "id": "tn_347",
+    "title": "Lieblings-Klassiker – Der Zauberer von Oz und zwei weitere Klassiker",
+    "series": "Lieblings-Klassiker",
+    "aliases": [
+      "Der Zauberer von Oz und zwei weitere Klassiker",
+      "Lieblings-Klassiker Der Zauberer von Oz und zwei weitere Klassiker"
+    ]
+  },
+  {
+    "id": "tn_348",
+    "title": "Lieblings-Klassiker – Eine Weihnachtsgeschichte und vier weitere Klassiker",
+    "series": "Lieblings-Klassiker",
+    "aliases": [
+      "Eine Weihnachtsgeschichte und vier weitere Klassiker",
+      "Lieblings-Klassiker Eine Weihnachtsgeschichte und vier weitere Klassiker"
+    ]
+  },
+  {
+    "id": "tn_349",
+    "title": "Lieblings-Klassiker – Peter Pan und 4 weitere Klassiker",
+    "series": "Lieblings-Klassiker",
+    "aliases": [
+      "Peter Pan und 4 weitere Klassiker",
+      "Lieblings-Klassiker Peter Pan und 4 weitere Klassiker"
+    ]
+  },
+  {
+    "id": "tn_350",
+    "title": "Lieblings-Klassiker – Pinocchio (Neuauflage 2024)",
+    "series": "Lieblings-Klassiker",
+    "aliases": [
+      "Pinocchio (Neuauflage 2024)",
+      "Lieblings-Klassiker Pinocchio (Neuauflage 2024)"
+    ]
+  },
+  {
+    "id": "tn_351",
+    "title": "Lieblings-Klassiker – Robinson Crusoe und vier weitere Klassiker",
+    "series": "Lieblings-Klassiker",
+    "aliases": [
+      "Robinson Crusoe und vier weitere Klassiker",
+      "Lieblings-Klassiker Robinson Crusoe und vier weitere Klassiker"
+    ]
+  },
+  {
+    "id": "tn_352",
+    "title": "Lieblings-Meisterstücke – Der Nussknacker",
+    "series": "Lieblings-Meisterstücke",
+    "aliases": [
+      "Der Nussknacker",
+      "Lieblings-Meisterstücke Der Nussknacker",
+      "Lieblings-Meisterstuecke Der Nussknacker"
+    ]
+  },
+  {
+    "id": "tn_353",
+    "title": "Lieblings-Meisterstücke – Hänsel und Gretel",
+    "series": "Lieblings-Meisterstücke",
+    "aliases": [
+      "Hänsel und Gretel",
+      "Haensel und Gretel",
+      "Lieblings-Meisterstücke Hänsel und Gretel",
+      "Lieblings-Meisterstuecke Haensel und Gretel"
+    ]
+  },
+  {
+    "id": "tn_354",
+    "title": "Lieblings-Meisterstücke – Schwanensee",
+    "series": "Lieblings-Meisterstücke",
+    "aliases": [
+      "Schwanensee",
+      "Lieblings-Meisterstücke Schwanensee",
+      "Lieblings-Meisterstuecke Schwanensee"
+    ]
+  },
+  {
+    "id": "tn_355",
+    "title": "Lieblings-Märchen – [EN] Little Red Riding Hood",
+    "series": "Lieblings-Märchen",
+    "aliases": [
+      "[EN] Little Red Riding Hood",
+      "Lieblings-Märchen [EN] Little Red Riding Hood",
+      "Lieblings-Maerchen [EN] Little Red Riding Hood"
+    ]
+  },
+  {
+    "id": "tn_356",
+    "title": "Lieblings-Märchen – [FR] Le Petit Chaperon Rouge Et 3 Autres Contes",
+    "series": "Lieblings-Märchen",
+    "aliases": [
+      "[FR] Le Petit Chaperon Rouge Et 3 Autres Contes",
+      "Lieblings-Märchen [FR] Le Petit Chaperon Rouge Et 3 Autres Contes",
+      "Lieblings-Maerchen [FR] Le Petit Chaperon Rouge Et 3 Autres Contes"
+    ]
+  },
+  {
+    "id": "tn_357",
+    "title": "Lieblings-Märchen – Der gestiefelte Kater (Neuauflage 2023)",
+    "series": "Lieblings-Märchen",
+    "aliases": [
+      "Der gestiefelte Kater (Neuauflage 2023)",
+      "Lieblings-Märchen Der gestiefelte Kater (Neuauflage 2023)",
+      "Lieblings-Maerchen Der gestiefelte Kater (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_358",
+    "title": "Lieblings-Märchen – Rapunzel (Neuauflage 2023)",
+    "series": "Lieblings-Märchen",
+    "aliases": [
+      "Rapunzel (Neuauflage 2023)",
+      "Lieblings-Märchen Rapunzel (Neuauflage 2023)",
+      "Lieblings-Maerchen Rapunzel (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_359",
+    "title": "Lieblings-Märchen – Rotkäppchen (Neuauflage 2023)",
+    "series": "Lieblings-Märchen",
+    "aliases": [
+      "Rotkäppchen (Neuauflage 2023)",
+      "Rotkaeppchen (Neuauflage 2023)",
+      "Lieblings-Märchen Rotkäppchen (Neuauflage 2023)",
+      "Lieblings-Maerchen Rotkaeppchen (Neuauflage 2023)"
+    ]
+  },
+  {
+    "id": "tn_360",
+    "title": "Lieblings-Märchen – Sterntaler und 4 weitere Märchen",
+    "series": "Lieblings-Märchen",
+    "aliases": [
+      "Sterntaler und 4 weitere Märchen",
+      "Sterntaler und 4 weitere Maerchen",
+      "Lieblings-Märchen Sterntaler und 4 weitere Märchen",
+      "Lieblings-Maerchen Sterntaler und 4 weitere Maerchen"
+    ]
+  },
+  {
+    "id": "tn_361",
+    "title": "Lieselotte – Ein Geburtstagsfest für Lieselotte und andere Geschichten",
+    "series": "Lieselotte",
+    "aliases": [
+      "Ein Geburtstagsfest für Lieselotte und andere Geschichten",
+      "Ein Geburtstagsfest fuer Lieselotte und andere Geschichten",
+      "Lieselotte Ein Geburtstagsfest für Lieselotte und andere Geschichten",
+      "Lieselotte Ein Geburtstagsfest fuer Lieselotte und andere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_362",
+    "title": "Liliane Susewind – Ein Meerschwein ist nicht gern allein",
+    "series": "Liliane Susewind",
+    "aliases": [
+      "Ein Meerschwein ist nicht gern allein",
+      "Liliane Susewind Ein Meerschwein ist nicht gern allein"
+    ]
+  },
+  {
+    "id": "tn_363",
+    "title": "Lilo & Stitch",
+    "series": "Lilo & Stitch",
+    "aliases": [
+      "Lilo & Stitch"
+    ]
+  },
+  {
+    "id": "tn_364",
+    "title": "Lindbergh – Die abenteuerliche Geschichte einer fliegenden Maus",
+    "series": "Lindbergh",
+    "aliases": [
+      "Die abenteuerliche Geschichte einer fliegenden Maus",
+      "Lindbergh Die abenteuerliche Geschichte einer fliegenden Maus"
+    ]
+  },
+  {
+    "id": "tn_365",
+    "title": "Lotta – Na klar, Lotta kann Rad fahren und zwei weitere Geschichten",
+    "series": "Lotta",
+    "aliases": [
+      "Na klar, Lotta kann Rad fahren und zwei weitere Geschichten",
+      "Lotta Na klar, Lotta kann Rad fahren und zwei weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_366",
+    "title": "Madagascar",
+    "series": "Madagascar",
+    "aliases": [
+      "Madagascar"
+    ]
+  },
+  {
+    "id": "tn_367",
+    "title": "Mama Muh und die Krähe",
+    "series": "Mama Muh",
+    "aliases": [
+      "Mama Muh und die Krähe",
+      "Mama Muh und die Kraehe"
+    ]
+  },
+  {
+    "id": "tn_368",
+    "title": "MARVEL Spidey und seine Super-Freunde – Spidey und seine Super-Freunde - Das Spidey Team & 3 weitere spannende Abenteuer",
+    "series": "MARVEL Spidey und seine Super-Freunde",
+    "aliases": [
+      "Spidey und seine Super-Freunde - Das Spidey Team & 3 weitere spannende Abenteuer",
+      "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Das Spidey Team & 3 weitere spannende Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_369",
+    "title": "MARVEL Spidey und seine Super-Freunde – Spidey und seine Super-Freunde - Doc Ocks Superoktopus & 3 weitere spannende Abenteuer",
+    "series": "MARVEL Spidey und seine Super-Freunde",
+    "aliases": [
+      "Spidey und seine Super-Freunde - Doc Ocks Superoktopus & 3 weitere spannende Abenteuer",
+      "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Doc Ocks Superoktopus & 3 weitere spannende Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_370",
+    "title": "MARVEL Spidey und seine Super-Freunde – Spidey und seine Super-Freunde - Kobzilla & 3 weitere spannende Abenteuer",
+    "series": "MARVEL Spidey und seine Super-Freunde",
+    "aliases": [
+      "Spidey und seine Super-Freunde - Kobzilla & 3 weitere spannende Abenteuer",
+      "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Kobzilla & 3 weitere spannende Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_371",
+    "title": "MARVEL Spidey und seine Super-Freunde – Spidey und seine Super-Freunde - Raketen-Rhino & 3 weitere spannende Abenteuer",
+    "series": "MARVEL Spidey und seine Super-Freunde",
+    "aliases": [
+      "Spidey und seine Super-Freunde - Raketen-Rhino & 3 weitere spannende Abenteuer",
+      "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Raketen-Rhino & 3 weitere spannende Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_372",
+    "title": "Mascha und der Bär – Ein neuer Freund für Mascha",
+    "series": "Mascha und der Bär",
+    "aliases": [
+      "Ein neuer Freund für Mascha",
+      "Ein neuer Freund fuer Mascha",
+      "Mascha und der Bär Ein neuer Freund für Mascha",
+      "Mascha und der Baer Ein neuer Freund fuer Mascha"
+    ]
+  },
+  {
+    "id": "tn_373",
+    "title": "Mascha und der Bär – Winterschlaf für alle + 5 weitere quirlige und lustige Geschichten",
+    "series": "Mascha und der Bär",
+    "aliases": [
+      "Winterschlaf für alle + 5 weitere quirlige und lustige Geschichten",
+      "Winterschlaf fuer alle + 5 weitere quirlige und lustige Geschichten",
+      "Mascha und der Bär Winterschlaf für alle + 5 weitere quirlige und lustige Geschichten",
+      "Mascha und der Baer Winterschlaf fuer alle + 5 weitere quirlige und lustige Geschichten"
+    ]
+  },
+  {
+    "id": "tn_374",
+    "title": "Maulwurf – Vom kleinen Maulwurf, der wissen wollte, wer ihm auf den Kopf gemacht hat/Die Rache des Hans-Heinerich",
+    "series": "Maulwurf",
+    "aliases": [
+      "Vom kleinen Maulwurf, der wissen wollte, wer ihm auf den Kopf gemacht hat/Die Rache des Hans-Heinerich",
+      "Maulwurf Vom kleinen Maulwurf, der wissen wollte, wer ihm auf den Kopf gemacht hat/Die Rache des Hans-Heinerich"
+    ]
+  },
+  {
+    "id": "tn_375",
+    "title": "Maus – (M)auserlesene Lieder",
+    "series": "Maus",
+    "aliases": [
+      "(M)auserlesene Lieder",
+      "Maus (M)auserlesene Lieder"
+    ]
+  },
+  {
+    "id": "tn_376",
+    "title": "Maus – Mit der Maus die Welt entdecken",
+    "series": "Maus",
+    "aliases": [
+      "Mit der Maus die Welt entdecken",
+      "Maus Mit der Maus die Welt entdecken"
+    ]
+  },
+  {
+    "id": "tn_377",
+    "title": "Maus – Schlaf schön!",
+    "series": "Maus",
+    "aliases": [
+      "Schlaf schön!",
+      "Schlaf schoen!",
+      "Maus Schlaf schön!",
+      "Maus Schlaf schoen!"
+    ]
+  },
+  {
+    "id": "tn_378",
+    "title": "Mein Lotta-Leben – Alles voller Kaninchen",
+    "series": "Mein Lotta-Leben",
+    "aliases": [
+      "Alles voller Kaninchen",
+      "Mein Lotta-Leben Alles voller Kaninchen"
+    ]
+  },
+  {
+    "id": "tn_379",
+    "title": "Merida - Legende der Highlands",
+    "series": "Merida – Legende der Highlands",
+    "aliases": [
+      "Merida - Legende der Highlands"
+    ]
+  },
+  {
+    "id": "tn_380",
+    "title": "Mia and me – Ankunft in Centopia / Eine neue Hoffnung",
+    "series": "Mia and me",
+    "aliases": [
+      "Ankunft in Centopia / Eine neue Hoffnung",
+      "Mia and me Ankunft in Centopia / Eine neue Hoffnung"
+    ]
+  },
+  {
+    "id": "tn_381",
+    "title": "Mia and me – Das goldene Einhorn / Onchao und das Paradies",
+    "series": "Mia and me",
+    "aliases": [
+      "Das goldene Einhorn / Onchao und das Paradies",
+      "Mia and me Das goldene Einhorn / Onchao und das Paradies"
+    ]
+  },
+  {
+    "id": "tn_382",
+    "title": "Michel aus Lönneberga – Als Michel den Kopf in die Suppenschüssel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)",
+    "series": "Michel aus Lönneberga",
+    "aliases": [
+      "Als Michel den Kopf in die Suppenschüssel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)",
+      "Als Michel den Kopf in die Suppenschuessel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)",
+      "Michel aus Lönneberga Als Michel den Kopf in die Suppenschüssel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)",
+      "Michel aus Loenneberga Als Michel den Kopf in die Suppenschuessel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)"
+    ]
+  },
+  {
+    "id": "tn_383",
+    "title": "Micky Maus & Freunde – [EN] Mickey and Friends",
+    "series": "Micky Maus & Freunde",
+    "aliases": [
+      "[EN] Mickey and Friends",
+      "Micky Maus & Freunde [EN] Mickey and Friends"
+    ]
+  },
+  {
+    "id": "tn_384",
+    "title": "Micky Maus & Freunde – [EN] Minnie - When we grow up",
+    "series": "Micky Maus & Freunde",
+    "aliases": [
+      "[EN] Minnie - When we grow up",
+      "Micky Maus & Freunde [EN] Minnie - When we grow up"
+    ]
+  },
+  {
+    "id": "tn_385",
+    "title": "Micky Maus & Freunde – Mickys großes Weihnachtsfest – Eingeschneit im Haus der Maus",
+    "series": "Micky Maus & Freunde",
+    "aliases": [
+      "Mickys großes Weihnachtsfest – Eingeschneit im Haus der Maus",
+      "Mickys grosses Weihnachtsfest – Eingeschneit im Haus der Maus",
+      "Micky Maus & Freunde Mickys großes Weihnachtsfest – Eingeschneit im Haus der Maus",
+      "Micky Maus & Freunde Mickys grosses Weihnachtsfest – Eingeschneit im Haus der Maus"
+    ]
+  },
+  {
+    "id": "tn_386",
+    "title": "Micky Maus & Freunde – Mickys total verrücktes Fußballspiel",
+    "series": "Micky Maus & Freunde",
+    "aliases": [
+      "Mickys total verrücktes Fußballspiel",
+      "Mickys total verruecktes Fussballspiel",
+      "Micky Maus & Freunde Mickys total verrücktes Fußballspiel",
+      "Micky Maus & Freunde Mickys total verruecktes Fussballspiel"
+    ]
+  },
+  {
+    "id": "tn_387",
+    "title": "Micky Maus & Freunde – Minnie Maus - Helfen macht Spaß",
+    "series": "Micky Maus & Freunde",
+    "aliases": [
+      "Minnie Maus - Helfen macht Spaß",
+      "Minnie Maus - Helfen macht Spass",
+      "Micky Maus & Freunde Minnie Maus - Helfen macht Spaß",
+      "Micky Maus & Freunde Minnie Maus - Helfen macht Spass"
+    ]
+  },
+  {
+    "id": "tn_388",
+    "title": "Miffy – [EN] Miffy’s Adventures",
+    "series": "Miffy",
+    "aliases": [
+      "[EN] Miffy’s Adventures",
+      "Miffy [EN] Miffy’s Adventures"
+    ]
+  },
+  {
+    "id": "tn_389",
+    "title": "Miffy",
+    "series": "Miffy",
+    "aliases": [
+      "Miffy"
+    ]
+  },
+  {
+    "id": "tn_390",
+    "title": "Minimusiker – Lieder für dich",
+    "series": "Minimusiker",
+    "aliases": [
+      "Lieder für dich",
+      "Lieder fuer dich",
+      "Minimusiker Lieder für dich",
+      "Minimusiker Lieder fuer dich"
+    ]
+  },
+  {
+    "id": "tn_391",
+    "title": "Minimusiker – Lieder für dich 2",
+    "series": "Minimusiker",
+    "aliases": [
+      "Lieder für dich 2",
+      "Lieder fuer dich 2",
+      "Minimusiker Lieder für dich 2",
+      "Minimusiker Lieder fuer dich 2"
+    ]
+  },
+  {
+    "id": "tn_392",
+    "title": "Miraculous – Der Betrüger / Der Valentinstag",
+    "series": "Miraculous",
+    "aliases": [
+      "Der Betrüger / Der Valentinstag",
+      "Der Betrueger / Der Valentinstag",
+      "Miraculous Der Betrüger / Der Valentinstag",
+      "Miraculous Der Betrueger / Der Valentinstag"
+    ]
+  },
+  {
+    "id": "tn_393",
+    "title": "Miraculous - Aller Anfang ist schwer",
+    "series": "Miraculous",
+    "aliases": [
+      "Miraculous - Aller Anfang ist schwer"
+    ]
+  },
+  {
+    "id": "tn_394",
+    "title": "Mog, der vergessliche Kater – Die schönsten Geschichten",
+    "series": "Mog, der vergessliche Kater",
+    "aliases": [
+      "Die schönsten Geschichten",
+      "Die schoensten Geschichten",
+      "Mog, der vergessliche Kater Die schönsten Geschichten",
+      "Mog, der vergessliche Kater Die schoensten Geschichten"
+    ]
+  },
+  {
+    "id": "tn_395",
+    "title": "Mulan – [EN] Mulan",
+    "series": "Mulan",
+    "aliases": [
+      "[EN] Mulan",
+      "Mulan [EN] Mulan"
+    ]
+  },
+  {
+    "id": "tn_396",
+    "title": "Mulan",
+    "series": "Mulan",
+    "aliases": [
+      "Mulan"
+    ]
+  },
+  {
+    "id": "tn_397",
+    "title": "My Little Pony - Das Original-Hörspiel zum Film",
+    "series": "My Little Pony",
+    "aliases": [
+      "My Little Pony - Das Original-Hörspiel zum Film",
+      "My Little Pony - Das Original-Hoerspiel zum Film"
+    ]
+  },
+  {
+    "id": "tn_398",
+    "title": "Nasreddin Hodscha – Seine ersten Abenteuer",
+    "series": "Nasreddin Hodscha",
+    "aliases": [
+      "Seine ersten Abenteuer",
+      "Nasreddin Hodscha Seine ersten Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_399",
+    "title": "Oben",
+    "series": "Oben",
+    "aliases": [
+      "Oben"
+    ]
+  },
+  {
+    "id": "tn_400",
+    "title": "Ohrenbär – Mulles Zaubersteinchen",
+    "series": "Ohrenbär",
+    "aliases": [
+      "Mulles Zaubersteinchen",
+      "Ohrenbär Mulles Zaubersteinchen",
+      "Ohrenbaer Mulles Zaubersteinchen"
+    ]
+  },
+  {
+    "id": "tn_401",
+    "title": "Ostwind – Zusammen sind wir frei",
+    "series": "Ostwind",
+    "aliases": [
+      "Zusammen sind wir frei",
+      "Ostwind Zusammen sind wir frei"
+    ]
+  },
+  {
+    "id": "tn_402",
+    "title": "Paddington – Geschichten von Paddington",
+    "series": "Paddington",
+    "aliases": [
+      "Geschichten von Paddington",
+      "Paddington Geschichten von Paddington"
+    ]
+  },
+  {
+    "id": "tn_403",
+    "title": "PAW Patrol – [EN] Chase",
+    "series": "PAW Patrol",
+    "aliases": [
+      "[EN] Chase",
+      "PAW Patrol [EN] Chase"
+    ]
+  },
+  {
+    "id": "tn_404",
+    "title": "PAW Patrol – [EN] Liberty",
+    "series": "PAW Patrol",
+    "aliases": [
+      "[EN] Liberty",
+      "PAW Patrol [EN] Liberty"
+    ]
+  },
+  {
+    "id": "tn_405",
+    "title": "PAW Patrol – [EN] Rocky",
+    "series": "PAW Patrol",
+    "aliases": [
+      "[EN] Rocky",
+      "PAW Patrol [EN] Rocky"
+    ]
+  },
+  {
+    "id": "tn_406",
+    "title": "PAW Patrol – [FR] Chase",
+    "series": "PAW Patrol",
+    "aliases": [
+      "[FR] Chase",
+      "PAW Patrol [FR] Chase"
+    ]
+  },
+  {
+    "id": "tn_407",
+    "title": "PAW Patrol – [FR] Stella",
+    "series": "PAW Patrol",
+    "aliases": [
+      "[FR] Stella",
+      "PAW Patrol [FR] Stella"
+    ]
+  },
+  {
+    "id": "tn_408",
+    "title": "PAW Patrol – Chase - Die Rettung der Meeresschildkröten",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Chase - Die Rettung der Meeresschildkröten",
+      "Chase - Die Rettung der Meeresschildkroeten",
+      "PAW Patrol Chase - Die Rettung der Meeresschildkröten",
+      "PAW Patrol Chase - Die Rettung der Meeresschildkroeten"
+    ]
+  },
+  {
+    "id": "tn_409",
+    "title": "PAW Patrol – Everest - Ein neuer Fellfreund",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Everest - Ein neuer Fellfreund",
+      "PAW Patrol Everest - Ein neuer Fellfreund"
+    ]
+  },
+  {
+    "id": "tn_410",
+    "title": "PAW Patrol – Hier kommt Tracker",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Hier kommt Tracker",
+      "PAW Patrol Hier kommt Tracker"
+    ]
+  },
+  {
+    "id": "tn_411",
+    "title": "PAW Patrol – Jungle Pups: Chase",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Jungle Pups: Chase",
+      "PAW Patrol Jungle Pups: Chase"
+    ]
+  },
+  {
+    "id": "tn_412",
+    "title": "PAW Patrol – Jungle Pups: Marshall",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Jungle Pups: Marshall",
+      "PAW Patrol Jungle Pups: Marshall"
+    ]
+  },
+  {
+    "id": "tn_413",
+    "title": "PAW Patrol – Jungle Pups: Skye",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Jungle Pups: Skye",
+      "PAW Patrol Jungle Pups: Skye"
+    ]
+  },
+  {
+    "id": "tn_414",
+    "title": "PAW Patrol – Liberty findet einen neuen Freund",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Liberty findet einen neuen Freund",
+      "PAW Patrol Liberty findet einen neuen Freund"
+    ]
+  },
+  {
+    "id": "tn_415",
+    "title": "PAW Patrol – Marshall - Schneller als die Feuerwehr",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Marshall - Schneller als die Feuerwehr",
+      "PAW Patrol Marshall - Schneller als die Feuerwehr"
+    ]
+  },
+  {
+    "id": "tn_416",
+    "title": "PAW Patrol – Rex - Rettung für T-Rex",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Rex - Rettung für T-Rex",
+      "Rex - Rettung fuer T-Rex",
+      "PAW Patrol Rex - Rettung für T-Rex",
+      "PAW Patrol Rex - Rettung fuer T-Rex"
+    ]
+  },
+  {
+    "id": "tn_417",
+    "title": "PAW Patrol – Rocky - Die Hundeschau",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Rocky - Die Hundeschau",
+      "PAW Patrol Rocky - Die Hundeschau"
+    ]
+  },
+  {
+    "id": "tn_418",
+    "title": "PAW Patrol – Rubble - Der Piratenschatz",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Rubble - Der Piratenschatz",
+      "PAW Patrol Rubble - Der Piratenschatz"
+    ]
+  },
+  {
+    "id": "tn_419",
+    "title": "PAW Patrol – Ryder",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Ryder",
+      "PAW Patrol Ryder"
+    ]
+  },
+  {
+    "id": "tn_420",
+    "title": "PAW Patrol – Skye - Der Delfin-Freund",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Skye - Der Delfin-Freund",
+      "PAW Patrol Skye - Der Delfin-Freund"
+    ]
+  },
+  {
+    "id": "tn_421",
+    "title": "PAW Patrol – Zuma",
+    "series": "PAW Patrol",
+    "aliases": [
+      "Zuma",
+      "PAW Patrol Zuma"
+    ]
+  },
+  {
+    "id": "tn_422",
+    "title": "Peppa Pig – [EN] George Pig",
+    "series": "Peppa Pig",
+    "aliases": [
+      "[EN] George Pig",
+      "Peppa Pig [EN] George Pig"
+    ]
+  },
+  {
+    "id": "tn_423",
+    "title": "Peppa Pig – [EN] On the Road with Peppa Pig",
+    "series": "Peppa Pig",
+    "aliases": [
+      "[EN] On the Road with Peppa Pig",
+      "Peppa Pig [EN] On the Road with Peppa Pig"
+    ]
+  },
+  {
+    "id": "tn_424",
+    "title": "Peppa Pig – [FR] Sur La Route Avec Peppa",
+    "series": "Peppa Pig",
+    "aliases": [
+      "[FR] Sur La Route Avec Peppa",
+      "Peppa Pig [FR] Sur La Route Avec Peppa"
+    ]
+  },
+  {
+    "id": "tn_425",
+    "title": "Peppa Pig – Das Schulfest & 7 weitere Geschichten",
+    "series": "Peppa Pig",
+    "aliases": [
+      "Das Schulfest & 7 weitere Geschichten",
+      "Peppa Pig Das Schulfest & 7 weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_426",
+    "title": "Peppa Pig – Die Ritterburg und 7 weitere Geschichten",
+    "series": "Peppa Pig",
+    "aliases": [
+      "Die Ritterburg und 7 weitere Geschichten",
+      "Peppa Pig Die Ritterburg und 7 weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_427",
+    "title": "Peppa Pig – Die schönsten Geschichten von Schorsch",
+    "series": "Peppa Pig",
+    "aliases": [
+      "Die schönsten Geschichten von Schorsch",
+      "Die schoensten Geschichten von Schorsch",
+      "Peppa Pig Die schönsten Geschichten von Schorsch",
+      "Peppa Pig Die schoensten Geschichten von Schorsch"
+    ]
+  },
+  {
+    "id": "tn_428",
+    "title": "Peppa Pig – Gute-Nacht Geschichten mit Peppa",
+    "series": "Peppa Pig",
+    "aliases": [
+      "Gute-Nacht Geschichten mit Peppa",
+      "Peppa Pig Gute-Nacht Geschichten mit Peppa"
+    ]
+  },
+  {
+    "id": "tn_429",
+    "title": "Peppa Pig – Meine Geburtstagsparty",
+    "series": "Peppa Pig",
+    "aliases": [
+      "Meine Geburtstagsparty",
+      "Peppa Pig Meine Geburtstagsparty"
+    ]
+  },
+  {
+    "id": "tn_430",
+    "title": "Peppa Pig – Peppa und das neue Baby",
+    "series": "Peppa Pig",
+    "aliases": [
+      "Peppa und das neue Baby",
+      "Peppa Pig Peppa und das neue Baby"
+    ]
+  },
+  {
+    "id": "tn_431",
+    "title": "Peter Hase und seine Freunde – Ein Geschichten-Schatz",
+    "series": "Peter Hase und seine Freunde",
+    "aliases": [
+      "Ein Geschichten-Schatz",
+      "Peter Hase und seine Freunde Ein Geschichten-Schatz"
+    ]
+  },
+  {
+    "id": "tn_432",
+    "title": "Peter und der Wolf",
+    "series": "Peter und der Wolf",
+    "aliases": [
+      "Peter und der Wolf"
+    ]
+  },
+  {
+    "id": "tn_433",
+    "title": "Peter Wohlleben – Hörst du wie die Bäume sprechen?",
+    "series": "Peter Wohlleben",
+    "aliases": [
+      "Hörst du wie die Bäume sprechen?",
+      "Hoerst du wie die Baeume sprechen?",
+      "Peter Wohlleben Hörst du wie die Bäume sprechen?",
+      "Peter Wohlleben Hoerst du wie die Baeume sprechen?"
+    ]
+  },
+  {
+    "id": "tn_434",
+    "title": "Petronella Apfelmus – Verhext und festgeklebt",
+    "series": "Petronella Apfelmus",
+    "aliases": [
+      "Verhext und festgeklebt",
+      "Petronella Apfelmus Verhext und festgeklebt"
+    ]
+  },
+  {
+    "id": "tn_435",
+    "title": "Pettersson und Findus – Findus und der Hahn im Korb",
+    "series": "Pettersson und Findus",
+    "aliases": [
+      "Findus und der Hahn im Korb",
+      "Pettersson und Findus Findus und der Hahn im Korb"
+    ]
+  },
+  {
+    "id": "tn_436",
+    "title": "Pettersson und Findus – Findus zieht um",
+    "series": "Pettersson und Findus",
+    "aliases": [
+      "Findus zieht um",
+      "Pettersson und Findus Findus zieht um"
+    ]
+  },
+  {
+    "id": "tn_437",
+    "title": "Pettersson und Findus – Wie Findus zu Pettersson kam",
+    "series": "Pettersson und Findus",
+    "aliases": [
+      "Wie Findus zu Pettersson kam",
+      "Pettersson und Findus Wie Findus zu Pettersson kam"
+    ]
+  },
+  {
+    "id": "tn_438",
+    "title": "Petzi – Drei Landratten bauen ein Schiff",
+    "series": "Petzi",
+    "aliases": [
+      "Drei Landratten bauen ein Schiff",
+      "Petzi Drei Landratten bauen ein Schiff"
+    ]
+  },
+  {
+    "id": "tn_439",
+    "title": "Pippi Langstrumpf – [EN] Pippi Longstocking",
+    "series": "Pippi Langstrumpf",
+    "aliases": [
+      "[EN] Pippi Longstocking",
+      "Pippi Langstrumpf [EN] Pippi Longstocking"
+    ]
+  },
+  {
+    "id": "tn_440",
+    "title": "Pippi Langstrumpf - Das Hörspiel (Neuauflage 2025)",
+    "series": "Pippi Langstrumpf",
+    "aliases": [
+      "Pippi Langstrumpf - Das Hörspiel (Neuauflage 2025)",
+      "Pippi Langstrumpf - Das Hoerspiel (Neuauflage 2025)"
+    ]
+  },
+  {
+    "id": "tn_441",
+    "title": "Pippi Langstrumpf 2 - Pippi Langstrumpf geht an Bord",
+    "series": "Pippi Langstrumpf",
+    "aliases": [
+      "Pippi Langstrumpf 2 - Pippi Langstrumpf geht an Bord"
+    ]
+  },
+  {
+    "id": "tn_442",
+    "title": "Pittiplatsch – Neue Abenteuer mit Pittiplatsch",
+    "series": "Pittiplatsch",
+    "aliases": [
+      "Neue Abenteuer mit Pittiplatsch",
+      "Pittiplatsch Neue Abenteuer mit Pittiplatsch"
+    ]
+  },
+  {
+    "id": "tn_443",
+    "title": "Pixi Wissen – Planeten und Sterne",
+    "series": "Pixi Wissen",
+    "aliases": [
+      "Planeten und Sterne",
+      "Pixi Wissen Planeten und Sterne"
+    ]
+  },
+  {
+    "id": "tn_444",
+    "title": "PJ Masks – [EN] Catboy",
+    "series": "PJ Masks",
+    "aliases": [
+      "[EN] Catboy",
+      "PJ Masks [EN] Catboy"
+    ]
+  },
+  {
+    "id": "tn_445",
+    "title": "PJ Masks – [EN] Gekko",
+    "series": "PJ Masks",
+    "aliases": [
+      "[EN] Gekko",
+      "PJ Masks [EN] Gekko"
+    ]
+  },
+  {
+    "id": "tn_446",
+    "title": "PJ Masks – [EN] Owlette",
+    "series": "PJ Masks",
+    "aliases": [
+      "[EN] Owlette",
+      "PJ Masks [EN] Owlette"
+    ]
+  },
+  {
+    "id": "tn_447",
+    "title": "PJ Masks – Ein mächtiges Mondproblem",
+    "series": "PJ Masks",
+    "aliases": [
+      "Ein mächtiges Mondproblem",
+      "Ein maechtiges Mondproblem",
+      "PJ Masks Ein mächtiges Mondproblem",
+      "PJ Masks Ein maechtiges Mondproblem"
+    ]
+  },
+  {
+    "id": "tn_448",
+    "title": "PJ Masks – Los geht’s Pyjamahelden",
+    "series": "PJ Masks",
+    "aliases": [
+      "Los geht’s Pyjamahelden",
+      "PJ Masks Los geht’s Pyjamahelden"
+    ]
+  },
+  {
+    "id": "tn_449",
+    "title": "PJ Masks – Zeit ein Held zu sein",
+    "series": "PJ Masks",
+    "aliases": [
+      "Zeit ein Held zu sein",
+      "PJ Masks Zeit ein Held zu sein"
+    ]
+  },
+  {
+    "id": "tn_450",
+    "title": "Planet Omar",
+    "series": "Planet Omar",
+    "aliases": [
+      "Planet Omar"
+    ]
+  },
+  {
+    "id": "tn_451",
+    "title": "Pocahontas",
+    "series": "Pocahontas",
+    "aliases": [
+      "Pocahontas"
+    ]
+  },
+  {
+    "id": "tn_452",
+    "title": "Positives Denken mit Elefant Greta - Geschichten für mehr Selbstsicherheit und Achtsamkeit",
+    "series": "Positives Denken mit Elefant Greta",
+    "aliases": [
+      "Positives Denken mit Elefant Greta - Geschichten für mehr Selbstsicherheit und Achtsamkeit",
+      "Positives Denken mit Elefant Greta - Geschichten fuer mehr Selbstsicherheit und Achtsamkeit"
+    ]
+  },
+  {
+    "id": "tn_453",
+    "title": "Prinzessin Lillifee – Gute-Nacht-Geschichten - Die verzauberten Seerosen/Die goldene Perle",
+    "series": "Prinzessin Lillifee",
+    "aliases": [
+      "Gute-Nacht-Geschichten - Die verzauberten Seerosen/Die goldene Perle",
+      "Prinzessin Lillifee Gute-Nacht-Geschichten - Die verzauberten Seerosen/Die goldene Perle"
+    ]
+  },
+  {
+    "id": "tn_454",
+    "title": "Prinzessin Lillifee",
+    "series": "Prinzessin Lillifee",
+    "aliases": [
+      "Prinzessin Lillifee"
+    ]
+  },
+  {
+    "id": "tn_455",
+    "title": "Pummel & Friends – Das Pummeleinhorn: Der Herr der Donuts & Alles versalzen",
+    "series": "Pummel & Friends",
+    "aliases": [
+      "Das Pummeleinhorn: Der Herr der Donuts & Alles versalzen",
+      "Pummel & Friends Das Pummeleinhorn: Der Herr der Donuts & Alles versalzen"
+    ]
+  },
+  {
+    "id": "tn_456",
+    "title": "Pumuckl – Spuk in der Werkstatt/Das verkaufte Bett",
+    "series": "Pumuckl",
+    "aliases": [
+      "Spuk in der Werkstatt/Das verkaufte Bett",
+      "Pumuckl Spuk in der Werkstatt/Das verkaufte Bett"
+    ]
+  },
+  {
+    "id": "tn_457",
+    "title": "Rachel Bright Series – Trau dich, Koalabär",
+    "series": "Rachel Bright Series",
+    "aliases": [
+      "Trau dich, Koalabär",
+      "Trau dich, Koalabaer",
+      "Rachel Bright Series Trau dich, Koalabär",
+      "Rachel Bright Series Trau dich, Koalabaer"
+    ]
+  },
+  {
+    "id": "tn_458",
+    "title": "Ralph Ruthe – Das Klo",
+    "series": "Ralph Ruthe",
+    "aliases": [
+      "Das Klo",
+      "Ralph Ruthe Das Klo"
+    ]
+  },
+  {
+    "id": "tn_459",
+    "title": "Rapunzel – Neu verföhnt – [EN] Tangled",
+    "series": "Rapunzel – Neu verföhnt",
+    "aliases": [
+      "[EN] Tangled",
+      "Rapunzel – Neu verföhnt [EN] Tangled",
+      "Rapunzel – Neu verfoehnt [EN] Tangled"
+    ]
+  },
+  {
+    "id": "tn_460",
+    "title": "Rapunzel – Neu verföhnt",
+    "series": "Rapunzel – Neu verföhnt",
+    "aliases": [
+      "Rapunzel – Neu verföhnt",
+      "Rapunzel – Neu verfoehnt"
+    ]
+  },
+  {
+    "id": "tn_461",
+    "title": "Ratatouille",
+    "series": "Ratatouille",
+    "aliases": [
+      "Ratatouille"
+    ]
+  },
+  {
+    "id": "tn_462",
+    "title": "Raya und der letzte Drache",
+    "series": "Raya und der letzte Drache",
+    "aliases": [
+      "Raya und der letzte Drache"
+    ]
+  },
+  {
+    "id": "tn_463",
+    "title": "Rico und Oskar – Rico, Oskar und die Tieferschatten",
+    "series": "Rico und Oskar",
+    "aliases": [
+      "Rico, Oskar und die Tieferschatten",
+      "Rico und Oskar Rico, Oskar und die Tieferschatten"
+    ]
+  },
+  {
+    "id": "tn_464",
+    "title": "Ritter Rost – Die Zauberinsel",
+    "series": "Ritter Rost",
+    "aliases": [
+      "Die Zauberinsel",
+      "Ritter Rost Die Zauberinsel"
+    ]
+  },
+  {
+    "id": "tn_465",
+    "title": "Robin Hood - Schlitzohr von Sherwood Forest – Die Schatzkiste und 3 weitere Geschichten",
+    "series": "Robin Hood - Schlitzohr von Sherwood Forest",
+    "aliases": [
+      "Die Schatzkiste und 3 weitere Geschichten",
+      "Robin Hood - Schlitzohr von Sherwood Forest Die Schatzkiste und 3 weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_466",
+    "title": "Rolf Zuckowski – In der Weihnachtsbäckerei",
+    "series": "Rolf Zuckowski",
+    "aliases": [
+      "In der Weihnachtsbäckerei",
+      "In der Weihnachtsbaeckerei",
+      "Rolf Zuckowski In der Weihnachtsbäckerei",
+      "Rolf Zuckowski In der Weihnachtsbaeckerei"
+    ]
+  },
+  {
+    "id": "tn_467",
+    "title": "Rolf Zuckowski – Rolfs Hasengeschichte",
+    "series": "Rolf Zuckowski",
+    "aliases": [
+      "Rolfs Hasengeschichte",
+      "Rolf Zuckowski Rolfs Hasengeschichte"
+    ]
+  },
+  {
+    "id": "tn_468",
+    "title": "Rolf Zuckowski – Rolfs neue Vogelhochzeit",
+    "series": "Rolf Zuckowski",
+    "aliases": [
+      "Rolfs neue Vogelhochzeit",
+      "Rolf Zuckowski Rolfs neue Vogelhochzeit"
+    ]
+  },
+  {
+    "id": "tn_469",
+    "title": "Ronja Räubertochter",
+    "series": "Ronja Räubertochter",
+    "aliases": [
+      "Ronja Räubertochter",
+      "Ronja Raeubertochter"
+    ]
+  },
+  {
+    "id": "tn_470",
+    "title": "Rotz 'n' Roll Radio – Jubel, Trubel, Heiserkeit",
+    "series": "Rotz 'n' Roll Radio",
+    "aliases": [
+      "Jubel, Trubel, Heiserkeit",
+      "Rotz 'n' Roll Radio Jubel, Trubel, Heiserkeit"
+    ]
+  },
+  {
+    "id": "tn_471",
+    "title": "Rund um die Welt mit Fuchs und Schaf – Osaka & Serengeti",
+    "series": "Rund um die Welt mit Fuchs und Schaf",
+    "aliases": [
+      "Osaka & Serengeti",
+      "Rund um die Welt mit Fuchs und Schaf Osaka & Serengeti"
+    ]
+  },
+  {
+    "id": "tn_472",
+    "title": "Räuber Ratte/Superwurm",
+    "series": "Räuber Ratte",
+    "aliases": [
+      "Räuber Ratte/Superwurm",
+      "Raeuber Ratte/Superwurm"
+    ]
+  },
+  {
+    "id": "tn_473",
+    "title": "Safiras – Nanami und das traumhafte Tuch/Ninazu und das grüne Zauberbonbon",
+    "series": "Safiras",
+    "aliases": [
+      "Nanami und das traumhafte Tuch/Ninazu und das grüne Zauberbonbon",
+      "Nanami und das traumhafte Tuch/Ninazu und das gruene Zauberbonbon",
+      "Safiras Nanami und das traumhafte Tuch/Ninazu und das grüne Zauberbonbon",
+      "Safiras Nanami und das traumhafte Tuch/Ninazu und das gruene Zauberbonbon"
+    ]
+  },
+  {
+    "id": "tn_474",
+    "title": "Schlummerbande – Nachtlicht Tonie - Schlummerbär",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Nachtlicht Tonie - Schlummerbär",
+      "Nachtlicht Tonie - Schlummerbaer",
+      "Schlummerbande Nachtlicht Tonie - Schlummerbär",
+      "Schlummerbande Nachtlicht Tonie - Schlummerbaer"
+    ]
+  },
+  {
+    "id": "tn_475",
+    "title": "Schlummerbande – Nachtlicht Tonie - Schlummerhase",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Nachtlicht Tonie - Schlummerhase",
+      "Schlummerbande Nachtlicht Tonie - Schlummerhase"
+    ]
+  },
+  {
+    "id": "tn_476",
+    "title": "Schlummerbande – Nachtlicht Tonie - Schlummerkrokodil",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Nachtlicht Tonie - Schlummerkrokodil",
+      "Schlummerbande Nachtlicht Tonie - Schlummerkrokodil"
+    ]
+  },
+  {
+    "id": "tn_477",
+    "title": "Schlummerbande – Nachtlicht Tonie - Schlummerpinguin",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Nachtlicht Tonie - Schlummerpinguin",
+      "Schlummerbande Nachtlicht Tonie - Schlummerpinguin"
+    ]
+  },
+  {
+    "id": "tn_478",
+    "title": "Schlummerbande – Nachtlicht Tonie - Schlummerschaf",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Nachtlicht Tonie - Schlummerschaf",
+      "Schlummerbande Nachtlicht Tonie - Schlummerschaf"
+    ]
+  },
+  {
+    "id": "tn_479",
+    "title": "Schlummerbande – Schlummerbär -  Eine Gutenachtgeschichte aus dem Schlummerwald",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerbär - Eine Gutenachtgeschichte aus dem Schlummerwald",
+      "Schlummerbaer - Eine Gutenachtgeschichte aus dem Schlummerwald",
+      "Schlummerbande Schlummerbär - Eine Gutenachtgeschichte aus dem Schlummerwald",
+      "Schlummerbande Schlummerbaer - Eine Gutenachtgeschichte aus dem Schlummerwald"
+    ]
+  },
+  {
+    "id": "tn_480",
+    "title": "Schlummerbande – Schlummerente - Eine Klangreise durch den Schlummerwald (Limited Edition)",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerente - Eine Klangreise durch den Schlummerwald (Limited Edition)",
+      "Schlummerbande Schlummerente - Eine Klangreise durch den Schlummerwald (Limited Edition)"
+    ]
+  },
+  {
+    "id": "tn_481",
+    "title": "Schlummerbande – Schlummerhase - Einschlafmelodien aus dem Schlummerwald",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerhase - Einschlafmelodien aus dem Schlummerwald",
+      "Schlummerbande Schlummerhase - Einschlafmelodien aus dem Schlummerwald"
+    ]
+  },
+  {
+    "id": "tn_482",
+    "title": "Schlummerbande – Schlummerjaguar - Einschlafmelodien aus dem Schlummerdschungel",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerjaguar - Einschlafmelodien aus dem Schlummerdschungel",
+      "Schlummerbande Schlummerjaguar - Einschlafmelodien aus dem Schlummerdschungel"
+    ]
+  },
+  {
+    "id": "tn_483",
+    "title": "Schlummerbande – Schlummerkrokodil - Eine Gutenachtgeschichte aus dem Schlummerdschungel",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerkrokodil - Eine Gutenachtgeschichte aus dem Schlummerdschungel",
+      "Schlummerbande Schlummerkrokodil - Eine Gutenachtgeschichte aus dem Schlummerdschungel"
+    ]
+  },
+  {
+    "id": "tn_484",
+    "title": "Schlummerbande – Schlummeroktopus - Eine Gutenachtgeschichte aus dem Ozean",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummeroktopus - Eine Gutenachtgeschichte aus dem Ozean",
+      "Schlummerbande Schlummeroktopus - Eine Gutenachtgeschichte aus dem Ozean"
+    ]
+  },
+  {
+    "id": "tn_485",
+    "title": "Schlummerbande – Schlummerpinguin - Weißes Rauschen aus dem Ozean",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerpinguin - Weißes Rauschen aus dem Ozean",
+      "Schlummerpinguin - Weisses Rauschen aus dem Ozean",
+      "Schlummerbande Schlummerpinguin - Weißes Rauschen aus dem Ozean",
+      "Schlummerbande Schlummerpinguin - Weisses Rauschen aus dem Ozean"
+    ]
+  },
+  {
+    "id": "tn_486",
+    "title": "Schlummerbande – Schlummerschaf - Einschlafmelodien aus dem Zauberwald",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerschaf - Einschlafmelodien aus dem Zauberwald",
+      "Schlummerbande Schlummerschaf - Einschlafmelodien aus dem Zauberwald"
+    ]
+  },
+  {
+    "id": "tn_487",
+    "title": "Schlummerbande – Schlummerschaf – Einschlafmelodien von der Weide",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerschaf – Einschlafmelodien von der Weide",
+      "Schlummerbande Schlummerschaf – Einschlafmelodien von der Weide"
+    ]
+  },
+  {
+    "id": "tn_488",
+    "title": "Schlummerbande – Schlummerwal - Einschlafmelodien aus dem Ozean",
+    "series": "Schlummerbande",
+    "aliases": [
+      "Schlummerwal - Einschlafmelodien aus dem Ozean",
+      "Schlummerbande Schlummerwal - Einschlafmelodien aus dem Ozean"
+    ]
+  },
+  {
+    "id": "tn_489",
+    "title": "Schneewittchen und die sieben Zwerge",
+    "series": "Schneewittchen und die sieben Zwerge",
+    "aliases": [
+      "Schneewittchen und die sieben Zwerge"
+    ]
+  },
+  {
+    "id": "tn_490",
+    "title": "Schüttel den Apfelbaum & Schaukel das Schaf",
+    "series": "Schüttel den Apfelbaum",
+    "aliases": [
+      "Schüttel den Apfelbaum & Schaukel das Schaf",
+      "Schuettel den Apfelbaum & Schaukel das Schaf"
+    ]
+  },
+  {
+    "id": "tn_491",
+    "title": "Scooby-Doo",
+    "series": "Scooby-Doo",
+    "aliases": [
+      "Scooby-Doo"
+    ]
+  },
+  {
+    "id": "tn_492",
+    "title": "Secret Science Club: Abwehrstark - Rund um Viren, Abwehrkräfte und Immunhelfer! mit Özlem & Ugur",
+    "series": "Secret Science Club",
+    "aliases": [
+      "Secret Science Club: Abwehrstark - Rund um Viren, Abwehrkräfte und Immunhelfer! mit Özlem & Ugur",
+      "Secret Science Club: Abwehrstark - Rund um Viren, Abwehrkraefte und Immunhelfer! mit Oezlem & Ugur"
+    ]
+  },
+  {
+    "id": "tn_493",
+    "title": "Sesamstraße – [EN] Cookie Monster",
+    "series": "Sesamstraße",
+    "aliases": [
+      "[EN] Cookie Monster",
+      "Sesamstraße [EN] Cookie Monster",
+      "Sesamstrasse [EN] Cookie Monster"
+    ]
+  },
+  {
+    "id": "tn_494",
+    "title": "Sesamstraße – [EN] Elmo",
+    "series": "Sesamstraße",
+    "aliases": [
+      "[EN] Elmo",
+      "Sesamstraße [EN] Elmo",
+      "Sesamstrasse [EN] Elmo"
+    ]
+  },
+  {
+    "id": "tn_495",
+    "title": "Sesamstraße – Elmos Mitmachmusik",
+    "series": "Sesamstraße",
+    "aliases": [
+      "Elmos Mitmachmusik",
+      "Sesamstraße Elmos Mitmachmusik",
+      "Sesamstrasse Elmos Mitmachmusik"
+    ]
+  },
+  {
+    "id": "tn_496",
+    "title": "Sesamstraße – Ernies Mitmachmärchen",
+    "series": "Sesamstraße",
+    "aliases": [
+      "Ernies Mitmachmärchen",
+      "Ernies Mitmachmaerchen",
+      "Sesamstraße Ernies Mitmachmärchen",
+      "Sesamstrasse Ernies Mitmachmaerchen"
+    ]
+  },
+  {
+    "id": "tn_497",
+    "title": "Sesamstraße – Krümelmonsters Mitmampfspaß",
+    "series": "Sesamstraße",
+    "aliases": [
+      "Krümelmonsters Mitmampfspaß",
+      "Kruemelmonsters Mitmampfspass",
+      "Sesamstraße Krümelmonsters Mitmampfspaß",
+      "Sesamstrasse Kruemelmonsters Mitmampfspass"
+    ]
+  },
+  {
+    "id": "tn_498",
+    "title": "Shaun das Schaf – Badetag und drei weitere schafsinnige Geschichten",
+    "series": "Shaun das Schaf",
+    "aliases": [
+      "Badetag und drei weitere schafsinnige Geschichten",
+      "Shaun das Schaf Badetag und drei weitere schafsinnige Geschichten"
+    ]
+  },
+  {
+    "id": "tn_499",
+    "title": "Shrek – [EN] Shrek",
+    "series": "Shrek",
+    "aliases": [
+      "[EN] Shrek",
+      "Shrek [EN] Shrek"
+    ]
+  },
+  {
+    "id": "tn_500",
+    "title": "Shrek – Der Tollkühne Held",
+    "series": "Shrek",
+    "aliases": [
+      "Der Tollkühne Held",
+      "Der Tollkuehne Held",
+      "Shrek Der Tollkühne Held",
+      "Shrek Der Tollkuehne Held"
+    ]
+  },
+  {
+    "id": "tn_501",
+    "title": "Sing Kinderlieder – Bagger Mats & seine Freunde: Die schönsten Fahrzeuglieder",
+    "series": "Sing Kinderlieder",
+    "aliases": [
+      "Bagger Mats & seine Freunde: Die schönsten Fahrzeuglieder",
+      "Bagger Mats & seine Freunde: Die schoensten Fahrzeuglieder",
+      "Sing Kinderlieder Bagger Mats & seine Freunde: Die schönsten Fahrzeuglieder",
+      "Sing Kinderlieder Bagger Mats & seine Freunde: Die schoensten Fahrzeuglieder"
+    ]
+  },
+  {
+    "id": "tn_502",
+    "title": "Sing Kinderlieder – Milo, das Müllauto-Kind & seine Freunde - Abenteuer in der großen Stadt",
+    "series": "Sing Kinderlieder",
+    "aliases": [
+      "Milo, das Müllauto-Kind & seine Freunde - Abenteuer in der großen Stadt",
+      "Milo, das Muellauto-Kind & seine Freunde - Abenteuer in der grossen Stadt",
+      "Sing Kinderlieder Milo, das Müllauto-Kind & seine Freunde - Abenteuer in der großen Stadt",
+      "Sing Kinderlieder Milo, das Muellauto-Kind & seine Freunde - Abenteuer in der grossen Stadt"
+    ]
+  },
+  {
+    "id": "tn_503",
+    "title": "Sing Kinderlieder – Timmy Traktor & seine Freunde: Ferien auf dem Bauernhof",
+    "series": "Sing Kinderlieder",
+    "aliases": [
+      "Timmy Traktor & seine Freunde: Ferien auf dem Bauernhof",
+      "Sing Kinderlieder Timmy Traktor & seine Freunde: Ferien auf dem Bauernhof"
+    ]
+  },
+  {
+    "id": "tn_504",
+    "title": "Snöfrid aus dem Wiesental – Das wahrlich große Geheimnis von Appelgarden",
+    "series": "Snöfrid aus dem Wiesental",
+    "aliases": [
+      "Das wahrlich große Geheimnis von Appelgarden",
+      "Das wahrlich grosse Geheimnis von Appelgarden",
+      "Snöfrid aus dem Wiesental Das wahrlich große Geheimnis von Appelgarden",
+      "Snoefrid aus dem Wiesental Das wahrlich grosse Geheimnis von Appelgarden"
+    ]
+  },
+  {
+    "id": "tn_505",
+    "title": "Soul",
+    "series": "Soul",
+    "aliases": [
+      "Soul"
+    ]
+  },
+  {
+    "id": "tn_506",
+    "title": "Spenden Fuchs – Zwei Wunscherfüller auf leisen Pfoten",
+    "series": "Spenden Fuchs",
+    "aliases": [
+      "Zwei Wunscherfüller auf leisen Pfoten",
+      "Zwei Wunscherfueller auf leisen Pfoten",
+      "Spenden Fuchs Zwei Wunscherfüller auf leisen Pfoten",
+      "Spenden Fuchs Zwei Wunscherfueller auf leisen Pfoten"
+    ]
+  },
+  {
+    "id": "tn_507",
+    "title": "SPIRIT - Frei und Ungezähmt",
+    "series": "Spirit",
+    "aliases": [
+      "SPIRIT - Frei und Ungezähmt",
+      "SPIRIT - Frei und Ungezaehmt"
+    ]
+  },
+  {
+    "id": "tn_508",
+    "title": "SpongeBob Schwammkopf – Der ferngesteuerte Fahrschüler und weitere Abenteuer",
+    "series": "SpongeBob Schwammkopf",
+    "aliases": [
+      "Der ferngesteuerte Fahrschüler und weitere Abenteuer",
+      "Der ferngesteuerte Fahrschueler und weitere Abenteuer",
+      "SpongeBob Schwammkopf Der ferngesteuerte Fahrschüler und weitere Abenteuer",
+      "SpongeBob Schwammkopf Der ferngesteuerte Fahrschueler und weitere Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_509",
+    "title": "St. Pauli Rabauken – Entscheidung am Millerntor",
+    "series": "St. Pauli Rabauken",
+    "aliases": [
+      "Entscheidung am Millerntor",
+      "St. Pauli Rabauken Entscheidung am Millerntor"
+    ]
+  },
+  {
+    "id": "tn_510",
+    "title": "Steiff Soft Cuddly Friends – Ben Teddybär Hörspiel",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Ben Teddybär Hörspiel",
+      "Ben Teddybaer Hoerspiel",
+      "Steiff Soft Cuddly Friends Ben Teddybär Hörspiel",
+      "Steiff Soft Cuddly Friends Ben Teddybaer Hoerspiel"
+    ]
+  },
+  {
+    "id": "tn_511",
+    "title": "Steiff Soft Cuddly Friends – Bodo Schimpanse",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Bodo Schimpanse",
+      "Steiff Soft Cuddly Friends Bodo Schimpanse"
+    ]
+  },
+  {
+    "id": "tn_512",
+    "title": "Steiff Soft Cuddly Friends – Dinkie Esel",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Dinkie Esel",
+      "Steiff Soft Cuddly Friends Dinkie Esel"
+    ]
+  },
+  {
+    "id": "tn_513",
+    "title": "Steiff Soft Cuddly Friends – Hoppie Hase",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Hoppie Hase",
+      "Steiff Soft Cuddly Friends Hoppie Hase"
+    ]
+  },
+  {
+    "id": "tn_514",
+    "title": "Steiff Soft Cuddly Friends – Jimmy Bär",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Jimmy Bär",
+      "Jimmy Baer",
+      "Steiff Soft Cuddly Friends Jimmy Bär",
+      "Steiff Soft Cuddly Friends Jimmy Baer"
+    ]
+  },
+  {
+    "id": "tn_515",
+    "title": "Steiff Soft Cuddly Friends – Joshi T-Rex",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Joshi T-Rex",
+      "Steiff Soft Cuddly Friends Joshi T-Rex"
+    ]
+  },
+  {
+    "id": "tn_516",
+    "title": "Steiff Soft Cuddly Friends – Lita Lamm",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Lita Lamm",
+      "Steiff Soft Cuddly Friends Lita Lamm"
+    ]
+  },
+  {
+    "id": "tn_517",
+    "title": "Steiff Soft Cuddly Friends – Unica Einhorn",
+    "series": "Steiff Soft Cuddly Friends",
+    "aliases": [
+      "Unica Einhorn",
+      "Steiff Soft Cuddly Friends Unica Einhorn"
+    ]
+  },
+  {
+    "id": "tn_518",
+    "title": "Sternenschweif – Geheimnisvolle Verwandlung",
+    "series": "Sternenschweif",
+    "aliases": [
+      "Geheimnisvolle Verwandlung",
+      "Sternenschweif Geheimnisvolle Verwandlung"
+    ]
+  },
+  {
+    "id": "tn_519",
+    "title": "Stockmann",
+    "series": "Stockmann",
+    "aliases": [
+      "Stockmann"
+    ]
+  },
+  {
+    "id": "tn_520",
+    "title": "Super Wings – Feuer im Wald",
+    "series": "Super Wings",
+    "aliases": [
+      "Feuer im Wald",
+      "Super Wings Feuer im Wald"
+    ]
+  },
+  {
+    "id": "tn_521",
+    "title": "Super Wings – Schwimmende Schweinchen",
+    "series": "Super Wings",
+    "aliases": [
+      "Schwimmende Schweinchen",
+      "Super Wings Schwimmende Schweinchen"
+    ]
+  },
+  {
+    "id": "tn_522",
+    "title": "Susi und Strolch",
+    "series": "Susi und Strolch",
+    "aliases": [
+      "Susi und Strolch"
+    ]
+  },
+  {
+    "id": "tn_523",
+    "title": "Sven van Thom – Tanz den Spatz",
+    "series": "Sven van Thom",
+    "aliases": [
+      "Tanz den Spatz",
+      "Sven van Thom Tanz den Spatz"
+    ]
+  },
+  {
+    "id": "tn_524",
+    "title": "Tabaluga – Das große Ereignis/Freunde fürs Leben",
+    "series": "Tabaluga",
+    "aliases": [
+      "Das große Ereignis/Freunde fürs Leben",
+      "Das grosse Ereignis/Freunde fuers Leben",
+      "Tabaluga Das große Ereignis/Freunde fürs Leben",
+      "Tabaluga Das grosse Ereignis/Freunde fuers Leben"
+    ]
+  },
+  {
+    "id": "tn_525",
+    "title": "Tabaluga – Drachen weinen nicht & Mondsüchtig",
+    "series": "Tabaluga",
+    "aliases": [
+      "Drachen weinen nicht & Mondsüchtig",
+      "Drachen weinen nicht & Mondsuechtig",
+      "Tabaluga Drachen weinen nicht & Mondsüchtig",
+      "Tabaluga Drachen weinen nicht & Mondsuechtig"
+    ]
+  },
+  {
+    "id": "tn_526",
+    "title": "Teenage Mutant Ninja Turtles – Die Abenteuer der Teenage Mutant Ninja Turtles: Leonardo",
+    "series": "Teenage Mutant Ninja Turtles",
+    "aliases": [
+      "Die Abenteuer der Teenage Mutant Ninja Turtles: Leonardo",
+      "Teenage Mutant Ninja Turtles Die Abenteuer der Teenage Mutant Ninja Turtles: Leonardo"
+    ]
+  },
+  {
+    "id": "tn_527",
+    "title": "Teufelskicker – Moritz macht das Spiel!",
+    "series": "Teufelskicker",
+    "aliases": [
+      "Moritz macht das Spiel!",
+      "Teufelskicker Moritz macht das Spiel!"
+    ]
+  },
+  {
+    "id": "tn_528",
+    "title": "Thomas & seine Freunde – Große Welt! Große Abenteuer!",
+    "series": "Thomas & seine Freunde",
+    "aliases": [
+      "Große Welt! Große Abenteuer!",
+      "Grosse Welt! Grosse Abenteuer!",
+      "Thomas & seine Freunde Große Welt! Große Abenteuer!",
+      "Thomas & seine Freunde Grosse Welt! Grosse Abenteuer!"
+    ]
+  },
+  {
+    "id": "tn_529",
+    "title": "Thomas Müller – Mein Weg zum Traumverein",
+    "series": "Thomas Müller",
+    "aliases": [
+      "Mein Weg zum Traumverein",
+      "Thomas Müller Mein Weg zum Traumverein",
+      "Thomas Mueller Mein Weg zum Traumverein"
+    ]
+  },
+  {
+    "id": "tn_530",
+    "title": "Tilda Apfelkern – Das geheime Kuchenrezept",
+    "series": "Tilda Apfelkern",
+    "aliases": [
+      "Das geheime Kuchenrezept",
+      "Tilda Apfelkern Das geheime Kuchenrezept"
+    ]
+  },
+  {
+    "id": "tn_531",
+    "title": "Tilda Apfelkern - Das Drinnen-Picknick",
+    "series": "Tilda Apfelkern",
+    "aliases": [
+      "Tilda Apfelkern - Das Drinnen-Picknick"
+    ]
+  },
+  {
+    "id": "tn_532",
+    "title": "Tinkerbell – Tinker Bell",
+    "series": "Tinkerbell",
+    "aliases": [
+      "Tinker Bell",
+      "Tinkerbell Tinker Bell"
+    ]
+  },
+  {
+    "id": "tn_533",
+    "title": "TKKG – Vorsicht: bissig!",
+    "series": "TKKG",
+    "aliases": [
+      "Vorsicht: bissig!",
+      "TKKG Vorsicht: bissig!"
+    ]
+  },
+  {
+    "id": "tn_534",
+    "title": "TKKG Junior – Der rote Retter",
+    "series": "TKKG Junior",
+    "aliases": [
+      "Der rote Retter",
+      "TKKG Junior Der rote Retter"
+    ]
+  },
+  {
+    "id": "tn_535",
+    "title": "TKKG Junior – Giftige Schokolade",
+    "series": "TKKG Junior",
+    "aliases": [
+      "Giftige Schokolade",
+      "TKKG Junior Giftige Schokolade"
+    ]
+  },
+  {
+    "id": "tn_536",
+    "title": "Toto und der Mann im Mond",
+    "series": "Toto und der Mann im Mond",
+    "aliases": [
+      "Toto und der Mann im Mond"
+    ]
+  },
+  {
+    "id": "tn_537",
+    "title": "Toy Story – [EN] Toy Story",
+    "series": "Toy Story",
+    "aliases": [
+      "[EN] Toy Story",
+      "Toy Story [EN] Toy Story"
+    ]
+  },
+  {
+    "id": "tn_538",
+    "title": "Toy Story – [EN] Toy Story 2",
+    "series": "Toy Story",
+    "aliases": [
+      "[EN] Toy Story 2",
+      "Toy Story [EN] Toy Story 2"
+    ]
+  },
+  {
+    "id": "tn_539",
+    "title": "Toy Story",
+    "series": "Toy Story",
+    "aliases": [
+      "Toy Story"
+    ]
+  },
+  {
+    "id": "tn_540",
+    "title": "Toy Story 2",
+    "series": "Toy Story",
+    "aliases": [
+      "Toy Story 2"
+    ]
+  },
+  {
+    "id": "tn_541",
+    "title": "Toy Story 3",
+    "series": "Toy Story",
+    "aliases": [
+      "Toy Story 3"
+    ]
+  },
+  {
+    "id": "tn_542",
+    "title": "Trolls – [EN] Trolls",
+    "series": "Trolls",
+    "aliases": [
+      "[EN] Trolls",
+      "Trolls [EN] Trolls"
+    ]
+  },
+  {
+    "id": "tn_543",
+    "title": "Trolls – Finde dein Glück",
+    "series": "Trolls",
+    "aliases": [
+      "Finde dein Glück",
+      "Finde dein Glueck",
+      "Trolls Finde dein Glück",
+      "Trolls Finde dein Glueck"
+    ]
+  },
+  {
+    "id": "tn_544",
+    "title": "Trolls – Gemeinsam Stark",
+    "series": "Trolls",
+    "aliases": [
+      "Gemeinsam Stark",
+      "Trolls Gemeinsam Stark"
+    ]
+  },
+  {
+    "id": "tn_545",
+    "title": "Unser Sandmännchen – Abends im Walde",
+    "series": "Unser Sandmännchen",
+    "aliases": [
+      "Abends im Walde",
+      "Unser Sandmännchen Abends im Walde",
+      "Unser Sandmaennchen Abends im Walde"
+    ]
+  },
+  {
+    "id": "tn_546",
+    "title": "Unser Sandmännchen – Nachts, wenn alles schläft",
+    "series": "Unser Sandmännchen",
+    "aliases": [
+      "Nachts, wenn alles schläft",
+      "Nachts, wenn alles schlaeft",
+      "Unser Sandmännchen Nachts, wenn alles schläft",
+      "Unser Sandmaennchen Nachts, wenn alles schlaeft"
+    ]
+  },
+  {
+    "id": "tn_547",
+    "title": "Unsere besten Kniereiter, Fingerspiellieder und Reime",
+    "series": "Unsere besten Kniereiter, Fingerspiellieder und Reime",
+    "aliases": [
+      "Unsere besten Kniereiter, Fingerspiellieder und Reime"
+    ]
+  },
+  {
+    "id": "tn_548",
+    "title": "Unter meinem Bett 1",
+    "series": "Unter meinem Bett",
+    "aliases": [
+      "Unter meinem Bett 1"
+    ]
+  },
+  {
+    "id": "tn_549",
+    "title": "Unter meinem Bett 2",
+    "series": "Unter meinem Bett",
+    "aliases": [
+      "Unter meinem Bett 2"
+    ]
+  },
+  {
+    "id": "tn_550",
+    "title": "Unter meinem Bett 3",
+    "series": "Unter meinem Bett",
+    "aliases": [
+      "Unter meinem Bett 3"
+    ]
+  },
+  {
+    "id": "tn_551",
+    "title": "Unter meinem Bett 4",
+    "series": "Unter meinem Bett",
+    "aliases": [
+      "Unter meinem Bett 4"
+    ]
+  },
+  {
+    "id": "tn_552",
+    "title": "Unter meinem Bett 5",
+    "series": "Unter meinem Bett",
+    "aliases": [
+      "Unter meinem Bett 5"
+    ]
+  },
+  {
+    "id": "tn_553",
+    "title": "Unter meinem Bett 6",
+    "series": "Unter meinem Bett",
+    "aliases": [
+      "Unter meinem Bett 6"
+    ]
+  },
+  {
+    "id": "tn_554",
+    "title": "Urmel aus dem Eis",
+    "series": "Urmel",
+    "aliases": [
+      "Urmel aus dem Eis"
+    ]
+  },
+  {
+    "id": "tn_555",
+    "title": "Vaiana – [EN] Vaiana",
+    "series": "Vaiana",
+    "aliases": [
+      "[EN] Vaiana",
+      "Vaiana [EN] Vaiana"
+    ]
+  },
+  {
+    "id": "tn_556",
+    "title": "Vaiana",
+    "series": "Vaiana",
+    "aliases": [
+      "Vaiana"
+    ]
+  },
+  {
+    "id": "tn_557",
+    "title": "Vaiana 2",
+    "series": "Vaiana",
+    "aliases": [
+      "Vaiana 2"
+    ]
+  },
+  {
+    "id": "tn_558",
+    "title": "Vampirina – Das ist ja zum Flattern & drei weitere Geschichten",
+    "series": "Vampirina",
+    "aliases": [
+      "Das ist ja zum Flattern & drei weitere Geschichten",
+      "Vampirina Das ist ja zum Flattern & drei weitere Geschichten"
+    ]
+  },
+  {
+    "id": "tn_559",
+    "title": "Volker Rosin – Das singende Känguru",
+    "series": "Volker Rosin",
+    "aliases": [
+      "Das singende Känguru",
+      "Das singende Kaenguru",
+      "Volker Rosin Das singende Känguru",
+      "Volker Rosin Das singende Kaenguru"
+    ]
+  },
+  {
+    "id": "tn_560",
+    "title": "Volker Rosin – Der Gorilla mit der Sonnenbrille",
+    "series": "Volker Rosin",
+    "aliases": [
+      "Der Gorilla mit der Sonnenbrille",
+      "Volker Rosin Der Gorilla mit der Sonnenbrille"
+    ]
+  },
+  {
+    "id": "tn_561",
+    "title": "Vom Fuchs, der ein Reh sein wollte",
+    "series": "Vom Fuchs, der ein Reh sein wollte",
+    "aliases": [
+      "Vom Fuchs, der ein Reh sein wollte"
+    ]
+  },
+  {
+    "id": "tn_562",
+    "title": "WAS IST WAS – Dinosaurier / Ausgestorbene Tiere",
+    "series": "WAS IST WAS",
+    "aliases": [
+      "Dinosaurier / Ausgestorbene Tiere",
+      "WAS IST WAS Dinosaurier / Ausgestorbene Tiere"
+    ]
+  },
+  {
+    "id": "tn_563",
+    "title": "WAS IST WAS – Pinguine/Tiere im Zoo",
+    "series": "WAS IST WAS",
+    "aliases": [
+      "Pinguine/Tiere im Zoo",
+      "WAS IST WAS Pinguine/Tiere im Zoo"
+    ]
+  },
+  {
+    "id": "tn_564",
+    "title": "WAS IST WAS – Raumfahrt/Der Mond",
+    "series": "WAS IST WAS",
+    "aliases": [
+      "Raumfahrt/Der Mond",
+      "WAS IST WAS Raumfahrt/Der Mond"
+    ]
+  },
+  {
+    "id": "tn_565",
+    "title": "WAS IST WAS – Wale & Delfine / Geheimnis Tiefsee",
+    "series": "WAS IST WAS",
+    "aliases": [
+      "Wale & Delfine / Geheimnis Tiefsee",
+      "WAS IST WAS Wale & Delfine / Geheimnis Tiefsee"
+    ]
+  },
+  {
+    "id": "tn_566",
+    "title": "WAS IST WAS – Wunderbare Pferde/Reitervolk Mongolen",
+    "series": "WAS IST WAS",
+    "aliases": [
+      "Wunderbare Pferde/Reitervolk Mongolen",
+      "WAS IST WAS Wunderbare Pferde/Reitervolk Mongolen"
+    ]
+  },
+  {
+    "id": "tn_567",
+    "title": "WAS IST WAS Junior – Bauernhof",
+    "series": "WAS IST WAS Junior",
+    "aliases": [
+      "Bauernhof",
+      "WAS IST WAS Junior Bauernhof"
+    ]
+  },
+  {
+    "id": "tn_568",
+    "title": "Weihnachtsmann & Co. KG – Die magische Perle & Rudolph ist verschwunden",
+    "series": "Weihnachtsmann & Co. KG",
+    "aliases": [
+      "Die magische Perle & Rudolph ist verschwunden",
+      "Weihnachtsmann & Co. KG Die magische Perle & Rudolph ist verschwunden"
+    ]
+  },
+  {
+    "id": "tn_569",
+    "title": "Weißt du eigentlich, wie lieb ich dich hab?",
+    "series": "Weißt du eigentlich, wie lieb ich dich hab",
+    "aliases": [
+      "Weißt du eigentlich, wie lieb ich dich hab?",
+      "Weisst du eigentlich, wie lieb ich dich hab?"
+    ]
+  },
+  {
+    "id": "tn_570",
+    "title": "Wicked",
+    "series": "Wicked",
+    "aliases": [
+      "Wicked"
+    ]
+  },
+  {
+    "id": "tn_571",
+    "title": "Wickie – Die Königin der Winde",
+    "series": "Wickie",
+    "aliases": [
+      "Die Königin der Winde",
+      "Die Koenigin der Winde",
+      "Wickie Die Königin der Winde",
+      "Wickie Die Koenigin der Winde"
+    ]
+  },
+  {
+    "id": "tn_572",
+    "title": "Wickie – Tanz mit dem Wolf und sechs weitere Episoden",
+    "series": "Wickie",
+    "aliases": [
+      "Tanz mit dem Wolf und sechs weitere Episoden",
+      "Wickie Tanz mit dem Wolf und sechs weitere Episoden"
+    ]
+  },
+  {
+    "id": "tn_573",
+    "title": "Wickie – Wasser auf die Mühlen",
+    "series": "Wickie",
+    "aliases": [
+      "Wasser auf die Mühlen",
+      "Wasser auf die Muehlen",
+      "Wickie Wasser auf die Mühlen",
+      "Wickie Wasser auf die Muehlen"
+    ]
+  },
+  {
+    "id": "tn_574",
+    "title": "Wie kleine Tiere schlafen gehen / Wie kleine Kinder schlafen gehen",
+    "series": "Wie kleine Tiere schlafen gehen",
+    "aliases": [
+      "Wie kleine Tiere schlafen gehen / Wie kleine Kinder schlafen gehen"
+    ]
+  },
+  {
+    "id": "tn_575",
+    "title": "Wieso? Weshalb? Warum? junior – Der Wald",
+    "series": "Wieso? Weshalb? Warum? junior",
+    "aliases": [
+      "Der Wald",
+      "Wieso? Weshalb? Warum? junior Der Wald"
+    ]
+  },
+  {
+    "id": "tn_576",
+    "title": "Wieso? Weshalb? Warum? junior – Die Feuerwehr/Die Rettungsfahrzeuge",
+    "series": "Wieso? Weshalb? Warum? junior",
+    "aliases": [
+      "Die Feuerwehr/Die Rettungsfahrzeuge",
+      "Wieso? Weshalb? Warum? junior Die Feuerwehr/Die Rettungsfahrzeuge"
+    ]
+  },
+  {
+    "id": "tn_577",
+    "title": "Wieso? Weshalb? Warum? junior – Die Polizei",
+    "series": "Wieso? Weshalb? Warum? junior",
+    "aliases": [
+      "Die Polizei",
+      "Wieso? Weshalb? Warum? junior Die Polizei"
+    ]
+  },
+  {
+    "id": "tn_578",
+    "title": "Willy Astor – Kindischer Ozean",
+    "series": "Willy Astor",
+    "aliases": [
+      "Kindischer Ozean",
+      "Willy Astor Kindischer Ozean"
+    ]
+  },
+  {
+    "id": "tn_579",
+    "title": "Winnie Puuh – [EN] Winnie the Pooh",
+    "series": "Winnie Puuh",
+    "aliases": [
+      "[EN] Winnie the Pooh",
+      "Winnie Puuh [EN] Winnie the Pooh"
+    ]
+  },
+  {
+    "id": "tn_580",
+    "title": "Winnie Puuh – [FR] Winnie L'Ourson",
+    "series": "Winnie Puuh",
+    "aliases": [
+      "[FR] Winnie L'Ourson",
+      "Winnie Puuh [FR] Winnie L'Ourson"
+    ]
+  },
+  {
+    "id": "tn_581",
+    "title": "Winnie Puuh – Tiggers großes Abenteuer",
+    "series": "Winnie Puuh",
+    "aliases": [
+      "Tiggers großes Abenteuer",
+      "Tiggers grosses Abenteuer",
+      "Winnie Puuh Tiggers großes Abenteuer",
+      "Winnie Puuh Tiggers grosses Abenteuer"
+    ]
+  },
+  {
+    "id": "tn_582",
+    "title": "Winnie Puuh auf großer Reise",
+    "series": "Winnie Puuh",
+    "aliases": [
+      "Winnie Puuh auf großer Reise",
+      "Winnie Puuh auf grosser Reise"
+    ]
+  },
+  {
+    "id": "tn_583",
+    "title": "Wir sind nachher wieder da, wir müssen kurz nach Afrika",
+    "series": "Wir sind nachher wieder da, wir müssen kurz nach Afrika",
+    "aliases": [
+      "Wir sind nachher wieder da, wir müssen kurz nach Afrika",
+      "Wir sind nachher wieder da, wir muessen kurz nach Afrika"
+    ]
+  },
+  {
+    "id": "tn_584",
+    "title": "Wish",
+    "series": "Wish",
+    "aliases": [
+      "Wish"
+    ]
+  },
+  {
+    "id": "tn_585",
+    "title": "Woozle Goozle – Luft & Elektrizität",
+    "series": "Woozle Goozle",
+    "aliases": [
+      "Luft & Elektrizität",
+      "Luft & Elektrizitaet",
+      "Woozle Goozle Luft & Elektrizität",
+      "Woozle Goozle Luft & Elektrizitaet"
+    ]
+  },
+  {
+    "id": "tn_586",
+    "title": "Yakari – Best of Kleiner Donner",
+    "series": "Yakari",
+    "aliases": [
+      "Best of Kleiner Donner",
+      "Yakari Best of Kleiner Donner"
+    ]
+  },
+  {
+    "id": "tn_587",
+    "title": "Yakari – Best of Regenbogen",
+    "series": "Yakari",
+    "aliases": [
+      "Best of Regenbogen",
+      "Yakari Best of Regenbogen"
+    ]
+  },
+  {
+    "id": "tn_588",
+    "title": "Yakari – Best of Yakari",
+    "series": "Yakari",
+    "aliases": [
+      "Best of Yakari",
+      "Yakari Best of Yakari"
+    ]
+  },
+  {
+    "id": "tn_589",
+    "title": "Yoga Geschichten – Mit leichten Übungen zum Entspannen",
+    "series": "Yoga Geschichten",
+    "aliases": [
+      "Mit leichten Übungen zum Entspannen",
+      "Mit leichten Uebungen zum Entspannen",
+      "Yoga Geschichten Mit leichten Übungen zum Entspannen",
+      "Yoga Geschichten Mit leichten Uebungen zum Entspannen"
+    ]
+  },
+  {
+    "id": "tn_590",
+    "title": "Zogg/Tommi Tatze",
+    "series": "Zogg",
+    "aliases": [
+      "Zogg/Tommi Tatze"
+    ]
+  },
+  {
+    "id": "tn_591",
+    "title": "Zoomania 1 + 2",
+    "series": "Zoomania",
+    "aliases": [
+      "Zoomania 1 + 2"
+    ]
+  },
+  {
+    "id": "tn_592",
+    "title": "Zoés Zauberschrank – Eule / Regenbogenrätsel / Schatz Ahoi / Farbe Rosa",
+    "series": "Zoés Zauberschrank",
+    "aliases": [
+      "Eule / Regenbogenrätsel / Schatz Ahoi / Farbe Rosa",
+      "Eule / Regenbogenraetsel / Schatz Ahoi / Farbe Rosa",
+      "Zoés Zauberschrank Eule / Regenbogenrätsel / Schatz Ahoi / Farbe Rosa",
+      "Zoés Zauberschrank Eule / Regenbogenraetsel / Schatz Ahoi / Farbe Rosa"
+    ]
+  }
+]
