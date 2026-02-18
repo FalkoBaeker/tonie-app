@@ -510,6 +510,8 @@ async def market_refresh(payload: MarketRefreshRequest) -> MarketRefreshResponse
             delay_ms=payload.delay_ms,
             max_items=payload.max_items,
         )
+        if not started:
+            raise HTTPException(status_code=409, detail=message)
         return MarketRefreshResponse(
             started=started,
             message=message,

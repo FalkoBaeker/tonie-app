@@ -88,6 +88,10 @@ def _is_running() -> bool:
     return _TASK is not None and not _TASK.done()
 
 
+def _is_busy() -> bool:
+    return _is_running() or _LOCK.locked()
+
+
 async def _run_refresh(limit: int | None, delay_ms: int, max_items: int) -> dict:
     async with _LOCK:
         init_db()
@@ -246,7 +250,7 @@ async def _run_refresh(limit: int | None, delay_ms: int, max_items: int) -> dict
 def start_refresh_background(limit: int | None, delay_ms: int, max_items: int) -> tuple[bool, dict, str]:
     global _TASK
 
-    if _is_running():
+    if _is_busy():
         return False, _state_dict(), "refresh already running"
 
     _TASK = asyncio.create_task(_run_refresh(limit=limit, delay_ms=delay_ms, max_items=max_items))
@@ -254,7 +258,7 @@ def start_refresh_background(limit: int | None, delay_ms: int, max_items: int) -
 
 
 async def run_refresh_now(limit: int | None, delay_ms: int, max_items: int) -> dict:
-    if _is_running():
+    if _is_busy():
         raise RuntimeError("refresh already running")
 
     return await _run_refresh(limit=limit, delay_ms=delay_ms, max_items=max_items)
