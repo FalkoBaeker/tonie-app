@@ -29,4 +29,17 @@ targets:
         "INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]": "http://192.168.178.100:8787/api"
         TARGETED_DEVICE_FAMILY: "1,2"
     scheme:
-      testTargets: []
+      testTargets:
+        - TonieFinderTests
+
+  TonieFinderTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: TonieFinder/Tests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: TonieFinder

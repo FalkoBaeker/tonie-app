@@ -9,19 +9,44 @@
 /* Begin PBXBuildFile section */
 		A0324E50E3538AEDD8D4C968 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A06BD81CE02BD4C213CB6102 /* Assets.xcassets */; };
 		B43743CFBBA64CC4E9FA69A1 /* TonieFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD590DB8FF02DF4BDE859F /* TonieFinderApp.swift */; };
+		C4F6328E25B9289ECF8A1E47 /* APIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB457E3B717877D723A6EE52 /* APIErrorTests.swift */; };
+		F8E16D263F6FA17B54CC18BE /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1387D9481B454041B3D0C31B /* APIError.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1119F8CDF90902ECE61C8C46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 950766E0DA72E917CB0C931E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C57CB40D06601013713DC9C3;
+			remoteInfo = TonieFinder;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1387D9481B454041B3D0C31B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		58C5B1FE67029E5EB7E0511D /* TonieFinderTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TonieFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AD590DB8FF02DF4BDE859F /* TonieFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonieFinderApp.swift; sourceTree = "<group>"; };
 		A06BD81CE02BD4C213CB6102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27D77D98E841F67505327FD /* TonieFinder.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TonieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB457E3B717877D723A6EE52 /* APIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		1E95F4A420288E322609FDBA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DB457E3B717877D723A6EE52 /* APIErrorTests.swift */,
+			);
+			name = Tests;
+			path = TonieFinder/Tests;
+			sourceTree = "<group>";
+		};
 		6443EEF7D55D971EA436527A /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				D27D77D98E841F67505327FD /* TonieFinder.app */,
+				58C5B1FE67029E5EB7E0511D /* TonieFinderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -38,6 +63,7 @@
 		8616269CD3D0B834E5C33DDA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1387D9481B454041B3D0C31B /* APIError.swift */,
 				77AD590DB8FF02DF4BDE859F /* TonieFinderApp.swift */,
 			);
 			name = Sources;
@@ -49,6 +75,7 @@
 			children = (
 				7424C9104900C0AB256BDBB8 /* Resources */,
 				8616269CD3D0B834E5C33DDA /* Sources */,
+				1E95F4A420288E322609FDBA /* Tests */,
 				6443EEF7D55D971EA436527A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +83,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6390791116DCC7913D3B0AAA /* TonieFinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB39643D35B88198AA41D56B /* Build configuration list for PBXNativeTarget "TonieFinderTests" */;
+			buildPhases = (
+				1F65972AB3CD0C97C6673530 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DE1107C7E83AA511FE3C1B6 /* PBXTargetDependency */,
+			);
+			name = TonieFinderTests;
+			packageProductDependencies = (
+			);
+			productName = TonieFinderTests;
+			productReference = 58C5B1FE67029E5EB7E0511D /* TonieFinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C57CB40D06601013713DC9C3 /* TonieFinder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A16327721E2118955F9C964 /* Build configuration list for PBXNativeTarget "TonieFinder" */;
@@ -83,6 +128,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					6390791116DCC7913D3B0AAA = {
+						DevelopmentTeam = "";
+					};
 					C57CB40D06601013713DC9C3 = {
 						DevelopmentTeam = "";
 					};
@@ -103,6 +151,7 @@
 			projectRoot = "";
 			targets = (
 				C57CB40D06601013713DC9C3 /* TonieFinder */,
+				6390791116DCC7913D3B0AAA /* TonieFinderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -119,17 +168,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F65972AB3CD0C97C6673530 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4F6328E25B9289ECF8A1E47 /* APIErrorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E43129AF2F454C387657A89F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8E16D263F6FA17B54CC18BE /* APIError.swift in Sources */,
 				B43743CFBBA64CC4E9FA69A1 /* TonieFinderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5DE1107C7E83AA511FE3C1B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C57CB40D06601013713DC9C3 /* TonieFinder */;
+			targetProxy = 1119F8CDF90902ECE61C8C46 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		054CFFB7F8BD4A85E78781BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TonieFinder.app/TonieFinder";
+			};
+			name = Release;
+		};
 		478F9649A21C8634624581C4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -152,6 +235,23 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		5052342B6C46B9E1DFDF2253 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TonieFinder.app/TonieFinder";
+			};
+			name = Debug;
 		};
 		6061C94803A6050CFADFA1B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -318,6 +418,15 @@
 			buildConfigurations = (
 				BC83DB1A2D638DE1DA4019B4 /* Debug */,
 				A7CE71E4F1863A69436D1E7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CB39643D35B88198AA41D56B /* Build configuration list for PBXNativeTarget "TonieFinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5052342B6C46B9E1DFDF2253 /* Debug */,
+				054CFFB7F8BD4A85E78781BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

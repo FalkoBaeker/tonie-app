@@ -159,6 +159,11 @@ final class AuthViewModel: ObservableObject {
     private let tokenStore = KeychainTokenStore()
 
     init() {
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+            isRestoringSession = false
+            return
+        }
+
         Task { await restoreSessionIfPossible() }
     }
 
@@ -176,7 +181,7 @@ final class AuthViewModel: ObservableObject {
             defer { isLoading = false }
 
             do {
-                let session: APIClient.AuthSession?
+                let session: APIClient.AuthSession
                 switch mode {
                 case .login:
                     session = try await api.login(email: normalizedEmail, password: password)
@@ -184,18 +189,7 @@ final class AuthViewModel: ObservableObject {
                     session = try await api.register(email: normalizedEmail, password: password)
                 }
 
-                guard let session else {
-                    statusText = mode == .login
-                        ? "Login fehlgeschlagen. Prüfe E-Mail/Passwort."
-                        : "Registrierung fehlgeschlagen. Existiert der User bereits?"
-                    return
-                }
-
                 let me = try await api.me(token: session.token)
-                guard let me else {
-                    statusText = "Anmeldung erfolgreich, aber /me konnte nicht verifiziert werden."
-                    return
-                }
 
                 email = me.email
                 authToken = session.token
@@ -204,7 +198,7 @@ final class AuthViewModel: ObservableObject {
                 statusText = nil
                 tokenStore.save(token: session.token)
             } catch {
-                statusText = "Backend nicht erreichbar oder Anfrage fehlgeschlagen."
+                statusText = APIError.map(error).userMessage
             }
         }
     }
@@ -219,13 +213,12 @@ final class AuthViewModel: ObservableObject {
         }
 
         do {
-            if let me = try await api.me(token: token) {
-                email = me.email
-                authToken = token
-                isLoggedIn = true
-                statusText = nil
-                return
-            }
+            let me = try await api.me(token: token)
+            email = me.email
+            authToken = token
+            isLoggedIn = true
+            statusText = nil
+            return
         } catch {
             // fallthrough to cleanup
         }
@@ -293,7 +286,7 @@ final class PricingViewModel: ObservableObject {
                 }
             } catch {
                 guard !Task.isCancelled else { return }
-                errorText = "Suche fehlgeschlagen. Bitte später erneut versuchen."
+                errorText = APIError.map(error).userMessage
             }
         }
     }
@@ -343,7 +336,7 @@ final class PricingViewModel: ObservableObject {
                 }
             } catch {
                 guard !Task.isCancelled else { return }
-                errorText = "Fotoerkennung fehlgeschlagen."
+                errorText = APIError.map(error).userMessage
             }
         }
     }
@@ -411,19 +404,15 @@ final class PricingViewModel: ObservableObject {
 
         Task {
             do {
-                let added = try await api.addWatchlistItem(
+                _ = try await api.addWatchlistItem(
                     token: authToken,
                     tonieId: selected.id,
                     title: selected.title,
                     condition: condition
                 )
-                if added != nil {
-                    infoText = "Zur Watchlist hinzugefügt."
-                } else {
-                    infoText = "Konnte nicht zur Watchlist hinzufügen."
-                }
+                infoText = "Zur Watchlist hinzugefügt."
             } catch {
-                infoText = "Watchlist-Update fehlgeschlagen."
+                errorText = APIError.map(error).userMessage
             }
         }
     }
@@ -492,7 +481,7 @@ final class WatchlistViewModel: ObservableObject {
             } catch {
                 guard !Task.isCancelled else { return }
                 items = localFallback
-                errorText = "Watchlist konnte nicht geladen werden."
+                errorText = APIError.map(error).userMessage
             }
         }
     }
@@ -505,14 +494,10 @@ final class WatchlistViewModel: ObservableObject {
 
         Task {
             do {
-                let ok = try await api.deleteWatchlistItem(token: authToken, itemId: backendId)
-                if ok {
-                    items.removeAll { $0.id == item.id }
-                } else {
-                    errorText = "Eintrag konnte nicht gelöscht werden."
-                }
+                _ = try await api.deleteWatchlistItem(token: authToken, itemId: backendId)
+                items.removeAll { $0.id == item.id }
             } catch {
-                errorText = "Eintrag konnte nicht gelöscht werden."
+                errorText = APIError.map(error).userMessage
             }
         }
     }
@@ -682,9 +667,27 @@ final class APIClient {
         URL(string: "\(baseURL)\(path)")
     }
 
+    private func extractDetail(from data: Data?) -> String? {
+        guard let data else { return nil }
+        return (try? JSONDecoder().decode(APIErrorPayload.self, from: data))?.detail
+    }
+
+    @discardableResult
+    private func ensureSuccess(_ response: URLResponse, data: Data? = nil) throws -> HTTPURLResponse {
+        guard let http = response as? HTTPURLResponse else {
+            throw APIError.unknown(detail: "Keine HTTP-Antwort")
+        }
+
+        guard (200..<300).contains(http.statusCode) else {
+            throw APIError.fromStatusCode(http.statusCode, detail: extractDetail(from: data))
+        }
+
+        return http
+    }
+
     func resolveTonie(query: String) async throws -> [TonieCandidate] {
         guard let url = makeURL(path: "/tonies/resolve") else {
-            return []
+            throw APIError.invalidURL
         }
 
         var request = URLRequest(url: url)
@@ -692,21 +695,11 @@ final class APIClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONSerialization.data(withJSONObject: ["query": query])
 
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
-                return []
-            }
-            let decoded = try JSONDecoder().decode(ResolveResponse.self, from: data)
-            return decoded.candidates.map { TonieCandidate(id: $0.tonie_id, title: $0.title, score: $0.score) }
-        } catch {
-            // Fallback local fuzzy-like behavior while backend is unavailable.
-            return [
-                TonieCandidate(id: "local_1", title: query, score: 0.92),
-                TonieCandidate(id: "local_2", title: "\(query) – Hörspiel", score: 0.77),
-                TonieCandidate(id: "local_3", title: "\(query) – Reihe 2", score: 0.65)
-            ]
-        }
+        let (data, response) = try await URLSession.shared.data(for: request)
+        try ensureSuccess(response, data: data)
+
+        let decoded = try JSONDecoder().decode(ResolveResponse.self, from: data)
+        return decoded.candidates.map { TonieCandidate(id: $0.tonie_id, title: $0.title, score: $0.score) }
     }
 
     func recognizeToniePhoto(
@@ -714,7 +707,7 @@ final class APIClient {
         topK: Int = 3
     ) async throws -> (status: String, candidates: [TonieCandidate], message: String?) {
         guard let url = makeURL(path: "/tonies/recognize?top_k=\(topK)") else {
-            return ("not_found", [], "Ungültige API-URL")
+            throw APIError.invalidURL
         }
 
         let boundary = "Boundary-\(UUID().uuidString)"
@@ -731,13 +724,7 @@ final class APIClient {
         request.httpBody = body
 
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse else {
-            return ("not_found", [], "Keine Serverantwort")
-        }
-
-        guard (200..<300).contains(http.statusCode) else {
-            return ("not_found", [], "Fotoerkennung derzeit nicht verfügbar")
-        }
+        try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode(RecognizeResponse.self, from: data)
         let mapped = decoded.candidates.map {
@@ -770,16 +757,16 @@ final class APIClient {
         )
     }
 
-    func login(email: String, password: String) async throws -> AuthSession? {
+    func login(email: String, password: String) async throws -> AuthSession {
         try await authenticate(path: "/auth/login", email: email, password: password)
     }
 
-    func register(email: String, password: String) async throws -> AuthSession? {
+    func register(email: String, password: String) async throws -> AuthSession {
         try await authenticate(path: "/auth/register", email: email, password: password)
     }
 
-    private func authenticate(path: String, email: String, password: String) async throws -> AuthSession? {
-        guard let url = makeURL(path: path) else { return nil }
+    private func authenticate(path: String, email: String, password: String) async throws -> AuthSession {
+        guard let url = makeURL(path: path) else { throw APIError.invalidURL }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -787,14 +774,7 @@ final class APIClient {
         request.httpBody = try JSONEncoder().encode(AuthRequest(email: email, password: password))
 
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse else { return nil }
-
-        guard (200..<300).contains(http.statusCode) else {
-            if [400, 401, 404, 409, 422].contains(http.statusCode) {
-                return nil
-            }
-            return nil
-        }
+        try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode(AuthResponse.self, from: data)
         return AuthSession(
@@ -805,16 +785,15 @@ final class APIClient {
         )
     }
 
-    func me(token: String) async throws -> UserDTO? {
-        guard let url = makeURL(path: "/auth/me") else { return nil }
+    func me(token: String) async throws -> UserDTO {
+        guard let url = makeURL(path: "/auth/me") else { throw APIError.invalidURL }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse else { return nil }
-        guard (200..<300).contains(http.statusCode) else { return nil }
+        try ensureSuccess(response, data: data)
 
         return try JSONDecoder().decode(UserDTO.self, from: data)
     }
@@ -831,16 +810,14 @@ final class APIClient {
 
     func fetchWatchlist(token: String, refreshPrices: Bool = false) async throws -> [WatchItem] {
         let path = refreshPrices ? "/watchlist?refresh=true" : "/watchlist"
-        guard let url = makeURL(path: path) else { return [] }
+        guard let url = makeURL(path: path) else { throw APIError.invalidURL }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
-            return []
-        }
+        try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode([WatchlistItemDTO].self, from: data)
         return decoded.map {
@@ -860,8 +837,8 @@ final class APIClient {
         tonieId: String,
         title: String,
         condition: TonieCondition
-    ) async throws -> WatchItem? {
-        guard let url = makeURL(path: "/watchlist") else { return nil }
+    ) async throws -> WatchItem {
+        guard let url = makeURL(path: "/watchlist") else { throw APIError.invalidURL }
 
         let payload = WatchlistAddRequest(
             tonie_id: tonieId,
@@ -876,9 +853,7 @@ final class APIClient {
         request.httpBody = try JSONEncoder().encode(payload)
 
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
-            return nil
-        }
+        try ensureSuccess(response, data: data)
 
         let item = try JSONDecoder().decode(WatchlistItemDTO.self, from: data)
         return WatchItem(
@@ -891,16 +866,15 @@ final class APIClient {
         )
     }
 
-    func deleteWatchlistItem(token: String, itemId: Int) async throws -> Bool {
-        guard let url = makeURL(path: "/watchlist/\(itemId)") else { return false }
+    func deleteWatchlistItem(token: String, itemId: Int) async throws {
+        guard let url = makeURL(path: "/watchlist/\(itemId)") else { throw APIError.invalidURL }
 
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (_, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse else { return false }
-        return (200..<300).contains(http.statusCode)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        try ensureSuccess(response, data: data)
     }
 }
 

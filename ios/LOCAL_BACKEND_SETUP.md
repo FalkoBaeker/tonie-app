@@ -62,3 +62,28 @@ curl http://<MAC_IP>:8787/api/health
 ```
 
 Wenn beide Antworten liefern, sind Simulator + iPhone-Pfad korrekt vorbereitet.
+
+## 6) XCTest / xcodebuild test Command
+
+Für den minimalen iOS-Test-Slice (Task 3, APIErrorTests):
+
+```bash
+xcodebuild \
+  -project ios/TonieFinder.xcodeproj \
+  -scheme TonieFinder \
+  -configuration Debug \
+  -destination 'platform=iOS Simulator,name=iPhone 17' \
+  -only-testing:TonieFinderTests/APIErrorTests \
+  test
+```
+
+Komplette Scheme-Tests:
+
+```bash
+xcodebuild \
+  -project ios/TonieFinder.xcodeproj \
+  -scheme TonieFinder \
+  -configuration Debug \
+  -destination 'platform=iOS Simulator,name=iPhone 17' \
+  test
+```

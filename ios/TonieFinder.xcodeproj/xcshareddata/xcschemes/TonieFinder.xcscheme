@@ -39,6 +39,17 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6390791116DCC7913D3B0AAA"
+               BuildableName = "TonieFinderTests.xctest"
+               BlueprintName = "TonieFinderTests"
+               ReferencedContainer = "container:TonieFinder.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>
