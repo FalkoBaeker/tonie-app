@@ -11,3 +11,11 @@ COVERAGE_REPORT.md
 # macOS
 .DS_Store
 backend/.env
+# Local DB artifacts
+backend/*.db-shm
+backend/*.db-wal
+
+# Xcode user data
+ios/**/*.xcuserdata/
+ios/**/xcuserdata/
+
