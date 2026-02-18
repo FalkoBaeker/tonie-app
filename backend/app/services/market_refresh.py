@@ -13,7 +13,13 @@ from app.services.market_ingestion import (
     fetch_ebay_sold_listings_multi_query,
     fetch_kleinanzeigen_listings_multi_query,
 )
-from app.services.persistence import init_db, prune_old_market_listings, save_market_listings
+from app.services.persistence import (
+    create_refresh_run,
+    init_db,
+    prune_old_market_listings,
+    save_market_listings,
+    update_refresh_run,
+)
 from app.services.tonie_resolver import get_resolver
 
 logger = logging.getLogger(__name__)
@@ -112,6 +118,7 @@ async def _run_refresh(limit: int | None, delay_ms: int, max_items: int) -> dict
             _STATE.delay_ms,
             _STATE.max_items,
         )
+        create_refresh_run(_state_dict())
 
         for idx, item in enumerate(catalog, start=1):
             tonie_id = str(item["id"])
@@ -212,6 +219,7 @@ async def _run_refresh(limit: int | None, delay_ms: int, max_items: int) -> dict
                     _STATE.successful,
                     _STATE.failed,
                 )
+                update_refresh_run(_state_dict())
 
             if _STATE.delay_ms > 0 and idx < _STATE.total:
                 await asyncio.sleep(_STATE.delay_ms / 1000)
@@ -230,6 +238,7 @@ async def _run_refresh(limit: int | None, delay_ms: int, max_items: int) -> dict
             _STATE.saved_rows,
             _STATE.pruned_rows,
         )
+        update_refresh_run(_state_dict())
 
         return _state_dict()
 

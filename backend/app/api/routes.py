@@ -21,6 +21,7 @@ from app.services.persistence import (
     get_market_coverage_report,
     get_pricing_quality_status,
     get_user_by_token,
+    list_refresh_runs,
     list_watchlist_items,
     update_watchlist_item_price,
     upsert_watchlist_item,
@@ -76,6 +77,7 @@ class Condition(str, Enum):
 class PricingResponse(BaseModel):
     tonie_id: str
     condition: Condition
+    currency: str
     sofortverkaufspreis: float
     fairer_marktpreis: float
     geduldspreis: float
@@ -210,6 +212,10 @@ class MarketRefreshResponse(BaseModel):
     started: bool
     message: str
     status: MarketRefreshStatusResponse
+
+
+class MarketRefreshRunsResponse(BaseModel):
+    items: list[MarketRefreshStatusResponse]
 
 
 def _extract_bearer(authorization: str | None) -> str | None:
@@ -486,6 +492,14 @@ async def market_refresh_status() -> MarketRefreshStatusResponse:
     return _market_refresh_status_response(get_refresh_status())
 
 
+@router.get("/market/refresh-runs", response_model=MarketRefreshRunsResponse)
+async def market_refresh_runs(
+    limit: int = Query(default=20, ge=1, le=200),
+) -> MarketRefreshRunsResponse:
+    rows = list_refresh_runs(limit=limit)
+    return MarketRefreshRunsResponse(items=[_market_refresh_status_response(row) for row in rows])
+
+
 @router.post("/market/refresh", response_model=MarketRefreshResponse)
 async def market_refresh(payload: MarketRefreshRequest) -> MarketRefreshResponse:
     limit = payload.limit if payload.limit > 0 else None
@@ -526,6 +540,9 @@ async def resolve_tonie(payload: ResolveRequest) -> ResolveResponse:
 
     resolver = get_resolver()
     result = resolver.resolve(q)
+
+    if result.status == "not_found":
+        raise HTTPException(status_code=404, detail="tonie not found")
 
     return ResolveResponse(
         status=result.status,
@@ -575,6 +592,11 @@ async def pricing(
     tonie_id: str,
     condition: Condition = Query(default=Condition.good),
 ) -> PricingResponse:
+    resolver = get_resolver()
+    known_ids = {str(item["id"]) for item in resolver.catalog}
+    if tonie_id not in known_ids:
+        raise HTTPException(status_code=404, detail="tonie not found")
+
     price = await compute_prices_for_tonie(tonie_id=tonie_id, condition=condition.value)
     quality_tier, confidence_score = _derive_pricing_quality(
         price.sample_size,
@@ -584,6 +606,7 @@ async def pricing(
     return PricingResponse(
         tonie_id=tonie_id,
         condition=condition,
+        currency="EUR",
         sofortverkaufspreis=price.instant,
         fairer_marktpreis=price.fair,
         geduldspreis=price.patience,

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import secrets
 import sqlite3
 from datetime import UTC, datetime, timedelta
@@ -85,12 +86,33 @@ def init_db() -> None:
                 created_at TEXT NOT NULL
             );
 
+            CREATE TABLE IF NOT EXISTS refresh_runs (
+                run_id TEXT PRIMARY KEY,
+                status TEXT NOT NULL,
+                started_at TEXT NOT NULL,
+                finished_at TEXT,
+                total INTEGER NOT NULL,
+                processed INTEGER NOT NULL,
+                successful INTEGER NOT NULL,
+                failed INTEGER NOT NULL,
+                saved_rows INTEGER NOT NULL,
+                pruned_rows INTEGER NOT NULL,
+                limit_value INTEGER,
+                delay_ms INTEGER NOT NULL,
+                max_items INTEGER NOT NULL,
+                failures_json TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            );
+
             CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(user_id);
             CREATE INDEX IF NOT EXISTS idx_watchlist_user_id ON watchlist_items(user_id);
             CREATE INDEX IF NOT EXISTS idx_market_tonie_fetched ON market_listings(tonie_id, fetched_at DESC);
             CREATE INDEX IF NOT EXISTS idx_pricing_events_created ON pricing_events(created_at DESC);
             CREATE INDEX IF NOT EXISTS idx_pricing_events_source_created ON pricing_events(source, created_at DESC);
             CREATE INDEX IF NOT EXISTS idx_pricing_events_tonie_created ON pricing_events(tonie_id, created_at DESC);
+            CREATE INDEX IF NOT EXISTS idx_refresh_runs_started_at ON refresh_runs(started_at DESC);
+            CREATE INDEX IF NOT EXISTS idx_refresh_runs_status ON refresh_runs(status, started_at DESC);
             """
         )
 
@@ -534,6 +556,106 @@ def save_pricing_event(
                 now,
             ),
         )
+
+
+def create_refresh_run(state: dict) -> None:
+    init_db()
+    now = _now_iso()
+    run_id = str(state.get("run_id") or "").strip()
+    if not run_id:
+        raise ValueError("run_id is required")
+
+    failures = [str(x) for x in (state.get("failures") or [])]
+
+    with _connect() as conn:
+        conn.execute(
+            """
+            INSERT OR REPLACE INTO refresh_runs(
+                run_id, status, started_at, finished_at,
+                total, processed, successful, failed, saved_rows, pruned_rows,
+                limit_value, delay_ms, max_items, failures_json,
+                created_at, updated_at
+            )
+            VALUES(
+                ?, ?, ?, ?,
+                ?, ?, ?, ?, ?, ?,
+                ?, ?, ?, ?,
+                COALESCE((SELECT created_at FROM refresh_runs WHERE run_id = ?), ?),
+                ?
+            )
+            """,
+            (
+                run_id,
+                str(state.get("status") or "running"),
+                str(state.get("started_at") or now),
+                state.get("finished_at"),
+                int(state.get("total") or 0),
+                int(state.get("processed") or 0),
+                int(state.get("successful") or 0),
+                int(state.get("failed") or 0),
+                int(state.get("saved_rows") or 0),
+                int(state.get("pruned_rows") or 0),
+                int(state["limit"]) if state.get("limit") is not None else None,
+                int(state.get("delay_ms") or 0),
+                int(state.get("max_items") or 0),
+                json.dumps(failures, ensure_ascii=False),
+                run_id,
+                now,
+                now,
+            ),
+        )
+
+
+def update_refresh_run(state: dict) -> None:
+    create_refresh_run(state)
+
+
+def list_refresh_runs(*, limit: int = 20) -> list[dict]:
+    init_db()
+    with _connect() as conn:
+        rows = conn.execute(
+            """
+            SELECT run_id, status, started_at, finished_at,
+                   total, processed, successful, failed, saved_rows, pruned_rows,
+                   limit_value, delay_ms, max_items, failures_json,
+                   created_at, updated_at
+            FROM refresh_runs
+            ORDER BY started_at DESC
+            LIMIT ?
+            """,
+            (max(1, int(limit)),),
+        ).fetchall()
+
+    out: list[dict] = []
+    for row in rows:
+        failures_raw = row["failures_json"] if row["failures_json"] else "[]"
+        try:
+            failures = json.loads(str(failures_raw))
+        except json.JSONDecodeError:
+            failures = []
+
+        out.append(
+            {
+                "run_id": str(row["run_id"]),
+                "status": str(row["status"]),
+                "started_at": str(row["started_at"]),
+                "finished_at": str(row["finished_at"]) if row["finished_at"] else None,
+                "total": int(row["total"] or 0),
+                "processed": int(row["processed"] or 0),
+                "successful": int(row["successful"] or 0),
+                "failed": int(row["failed"] or 0),
+                "saved_rows": int(row["saved_rows"] or 0),
+                "pruned_rows": int(row["pruned_rows"] or 0),
+                "limit": int(row["limit_value"]) if row["limit_value"] is not None else None,
+                "delay_ms": int(row["delay_ms"] or 0),
+                "max_items": int(row["max_items"] or 0),
+                "failures": [str(x) for x in failures],
+                "created_at": str(row["created_at"]),
+                "updated_at": str(row["updated_at"]),
+            }
+        )
+
+    return out
 
 
 def get_pricing_quality_status(
