@@ -1,4 +1,5 @@
 import PhotosUI
+import Security
 import SwiftUI
 
 @main
@@ -19,7 +20,9 @@ struct RootView: View {
 
     var body: some View {
         Group {
-            if auth.isLoggedIn {
+            if auth.isRestoringSession {
+                ProgressView("Session wird geladen …")
+            } else if auth.isLoggedIn {
                 MainTabView()
             } else {
                 LoginView()
@@ -127,20 +130,44 @@ struct WatchItem: Identifiable {
 
 // MARK: - ViewModels
 
+enum AuthMode: String, CaseIterable, Identifiable {
+    case login
+    case register
+
+    var id: String { rawValue }
+
+    var label: String {
+        switch self {
+        case .login: return "Login"
+        case .register: return "Register"
+        }
+    }
+}
+
 @MainActor
 final class AuthViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var mode: AuthMode = .login
     @Published var isLoggedIn = false
     @Published var isLoading = false
+    @Published var isRestoringSession = true
     @Published var authToken: String?
     @Published var statusText: String?
 
     private let api = APIClient()
+    private let tokenStore = KeychainTokenStore()
 
-    func login() {
+    init() {
+        Task { await restoreSessionIfPossible() }
+    }
+
+    func submitAuth() {
         let normalizedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        guard !normalizedEmail.isEmpty, !password.isEmpty else { return }
+        guard !normalizedEmail.isEmpty, !password.isEmpty else {
+            statusText = "Bitte E-Mail und Passwort eingeben."
+            return
+        }
 
         isLoading = true
         statusText = nil
@@ -149,29 +176,63 @@ final class AuthViewModel: ObservableObject {
             defer { isLoading = false }
 
             do {
-                var session = try await api.login(email: normalizedEmail, password: password)
-                if session == nil {
+                let session: APIClient.AuthSession?
+                switch mode {
+                case .login:
+                    session = try await api.login(email: normalizedEmail, password: password)
+                case .register:
                     session = try await api.register(email: normalizedEmail, password: password)
                 }
 
-                if let session {
-                    email = session.userEmail
-                    authToken = session.token
-                    isLoggedIn = true
-                    statusText = nil
+                guard let session else {
+                    statusText = mode == .login
+                        ? "Login fehlgeschlagen. Prüfe E-Mail/Passwort."
+                        : "Registrierung fehlgeschlagen. Existiert der User bereits?"
                     return
                 }
 
-                statusText = "Login fehlgeschlagen. Prüfe E-Mail/Passwort."
-                return
-            } catch {
-                // Offline/prototype fallback so core flows stay usable.
-                email = normalizedEmail
-                authToken = nil
+                let me = try await api.me(token: session.token)
+                guard let me else {
+                    statusText = "Anmeldung erfolgreich, aber /me konnte nicht verifiziert werden."
+                    return
+                }
+
+                email = me.email
+                authToken = session.token
                 isLoggedIn = true
-                statusText = "Lokaler Login aktiv (Backend aktuell nicht erreichbar)."
+                password = ""
+                statusText = nil
+                tokenStore.save(token: session.token)
+            } catch {
+                statusText = "Backend nicht erreichbar oder Anfrage fehlgeschlagen."
             }
         }
+    }
+
+    func restoreSessionIfPossible() async {
+        defer { isRestoringSession = false }
+
+        guard let token = tokenStore.loadToken(), !token.isEmpty else {
+            isLoggedIn = false
+            authToken = nil
+            return
+        }
+
+        do {
+            if let me = try await api.me(token: token) {
+                email = me.email
+                authToken = token
+                isLoggedIn = true
+                statusText = nil
+                return
+            }
+        } catch {
+            // fallthrough to cleanup
+        }
+
+        tokenStore.clearToken()
+        authToken = nil
+        isLoggedIn = false
     }
 
     func logout() {
@@ -180,6 +241,7 @@ final class AuthViewModel: ObservableObject {
         authToken = nil
         statusText = nil
         password = ""
+        tokenStore.clearToken()
 
         if let token {
             Task { try? await api.logout(token: token) }
@@ -463,6 +525,60 @@ extension Double {
     }
 }
 
+// MARK: - Secure Token Store
+
+final class KeychainTokenStore {
+    private let service = "com.falko.toniefinder.auth"
+    private let account = "access_token"
+
+    func save(token: String) {
+        guard let data = token.data(using: .utf8) else { return }
+
+        let baseQuery: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account,
+        ]
+
+        SecItemDelete(baseQuery as CFDictionary)
+
+        var insert = baseQuery
+        insert[kSecValueData as String] = data
+        insert[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+
+        SecItemAdd(insert as CFDictionary, nil)
+    }
+
+    func loadToken() -> String? {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account,
+            kSecReturnData as String: true,
+            kSecMatchLimit as String: kSecMatchLimitOne,
+        ]
+
+        var result: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+        guard status == errSecSuccess,
+              let data = result as? Data,
+              let token = String(data: data, encoding: .utf8) else {
+            return nil
+        }
+
+        return token
+    }
+
+    func clearToken() {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account,
+        ]
+        SecItemDelete(query as CFDictionary)
+    }
+}
+
 // MARK: - API Config
 
 enum AppConfig {
@@ -530,12 +646,12 @@ final class APIClient {
         let password: String
     }
 
-    struct AuthResponse: Decodable {
-        struct UserDTO: Decodable {
-            let id: Int
-            let email: String
-        }
+    struct UserDTO: Decodable {
+        let id: Int
+        let email: String
+    }
 
+    struct AuthResponse: Decodable {
         let token: String
         let user: UserDTO
         let expires_at: String
@@ -689,6 +805,20 @@ final class APIClient {
         )
     }
 
+    func me(token: String) async throws -> UserDTO? {
+        guard let url = makeURL(path: "/auth/me") else { return nil }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse else { return nil }
+        guard (200..<300).contains(http.statusCode) else { return nil }
+
+        return try JSONDecoder().decode(UserDTO.self, from: data)
+    }
+
     func logout(token: String) async throws {
         guard let url = makeURL(path: "/auth/logout") else { return }
 
@@ -795,6 +925,13 @@ struct LoginView: View {
 
                 Card {
                     VStack(spacing: 14) {
+                        Picker("Auth", selection: $auth.mode) {
+                            ForEach(AuthMode.allCases) { mode in
+                                Text(mode.label).tag(mode)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+
                         TextField("E-Mail", text: $auth.email)
                             .textInputAutocapitalization(.never)
                             .keyboardType(.emailAddress)
@@ -807,12 +944,12 @@ struct LoginView: View {
                             .background(Color.gray.opacity(0.08))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                        Button(action: auth.login) {
+                        Button(action: auth.submitAuth) {
                             if auth.isLoading {
                                 ProgressView()
                                     .frame(maxWidth: .infinity)
                             } else {
-                                Text("Einloggen")
+                                Text(auth.mode == .login ? "Einloggen" : "Registrieren")
                                     .bold()
                                     .frame(maxWidth: .infinity)
                             }
