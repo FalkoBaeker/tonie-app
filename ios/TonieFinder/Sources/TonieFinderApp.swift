@@ -548,10 +548,11 @@ final class PricingViewModel: ObservableObject {
             let startedAt = Date()
 
             defer {
-                guard activeSearchRequestID == requestID else { return }
-                searchTask = nil
-                activeSearchRequestID = nil
-                setOperation(.search, active: false)
+                if activeSearchRequestID == requestID {
+                    searchTask = nil
+                    activeSearchRequestID = nil
+                    setOperation(.search, active: false)
+                }
             }
 
             do {
@@ -598,10 +599,11 @@ final class PricingViewModel: ObservableObject {
             let startedAt = Date()
 
             defer {
-                guard activeSearchRequestID == requestID else { return }
-                searchTask = nil
-                activeSearchRequestID = nil
-                setOperation(.photo, active: false)
+                if activeSearchRequestID == requestID {
+                    searchTask = nil
+                    activeSearchRequestID = nil
+                    setOperation(.photo, active: false)
+                }
             }
 
             do {
@@ -666,10 +668,11 @@ final class PricingViewModel: ObservableObject {
             let startedAt = Date()
 
             defer {
-                guard activePriceRequestID == requestID else { return }
-                priceTask = nil
-                activePriceRequestID = nil
-                setOperation(.pricing, active: false)
+                if activePriceRequestID == requestID {
+                    priceTask = nil
+                    activePriceRequestID = nil
+                    setOperation(.pricing, active: false)
+                }
             }
 
             do {
