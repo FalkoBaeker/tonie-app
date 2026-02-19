@@ -1763,8 +1763,16 @@ struct PricingView: View {
                         if let p = vm.prices {
                             Card {
                                 VStack(alignment: .leading, spacing: 10) {
-                                    Text("Preisvorschlag")
-                                        .font(.headline)
+                                    if let selected = vm.selected {
+                                        Text("Preisvorschlag für: \(selected.title)")
+                                            .font(.headline)
+                                        Text(selected.id)
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    } else {
+                                        Text("Preisvorschlag")
+                                            .font(.headline)
+                                    }
                                     PriceRow(title: "Sofortverkaufspreis", value: p.instant)
                                     PriceRow(title: "Fairer Marktpreis", value: p.fair)
                                     PriceRow(title: "Geduldspreis", value: p.patience)
