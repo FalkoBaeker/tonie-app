@@ -455,14 +455,29 @@ def _external_email_from_claims(claims: dict) -> str | None:
     return None
 
 
-def _is_verified_email(claims: dict) -> bool:
-    value = claims.get("email_verified")
+def _truthy_claim(value: object) -> bool:
     if isinstance(value, bool):
         return value
     if isinstance(value, str):
         return value.strip().lower() in {"true", "1", "yes"}
     if isinstance(value, int):
         return value == 1
+    return False
+
+
+def _is_verified_email(claims: dict) -> bool:
+    # Supabase can emit email_verified either top-level or nested in user_metadata.
+    if _truthy_claim(claims.get("email_verified")):
+        return True
+
+    user_metadata = claims.get("user_metadata")
+    if isinstance(user_metadata, dict) and _truthy_claim(user_metadata.get("email_verified")):
+        return True
+
+    app_metadata = claims.get("app_metadata")
+    if isinstance(app_metadata, dict) and _truthy_claim(app_metadata.get("email_verified")):
+        return True
+
     return False
 
 

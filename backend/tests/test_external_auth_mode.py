@@ -55,6 +55,26 @@ class ExternalAuthModeTests(unittest.TestCase):
         self.assertEqual(body["email"], "external@example.com")
         self.assertIsInstance(body["id"], int)
 
+    def test_me_accepts_verified_email_from_user_metadata(self) -> None:
+        with patch.object(
+            routes,
+            "verify_external_jwt",
+            return_value={
+                "sub": "user-456",
+                "email": "meta@example.com",
+                "user_metadata": {"email_verified": True},
+                "exp": 9999999999,
+                "iat": 1700000000,
+            },
+        ):
+            response = self.client.get(
+                "/api/auth/me",
+                headers={"Authorization": "Bearer external-meta-token"},
+            )
+
+        self.assertEqual(response.status_code, 200, msg=response.text)
+        self.assertEqual(response.json()["email"], "meta@example.com")
+
     def test_me_rejects_unverified_external_email(self) -> None:
         with patch.object(
             routes,
@@ -63,6 +83,7 @@ class ExternalAuthModeTests(unittest.TestCase):
                 "sub": "user-999",
                 "email": "external@example.com",
                 "email_verified": False,
+                "user_metadata": {"email_verified": False},
                 "exp": 9999999999,
                 "iat": 1700000000,
             },
