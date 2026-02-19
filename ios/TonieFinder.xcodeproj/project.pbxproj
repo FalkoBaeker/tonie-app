@@ -14,6 +14,7 @@
 		A0324E50E3538AEDD8D4C968 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A06BD81CE02BD4C213CB6102 /* Assets.xcassets */; };
 		B43743CFBBA64CC4E9FA69A1 /* TonieFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD590DB8FF02DF4BDE859F /* TonieFinderApp.swift */; };
 		C4F6328E25B9289ECF8A1E47 /* APIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB457E3B717877D723A6EE52 /* APIErrorTests.swift */; };
+		D91A58A3B7E6412CA91F6D10 /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17C8E5A42D64A879B4C1021 /* AuthViewModelTests.swift */; };
 		E68BE0B17DE5E9B85A541E52 /* ResolvePricingFlowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B8B1A43F33A2526E1E90B /* ResolvePricingFlowViewModelTests.swift */; };
 		F8E16D263F6FA17B54CC18BE /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1387D9481B454041B3D0C31B /* APIError.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		ABC2645E878EF44E37E7F248 /* PricingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingDetailView.swift; sourceTree = "<group>"; };
 		D27D77D98E841F67505327FD /* TonieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB457E3B717877D723A6EE52 /* APIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorTests.swift; sourceTree = "<group>"; };
+		F17C8E5A42D64A879B4C1021 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -48,6 +50,7 @@
 			children = (
 				DB457E3B717877D723A6EE52 /* APIErrorTests.swift */,
 				9C2B8B1A43F33A2526E1E90B /* ResolvePricingFlowViewModelTests.swift */,
+				F17C8E5A42D64A879B4C1021 /* AuthViewModelTests.swift */,
 			);
 			name = Tests;
 			path = TonieFinder/Tests;
@@ -209,6 +212,7 @@
 			files = (
 				C4F6328E25B9289ECF8A1E47 /* APIErrorTests.swift in Sources */,
 				E68BE0B17DE5E9B85A541E52 /* ResolvePricingFlowViewModelTests.swift in Sources */,
+				D91A58A3B7E6412CA91F6D10 /* AuthViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +268,9 @@
 				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
 				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]" = "http://192.168.178.100:8787/api";
 				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphonesimulator*]" = "http://127.0.0.1:8787/api";
+				INFOPLIST_KEY_TF_AUTH_MODE = local;
+				INFOPLIST_KEY_TF_SUPABASE_ANON_KEY = "";
+				INFOPLIST_KEY_TF_SUPABASE_URL = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -305,6 +312,9 @@
 				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
 				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]" = "http://192.168.178.100:8787/api";
 				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphonesimulator*]" = "http://127.0.0.1:8787/api";
+				INFOPLIST_KEY_TF_AUTH_MODE = local;
+				INFOPLIST_KEY_TF_SUPABASE_ANON_KEY = "";
+				INFOPLIST_KEY_TF_SUPABASE_URL = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

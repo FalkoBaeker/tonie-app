@@ -39,7 +39,24 @@ Für ein echtes iPhone musst du die `iphoneos` URL auf deine echte Mac-IP setzen
 
 `http://192.168.178.42:8787/api`
 
-## 4) ATS / HTTP (wichtig für lokales Backend)
+## 4) Auth-Mode (local vs external)
+
+Die iOS-App unterstützt zwei Modi über Build-Settings / Info.plist:
+
+- `TF_AUTH_MODE=local`
+  - nutzt Backend `/auth/register` + `/auth/login` (lokaler Dev-Auth)
+- `TF_AUTH_MODE=external`
+  - nutzt Supabase Auth (Email/Passwort) für Access Token
+  - sendet Supabase Bearer Token an Backend (`AUTH_MODE=external`)
+
+Zusätzliche Werte für external mode:
+- `TF_SUPABASE_URL=https://<project-ref>.supabase.co`
+- `TF_SUPABASE_ANON_KEY=<supabase-anon-key>`
+
+Hinweis:
+- Bei aktivierter Email-Verifikation zeigt die App nach Registrierung einen Hinweis zur Bestätigungsmail.
+
+## 5) ATS / HTTP (wichtig für lokales Backend)
 
 Da lokal oft über `http://` gearbeitet wird (ohne TLS), blockt iOS sonst Requests durch ATS.
 
@@ -52,7 +69,7 @@ Später für Deploy:
 - Auf HTTPS umstellen
 - ATS-Ausnahmen entfernen oder minimal einschränken
 
-## 5) Quick Verify
+## 6) Quick Verify
 
 Backend Health im Browser/Terminal prüfen:
 
@@ -63,7 +80,7 @@ curl http://<MAC_IP>:8787/api/health
 
 Wenn beide Antworten liefern, sind Simulator + iPhone-Pfad korrekt vorbereitet.
 
-## 6) XCTest / xcodebuild test Command
+## 7) XCTest / xcodebuild test Command
 
 Für den minimalen iOS-Test-Slice (Task 3, APIErrorTests):
 

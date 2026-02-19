@@ -379,10 +379,13 @@ final class AuthViewModel: ObservableObject {
     @Published var authToken: String?
     @Published var statusText: String?
 
-    private let api = APIClient()
-    private let tokenStore = KeychainTokenStore()
+    private let api: AuthAPI
+    private let tokenStore: any AuthTokenStore
 
-    init() {
+    init(api: AuthAPI = APIClient(), tokenStore: any AuthTokenStore = KeychainTokenStore()) {
+        self.api = api
+        self.tokenStore = tokenStore
+
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
             isRestoringSession = false
             return
@@ -405,12 +408,35 @@ final class AuthViewModel: ObservableObject {
             defer { isLoading = false }
 
             do {
-                let session: APIClient.AuthSession
-                switch mode {
-                case .login:
-                    session = try await api.login(email: normalizedEmail, password: password)
-                case .register:
-                    session = try await api.register(email: normalizedEmail, password: password)
+                let session: ClientAuthSession
+
+                if AppConfig.clientAuthMode == .external {
+                    switch mode {
+                    case .login:
+                        session = try await api.externalLogin(email: normalizedEmail, password: password)
+                    case .register:
+                        let registerResult = try await api.externalRegister(email: normalizedEmail, password: password)
+                        if registerResult.requiresEmailVerification {
+                            statusText = "Bitte E-Mail bestätigen und danach einloggen."
+                            password = ""
+                            return
+                        }
+
+                        guard let createdSession = registerResult.session else {
+                            statusText = "Registrierung erfolgreich. Bitte E-Mail bestätigen und dann einloggen."
+                            password = ""
+                            return
+                        }
+
+                        session = createdSession
+                    }
+                } else {
+                    switch mode {
+                    case .login:
+                        session = try await api.login(email: normalizedEmail, password: password)
+                    case .register:
+                        session = try await api.register(email: normalizedEmail, password: password)
+                    }
                 }
 
                 let me = try await api.me(token: session.token)
@@ -422,11 +448,24 @@ final class AuthViewModel: ObservableObject {
                 statusText = nil
                 tokenStore.save(token: session.token)
             } catch {
+                let mapped = APIError.map(error)
+
+                if AppConfig.clientAuthMode == .external,
+                   case let .validation(detail) = mapped,
+                   let detail,
+                   detail.lowercased().contains("email") && detail.lowercased().contains("confirm") {
+                    statusText = "Bitte E-Mail bestätigen und danach einloggen."
+                    return
+                }
+
                 statusText = Diagnostics.reportMappedError(
                     error,
                     flow: "auth",
                     endpointPath: mode == .login ? "/auth/login" : "/auth/register",
-                    context: ["action": "submit_auth"]
+                    context: [
+                        "action": "submit_auth",
+                        "auth_mode": AppConfig.clientAuthMode.rawValue,
+                    ]
                 ).userMessage
             }
         }
@@ -453,7 +492,10 @@ final class AuthViewModel: ObservableObject {
                 error,
                 flow: "auth",
                 endpointPath: "/auth/me",
-                context: ["action": "restore_session"]
+                context: [
+                    "action": "restore_session",
+                    "auth_mode": AppConfig.clientAuthMode.rawValue,
+                ]
             )
             // fallthrough to cleanup
         }
@@ -997,7 +1039,13 @@ extension Double {
 
 // MARK: - Secure Token Store
 
-final class KeychainTokenStore {
+protocol AuthTokenStore {
+    func save(token: String)
+    func loadToken() -> String?
+    func clearToken()
+}
+
+final class KeychainTokenStore: AuthTokenStore {
     private let service = "com.falko.toniefinder.auth"
     private let account = "access_token"
 
@@ -1051,6 +1099,11 @@ final class KeychainTokenStore {
 
 // MARK: - API Config
 
+enum ClientAuthBackendMode: String {
+    case local
+    case external
+}
+
 enum AppConfig {
     private static let simulatorDefault = "http://127.0.0.1:8787/api"
     private static let deviceDefault = "http://192.168.2.133:8787/api"
@@ -1098,11 +1151,76 @@ enum AppConfig {
         #endif
     }
 
+    static var clientAuthMode: ClientAuthBackendMode {
+        if let env = ProcessInfo.processInfo.environment["TF_AUTH_MODE"], !env.isEmpty {
+            return ClientAuthBackendMode(rawValue: env.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()) ?? .local
+        }
+
+        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_AUTH_MODE") as? String,
+           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return ClientAuthBackendMode(rawValue: plistValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()) ?? .local
+        }
+
+        return .local
+    }
+
+    static var supabaseURL: String? {
+        if let env = ProcessInfo.processInfo.environment["TF_SUPABASE_URL"], !env.isEmpty {
+            return env.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
+        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_SUPABASE_URL") as? String,
+           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return plistValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
+        return nil
+    }
+
+    static var supabaseAnonKey: String? {
+        if let env = ProcessInfo.processInfo.environment["TF_SUPABASE_ANON_KEY"], !env.isEmpty {
+            return env.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
+        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_SUPABASE_ANON_KEY") as? String,
+           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return plistValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+
+        return nil
+    }
+
     static var appVersionBuild: String {
         let version = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "-"
         let build = (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "-"
         return "\(version) (\(build))"
     }
+}
+
+struct ClientAuthSession {
+    let token: String
+    let userId: Int
+    let userEmail: String
+    let expiresAt: String
+}
+
+struct ClientUser {
+    let id: Int
+    let email: String
+}
+
+struct ExternalRegisterResult {
+    let session: ClientAuthSession?
+    let requiresEmailVerification: Bool
+}
+
+protocol AuthAPI {
+    func login(email: String, password: String) async throws -> ClientAuthSession
+    func register(email: String, password: String) async throws -> ClientAuthSession
+    func externalLogin(email: String, password: String) async throws -> ClientAuthSession
+    func externalRegister(email: String, password: String) async throws -> ExternalRegisterResult
+    func me(token: String) async throws -> ClientUser
+    func logout(token: String) async throws
 }
 
 // MARK: - API Client
@@ -1159,11 +1277,40 @@ final class APIClient {
         let expires_at: String
     }
 
-    struct AuthSession {
-        let token: String
-        let userId: Int
-        let userEmail: String
-        let expiresAt: String
+    struct SupabaseSessionResponse: Decodable {
+        let access_token: String?
+        let expires_in: Int?
+        let token_type: String?
+        let user: SupabaseUser?
+    }
+
+    struct SupabaseUser: Decodable {
+        let id: String?
+        let email: String?
+        let user_metadata: [String: BoolOrString]?
+    }
+
+    struct BoolOrString: Decodable {
+        let boolValue: Bool?
+        let stringValue: String?
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            if let boolValue = try? container.decode(Bool.self) {
+                self.boolValue = boolValue
+                self.stringValue = nil
+                return
+            }
+
+            if let stringValue = try? container.decode(String.self) {
+                self.boolValue = nil
+                self.stringValue = stringValue
+                return
+            }
+
+            self.boolValue = nil
+            self.stringValue = nil
+        }
     }
 
     struct WatchlistAddRequest: Encodable {
@@ -1227,6 +1374,11 @@ final class APIClient {
         URL(string: "\(baseURL)\(path)")
     }
 
+    private func makeSupabaseURL(path: String) -> URL? {
+        guard let supabaseURL = AppConfig.supabaseURL, !supabaseURL.isEmpty else { return nil }
+        return URL(string: "\(supabaseURL)\(path)")
+    }
+
     private func debugLog(_ message: String) {
         guard AppConfig.debugLoggingEnabled else { return }
         print("[TF API] \(message)")
@@ -1258,6 +1410,22 @@ final class APIClient {
     private func extractDetail(from data: Data?) -> String? {
         guard let data else { return nil }
         return (try? JSONDecoder().decode(APIErrorPayload.self, from: data))?.detail
+    }
+
+    private func extractProviderDetail(from data: Data?) -> String? {
+        guard let data,
+              let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return nil
+        }
+
+        let keys = ["detail", "message", "error_description", "error"]
+        for key in keys {
+            if let value = obj[key] as? String, !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                return value
+            }
+        }
+
+        return nil
     }
 
     @discardableResult
@@ -1374,15 +1542,101 @@ final class APIClient {
         )
     }
 
-    func login(email: String, password: String) async throws -> AuthSession {
+    func login(email: String, password: String) async throws -> ClientAuthSession {
         try await authenticate(path: "/auth/login", email: email, password: password)
     }
 
-    func register(email: String, password: String) async throws -> AuthSession {
+    func register(email: String, password: String) async throws -> ClientAuthSession {
         try await authenticate(path: "/auth/register", email: email, password: password)
     }
 
-    private func authenticate(path: String, email: String, password: String) async throws -> AuthSession {
+    func externalLogin(email: String, password: String) async throws -> ClientAuthSession {
+        guard let url = makeSupabaseURL(path: "/auth/v1/token?grant_type=password") else {
+            throw APIError.invalidURL
+        }
+
+        guard let anonKey = AppConfig.supabaseAnonKey, !anonKey.isEmpty else {
+            throw APIError.validation(detail: "Supabase Konfiguration fehlt (TF_SUPABASE_ANON_KEY).")
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(anonKey, forHTTPHeaderField: "apikey")
+        request.setValue("Bearer \(anonKey)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try JSONEncoder().encode(AuthRequest(email: email, password: password))
+
+        let endpointPath = "supabase:/auth/v1/token"
+        let (data, response) = try await data(for: request, pathForLog: endpointPath)
+
+        guard let http = response as? HTTPURLResponse else {
+            throw APIError.unknown(detail: "Keine HTTP-Antwort")
+        }
+
+        guard (200..<300).contains(http.statusCode) else {
+            let detail = extractProviderDetail(from: data)
+            if let detail, detail.lowercased().contains("confirm") {
+                throw APIError.validation(detail: "Bitte E-Mail bestätigen und danach einloggen.")
+            }
+            throw APIError.fromStatusCode(http.statusCode, detail: detail)
+        }
+
+        let decoded = try JSONDecoder().decode(SupabaseSessionResponse.self, from: data)
+        guard let token = decoded.access_token, !token.isEmpty else {
+            throw APIError.unauthorized(detail: "Kein Access-Token von Supabase erhalten.")
+        }
+
+        return ClientAuthSession(
+            token: token,
+            userId: 0,
+            userEmail: decoded.user?.email ?? email,
+            expiresAt: ""
+        )
+    }
+
+    func externalRegister(email: String, password: String) async throws -> ExternalRegisterResult {
+        guard let url = makeSupabaseURL(path: "/auth/v1/signup") else {
+            throw APIError.invalidURL
+        }
+
+        guard let anonKey = AppConfig.supabaseAnonKey, !anonKey.isEmpty else {
+            throw APIError.validation(detail: "Supabase Konfiguration fehlt (TF_SUPABASE_ANON_KEY).")
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(anonKey, forHTTPHeaderField: "apikey")
+        request.setValue("Bearer \(anonKey)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try JSONEncoder().encode(AuthRequest(email: email, password: password))
+
+        let endpointPath = "supabase:/auth/v1/signup"
+        let (data, response) = try await data(for: request, pathForLog: endpointPath)
+
+        guard let http = response as? HTTPURLResponse else {
+            throw APIError.unknown(detail: "Keine HTTP-Antwort")
+        }
+
+        guard (200..<300).contains(http.statusCode) else {
+            let detail = extractProviderDetail(from: data)
+            throw APIError.fromStatusCode(http.statusCode, detail: detail)
+        }
+
+        let decoded = try JSONDecoder().decode(SupabaseSessionResponse.self, from: data)
+        if let token = decoded.access_token, !token.isEmpty {
+            let session = ClientAuthSession(
+                token: token,
+                userId: 0,
+                userEmail: decoded.user?.email ?? email,
+                expiresAt: ""
+            )
+            return ExternalRegisterResult(session: session, requiresEmailVerification: false)
+        }
+
+        return ExternalRegisterResult(session: nil, requiresEmailVerification: true)
+    }
+
+    private func authenticate(path: String, email: String, password: String) async throws -> ClientAuthSession {
         guard let url = makeURL(path: path) else { throw APIError.invalidURL }
 
         var request = URLRequest(url: url)
@@ -1394,7 +1648,7 @@ final class APIClient {
         try ensureSuccess(response, data: data, endpointPath: path)
 
         let decoded = try JSONDecoder().decode(AuthResponse.self, from: data)
-        return AuthSession(
+        return ClientAuthSession(
             token: decoded.token,
             userId: decoded.user.id,
             userEmail: decoded.user.email,
@@ -1402,7 +1656,7 @@ final class APIClient {
         )
     }
 
-    func me(token: String) async throws -> UserDTO {
+    func me(token: String) async throws -> ClientUser {
         guard let url = makeURL(path: "/auth/me") else { throw APIError.invalidURL }
 
         var request = URLRequest(url: url)
@@ -1413,7 +1667,8 @@ final class APIClient {
         let (data, response) = try await data(for: request, pathForLog: endpointPath)
         try ensureSuccess(response, data: data, endpointPath: endpointPath)
 
-        return try JSONDecoder().decode(UserDTO.self, from: data)
+        let decoded = try JSONDecoder().decode(UserDTO.self, from: data)
+        return ClientUser(id: decoded.id, email: decoded.email)
     }
 
     func logout(token: String) async throws {
@@ -1524,6 +1779,8 @@ final class APIClient {
     }
 }
 
+extension APIClient: AuthAPI {}
+
 // MARK: - Views
 
 struct LoginView: View {
@@ -1551,6 +1808,13 @@ struct LoginView: View {
                             }
                         }
                         .pickerStyle(.segmented)
+
+                        if AppConfig.clientAuthMode == .external {
+                            Text("External Auth aktiv (Supabase). Registrierung kann E-Mail-Bestätigung erfordern.")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
 
                         TextField("E-Mail", text: $auth.email)
                             .textInputAutocapitalization(.never)
@@ -2131,7 +2395,7 @@ struct AccountView: View {
                         Text(auth.email.isEmpty ? "Kein Konto" : auth.email)
                             .foregroundStyle(.secondary)
 
-                        Text(auth.authToken == nil ? "Modus: lokal" : "Modus: Backend-Login")
+                        Text("Auth Mode: \(AppConfig.clientAuthMode.rawValue)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -2153,6 +2417,11 @@ struct AccountView: View {
                         Text("App Version: \(AppConfig.appVersionBuild)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
+                        if let supabaseURL = AppConfig.supabaseURL, !supabaseURL.isEmpty {
+                            Text("Supabase URL: \(supabaseURL)")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
                         Text("Device-Test Hint: Bei WLAN-IP-Wechsel Base URL prüfen.")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
