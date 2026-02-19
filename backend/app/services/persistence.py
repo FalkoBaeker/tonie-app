@@ -159,6 +159,36 @@ def init_db() -> None:
             pass
 
 
+def get_db_readiness() -> dict:
+    db_path = _db_path()
+
+    try:
+        init_db()
+        with _connect() as conn:
+            conn.execute("SELECT 1").fetchone()
+    except sqlite3.OperationalError as exc:
+        return {
+            "ok": False,
+            "status": "degraded",
+            "reason": f"sqlite_operational_error: {exc}",
+            "sqlite_path": str(db_path),
+        }
+    except Exception as exc:  # noqa: BLE001
+        return {
+            "ok": False,
+            "status": "degraded",
+            "reason": f"db_check_failed: {exc}",
+            "sqlite_path": str(db_path),
+        }
+
+    return {
+        "ok": True,
+        "status": "ok",
+        "reason": None,
+        "sqlite_path": str(db_path),
+    }
+
+
 def _hash_password(password: str, salt_hex: str | None = None) -> str:
     salt = bytes.fromhex(salt_hex) if salt_hex else secrets.token_bytes(16)
     derived = hashlib.pbkdf2_hmac(

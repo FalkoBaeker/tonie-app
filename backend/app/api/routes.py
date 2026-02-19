@@ -17,6 +17,7 @@ from app.services.persistence import (
     create_watchlist_alert,
     delete_session,
     delete_watchlist_item,
+    get_db_readiness,
     get_fresh_listing_counts,
     get_market_cache_status,
     get_market_coverage_report,
@@ -450,9 +451,20 @@ async def require_user(authorization: str | None = Header(default=None)) -> dict
 @router.get("/health")
 async def health() -> dict:
     refresh = get_refresh_status()
+    db = get_db_readiness()
+    db_ok = bool(db.get("ok", False))
+
     return {
-        "ok": True,
+        "ok": db_ok,
+        "status": "ok" if db_ok else "degraded",
+        "reason": None if db_ok else (db.get("reason") or "db_not_ready"),
         "time": datetime.now(UTC).isoformat(),
+        "db": {
+            "ok": db_ok,
+            "status": db.get("status") or ("ok" if db_ok else "degraded"),
+            "reason": db.get("reason"),
+            "sqlite_path": db.get("sqlite_path"),
+        },
         "market_refresh": {
             "status": refresh.get("status"),
             "run_id": refresh.get("run_id"),
