@@ -477,6 +477,19 @@ final class AuthViewModel: ObservableObject {
     }
 }
 
+protocol PricingFlowAPI {
+    func resolveTonie(query: String) async throws -> [TonieCandidate]
+    func recognizeToniePhoto(imageData: Data, topK: Int) async throws -> (
+        status: String,
+        candidates: [TonieCandidate],
+        message: String?
+    )
+    func fetchPricingOrThrow(tonieId: String, condition: TonieCondition) async throws -> PriceTriple
+    func addWatchlistItem(token: String, tonieId: String, title: String, condition: TonieCondition) async throws -> WatchItem
+}
+
+extension APIClient: PricingFlowAPI {}
+
 @MainActor
 final class PricingViewModel: ObservableObject {
     @Published var query = ""
@@ -486,43 +499,76 @@ final class PricingViewModel: ObservableObject {
     @Published var prices: PriceTriple?
     @Published var errorText: String?
     @Published var infoText: String?
-    @Published var isLoading = false
+    @Published private(set) var isLoading = false
+    @Published private(set) var isSearchLoading = false
+    @Published private(set) var isPhotoLoading = false
+    @Published private(set) var isPricingLoading = false
 
-    private let api = APIClient()
+    private enum LoadingOperation: Hashable {
+        case search
+        case photo
+        case pricing
+    }
+
+    private let api: PricingFlowAPI
     private var searchTask: Task<Void, Never>?
     private var priceTask: Task<Void, Never>?
+    private var activeOperations: Set<LoadingOperation> = []
+    private var activeSearchRequestID: UUID?
+    private var activePriceRequestID: UUID?
+
+    init(api: PricingFlowAPI = APIClient()) {
+        self.api = api
+    }
 
     func search() {
-        if isLoading { return }
-
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !q.isEmpty else { return }
+        guard !q.isEmpty else {
+            candidates = []
+            selected = nil
+            prices = nil
+            errorText = "Bitte Suchbegriff eingeben."
+            return
+        }
 
         searchTask?.cancel()
         priceTask?.cancel()
 
-        isLoading = true
+        let requestID = UUID()
+        activeSearchRequestID = requestID
+
+        setOperation(.search, active: true)
+        setOperation(.pricing, active: false)
         errorText = nil
         infoText = nil
         selected = nil
         prices = nil
 
         searchTask = Task {
+            let startedAt = Date()
+
             defer {
-                isLoading = false
+                guard activeSearchRequestID == requestID else { return }
                 searchTask = nil
+                activeSearchRequestID = nil
+                setOperation(.search, active: false)
             }
 
             do {
                 let resolved = try await api.resolveTonie(query: q)
-                guard !Task.isCancelled else { return }
+                guard !Task.isCancelled, activeSearchRequestID == requestID else { return }
 
                 candidates = resolved
+                reportTiming(step: "resolve_search", startedAt: startedAt, context: [
+                    "query_length": "\(q.count)",
+                    "result_count": "\(resolved.count)"
+                ])
+
                 if resolved.isEmpty {
                     errorText = "Nicht eindeutig gefunden. Bitte präziser eingeben."
                 }
             } catch {
-                guard !Task.isCancelled else { return }
+                guard !Task.isCancelled, activeSearchRequestID == requestID else { return }
                 errorText = Diagnostics.reportMappedError(
                     error,
                     flow: "pricing",
@@ -534,12 +580,14 @@ final class PricingViewModel: ObservableObject {
     }
 
     func recognizePhoto(_ imageData: Data) {
-        if isLoading { return }
-
         searchTask?.cancel()
         priceTask?.cancel()
 
-        isLoading = true
+        let requestID = UUID()
+        activeSearchRequestID = requestID
+
+        setOperation(.photo, active: true)
+        setOperation(.pricing, active: false)
         errorText = nil
         infoText = "Foto wird analysiert …"
         selected = nil
@@ -547,16 +595,25 @@ final class PricingViewModel: ObservableObject {
         candidates = []
 
         searchTask = Task {
+            let startedAt = Date()
+
             defer {
-                isLoading = false
+                guard activeSearchRequestID == requestID else { return }
                 searchTask = nil
+                activeSearchRequestID = nil
+                setOperation(.photo, active: false)
             }
 
             do {
                 let result = try await api.recognizeToniePhoto(imageData: imageData, topK: 3)
-                guard !Task.isCancelled else { return }
+                guard !Task.isCancelled, activeSearchRequestID == requestID else { return }
 
                 candidates = result.candidates
+
+                reportTiming(step: "photo_recognize", startedAt: startedAt, context: [
+                    "result_count": "\(result.candidates.count)",
+                    "status": result.status
+                ])
 
                 switch result.status {
                 case "resolved":
@@ -579,7 +636,7 @@ final class PricingViewModel: ObservableObject {
                     errorText = result.message ?? "Fotoerkennung fehlgeschlagen."
                 }
             } catch {
-                guard !Task.isCancelled else { return }
+                guard !Task.isCancelled, activeSearchRequestID == requestID else { return }
                 errorText = Diagnostics.reportMappedError(
                     error,
                     flow: "pricing",
@@ -593,32 +650,59 @@ final class PricingViewModel: ObservableObject {
     func choose(_ candidate: TonieCandidate) {
         selected = candidate
         errorText = nil
-        infoText = nil
         prices = nil
+        infoText = "Preisvorschlag wird geladen …"
 
         priceTask?.cancel()
 
-        let selectedId = candidate.id
+        let selectedID = candidate.id
         let selectedCondition = condition
+        let requestID = UUID()
+        activePriceRequestID = requestID
+
+        setOperation(.pricing, active: true)
 
         priceTask = Task {
-            defer { priceTask = nil }
+            let startedAt = Date()
+
+            defer {
+                guard activePriceRequestID == requestID else { return }
+                priceTask = nil
+                activePriceRequestID = nil
+                setOperation(.pricing, active: false)
+            }
 
             do {
                 let backendPrices = try await api.fetchPricingOrThrow(
-                    tonieId: selectedId,
+                    tonieId: selectedID,
                     condition: selectedCondition
                 )
 
-                guard !Task.isCancelled, selected?.id == selectedId else { return }
+                guard
+                    !Task.isCancelled,
+                    activePriceRequestID == requestID,
+                    selected?.id == selectedID
+                else { return }
+
                 prices = backendPrices
+                infoText = nil
+                reportTiming(step: "pricing_fetch", startedAt: startedAt, context: [
+                    "tonie_id": selectedID,
+                    "condition": selectedCondition.apiValue
+                ])
             } catch {
-                guard !Task.isCancelled, selected?.id == selectedId else { return }
+                guard
+                    !Task.isCancelled,
+                    activePriceRequestID == requestID,
+                    selected?.id == selectedID
+                else { return }
+
                 prices = nil
+                infoText = nil
                 errorText = Diagnostics.reportMappedError(
                     error,
                     flow: "pricing",
-                    endpointPath: "/pricing/\(selectedId)",
+                    endpointPath: "/pricing/\(selectedID)",
                     context: ["action": "load_pricing", "condition": selectedCondition.apiValue]
                 ).userMessage
             }
@@ -662,6 +746,33 @@ final class PricingViewModel: ObservableObject {
                 ).userMessage
             }
         }
+    }
+
+    private func setOperation(_ operation: LoadingOperation, active: Bool) {
+        if active {
+            activeOperations.insert(operation)
+        } else {
+            activeOperations.remove(operation)
+        }
+
+        isSearchLoading = activeOperations.contains(.search)
+        isPhotoLoading = activeOperations.contains(.photo)
+        isPricingLoading = activeOperations.contains(.pricing)
+        isLoading = !activeOperations.isEmpty
+    }
+
+    private func reportTiming(step: String, startedAt: Date, context: [String: String] = [:]) {
+        let durationMs = Int(Date().timeIntervalSince(startedAt) * 1000)
+        var timingContext = context
+        timingContext["step"] = step
+        timingContext["duration_ms"] = "\(durationMs)"
+
+        Diagnostics.reporter.reportNonFatal(
+            flow: "pricing",
+            errorType: "timing",
+            message: "\(step) completed",
+            context: timingContext
+        )
     }
 }
 
@@ -1548,7 +1659,7 @@ struct PricingView: View {
                                     isQueryFocused = false
                                     vm.search()
                                 } label: {
-                                    if vm.isLoading {
+                                    if vm.isSearchLoading || vm.isPhotoLoading {
                                         ProgressView()
                                             .frame(maxWidth: .infinity)
                                     } else {
@@ -1559,7 +1670,7 @@ struct PricingView: View {
                                 }
                                 .buttonStyle(.borderedProminent)
                                 .tint(TFColor.tonieRed)
-                                .disabled(vm.isLoading)
+                                .disabled(vm.isSearchLoading || vm.isPhotoLoading)
 
                                 PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
                                     Label("Foto erkennen", systemImage: "camera.viewfinder")
@@ -1567,7 +1678,7 @@ struct PricingView: View {
                                 }
                                 .buttonStyle(.bordered)
                                 .tint(TFColor.silver)
-                                .disabled(vm.isLoading)
+                                .disabled(vm.isSearchLoading || vm.isPhotoLoading)
 
                                 Text("Fotoerkennung v1: Bei Unsicherheit bitte Kandidat manuell bestätigen.")
                                     .font(.footnote)
@@ -1628,9 +1739,21 @@ struct PricingView: View {
                                             }
                                         }
                                         .buttonStyle(.plain)
+                                        .disabled(vm.isPricingLoading)
                                         Divider()
                                     }
                                 }
+                            }
+                        }
+
+                        if vm.isPricingLoading && vm.prices == nil {
+                            Card {
+                                HStack(spacing: 10) {
+                                    ProgressView()
+                                    Text("Preisvorschlag wird geladen …")
+                                        .foregroundStyle(.secondary)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
 

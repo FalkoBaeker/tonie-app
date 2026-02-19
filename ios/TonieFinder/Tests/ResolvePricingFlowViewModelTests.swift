@@ -16,6 +16,33 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
         }
     }
 
+    private struct MockPricingFlowAPI: PricingFlowAPI {
+        var resolveHandler: (String) async throws -> [TonieCandidate]
+        var recognizeHandler: (Data, Int) async throws -> (status: String, candidates: [TonieCandidate], message: String?)
+        var pricingHandler: (String, TonieCondition) async throws -> PriceTriple
+        var addHandler: (String, String, String, TonieCondition) async throws -> WatchItem
+
+        func resolveTonie(query: String) async throws -> [TonieCandidate] {
+            try await resolveHandler(query)
+        }
+
+        func recognizeToniePhoto(imageData: Data, topK: Int) async throws -> (
+            status: String,
+            candidates: [TonieCandidate],
+            message: String?
+        ) {
+            try await recognizeHandler(imageData, topK)
+        }
+
+        func fetchPricingOrThrow(tonieId: String, condition: TonieCondition) async throws -> PriceTriple {
+            try await pricingHandler(tonieId, condition)
+        }
+
+        func addWatchlistItem(token: String, tonieId: String, title: String, condition: TonieCondition) async throws -> WatchItem {
+            try await addHandler(token, tonieId, title, condition)
+        }
+    }
+
     private struct MockWatchlistAPI: WatchlistAPI {
         var fetchHandler: (String, Bool) async throws -> [WatchItem]
         var addHandler: (String, String, String, TonieCondition) async throws -> WatchItem
@@ -83,6 +110,101 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
 
         XCTAssertNil(vm.pricing)
         XCTAssertEqual(vm.errorMessage, "tonie not found")
+    }
+
+    func testPricingViewModel_choose_setsPricingLoadingAndLoadsPrices() async {
+        let candidate = TonieCandidate(id: "tn_123", title: "Hexe Lilli", score: 0.92)
+        let api = MockPricingFlowAPI(
+            resolveHandler: { _ in [candidate] },
+            recognizeHandler: { _, _ in ("not_found", [], nil) },
+            pricingHandler: { _, _ in
+                try await Task.sleep(nanoseconds: 120_000_000)
+                return PriceTriple(
+                    instant: 10,
+                    fair: 12,
+                    patience: 15,
+                    sampleSize: 8,
+                    effectiveSampleSize: 7.4,
+                    source: "test",
+                    qualityTier: "medium",
+                    confidenceScore: 0.65
+                )
+            },
+            addHandler: { _, _, _, _ in
+                WatchItem(
+                    id: "1",
+                    backendId: 1,
+                    tonieId: "tn_123",
+                    title: "Hexe Lilli",
+                    condition: .good,
+                    lastFairPrice: 12
+                )
+            }
+        )
+
+        let vm = PricingViewModel(api: api)
+        vm.choose(candidate)
+
+        XCTAssertTrue(vm.isPricingLoading)
+        XCTAssertEqual(vm.infoText, "Preisvorschlag wird geladen …")
+
+        try? await Task.sleep(nanoseconds: 220_000_000)
+
+        XCTAssertFalse(vm.isPricingLoading)
+        XCTAssertNil(vm.errorText)
+        XCTAssertEqual(vm.prices?.fair, 12)
+    }
+
+    func testPricingViewModel_search_overwritesResultsWithLatestRequest() async {
+        let first = TonieCandidate(id: "tn_old", title: "Old", score: 0.2)
+        let second = TonieCandidate(id: "tn_new", title: "New", score: 0.9)
+
+        let api = MockPricingFlowAPI(
+            resolveHandler: { query in
+                if query == "alt" {
+                    try await Task.sleep(nanoseconds: 220_000_000)
+                    return [first]
+                }
+
+                try await Task.sleep(nanoseconds: 40_000_000)
+                return [second]
+            },
+            recognizeHandler: { _, _ in ("not_found", [], nil) },
+            pricingHandler: { _, _ in
+                PriceTriple(
+                    instant: 10,
+                    fair: 11,
+                    patience: 13,
+                    sampleSize: 5,
+                    effectiveSampleSize: 5,
+                    source: "test",
+                    qualityTier: "low",
+                    confidenceScore: 0.3
+                )
+            },
+            addHandler: { _, _, _, _ in
+                WatchItem(
+                    id: "1",
+                    backendId: 1,
+                    tonieId: "tn",
+                    title: "t",
+                    condition: .good,
+                    lastFairPrice: 11
+                )
+            }
+        )
+
+        let vm = PricingViewModel(api: api)
+        vm.query = "alt"
+        vm.search()
+
+        vm.query = "neu"
+        vm.search()
+
+        try? await Task.sleep(nanoseconds: 320_000_000)
+
+        XCTAssertEqual(vm.candidates.count, 1)
+        XCTAssertEqual(vm.candidates.first?.id, "tn_new")
     }
 
     func testWatchlistViewModel_add_setsErrorMessageOnAPIError() async {
