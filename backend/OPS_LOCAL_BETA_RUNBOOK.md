@@ -12,6 +12,12 @@ cp .env.example .env
 mkdir -p backups logs
 ```
 
+Nach jedem Pull mit Backend-Änderungen:
+```bash
+cd backend
+./.venv/bin/python -m pip install -r requirements.txt
+```
+
 ## Auth mode quick note (Local vs Production)
 
 - Local dev/beta currently uses `AUTH_MODE=local`.

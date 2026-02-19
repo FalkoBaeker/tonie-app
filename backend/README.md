@@ -37,6 +37,12 @@ cp .env.example .env
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8787
 ```
 
+Nach jedem `git pull` mit Backend-Dependency-Änderungen:
+```bash
+cd backend
+./.venv/bin/python -m pip install -r requirements.txt
+```
+
 Health:
 - `GET http://127.0.0.1:8787/api/health`
   - includes current market-refresh run summary
