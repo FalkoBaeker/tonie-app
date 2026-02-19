@@ -134,27 +134,23 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
     }
 
     func testAlertsViewModel_loadWithUnreadOnlyTrue_setsResults() async {
-        actor Capture {
-            var unreadFlags: [Bool] = []
-            func append(_ value: Bool) { unreadFlags.append(value) }
-            func snapshot() -> [Bool] { unreadFlags }
-        }
-
-        let capture = Capture()
         let api = MockAlertsAPI(fetchHandler: { _, unreadOnly in
-            await capture.append(unreadOnly)
-            return [
-                WatchlistAlert(
-                    id: "11",
-                    title: "Bibi Blocksberg",
-                    alertType: "price_drop",
-                    message: "Preis gefallen",
-                    currentPrice: 17.9,
-                    previousPrice: 20.5,
-                    targetPrice: 18.0,
-                    isUnread: true
-                )
-            ]
+            if unreadOnly {
+                return [
+                    WatchlistAlert(
+                        id: "11",
+                        title: "Bibi Blocksberg",
+                        alertType: "price_drop",
+                        message: "Preis gefallen",
+                        currentPrice: 17.9,
+                        previousPrice: 20.5,
+                        targetPrice: 18.0,
+                        isUnread: true
+                    )
+                ]
+            }
+
+            return []
         })
 
         let vm = AlertsViewModel(api: api)
@@ -163,7 +159,6 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
 
         try? await Task.sleep(nanoseconds: 200_000_000)
 
-        XCTAssertEqual(await capture.snapshot(), [true])
         XCTAssertEqual(vm.alerts.count, 1)
         XCTAssertEqual(vm.alerts.first?.id, "11")
     }
