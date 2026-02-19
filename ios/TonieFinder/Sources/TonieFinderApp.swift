@@ -983,6 +983,12 @@ enum AppConfig {
         return deviceDefault
         #endif
     }
+
+    static var appVersionBuild: String {
+        let version = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "-"
+        let build = (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "-"
+        return "\(version) (\(build))"
+    }
 }
 
 // MARK: - API Client
@@ -1993,6 +1999,9 @@ struct AccountView: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         Text("Debug Log: \(AppConfig.debugLoggingEnabled ? "on" : "off")")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Text("App Version: \(AppConfig.appVersionBuild)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }

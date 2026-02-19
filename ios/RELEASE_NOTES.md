@@ -1,18 +1,18 @@
 # Tonie Finder – Release Notes (RC Prep)
 
-Version: 0.1.1  
-Build: 2
+Version: 0.1.2  
+Build: 3
 
 ## Scope
 
-Release-readiness only. No new product features.
+TestFlight RC packaging/readiness only. No new product features.
 
 ## Highlights
 
-- Observability hooks for API/non-fatal diagnostics (debug gated)
-- Improved backend health reporting with DB readiness
-- SQLite backup/restore operational scripts + docs
-- MVP freeze cleanup and smoke checklist aligned
+- Release candidate version/build bumped for TestFlight (`0.1.2 (3)`)
+- Distribution handoff doc added (`ios/TESTFLIGHT_RC.md`)
+- Account diagnostics now show app version/build stamp
+- Existing observability + smoke checklist retained
 
 ## Known issues (current)
 
@@ -25,4 +25,4 @@ Release-readiness only. No new product features.
 2. Pricing resolve + pricing load + retry on backend error
 3. Watchlist add/delete/refresh behavior
 4. Alerts list + unread toggle
-5. Diagnostics section reflects base URL/session/debug log state
+5. Diagnostics section reflects base URL/session/debug log state + version/build stamp
