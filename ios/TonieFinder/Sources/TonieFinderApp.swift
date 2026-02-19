@@ -1,3 +1,4 @@
+import OSLog
 import PhotosUI
 import Security
 import SwiftUI
@@ -192,15 +193,22 @@ struct DiagnosticsEvent {
 }
 
 final class DiagnosticsReporter {
+    private static let osLogger = Logger(subsystem: "com.falko.toniefinder", category: "Diagnostics")
+
     private let isEnabled: () -> Bool
     private let logger: (String) -> Void
+    private let unifiedLogger: (String) -> Void
 
     init(
         isEnabled: @escaping () -> Bool = { AppConfig.debugLoggingEnabled },
-        logger: @escaping (String) -> Void = { print($0) }
+        logger: @escaping (String) -> Void = { print($0) },
+        unifiedLogger: @escaping (String) -> Void = { message in
+            DiagnosticsReporter.osLogger.log("\(message, privacy: .public)")
+        }
     ) {
         self.isEnabled = isEnabled
         self.logger = logger
+        self.unifiedLogger = unifiedLogger
     }
 
     func reportAPIError(
@@ -253,7 +261,9 @@ final class DiagnosticsReporter {
             ? ""
             : " context=\(sanitized.context.map { "\($0.key)=\($0.value)" }.sorted().joined(separator: ","))"
 
-        logger(base + pathPart + statusPart + messagePart + contextPart)
+        let line = base + pathPart + statusPart + messagePart + contextPart
+        logger(line)
+        unifiedLogger(line)
     }
 
     func sanitize(_ event: DiagnosticsEvent) -> DiagnosticsEvent {
