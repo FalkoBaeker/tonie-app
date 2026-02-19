@@ -17,6 +17,12 @@ class Settings(BaseSettings):
     password_iterations: int = 120_000
     session_ttl_hours: int = 24 * 30
 
+    auth_mode: str = "local"  # local | external
+    auth_issuer: str = ""
+    auth_audience: str = ""
+    auth_jwks_url: str = ""
+    auth_require_verified_email: bool = True
+
     market_cache_ttl_minutes: int = 360
     market_history_days: int = 180
     market_min_samples: int = 5

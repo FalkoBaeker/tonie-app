@@ -10,6 +10,7 @@ from app.services.market_refresh import (
     run_refresh_now,
     start_refresh_background,
 )
+from app.services.external_auth import ExternalAuthError, verify_external_jwt
 from app.services.persistence import (
     authenticate_user,
     create_session,
@@ -21,6 +22,7 @@ from app.services.persistence import (
     get_fresh_listing_counts,
     get_market_cache_status,
     get_market_coverage_report,
+    get_or_create_user_by_email,
     get_pricing_quality_status,
     get_user_by_token,
     list_refresh_runs,
@@ -440,8 +442,55 @@ def _pricing_quality_status_response(
     )
 
 
+def _external_email_from_claims(claims: dict) -> str | None:
+    raw_email = claims.get("email")
+    if isinstance(raw_email, str) and raw_email.strip():
+        return raw_email.strip().lower()
+
+    sub = claims.get("sub")
+    if isinstance(sub, str) and sub.strip():
+        fallback = f"external_{sub.strip()}@external.local"
+        return fallback.lower()
+
+    return None
+
+
+def _is_verified_email(claims: dict) -> bool:
+    value = claims.get("email_verified")
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.strip().lower() in {"true", "1", "yes"}
+    if isinstance(value, int):
+        return value == 1
+    return False
+
+
 async def require_user(authorization: str | None = Header(default=None)) -> dict:
     token = _extract_bearer(authorization)
+
+    if settings.auth_mode.strip().lower() == "external":
+        if not token:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized")
+
+        try:
+            claims = verify_external_jwt(token)
+        except ExternalAuthError as exc:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=str(exc)) from exc
+
+        if settings.auth_require_verified_email and not _is_verified_email(claims):
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="email not verified")
+
+        email = _external_email_from_claims(claims)
+        if not email:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="external token missing email")
+
+        user = get_or_create_user_by_email(email)
+        if not user:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="external user provisioning failed")
+
+        return user
+
     user = get_user_by_token(token)
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized")
@@ -678,6 +727,9 @@ async def pricing(
 
 @router.post("/auth/register", response_model=AuthResponse)
 async def register(payload: AuthRequest) -> AuthResponse:
+    if settings.auth_mode.strip().lower() == "external":
+        raise HTTPException(status_code=400, detail="local auth disabled in external mode")
+
     email = payload.email.strip().lower()
     if "@" not in email:
         raise HTTPException(status_code=400, detail="invalid email")
@@ -696,6 +748,9 @@ async def register(payload: AuthRequest) -> AuthResponse:
 
 @router.post("/auth/login", response_model=AuthResponse)
 async def login(payload: AuthRequest) -> AuthResponse:
+    if settings.auth_mode.strip().lower() == "external":
+        raise HTTPException(status_code=400, detail="local auth disabled in external mode")
+
     email = payload.email.strip().lower()
     user = authenticate_user(email=email, password=payload.password)
     if not user:

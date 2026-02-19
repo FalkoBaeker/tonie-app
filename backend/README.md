@@ -3,11 +3,29 @@
 Ops/Runbook (lokale WLAN-Beta):
 - `OPS_LOCAL_BETA_RUNBOOK.md` (Start/Stop/Logs/Health/Preflight/Auto-Start/Backup/Restore)
 - `OPS_BACKUP_RESTORE.md` (DB-spezifische Details)
+- `DEPLOYMENT.md` (cost-first cloud deployment path)
+
+Architecture/Migration docs:
+- `../docs/adr/0001-auth-and-backend-target.md`
+- `../docs/auth-backend-migration-plan.md`
 
 Ops Scripts:
 - `./scripts/backend_status.sh` (Health-Status: UP/DOWN)
 - `./scripts/backend_smoke.sh` (Happy-Path Smoke)
 - `./scripts/preflight_beta.sh` (Status + Smoke + Port-Hinweis)
+
+Auth modes:
+- `AUTH_MODE=local` (default): current local email/password + session token flow
+- `AUTH_MODE=external`: validates provider JWT (JWKS) for protected endpoints
+  - required envs: `AUTH_JWKS_URL`
+  - recommended envs: `AUTH_ISSUER`, `AUTH_AUDIENCE`
+  - optional strictness: `AUTH_REQUIRE_VERIFIED_EMAIL=true`
+
+Production direction (cost-first):
+- Auth: Supabase Auth (Email Verify + Google)
+- API hosting: Render or Railway (prefer cheapest stable option)
+- DB: managed Postgres (Supabase/Neon free tier)
+- Vercel is not the primary recommendation for current FastAPI backend shape
 
 ## Run local
 ```bash

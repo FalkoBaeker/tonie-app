@@ -12,6 +12,16 @@ cp .env.example .env
 mkdir -p backups logs
 ```
 
+## Auth mode quick note (Local vs Production)
+
+- Local dev/beta currently uses `AUTH_MODE=local`.
+- Production target is `AUTH_MODE=external` with provider JWT validation via JWKS.
+- Umschalten:
+  - setze in `.env`: `AUTH_MODE=external`
+  - setze `AUTH_JWKS_URL` (+ optional `AUTH_ISSUER`, `AUTH_AUDIENCE`)
+  - optional strict: `AUTH_REQUIRE_VERIFIED_EMAIL=true`
+- Rollback: `AUTH_MODE=local` und Backend neu starten.
+
 ## Start / Stop / Logs
 
 ### Start (Foreground, manuell)

@@ -252,6 +252,32 @@ def authenticate_user(email: str, password: str) -> dict | None:
     return {"id": int(row["id"]), "email": str(row["email"])}
 
 
+def get_or_create_user_by_email(email: str) -> dict | None:
+    normalized = _normalize_email(email)
+    if not normalized:
+        return None
+
+    with _connect() as conn:
+        row = conn.execute(
+            "SELECT id, email FROM users WHERE email = ?",
+            (normalized,),
+        ).fetchone()
+        if row:
+            return {"id": int(row["id"]), "email": str(row["email"])}
+
+        # External-auth users do not use local password login.
+        placeholder_password = secrets.token_urlsafe(32)
+        pw_hash = _hash_password(placeholder_password)
+        now = _now_iso()
+
+        cursor = conn.execute(
+            "INSERT INTO users(email, password_hash, created_at) VALUES (?, ?, ?)",
+            (normalized, pw_hash, now),
+        )
+
+    return {"id": int(cursor.lastrowid), "email": normalized}
+
+
 def create_session(user_id: int) -> tuple[str, str]:
     token = secrets.token_urlsafe(32)
     now = datetime.now(UTC)
