@@ -6,6 +6,8 @@ backend/.venv/
 # Local databases / outputs
 backend/*.db
 backend/outputs/
+backend/backups/
+backend/logs/
 COVERAGE_REPORT.md
 
 # macOS

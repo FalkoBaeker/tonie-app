@@ -1,5 +1,9 @@
 # Tonie Finder Backend
 
+Ops/Runbook (lokale WLAN-Beta):
+- `OPS_LOCAL_BETA_RUNBOOK.md` (Start/Stop/Logs/Health/Auto-Start/Backup/Restore)
+- `OPS_BACKUP_RESTORE.md` (DB-spezifische Details)
+
 ## Run local
 ```bash
 cd backend
