@@ -60,6 +60,16 @@ Prüft:
 4. `/api/tonies/resolve`
 5. `/api/pricing/{tonie_id}`
 
+### Preflight vor Feldtest
+```bash
+cd backend
+./scripts/preflight_beta.sh
+```
+
+Exit Codes:
+- `0` = alle Checks ok
+- `!=0` = mindestens ein Check fehlgeschlagen
+
 ## Backup / Restore
 
 ### Backup erstellen
@@ -100,11 +110,40 @@ cd backend
 ./ops/launchd/uninstall_launchd_service.sh
 ```
 
+## Wenn etwas kaputt ist (Failure Playbook)
+
+### 1) Port 8787 belegt / mehrere uvicorn-Prozesse
+```bash
+lsof -nP -iTCP:8787 -sTCP:LISTEN
+pkill -f "uvicorn app.main:app" || true
+./scripts/backend_status.sh
+```
+
+### 2) Health DOWN
+```bash
+./scripts/backend_status.sh
+./ops/launchd/install_launchd_service.sh
+./scripts/backend_status.sh
+```
+
+### 3) launchd service nicht geladen / failed
+```bash
+launchctl print gui/$(id -u)/com.falko.toniefinder.backend | head -n 30
+./ops/launchd/uninstall_launchd_service.sh
+./ops/launchd/install_launchd_service.sh
+```
+
+### 4) DB-Stand zurücksetzen (Restore)
+```bash
+ls -lt backups | head
+./.venv/bin/python scripts/db_restore.py --in backups/<backup-file>.db
+./scripts/backend_status.sh
+```
+
 ## Schnellablauf für Alltag
 
 ```bash
 cd backend
 ./ops/launchd/install_launchd_service.sh
-./scripts/backend_status.sh
-./scripts/backend_smoke.sh
+./scripts/preflight_beta.sh
 ```

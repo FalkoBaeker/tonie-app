@@ -1,8 +1,13 @@
 # Tonie Finder Backend
 
 Ops/Runbook (lokale WLAN-Beta):
-- `OPS_LOCAL_BETA_RUNBOOK.md` (Start/Stop/Logs/Health/Auto-Start/Backup/Restore)
+- `OPS_LOCAL_BETA_RUNBOOK.md` (Start/Stop/Logs/Health/Preflight/Auto-Start/Backup/Restore)
 - `OPS_BACKUP_RESTORE.md` (DB-spezifische Details)
+
+Ops Scripts:
+- `./scripts/backend_status.sh` (Health-Status: UP/DOWN)
+- `./scripts/backend_smoke.sh` (Happy-Path Smoke)
+- `./scripts/preflight_beta.sh` (Status + Smoke + Port-Hinweis)
 
 ## Run local
 ```bash
