@@ -22,6 +22,10 @@ Collect values:
 - JWKS URL: `https://<project-ref>.supabase.co/auth/v1/.well-known/jwks.json`
 - Audience: `authenticated` (default for Supabase access tokens)
 
+Important:
+- Supabase access tokens are commonly signed with ES256.
+- Ensure backend dependency includes crypto support (`PyJWT[crypto]`) so token verification works in staging/prod.
+
 ## 2) Deploy staging backend (Render)
 
 Use `backend/render.yaml` or manual setup with:

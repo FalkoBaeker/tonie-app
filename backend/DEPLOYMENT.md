@@ -30,6 +30,10 @@ Supabase mapping (recommended):
 - `AUTH_ISSUER=https://<project-ref>.supabase.co`
 - `AUTH_AUDIENCE=authenticated`
 
+Important:
+- Supabase JWTs are typically ES256; backend runtime must include `cryptography`.
+- This repo ensures that via `PyJWT[crypto]` in `requirements.txt`.
+
 ## Platform comparison (short)
 
 - **Render**: easy FastAPI deploy, free plan exists, can sleep on inactivity.
