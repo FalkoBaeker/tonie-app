@@ -31,4 +31,12 @@ final class APIErrorTests: XCTestCase {
             XCTAssertEqual(mapped, .decoding)
         }
     }
+
+    func testDebugLoggingToggleParsing() {
+        XCTAssertTrue(AppConfig.debugLoggingEnabled(from: "1", plistValue: nil))
+        XCTAssertTrue(AppConfig.debugLoggingEnabled(from: "true", plistValue: nil))
+        XCTAssertTrue(AppConfig.debugLoggingEnabled(from: nil, plistValue: true))
+        XCTAssertFalse(AppConfig.debugLoggingEnabled(from: nil, plistValue: nil))
+        XCTAssertFalse(AppConfig.debugLoggingEnabled(from: "0", plistValue: nil))
+    }
 }

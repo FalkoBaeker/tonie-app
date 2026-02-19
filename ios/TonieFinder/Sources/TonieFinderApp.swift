@@ -311,6 +311,8 @@ final class PricingViewModel: ObservableObject {
     private var priceTask: Task<Void, Never>?
 
     func search() {
+        if isLoading { return }
+
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !q.isEmpty else { return }
 
@@ -345,6 +347,8 @@ final class PricingViewModel: ObservableObject {
     }
 
     func recognizePhoto(_ imageData: Data) {
+        if isLoading { return }
+
         searchTask?.cancel()
         priceTask?.cancel()
 
@@ -398,6 +402,7 @@ final class PricingViewModel: ObservableObject {
         selected = candidate
         errorText = nil
         infoText = nil
+        prices = nil
 
         priceTask?.cancel()
 
@@ -408,39 +413,26 @@ final class PricingViewModel: ObservableObject {
             defer { priceTask = nil }
 
             do {
-                if let backendPrices = try await api.fetchPricing(tonieId: selectedId, condition: selectedCondition) {
-                    guard !Task.isCancelled, selected?.id == selectedId else { return }
-                    prices = backendPrices
-                    return
-                }
+                let backendPrices = try await api.fetchPricingOrThrow(
+                    tonieId: selectedId,
+                    condition: selectedCondition
+                )
+
+                guard !Task.isCancelled, selected?.id == selectedId else { return }
+                prices = backendPrices
             } catch {
-                // fall through to local fallback
+                guard !Task.isCancelled, selected?.id == selectedId else { return }
+                prices = nil
+                errorText = APIError.map(error).userMessage
             }
+        }
+    }
 
-            guard !Task.isCancelled, selected?.id == selectedId else { return }
-
-            let base = max(4.0, 8.0 + (candidate.score * 20.0))
-            let conditionFactor: Double
-            switch selectedCondition {
-            case .ovp: conditionFactor = 1.35
-            case .newOpen: conditionFactor = 1.20
-            case .veryGood: conditionFactor = 1.00
-            case .good: conditionFactor = 0.90
-            case .played: conditionFactor = 0.75
-            case .defective: conditionFactor = 0.35
-            }
-
-            let fair = (base * conditionFactor).rounded(to: 2)
-            prices = PriceTriple(
-                instant: (fair * 0.85).rounded(to: 2),
-                fair: fair,
-                patience: (fair * 1.15).rounded(to: 2),
-                sampleSize: nil,
-                effectiveSampleSize: nil,
-                source: "local_fallback",
-                qualityTier: "low",
-                confidenceScore: 0.05
-            )
+    func retryLastAction() {
+        if let selected {
+            choose(selected)
+        } else {
+            search()
         }
     }
 
@@ -480,6 +472,7 @@ final class WatchlistViewModel: ObservableObject {
 
     private let api: WatchlistAPI
     private var loadTask: Task<Void, Never>?
+    private var lastRefreshPricesRequested = false
 
     private let localFallback: [WatchItem] = [
         WatchItem(
@@ -505,12 +498,13 @@ final class WatchlistViewModel: ObservableObject {
     }
 
     func load(authToken: String?, refreshPrices: Bool = false) {
+        lastRefreshPricesRequested = refreshPrices
         loadTask?.cancel()
 
         guard let authToken else {
             items = localFallback
             errorText = nil
-            infoText = "Lokale Watchlist (kein Backend-Login)."
+            infoText = "Lokaler Modus (kein Backend-Login)."
             return
         }
 
@@ -537,18 +531,15 @@ final class WatchlistViewModel: ObservableObject {
                 }
             } catch {
                 guard !Task.isCancelled else { return }
-                items = localFallback
                 let apiError = APIError.map(error)
-                if refreshPrices, case .conflict = apiError {
-                    errorText = "Preisaktualisierung läuft bereits. Bitte gleich erneut versuchen."
-                } else {
-                    errorText = apiError.userMessage
-                }
+                errorText = apiError.userMessage
             }
         }
     }
 
     func addItem(authToken: String?, tonieId: String, title: String, condition: TonieCondition) async -> Bool {
+        if isLoading { return false }
+
         guard let authToken else {
             errorText = "Bitte zuerst einloggen, um die Watchlist zu synchronisieren."
             return false
@@ -583,6 +574,10 @@ final class WatchlistViewModel: ObservableObject {
         }
     }
 
+    func retry(authToken: String?) {
+        load(authToken: authToken, refreshPrices: lastRefreshPricesRequested)
+    }
+
     func remove(item: WatchItem, authToken: String?) {
         guard let backendId = item.backendId, let authToken else {
             items.removeAll { $0.id == item.id }
@@ -615,13 +610,17 @@ final class AlertsViewModel: ObservableObject {
         self.api = api
     }
 
+    func retry(authToken: String?) {
+        load(authToken: authToken)
+    }
+
     func load(authToken: String?) {
         loadTask?.cancel()
 
         guard let authToken else {
             alerts = []
             errorText = nil
-            infoText = "Alerts sind nur mit Backend-Login verfügbar."
+            infoText = "Lokaler Modus (kein Backend-Login) – Alerts nicht verfügbar."
             return
         }
 
@@ -720,6 +719,32 @@ final class KeychainTokenStore {
 enum AppConfig {
     private static let simulatorDefault = "http://127.0.0.1:8787/api"
     private static let deviceDefault = "http://192.168.178.100:8787/api"
+
+    static func debugLoggingEnabled(from envValue: String?, plistValue: Any?) -> Bool {
+        let envNormalized = envValue?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        if let envNormalized, !envNormalized.isEmpty {
+            return ["1", "true", "yes", "on"].contains(envNormalized)
+        }
+
+        if let boolValue = plistValue as? Bool {
+            return boolValue
+        }
+
+        if let stringValue = plistValue as? String {
+            return ["1", "true", "yes", "on"].contains(
+                stringValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            )
+        }
+
+        return false
+    }
+
+    static var debugLoggingEnabled: Bool {
+        debugLoggingEnabled(
+            from: ProcessInfo.processInfo.environment["TF_DEBUG_LOG"],
+            plistValue: Bundle.main.object(forInfoDictionaryKey: "TF_DEBUG_LOG")
+        )
+    }
 
     static var apiBaseURL: String {
         if let env = ProcessInfo.processInfo.environment["TF_API_BASE_URL"], !env.isEmpty {
@@ -861,6 +886,34 @@ final class APIClient {
         URL(string: "\(baseURL)\(path)")
     }
 
+    private func debugLog(_ message: String) {
+        guard AppConfig.debugLoggingEnabled else { return }
+        print("[TF API] \(message)")
+    }
+
+    private func data(for request: URLRequest, pathForLog: String) async throws -> (Data, URLResponse) {
+        let method = request.httpMethod ?? "GET"
+        debugLog("→ \(method) \(pathForLog)")
+        let (data, response) = try await URLSession.shared.data(for: request)
+        if let http = response as? HTTPURLResponse {
+            debugLog("← \(method) \(pathForLog) [\(http.statusCode)]")
+        } else {
+            debugLog("← \(method) \(pathForLog) [non-http]")
+        }
+        return (data, response)
+    }
+
+    private func data(from url: URL, pathForLog: String) async throws -> (Data, URLResponse) {
+        debugLog("→ GET \(pathForLog)")
+        let (data, response) = try await URLSession.shared.data(from: url)
+        if let http = response as? HTTPURLResponse {
+            debugLog("← GET \(pathForLog) [\(http.statusCode)]")
+        } else {
+            debugLog("← GET \(pathForLog) [non-http]")
+        }
+        return (data, response)
+    }
+
     private func extractDetail(from data: Data?) -> String? {
         guard let data else { return nil }
         return (try? JSONDecoder().decode(APIErrorPayload.self, from: data))?.detail
@@ -893,7 +946,7 @@ final class APIClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONSerialization.data(withJSONObject: ["query": query])
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await data(for: request, pathForLog: "/tonies/resolve")
         try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode(ResolveResponse.self, from: data)
@@ -921,7 +974,8 @@ final class APIClient {
         body.append(Data("\r\n--\(boundary)--\r\n".utf8))
         request.httpBody = body
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let requestPath = "/tonies/recognize?top_k=\(topK)"
+        let (data, response) = try await data(for: request, pathForLog: requestPath)
         try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode(RecognizeResponse.self, from: data)
@@ -941,7 +995,8 @@ final class APIClient {
             throw APIError.invalidURL
         }
 
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let path = "/pricing/\(tonieId)?condition=\(condition.apiValue)"
+        let (data, response) = try await data(from: url, pathForLog: path)
         try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode(PricingResponse.self, from: data)
@@ -973,7 +1028,7 @@ final class APIClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(AuthRequest(email: email, password: password))
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await data(for: request, pathForLog: path)
         try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode(AuthResponse.self, from: data)
@@ -992,7 +1047,7 @@ final class APIClient {
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await data(for: request, pathForLog: "/auth/me")
         try ensureSuccess(response, data: data)
 
         return try JSONDecoder().decode(UserDTO.self, from: data)
@@ -1005,7 +1060,7 @@ final class APIClient {
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        _ = try await URLSession.shared.data(for: request)
+        _ = try await data(for: request, pathForLog: "/auth/logout")
     }
 
     func fetchWatchlist(token: String, refreshPrices: Bool = false) async throws -> [WatchItem] {
@@ -1016,7 +1071,7 @@ final class APIClient {
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await data(for: request, pathForLog: path)
         try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode([WatchlistItemDTO].self, from: data)
@@ -1040,7 +1095,7 @@ final class APIClient {
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await data(for: request, pathForLog: path)
         try ensureSuccess(response, data: data)
 
         let decoded = try JSONDecoder().decode([WatchlistAlertDTO].self, from: data)
@@ -1078,7 +1133,7 @@ final class APIClient {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = try JSONEncoder().encode(payload)
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await data(for: request, pathForLog: "/watchlist")
         try ensureSuccess(response, data: data)
 
         let item = try JSONDecoder().decode(WatchlistItemDTO.self, from: data)
@@ -1099,7 +1154,7 @@ final class APIClient {
         request.httpMethod = "DELETE"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await data(for: request, pathForLog: "/watchlist/\(itemId)")
         try ensureSuccess(response, data: data)
     }
 }
@@ -1242,6 +1297,7 @@ struct PricingView: View {
                                 }
                                 .buttonStyle(.borderedProminent)
                                 .tint(TFColor.tonieRed)
+                                .disabled(vm.isLoading)
 
                                 PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
                                     Label("Foto erkennen", systemImage: "camera.viewfinder")
@@ -1249,17 +1305,32 @@ struct PricingView: View {
                                 }
                                 .buttonStyle(.bordered)
                                 .tint(TFColor.silver)
+                                .disabled(vm.isLoading)
 
                                 Text("Fotoerkennung v1: Bei Unsicherheit bitte Kandidat manuell bestätigen.")
                                     .font(.footnote)
                                     .foregroundStyle(.secondary)
+
+                                if auth.authToken == nil {
+                                    Text("Lokaler Modus: nicht eingeloggt. Watchlist/Alerts sind eingeschränkt.")
+                                        .font(.footnote)
+                                        .foregroundStyle(.secondary)
+                                }
                             }
                         }
 
                         if let errorText = vm.errorText {
                             Card {
-                                Text(errorText)
-                                    .foregroundStyle(.red)
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text(errorText)
+                                        .foregroundStyle(.red)
+
+                                    Button("Erneut versuchen") {
+                                        vm.retryLastAction()
+                                    }
+                                    .buttonStyle(.bordered)
+                                    .disabled(vm.isLoading)
+                                }
                             }
                         }
 
@@ -1351,10 +1422,6 @@ struct PricingView: View {
                                         Text("Fallback: zu wenig aktuelle Verkäufe")
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
-                                    } else if p.source == "local_fallback" {
-                                        Text("Fallback-Schätzung (Backend nicht erreichbar)")
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
                                     }
 
                                     Button {
@@ -1436,9 +1503,17 @@ struct WatchlistView: View {
                 }
 
                 if let errorText = vm.errorText {
-                    Text(errorText)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(errorText)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+
+                        Button("Erneut versuchen") {
+                            vm.retry(authToken: auth.authToken)
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(vm.isLoading)
+                    }
                 }
 
                 if let infoText = vm.infoText, !infoText.isEmpty {
@@ -1551,15 +1626,24 @@ struct AlertsView: View {
         NavigationStack {
             List {
                 Toggle("Nur ungelesene", isOn: $vm.unreadOnly)
+                    .disabled(vm.isLoading)
 
                 if vm.isLoading {
                     ProgressView("Lade Alerts …")
                 }
 
                 if let errorText = vm.errorText {
-                    Text(errorText)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(errorText)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+
+                        Button("Erneut versuchen") {
+                            vm.retry(authToken: auth.authToken)
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(vm.isLoading)
+                    }
                 }
 
                 if let infoText = vm.infoText, !infoText.isEmpty {
@@ -1636,6 +1720,22 @@ struct AccountView: View {
                             .foregroundStyle(.secondary)
 
                         Text(auth.authToken == nil ? "Modus: lokal" : "Modus: Backend-Login")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                Card {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Diagnostics")
+                            .font(.headline)
+                        Text("Base URL: \(AppConfig.apiBaseURL)")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Text("Session: \(auth.authToken == nil ? "logged out" : "logged in")")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Text("Debug Log: \(AppConfig.debugLoggingEnabled ? "on" : "off")")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }

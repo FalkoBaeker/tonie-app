@@ -133,6 +133,31 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
         XCTAssertEqual(vm.items.first?.id, "42")
     }
 
+    func testWatchlistViewModel_loadWithAuthError_doesNotInjectLocalFallback() async {
+        let api = MockWatchlistAPI(
+            fetchHandler: { _, _ in throw URLError(.notConnectedToInternet) },
+            addHandler: { _, _, _, _ in
+                WatchItem(
+                    id: "unused",
+                    backendId: nil,
+                    tonieId: "unused",
+                    title: "unused",
+                    condition: .good,
+                    lastFairPrice: 0
+                )
+            },
+            deleteHandler: { _, _ in }
+        )
+
+        let vm = WatchlistViewModel(api: api)
+        vm.load(authToken: "token", refreshPrices: false)
+
+        try? await Task.sleep(nanoseconds: 200_000_000)
+
+        XCTAssertEqual(vm.errorText, APIError.network.userMessage)
+        XCTAssertTrue(vm.items.isEmpty)
+    }
+
     func testAlertsViewModel_loadWithUnreadOnlyTrue_setsResults() async {
         let api = MockAlertsAPI(fetchHandler: { _, unreadOnly in
             if unreadOnly {
