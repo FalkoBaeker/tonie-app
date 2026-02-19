@@ -128,6 +128,32 @@ struct WatchItem: Identifiable {
     let lastFairPrice: Double
 }
 
+protocol WatchlistAPI {
+    func fetchWatchlist(token: String, refreshPrices: Bool) async throws -> [WatchItem]
+    func addWatchlistItem(token: String, tonieId: String, title: String, condition: TonieCondition) async throws -> WatchItem
+    func deleteWatchlistItem(token: String, itemId: Int) async throws
+}
+
+struct LiveWatchlistAPI: WatchlistAPI {
+    private let client: APIClient
+
+    init(client: APIClient = APIClient()) {
+        self.client = client
+    }
+
+    func fetchWatchlist(token: String, refreshPrices: Bool) async throws -> [WatchItem] {
+        try await client.fetchWatchlist(token: token, refreshPrices: refreshPrices)
+    }
+
+    func addWatchlistItem(token: String, tonieId: String, title: String, condition: TonieCondition) async throws -> WatchItem {
+        try await client.addWatchlistItem(token: token, tonieId: tonieId, title: title, condition: condition)
+    }
+
+    func deleteWatchlistItem(token: String, itemId: Int) async throws {
+        try await client.deleteWatchlistItem(token: token, itemId: itemId)
+    }
+}
+
 // MARK: - ViewModels
 
 enum AuthMode: String, CaseIterable, Identifiable {
@@ -425,7 +451,7 @@ final class WatchlistViewModel: ObservableObject {
     @Published var errorText: String?
     @Published var infoText: String?
 
-    private let api = APIClient()
+    private let api: WatchlistAPI
     private var loadTask: Task<Void, Never>?
 
     private let localFallback: [WatchItem] = [
@@ -446,6 +472,10 @@ final class WatchlistViewModel: ObservableObject {
             lastFairPrice: 14.90
         ),
     ]
+
+    init(api: WatchlistAPI = LiveWatchlistAPI()) {
+        self.api = api
+    }
 
     func load(authToken: String?, refreshPrices: Bool = false) {
         loadTask?.cancel()
@@ -481,8 +511,48 @@ final class WatchlistViewModel: ObservableObject {
             } catch {
                 guard !Task.isCancelled else { return }
                 items = localFallback
-                errorText = APIError.map(error).userMessage
+                let apiError = APIError.map(error)
+                if refreshPrices, case .conflict = apiError {
+                    errorText = "Preisaktualisierung läuft bereits. Bitte gleich erneut versuchen."
+                } else {
+                    errorText = apiError.userMessage
+                }
             }
+        }
+    }
+
+    func addItem(authToken: String?, tonieId: String, title: String, condition: TonieCondition) async -> Bool {
+        guard let authToken else {
+            errorText = "Bitte zuerst einloggen, um die Watchlist zu synchronisieren."
+            return false
+        }
+
+        let trimmedTonieId = tonieId.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !trimmedTonieId.isEmpty, !trimmedTitle.isEmpty else {
+            errorText = "Bitte Tonie-ID und Titel ausfüllen."
+            return false
+        }
+
+        isLoading = true
+        errorText = nil
+
+        defer { isLoading = false }
+
+        do {
+            let added = try await api.addWatchlistItem(
+                token: authToken,
+                tonieId: trimmedTonieId,
+                title: trimmedTitle,
+                condition: condition
+            )
+            items.insert(added, at: 0)
+            infoText = "Zur Watchlist hinzugefügt."
+            return true
+        } catch {
+            errorText = APIError.map(error).userMessage
+            return false
         }
     }
 
@@ -1193,6 +1263,15 @@ struct PriceRow: View {
 struct WatchlistView: View {
     @EnvironmentObject private var auth: AuthViewModel
     @StateObject private var vm = WatchlistViewModel()
+    @State private var isShowingAddSheet = false
+    @State private var addTonieId = ""
+    @State private var addTitle = ""
+    @State private var addCondition: TonieCondition = .good
+
+    private var isAddFormValid: Bool {
+        !addTonieId.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            && !addTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
 
     var body: some View {
         NavigationStack {
@@ -1209,6 +1288,12 @@ struct WatchlistView: View {
 
                 if let infoText = vm.infoText, !infoText.isEmpty {
                     Text(infoText)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                if vm.items.isEmpty, !vm.isLoading, vm.errorText == nil {
+                    Text("Noch keine Einträge in der Watchlist.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -1230,12 +1315,66 @@ struct WatchlistView: View {
             }
             .navigationTitle("Watchlist")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button {
+                        isShowingAddSheet = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+
                     if auth.authToken != nil {
                         Button("Preise aktualisieren") {
                             vm.load(authToken: auth.authToken, refreshPrices: true)
                         }
                         .disabled(vm.isLoading)
+                    }
+                }
+            }
+            .sheet(isPresented: $isShowingAddSheet) {
+                NavigationStack {
+                    Form {
+                        Section("Zur Watchlist hinzufügen") {
+                            TextField("tonieId", text: $addTonieId)
+                                .textInputAutocapitalization(.never)
+                                .autocorrectionDisabled()
+
+                            TextField("title", text: $addTitle)
+
+                            Picker("condition", selection: $addCondition) {
+                                ForEach(TonieCondition.allCases) { condition in
+                                    Text(condition.rawValue).tag(condition)
+                                }
+                            }
+                        }
+                    }
+                    .navigationTitle("Zur Watchlist hinzufügen")
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Abbrechen") {
+                                isShowingAddSheet = false
+                            }
+                        }
+
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Hinzufügen") {
+                                Task {
+                                    let added = await vm.addItem(
+                                        authToken: auth.authToken,
+                                        tonieId: addTonieId,
+                                        title: addTitle,
+                                        condition: addCondition
+                                    )
+
+                                    if added {
+                                        addTonieId = ""
+                                        addTitle = ""
+                                        addCondition = .good
+                                        isShowingAddSheet = false
+                                    }
+                                }
+                            }
+                            .disabled(!isAddFormValid || vm.isLoading)
+                        }
                     }
                 }
             }

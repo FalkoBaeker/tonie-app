@@ -16,6 +16,24 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
         }
     }
 
+    private struct MockWatchlistAPI: WatchlistAPI {
+        var fetchHandler: (String, Bool) async throws -> [WatchItem]
+        var addHandler: (String, String, String, TonieCondition) async throws -> WatchItem
+        var deleteHandler: (String, Int) async throws -> Void
+
+        func fetchWatchlist(token: String, refreshPrices: Bool) async throws -> [WatchItem] {
+            try await fetchHandler(token, refreshPrices)
+        }
+
+        func addWatchlistItem(token: String, tonieId: String, title: String, condition: TonieCondition) async throws -> WatchItem {
+            try await addHandler(token, tonieId, title, condition)
+        }
+
+        func deleteWatchlistItem(token: String, itemId: Int) async throws {
+            try await deleteHandler(token, itemId)
+        }
+    }
+
     func testResolveViewModel_setsErrorMessageOnNetworkError() async {
         let api = MockResolvePricingAPI(
             resolveHandler: { _ in throw URLError(.notConnectedToInternet) },
@@ -57,5 +75,53 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
 
         XCTAssertNil(vm.pricing)
         XCTAssertEqual(vm.errorMessage, "tonie not found")
+    }
+
+    func testWatchlistViewModel_add_setsErrorMessageOnAPIError() async {
+        let api = MockWatchlistAPI(
+            fetchHandler: { _, _ in [] },
+            addHandler: { _, _, _, _ in throw APIError.unauthorized(detail: nil) },
+            deleteHandler: { _, _ in }
+        )
+
+        let vm = WatchlistViewModel(api: api)
+        let added = await vm.addItem(
+            authToken: "token",
+            tonieId: "tn_123",
+            title: "Hexe Lilli",
+            condition: .good
+        )
+
+        XCTAssertFalse(added)
+        XCTAssertEqual(vm.errorText, APIError.unauthorized(detail: nil).userMessage)
+    }
+
+    func testWatchlistViewModel_add_success_insertsItem() async {
+        let addedItem = WatchItem(
+            id: "42",
+            backendId: 42,
+            tonieId: "tn_999",
+            title: "Bibi Blocksberg",
+            condition: .veryGood,
+            lastFairPrice: 19.5
+        )
+
+        let api = MockWatchlistAPI(
+            fetchHandler: { _, _ in [] },
+            addHandler: { _, _, _, _ in addedItem },
+            deleteHandler: { _, _ in }
+        )
+
+        let vm = WatchlistViewModel(api: api)
+        let added = await vm.addItem(
+            authToken: "token",
+            tonieId: "tn_999",
+            title: "Bibi Blocksberg",
+            condition: .veryGood
+        )
+
+        XCTAssertTrue(added)
+        XCTAssertEqual(vm.items.count, 1)
+        XCTAssertEqual(vm.items.first?.id, "42")
     }
 }
