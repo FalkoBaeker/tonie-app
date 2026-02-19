@@ -181,6 +181,167 @@ struct LiveAlertsAPI: AlertsAPI {
     }
 }
 
+struct DiagnosticsEvent {
+    let category: String
+    let flow: String
+    let endpointPath: String?
+    let statusCode: Int?
+    let errorType: String
+    let message: String?
+    let context: [String: String]
+}
+
+final class DiagnosticsReporter {
+    private let isEnabled: () -> Bool
+    private let logger: (String) -> Void
+
+    init(
+        isEnabled: @escaping () -> Bool = { AppConfig.debugLoggingEnabled },
+        logger: @escaping (String) -> Void = { print($0) }
+    ) {
+        self.isEnabled = isEnabled
+        self.logger = logger
+    }
+
+    func reportAPIError(
+        flow: String,
+        endpointPath: String?,
+        statusCode: Int?,
+        errorType: String,
+        message: String?,
+        context: [String: String] = [:]
+    ) {
+        let event = DiagnosticsEvent(
+            category: "api_error",
+            flow: flow,
+            endpointPath: endpointPath,
+            statusCode: statusCode,
+            errorType: errorType,
+            message: message,
+            context: context
+        )
+        report(event)
+    }
+
+    func reportNonFatal(
+        flow: String,
+        errorType: String,
+        message: String?,
+        context: [String: String] = [:]
+    ) {
+        let event = DiagnosticsEvent(
+            category: "non_fatal",
+            flow: flow,
+            endpointPath: nil,
+            statusCode: nil,
+            errorType: errorType,
+            message: message,
+            context: context
+        )
+        report(event)
+    }
+
+    func report(_ event: DiagnosticsEvent) {
+        guard isEnabled() else { return }
+
+        let sanitized = sanitize(event)
+        let base = "[TF Diagnostics] category=\(sanitized.category) flow=\(sanitized.flow) type=\(sanitized.errorType)"
+        let pathPart = sanitized.endpointPath.map { " path=\($0)" } ?? ""
+        let statusPart = sanitized.statusCode.map { " status=\($0)" } ?? ""
+        let messagePart = sanitized.message.map { " message=\($0)" } ?? ""
+        let contextPart = sanitized.context.isEmpty
+            ? ""
+            : " context=\(sanitized.context.map { "\($0.key)=\($0.value)" }.sorted().joined(separator: ","))"
+
+        logger(base + pathPart + statusPart + messagePart + contextPart)
+    }
+
+    func sanitize(_ event: DiagnosticsEvent) -> DiagnosticsEvent {
+        DiagnosticsEvent(
+            category: sanitizeText(event.category),
+            flow: sanitizeText(event.flow),
+            endpointPath: event.endpointPath.map(sanitizeText),
+            statusCode: event.statusCode,
+            errorType: sanitizeText(event.errorType),
+            message: event.message.map(sanitizeText),
+            context: sanitizeDictionary(event.context)
+        )
+    }
+
+    private func sanitizeDictionary(_ values: [String: String]) -> [String: String] {
+        var out: [String: String] = [:]
+        for (rawKey, rawValue) in values {
+            let lowered = rawKey.lowercased()
+            if lowered.contains("authorization")
+                || lowered.contains("token")
+                || lowered.contains("password")
+                || lowered.contains("email") {
+                continue
+            }
+
+            out[sanitizeText(rawKey)] = sanitizeText(rawValue)
+        }
+        return out
+    }
+
+    func sanitizeText(_ value: String) -> String {
+        var out = value
+
+        let patterns: [String] = [
+            "(?i)authorization\\s*[:=]\\s*bearer\\s+[^\\s,;]+",
+            "(?i)bearer\\s+[A-Za-z0-9\\-_.=]+",
+            "(?i)(token|access_token|auth_token)\\s*[:=]\\s*[^\\s,;]+",
+            "(?i)(password|passwd|pwd)\\s*[:=]\\s*[^\\s,;]+",
+            "(?i)[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}"
+        ]
+
+        for pattern in patterns {
+            out = out.replacingOccurrences(
+                of: pattern,
+                with: "[REDACTED]",
+                options: .regularExpression
+            )
+        }
+
+        return out
+    }
+}
+
+enum Diagnostics {
+    static var reporter = DiagnosticsReporter()
+
+    static func reportMappedError(
+        _ error: Error,
+        flow: String,
+        endpointPath: String? = nil,
+        context: [String: String] = [:]
+    ) -> APIError {
+        let mapped = APIError.map(error)
+
+        let statusCode: Int?
+        switch mapped {
+        case .unauthorized: statusCode = 401
+        case .forbidden: statusCode = 403
+        case .notFound: statusCode = 404
+        case .conflict: statusCode = 409
+        case .validation: statusCode = 422
+        case let .server(code, _): statusCode = code
+        default: statusCode = nil
+        }
+
+        reporter.reportAPIError(
+            flow: flow,
+            endpointPath: endpointPath,
+            statusCode: statusCode,
+            errorType: String(describing: mapped),
+            message: mapped.userMessage,
+            context: context
+        )
+
+        return mapped
+    }
+}
+
 // MARK: - ViewModels
 
 enum AuthMode: String, CaseIterable, Identifiable {
@@ -251,7 +412,12 @@ final class AuthViewModel: ObservableObject {
                 statusText = nil
                 tokenStore.save(token: session.token)
             } catch {
-                statusText = APIError.map(error).userMessage
+                statusText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "auth",
+                    endpointPath: mode == .login ? "/auth/login" : "/auth/register",
+                    context: ["action": "submit_auth"]
+                ).userMessage
             }
         }
     }
@@ -273,6 +439,12 @@ final class AuthViewModel: ObservableObject {
             statusText = nil
             return
         } catch {
+            _ = Diagnostics.reportMappedError(
+                error,
+                flow: "auth",
+                endpointPath: "/auth/me",
+                context: ["action": "restore_session"]
+            )
             // fallthrough to cleanup
         }
 
@@ -341,7 +513,12 @@ final class PricingViewModel: ObservableObject {
                 }
             } catch {
                 guard !Task.isCancelled else { return }
-                errorText = APIError.map(error).userMessage
+                errorText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "pricing",
+                    endpointPath: "/tonies/resolve",
+                    context: ["action": "resolve_search"]
+                ).userMessage
             }
         }
     }
@@ -393,7 +570,12 @@ final class PricingViewModel: ObservableObject {
                 }
             } catch {
                 guard !Task.isCancelled else { return }
-                errorText = APIError.map(error).userMessage
+                errorText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "pricing",
+                    endpointPath: "/tonies/recognize",
+                    context: ["action": "recognize_photo"]
+                ).userMessage
             }
         }
     }
@@ -423,7 +605,12 @@ final class PricingViewModel: ObservableObject {
             } catch {
                 guard !Task.isCancelled, selected?.id == selectedId else { return }
                 prices = nil
-                errorText = APIError.map(error).userMessage
+                errorText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "pricing",
+                    endpointPath: "/pricing/\(selectedId)",
+                    context: ["action": "load_pricing", "condition": selectedCondition.apiValue]
+                ).userMessage
             }
         }
     }
@@ -457,7 +644,12 @@ final class PricingViewModel: ObservableObject {
                 )
                 infoText = "Zur Watchlist hinzugefügt."
             } catch {
-                errorText = APIError.map(error).userMessage
+                errorText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "pricing",
+                    endpointPath: "/watchlist",
+                    context: ["action": "pricing_add_to_watchlist"]
+                ).userMessage
             }
         }
     }
@@ -531,8 +723,12 @@ final class WatchlistViewModel: ObservableObject {
                 }
             } catch {
                 guard !Task.isCancelled else { return }
-                let apiError = APIError.map(error)
-                errorText = apiError.userMessage
+                errorText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "watchlist",
+                    endpointPath: refreshPrices ? "/watchlist?refresh=true" : "/watchlist",
+                    context: ["action": refreshPrices ? "refresh_watchlist" : "load_watchlist"]
+                ).userMessage
             }
         }
     }
@@ -569,7 +765,12 @@ final class WatchlistViewModel: ObservableObject {
             infoText = "Zur Watchlist hinzugefügt."
             return true
         } catch {
-            errorText = APIError.map(error).userMessage
+            errorText = Diagnostics.reportMappedError(
+                error,
+                flow: "watchlist",
+                endpointPath: "/watchlist",
+                context: ["action": "add_watchlist_item"]
+            ).userMessage
             return false
         }
     }
@@ -589,7 +790,12 @@ final class WatchlistViewModel: ObservableObject {
                 _ = try await api.deleteWatchlistItem(token: authToken, itemId: backendId)
                 items.removeAll { $0.id == item.id }
             } catch {
-                errorText = APIError.map(error).userMessage
+                errorText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "watchlist",
+                    endpointPath: "/watchlist/\(backendId)",
+                    context: ["action": "delete_watchlist_item"]
+                ).userMessage
             }
         }
     }
@@ -647,7 +853,12 @@ final class AlertsViewModel: ObservableObject {
             } catch {
                 guard !Task.isCancelled else { return }
                 alerts = []
-                errorText = APIError.map(error).userMessage
+                errorText = Diagnostics.reportMappedError(
+                    error,
+                    flow: "alerts",
+                    endpointPath: requestedUnreadOnly ? "/watchlist/alerts?unread_only=true" : "/watchlist/alerts",
+                    context: ["action": requestedUnreadOnly ? "load_alerts_unread" : "load_alerts"]
+                ).userMessage
             }
         }
     }
@@ -920,13 +1131,33 @@ final class APIClient {
     }
 
     @discardableResult
-    private func ensureSuccess(_ response: URLResponse, data: Data? = nil) throws -> HTTPURLResponse {
+    private func ensureSuccess(
+        _ response: URLResponse,
+        data: Data? = nil,
+        endpointPath: String? = nil
+    ) throws -> HTTPURLResponse {
         guard let http = response as? HTTPURLResponse else {
-            throw APIError.unknown(detail: "Keine HTTP-Antwort")
+            let mapped = APIError.unknown(detail: "Keine HTTP-Antwort")
+            Diagnostics.reporter.reportAPIError(
+                flow: "api_client",
+                endpointPath: endpointPath,
+                statusCode: nil,
+                errorType: String(describing: mapped),
+                message: mapped.userMessage
+            )
+            throw mapped
         }
 
         guard (200..<300).contains(http.statusCode) else {
-            throw APIError.fromStatusCode(http.statusCode, detail: extractDetail(from: data))
+            let mapped = APIError.fromStatusCode(http.statusCode, detail: extractDetail(from: data))
+            Diagnostics.reporter.reportAPIError(
+                flow: "api_client",
+                endpointPath: endpointPath,
+                statusCode: http.statusCode,
+                errorType: String(describing: mapped),
+                message: mapped.userMessage
+            )
+            throw mapped
         }
 
         return http
@@ -946,8 +1177,9 @@ final class APIClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONSerialization.data(withJSONObject: ["query": query])
 
-        let (data, response) = try await data(for: request, pathForLog: "/tonies/resolve")
-        try ensureSuccess(response, data: data)
+        let endpointPath = "/tonies/resolve"
+        let (data, response) = try await data(for: request, pathForLog: endpointPath)
+        try ensureSuccess(response, data: data, endpointPath: endpointPath)
 
         let decoded = try JSONDecoder().decode(ResolveResponse.self, from: data)
         return decoded.candidates.map { TonieCandidate(id: $0.tonie_id, title: $0.title, score: $0.score) }
@@ -976,7 +1208,7 @@ final class APIClient {
 
         let requestPath = "/tonies/recognize?top_k=\(topK)"
         let (data, response) = try await data(for: request, pathForLog: requestPath)
-        try ensureSuccess(response, data: data)
+        try ensureSuccess(response, data: data, endpointPath: requestPath)
 
         let decoded = try JSONDecoder().decode(RecognizeResponse.self, from: data)
         let mapped = decoded.candidates.map {
@@ -997,7 +1229,7 @@ final class APIClient {
 
         let path = "/pricing/\(tonieId)?condition=\(condition.apiValue)"
         let (data, response) = try await data(from: url, pathForLog: path)
-        try ensureSuccess(response, data: data)
+        try ensureSuccess(response, data: data, endpointPath: path)
 
         let decoded = try JSONDecoder().decode(PricingResponse.self, from: data)
         return PriceTriple(
@@ -1029,7 +1261,7 @@ final class APIClient {
         request.httpBody = try JSONEncoder().encode(AuthRequest(email: email, password: password))
 
         let (data, response) = try await data(for: request, pathForLog: path)
-        try ensureSuccess(response, data: data)
+        try ensureSuccess(response, data: data, endpointPath: path)
 
         let decoded = try JSONDecoder().decode(AuthResponse.self, from: data)
         return AuthSession(
@@ -1047,8 +1279,9 @@ final class APIClient {
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await data(for: request, pathForLog: "/auth/me")
-        try ensureSuccess(response, data: data)
+        let endpointPath = "/auth/me"
+        let (data, response) = try await data(for: request, pathForLog: endpointPath)
+        try ensureSuccess(response, data: data, endpointPath: endpointPath)
 
         return try JSONDecoder().decode(UserDTO.self, from: data)
     }
@@ -1072,7 +1305,7 @@ final class APIClient {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let (data, response) = try await data(for: request, pathForLog: path)
-        try ensureSuccess(response, data: data)
+        try ensureSuccess(response, data: data, endpointPath: path)
 
         let decoded = try JSONDecoder().decode([WatchlistItemDTO].self, from: data)
         return decoded.map {
@@ -1096,7 +1329,7 @@ final class APIClient {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         let (data, response) = try await data(for: request, pathForLog: path)
-        try ensureSuccess(response, data: data)
+        try ensureSuccess(response, data: data, endpointPath: path)
 
         let decoded = try JSONDecoder().decode([WatchlistAlertDTO].self, from: data)
         return decoded.map {
@@ -1133,8 +1366,9 @@ final class APIClient {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = try JSONEncoder().encode(payload)
 
-        let (data, response) = try await data(for: request, pathForLog: "/watchlist")
-        try ensureSuccess(response, data: data)
+        let endpointPath = "/watchlist"
+        let (data, response) = try await data(for: request, pathForLog: endpointPath)
+        try ensureSuccess(response, data: data, endpointPath: endpointPath)
 
         let item = try JSONDecoder().decode(WatchlistItemDTO.self, from: data)
         return WatchItem(
@@ -1154,8 +1388,9 @@ final class APIClient {
         request.httpMethod = "DELETE"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await data(for: request, pathForLog: "/watchlist/\(itemId)")
-        try ensureSuccess(response, data: data)
+        let endpointPath = "/watchlist/\(itemId)"
+        let (data, response) = try await data(for: request, pathForLog: endpointPath)
+        try ensureSuccess(response, data: data, endpointPath: endpointPath)
     }
 }
 
@@ -1452,11 +1687,23 @@ struct PricingView: View {
                             }
                         } else {
                             await MainActor.run {
+                                Diagnostics.reporter.reportNonFatal(
+                                    flow: "pricing",
+                                    errorType: "photo_read_empty",
+                                    message: "Foto konnte nicht gelesen werden.",
+                                    context: ["action": "photo_picker"]
+                                )
                                 vm.errorText = "Foto konnte nicht gelesen werden."
                             }
                         }
                     } catch {
                         await MainActor.run {
+                            Diagnostics.reporter.reportNonFatal(
+                                flow: "pricing",
+                                errorType: "photo_processing_failed",
+                                message: error.localizedDescription,
+                                context: ["action": "photo_picker"]
+                            )
                             vm.errorText = "Foto konnte nicht verarbeitet werden."
                         }
                     }

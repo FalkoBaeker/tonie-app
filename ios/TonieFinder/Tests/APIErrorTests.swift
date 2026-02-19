@@ -39,4 +39,86 @@ final class APIErrorTests: XCTestCase {
         XCTAssertFalse(AppConfig.debugLoggingEnabled(from: nil, plistValue: nil))
         XCTAssertFalse(AppConfig.debugLoggingEnabled(from: "0", plistValue: nil))
     }
+
+    func testDiagnosticsReporter_sanitizesSensitiveFields() {
+        var lines: [String] = []
+        let reporter = DiagnosticsReporter(
+            isEnabled: { true },
+            logger: { lines.append($0) }
+        )
+
+        reporter.reportAPIError(
+            flow: "auth",
+            endpointPath: "/auth/login",
+            statusCode: 401,
+            errorType: "unauthorized",
+            message: "Authorization: Bearer abc.def token=secret password=hunter2 user=test@example.com",
+            context: [
+                "Authorization": "Bearer hidden",
+                "token": "123",
+                "email": "test@example.com",
+                "safe": "ok"
+            ]
+        )
+
+        XCTAssertEqual(lines.count, 1)
+        let line = lines[0]
+        XCTAssertFalse(line.lowercased().contains("bearer hidden"))
+        XCTAssertFalse(line.lowercased().contains("hunter2"))
+        XCTAssertFalse(line.lowercased().contains("test@example.com"))
+        XCTAssertTrue(line.contains("safe=ok"))
+    }
+
+    func testDiagnosticsReporter_apiErrorEventContainsPathStatusAndFlow() {
+        var lines: [String] = []
+        let reporter = DiagnosticsReporter(
+            isEnabled: { true },
+            logger: { lines.append($0) }
+        )
+
+        reporter.reportAPIError(
+            flow: "alerts",
+            endpointPath: "/watchlist/alerts?unread_only=true",
+            statusCode: 500,
+            errorType: "server",
+            message: "backend failed",
+            context: ["action": "load_alerts_unread"]
+        )
+
+        XCTAssertEqual(lines.count, 1)
+        let line = lines[0]
+        XCTAssertTrue(line.contains("flow=alerts"))
+        XCTAssertTrue(line.contains("path=/watchlist/alerts?unread_only=true"))
+        XCTAssertTrue(line.contains("status=500"))
+        XCTAssertTrue(line.contains("action=load_alerts_unread"))
+    }
+
+    func testDiagnosticsReporter_respectsEnabledToggle() {
+        var lines: [String] = []
+        let disabledReporter = DiagnosticsReporter(
+            isEnabled: { false },
+            logger: { lines.append($0) }
+        )
+
+        disabledReporter.reportNonFatal(
+            flow: "pricing",
+            errorType: "photo_processing_failed",
+            message: "failed"
+        )
+
+        XCTAssertTrue(lines.isEmpty)
+
+        let enabledReporter = DiagnosticsReporter(
+            isEnabled: { true },
+            logger: { lines.append($0) }
+        )
+
+        enabledReporter.reportNonFatal(
+            flow: "pricing",
+            errorType: "photo_processing_failed",
+            message: "failed"
+        )
+
+        XCTAssertEqual(lines.count, 1)
+    }
 }
