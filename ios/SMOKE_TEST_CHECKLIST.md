@@ -12,3 +12,5 @@
 10. Alerts-Fehler zeigt verständliche Meldung + Retry-Button.
 11. Account > Diagnostics zeigt Base URL, Session-Status und Debug-Log-Status.
 12. Optional Debug: mit `TF_DEBUG_LOG=1` erscheinen API Logs (Methode/Pfad/Status, ohne Token).
+13. Device/WLAN-IP Check: In **Konto → Diagnostics** prüfen, ob `Base URL` die aktuelle Backend-IP nutzt.
+14. Bei WLAN-IP-Wechsel: `deviceDefault` (oder `TF_API_BASE_URL`) auf aktuelle LAN-IP setzen und App neu starten.
