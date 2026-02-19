@@ -953,7 +953,7 @@ struct LoginView: View {
 struct MainTabView: View {
     var body: some View {
         TabView {
-            ResolveView()
+            PricingView()
                 .tabItem {
                     Label("Resolve", systemImage: "magnifyingglass")
                 }
