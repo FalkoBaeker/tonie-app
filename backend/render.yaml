@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: toniefinder-backend-staging
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: ENVIRONMENT
+        value: staging
+      - key: DEBUG
+        value: "false"
+      - key: AUTH_MODE
+        value: external
+      - key: AUTH_REQUIRE_VERIFIED_EMAIL
+        value: "true"
+      # Set these in Render dashboard (secret values):
+      # AUTH_JWKS_URL
+      # AUTH_ISSUER
+      # AUTH_AUDIENCE

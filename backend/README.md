@@ -4,6 +4,7 @@ Ops/Runbook (lokale WLAN-Beta):
 - `OPS_LOCAL_BETA_RUNBOOK.md` (Start/Stop/Logs/Health/Preflight/Auto-Start/Backup/Restore)
 - `OPS_BACKUP_RESTORE.md` (DB-spezifische Details)
 - `DEPLOYMENT.md` (cost-first cloud deployment path)
+- `SUPABASE_STAGING_RUNBOOK.md` (S5 external auth staging activation)
 
 Architecture/Migration docs:
 - `../docs/adr/0001-auth-and-backend-target.md`
@@ -13,6 +14,7 @@ Ops Scripts:
 - `./scripts/backend_status.sh` (Health-Status: UP/DOWN)
 - `./scripts/backend_smoke.sh` (Happy-Path Smoke)
 - `./scripts/preflight_beta.sh` (Status + Smoke + Port-Hinweis)
+- `./scripts/staging_external_auth_check.sh` (staging external-auth E2E check)
 
 Auth modes:
 - `AUTH_MODE=local` (default): current local email/password + session token flow

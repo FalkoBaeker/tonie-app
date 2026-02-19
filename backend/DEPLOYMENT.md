@@ -25,6 +25,11 @@ AUTH_AUDIENCE=<provider-audience>
 AUTH_REQUIRE_VERIFIED_EMAIL=true
 ```
 
+Supabase mapping (recommended):
+- `AUTH_JWKS_URL=https://<project-ref>.supabase.co/auth/v1/.well-known/jwks.json`
+- `AUTH_ISSUER=https://<project-ref>.supabase.co`
+- `AUTH_AUDIENCE=authenticated`
+
 ## Platform comparison (short)
 
 - **Render**: easy FastAPI deploy, free plan exists, can sleep on inactivity.
