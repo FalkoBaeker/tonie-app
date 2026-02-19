@@ -939,7 +939,7 @@ final class KeychainTokenStore {
 
 enum AppConfig {
     private static let simulatorDefault = "http://127.0.0.1:8787/api"
-    private static let deviceDefault = "http://192.168.178.100:8787/api"
+    private static let deviceDefault = "http://192.168.2.133:8787/api"
 
     static func debugLoggingEnabled(from envValue: String?, plistValue: Any?) -> Bool {
         let envNormalized = envValue?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,7 +38,7 @@
 		9C2B8B1A43F33A2526E1E90B /* ResolvePricingFlowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvePricingFlowViewModelTests.swift; sourceTree = "<group>"; };
 		A06BD81CE02BD4C213CB6102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABC2645E878EF44E37E7F248 /* PricingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingDetailView.swift; sourceTree = "<group>"; };
-		D27D77D98E841F67505327FD /* TonieFinder.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TonieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D27D77D98E841F67505327FD /* TonieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB457E3B717877D723A6EE52 /* APIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,9 +170,6 @@
 					6390791116DCC7913D3B0AAA = {
 						DevelopmentTeam = "";
 					};
-					C57CB40D06601013713DC9C3 = {
-						DevelopmentTeam = "";
-					};
 				};
 			};
 			buildConfigurationList = C82C8AF70DF290D7BC435F37 /* Build configuration list for PBXProject "TonieFinder" */;
@@ -185,7 +182,6 @@
 			);
 			mainGroup = E11B21CD9298A022ADD2CDFA;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -262,6 +258,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3DBHG8Q2TT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tonie Finder";
 				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
@@ -302,6 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3DBHG8Q2TT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tonie Finder";
 				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
