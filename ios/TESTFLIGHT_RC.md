@@ -48,7 +48,14 @@ Vor Upload einmal durchgehen:
 - [ ] Diagnostics sichtbar inkl. Base URL/Session/Debug + Version/Build
 - [ ] Release Archive ohne Signing-Fehler erzeugt
 
-## 6) Known Issues / Beta-Testfokus
+## 6) Local Device Backend URL (ohne Developer Account)
+
+Für lokale iPhone-Tests (Run aus Xcode, kein TestFlight) gilt:
+- Wenn sich die Backend-IP im WLAN ändert, App-Base-URL prüfen.
+- Aktueller Runtime-Wert ist im App-Tab **Konto → Diagnostics → Base URL** sichtbar.
+- Falls nötig: `deviceDefault` in `TonieFinder/Sources/TonieFinderApp.swift` auf die aktuelle LAN-IP anpassen (oder `TF_API_BASE_URL` setzen).
+
+## 7) Known Issues / Beta-Testfokus
 
 Known issues:
 - Backend muss erreichbar sein (base URL)

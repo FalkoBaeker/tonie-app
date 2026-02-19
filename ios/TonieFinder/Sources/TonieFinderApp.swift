@@ -2004,6 +2004,9 @@ struct AccountView: View {
                         Text("App Version: \(AppConfig.appVersionBuild)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
+                        Text("Device-Test Hint: Bei WLAN-IP-Wechsel Base URL prüfen.")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
                     }
                 }
 
