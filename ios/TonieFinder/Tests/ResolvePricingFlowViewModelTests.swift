@@ -34,6 +34,14 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
         }
     }
 
+    private struct MockAlertsAPI: AlertsAPI {
+        var fetchHandler: (String, Bool) async throws -> [WatchlistAlert]
+
+        func fetchAlerts(token: String, unreadOnly: Bool) async throws -> [WatchlistAlert] {
+            try await fetchHandler(token, unreadOnly)
+        }
+    }
+
     func testResolveViewModel_setsErrorMessageOnNetworkError() async {
         let api = MockResolvePricingAPI(
             resolveHandler: { _ in throw URLError(.notConnectedToInternet) },
@@ -123,5 +131,53 @@ final class ResolvePricingFlowViewModelTests: XCTestCase {
         XCTAssertTrue(added)
         XCTAssertEqual(vm.items.count, 1)
         XCTAssertEqual(vm.items.first?.id, "42")
+    }
+
+    func testAlertsViewModel_loadWithUnreadOnlyTrue_setsResults() async {
+        actor Capture {
+            var unreadFlags: [Bool] = []
+            func append(_ value: Bool) { unreadFlags.append(value) }
+            func snapshot() -> [Bool] { unreadFlags }
+        }
+
+        let capture = Capture()
+        let api = MockAlertsAPI(fetchHandler: { _, unreadOnly in
+            await capture.append(unreadOnly)
+            return [
+                WatchlistAlert(
+                    id: "11",
+                    title: "Bibi Blocksberg",
+                    alertType: "price_drop",
+                    message: "Preis gefallen",
+                    currentPrice: 17.9,
+                    previousPrice: 20.5,
+                    targetPrice: 18.0,
+                    isUnread: true
+                )
+            ]
+        })
+
+        let vm = AlertsViewModel(api: api)
+        vm.unreadOnly = true
+        vm.load(authToken: "token")
+
+        try? await Task.sleep(nanoseconds: 200_000_000)
+
+        XCTAssertEqual(await capture.snapshot(), [true])
+        XCTAssertEqual(vm.alerts.count, 1)
+        XCTAssertEqual(vm.alerts.first?.id, "11")
+    }
+
+    func testAlertsViewModel_load_setsErrorMessageOnNetworkError() async {
+        let api = MockAlertsAPI(fetchHandler: { _, _ in
+            throw URLError(.notConnectedToInternet)
+        })
+
+        let vm = AlertsViewModel(api: api)
+        vm.load(authToken: "token")
+
+        try? await Task.sleep(nanoseconds: 200_000_000)
+
+        XCTAssertEqual(vm.errorText, APIError.network.userMessage)
     }
 }

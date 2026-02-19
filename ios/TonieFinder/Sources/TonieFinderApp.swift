@@ -154,6 +154,33 @@ struct LiveWatchlistAPI: WatchlistAPI {
     }
 }
 
+struct WatchlistAlert: Identifiable {
+    let id: String
+    let title: String
+    let alertType: String
+    let message: String
+    let currentPrice: Double?
+    let previousPrice: Double?
+    let targetPrice: Double?
+    let isUnread: Bool
+}
+
+protocol AlertsAPI {
+    func fetchAlerts(token: String, unreadOnly: Bool) async throws -> [WatchlistAlert]
+}
+
+struct LiveAlertsAPI: AlertsAPI {
+    private let client: APIClient
+
+    init(client: APIClient = APIClient()) {
+        self.client = client
+    }
+
+    func fetchAlerts(token: String, unreadOnly: Bool) async throws -> [WatchlistAlert] {
+        try await client.fetchWatchlistAlerts(token: token, unreadOnly: unreadOnly)
+    }
+}
+
 // MARK: - ViewModels
 
 enum AuthMode: String, CaseIterable, Identifiable {
@@ -573,6 +600,60 @@ final class WatchlistViewModel: ObservableObject {
     }
 }
 
+@MainActor
+final class AlertsViewModel: ObservableObject {
+    @Published var alerts: [WatchlistAlert] = []
+    @Published var unreadOnly = false
+    @Published var isLoading = false
+    @Published var errorText: String?
+    @Published var infoText: String?
+
+    private let api: AlertsAPI
+    private var loadTask: Task<Void, Never>?
+
+    init(api: AlertsAPI = LiveAlertsAPI()) {
+        self.api = api
+    }
+
+    func load(authToken: String?) {
+        loadTask?.cancel()
+
+        guard let authToken else {
+            alerts = []
+            errorText = nil
+            infoText = "Alerts sind nur mit Backend-Login verfügbar."
+            return
+        }
+
+        isLoading = true
+        errorText = nil
+        infoText = nil
+
+        let requestedUnreadOnly = unreadOnly
+
+        loadTask = Task {
+            defer {
+                isLoading = false
+                loadTask = nil
+            }
+
+            do {
+                let loaded = try await api.fetchAlerts(token: authToken, unreadOnly: requestedUnreadOnly)
+                guard !Task.isCancelled else { return }
+                alerts = loaded
+
+                if loaded.isEmpty {
+                    infoText = requestedUnreadOnly ? "Keine ungelesenen Alerts." : "Keine Alerts vorhanden."
+                }
+            } catch {
+                guard !Task.isCancelled else { return }
+                alerts = []
+                errorText = APIError.map(error).userMessage
+            }
+        }
+    }
+}
+
 extension Double {
     func rounded(to places: Int) -> Double {
         let p = pow(10.0, Double(places))
@@ -731,6 +812,49 @@ final class APIClient {
         let title: String
         let condition: String
         let last_fair_price: Double
+    }
+
+    struct WatchlistAlertDTO: Decodable {
+        let id: String
+        let title: String?
+        let tonie_title: String?
+        let alert_type: String
+        let message: String?
+        let current_price: Double?
+        let previous_price: Double?
+        let target_price: Double?
+        let unread: Bool?
+
+        private enum CodingKeys: String, CodingKey {
+            case id
+            case title
+            case tonie_title
+            case alert_type
+            case message
+            case current_price
+            case previous_price
+            case target_price
+            case unread
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            if let intID = try? container.decode(Int.self, forKey: .id) {
+                id = String(intID)
+            } else {
+                id = try container.decode(String.self, forKey: .id)
+            }
+
+            title = try container.decodeIfPresent(String.self, forKey: .title)
+            tonie_title = try container.decodeIfPresent(String.self, forKey: .tonie_title)
+            alert_type = try container.decode(String.self, forKey: .alert_type)
+            message = try container.decodeIfPresent(String.self, forKey: .message)
+            current_price = try container.decodeIfPresent(Double.self, forKey: .current_price)
+            previous_price = try container.decodeIfPresent(Double.self, forKey: .previous_price)
+            target_price = try container.decodeIfPresent(Double.self, forKey: .target_price)
+            unread = try container.decodeIfPresent(Bool.self, forKey: .unread)
+        }
     }
 
     private func makeURL(path: String) -> URL? {
@@ -908,6 +1032,32 @@ final class APIClient {
         }
     }
 
+    func fetchWatchlistAlerts(token: String, unreadOnly: Bool = false) async throws -> [WatchlistAlert] {
+        let path = unreadOnly ? "/watchlist/alerts?unread_only=true" : "/watchlist/alerts"
+        guard let url = makeURL(path: path) else { throw APIError.invalidURL }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        try ensureSuccess(response, data: data)
+
+        let decoded = try JSONDecoder().decode([WatchlistAlertDTO].self, from: data)
+        return decoded.map {
+            WatchlistAlert(
+                id: $0.id,
+                title: $0.title ?? $0.tonie_title ?? "Unbekannter Tonie",
+                alertType: $0.alert_type,
+                message: $0.message ?? "",
+                currentPrice: $0.current_price,
+                previousPrice: $0.previous_price,
+                targetPrice: $0.target_price,
+                isUnread: $0.unread ?? false
+            )
+        }
+    }
+
     func addWatchlistItem(
         token: String,
         tonieId: String,
@@ -1031,6 +1181,11 @@ struct MainTabView: View {
             WatchlistView()
                 .tabItem {
                     Label("Watchlist", systemImage: "eye")
+                }
+
+            AlertsView()
+                .tabItem {
+                    Label("Alerts", systemImage: "bell")
                 }
 
             AccountView()
@@ -1383,6 +1538,85 @@ struct WatchlistView: View {
             }
             .refreshable {
                 vm.load(authToken: auth.authToken, refreshPrices: true)
+            }
+        }
+    }
+}
+
+struct AlertsView: View {
+    @EnvironmentObject private var auth: AuthViewModel
+    @StateObject private var vm = AlertsViewModel()
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Toggle("Nur ungelesene", isOn: $vm.unreadOnly)
+
+                if vm.isLoading {
+                    ProgressView("Lade Alerts …")
+                }
+
+                if let errorText = vm.errorText {
+                    Text(errorText)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                if let infoText = vm.infoText, !infoText.isEmpty {
+                    Text(infoText)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                ForEach(vm.alerts) { alert in
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack {
+                            Text(alert.title)
+                                .font(.headline)
+                            Spacer()
+                            Text(alert.alertType)
+                                .font(.caption2)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.gray.opacity(0.15))
+                                .clipShape(Capsule())
+                        }
+
+                        if !alert.message.isEmpty {
+                            Text(alert.message)
+                                .font(.subheadline)
+                        }
+
+                        if let currentPrice = alert.currentPrice {
+                            Text("Aktuell: \(currentPrice, format: .currency(code: "EUR"))")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+
+                        if let previousPrice = alert.previousPrice {
+                            Text("Vorher: \(previousPrice, format: .currency(code: "EUR"))")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+
+                        if let targetPrice = alert.targetPrice {
+                            Text("Zielpreis: \(targetPrice, format: .currency(code: "EUR"))")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .padding(.vertical, 4)
+                }
+            }
+            .navigationTitle("Alerts")
+            .task {
+                vm.load(authToken: auth.authToken)
+            }
+            .onChange(of: vm.unreadOnly) {
+                vm.load(authToken: auth.authToken)
+            }
+            .refreshable {
+                vm.load(authToken: auth.authToken)
             }
         }
     }
