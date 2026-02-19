@@ -1499,6 +1499,7 @@ struct MainTabView: View {
                     Label("Konto", systemImage: "person")
                 }
         }
+        .toolbar(.visible, for: .tabBar)
     }
 }
 
@@ -1506,6 +1507,7 @@ struct PricingView: View {
     @EnvironmentObject private var auth: AuthViewModel
     @StateObject private var vm = PricingViewModel()
     @State private var selectedPhotoItem: PhotosPickerItem?
+    @FocusState private var isQueryFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -1523,6 +1525,12 @@ struct PricingView: View {
                                     .padding(12)
                                     .background(Color.gray.opacity(0.08))
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .focused($isQueryFocused)
+                                    .submitLabel(.search)
+                                    .onSubmit {
+                                        isQueryFocused = false
+                                        vm.search()
+                                    }
 
                                 Picker("Zustand", selection: $vm.condition) {
                                     ForEach(TonieCondition.allCases) { c in
@@ -1536,7 +1544,10 @@ struct PricingView: View {
                                     }
                                 }
 
-                                Button(action: vm.search) {
+                                Button {
+                                    isQueryFocused = false
+                                    vm.search()
+                                } label: {
                                     if vm.isLoading {
                                         ProgressView()
                                             .frame(maxWidth: .infinity)
@@ -1600,6 +1611,7 @@ struct PricingView: View {
 
                                     ForEach(vm.candidates) { c in
                                         Button {
+                                            isQueryFocused = false
                                             vm.choose(c)
                                         } label: {
                                             HStack {
@@ -1690,10 +1702,12 @@ struct PricingView: View {
                     }
                     .padding()
                 }
+                .scrollDismissesKeyboard(.immediately)
             }
             .navigationTitle("Tonie Finder")
             .toolbar(.visible, for: .tabBar)
             .onChange(of: selectedPhotoItem) { _, newItem in
+                isQueryFocused = false
                 guard let newItem else { return }
 
                 Task {
