@@ -41,6 +41,7 @@ struct ResolveView: View {
             }
             .padding()
             .navigationTitle("Resolve")
+            .toolbar(.visible, for: .tabBar)
             .navigationDestination(for: ResolveItem.self) { item in
                 PricingDetailView(item: item)
             }

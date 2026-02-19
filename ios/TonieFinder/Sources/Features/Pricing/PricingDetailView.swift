@@ -72,6 +72,7 @@ struct PricingDetailView: View {
             }
         }
         .navigationTitle("Pricing")
+        .toolbar(.visible, for: .tabBar)
         .task {
             vm.load()
         }

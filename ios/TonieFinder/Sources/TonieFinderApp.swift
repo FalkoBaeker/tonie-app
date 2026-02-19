@@ -1692,6 +1692,7 @@ struct PricingView: View {
                 }
             }
             .navigationTitle("Tonie Finder")
+            .toolbar(.visible, for: .tabBar)
             .onChange(of: selectedPhotoItem) { _, newItem in
                 guard let newItem else { return }
 
