@@ -9,6 +9,8 @@ from pathlib import Path
 
 from app.core.config import settings
 
+_BACKEND_ROOT = Path(__file__).resolve().parents[2]
+
 
 def _now_iso() -> str:
     return datetime.now(UTC).isoformat()
@@ -17,17 +19,33 @@ def _now_iso() -> str:
 def _db_path() -> Path:
     path = Path(settings.sqlite_path).expanduser()
     if not path.is_absolute():
-        path = Path.cwd() / path
+        # Resolve relative DB paths against backend root, not process cwd.
+        path = (_BACKEND_ROOT / path).resolve()
+
     path.parent.mkdir(parents=True, exist_ok=True)
     return path
 
 
 def _connect() -> sqlite3.Connection:
-    conn = sqlite3.connect(_db_path(), timeout=30)
+    db_path = _db_path()
+
+    try:
+        conn = sqlite3.connect(str(db_path), timeout=30)
+    except sqlite3.OperationalError as exc:
+        raise sqlite3.OperationalError(
+            f"unable to open sqlite database at '{db_path}': {exc}"
+        ) from exc
+
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA busy_timeout = 30000")
-    conn.execute("PRAGMA journal_mode = WAL")
+
+    try:
+        conn.execute("PRAGMA journal_mode = WAL")
+    except sqlite3.OperationalError:
+        # Fallback for filesystems/environments where WAL sidecar files are blocked.
+        conn.execute("PRAGMA journal_mode = DELETE")
+
     return conn
 
 
