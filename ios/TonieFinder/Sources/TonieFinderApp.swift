@@ -164,7 +164,29 @@ struct WatchlistAlert: Identifiable {
     let previousPrice: Double?
     let targetPrice: Double?
     let isUnread: Bool
-    let createdAt: String? = nil
+    let createdAt: String?
+
+    init(
+        id: String,
+        title: String,
+        alertType: String,
+        message: String,
+        currentPrice: Double?,
+        previousPrice: Double?,
+        targetPrice: Double?,
+        isUnread: Bool,
+        createdAt: String? = nil
+    ) {
+        self.id = id
+        self.title = title
+        self.alertType = alertType
+        self.message = message
+        self.currentPrice = currentPrice
+        self.previousPrice = previousPrice
+        self.targetPrice = targetPrice
+        self.isUnread = isUnread
+        self.createdAt = createdAt
+    }
 
     var displayType: String {
         switch alertType.lowercased() {
