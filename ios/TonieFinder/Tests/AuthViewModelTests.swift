@@ -168,7 +168,7 @@ final class AuthViewModelTests: XCTestCase {
         try? await Task.sleep(nanoseconds: 200_000_000)
 
         XCTAssertFalse(vm.isLoggedIn)
-        XCTAssertEqual(vm.statusText, "Registrierung erfolgreich. Bitte E-Mail bestätigen und dann einloggen.")
+        XCTAssertEqual(vm.statusText, "Registrierung erfolgreich. Bitte E-Mail bestätigen und danach einloggen.")
         XCTAssertNil(store.token)
     }
 
@@ -191,7 +191,7 @@ final class AuthViewModelTests: XCTestCase {
                 ClientAuthSession(token: "external", userId: 0, userEmail: "x@example.com", expiresAt: "")
             },
             externalRegisterHandler: { _, _ in
-                ExternalRegisterResult(session: nil, requiresEmailVerification: true)
+                ExternalRegisterResult(session: nil, requiresEmailVerification: false)
             },
             meHandler: { _ in
                 XCTFail("me should not be called")

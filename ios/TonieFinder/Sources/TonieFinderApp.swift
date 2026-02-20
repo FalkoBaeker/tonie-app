@@ -434,7 +434,7 @@ final class AuthViewModel: ObservableObject {
                                 _ = try await api.externalLogin(email: normalizedEmail, password: password)
                                 statusText = "Konto scheint bereits zu existieren. Bitte einloggen."
                             } catch {
-                                statusText = "Registrierung erfolgreich. Bitte E-Mail bestätigen und dann einloggen."
+                                statusText = "Registrierung erfolgreich. Bitte E-Mail bestätigen und danach einloggen."
                             }
 
                             password = ""
