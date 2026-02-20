@@ -42,10 +42,21 @@ class Settings(BaseSettings):
     )
 
     market_auto_refresh_enabled: bool = False
-    market_auto_refresh_interval_minutes: int = 360
+    market_auto_refresh_interval_minutes: int = 10080
     market_auto_refresh_limit: int = 0
     market_auto_refresh_delay_ms: int = 200
     market_auto_refresh_max_items: int = 80
+
+    ebay_api_enabled: bool = False
+    ebay_env: str = "production"  # production | sandbox
+    ebay_client_id: str = ""
+    ebay_client_secret: str = ""
+    ebay_oauth_scope: str = "https://api.ebay.com/oauth/api_scope"
+    ebay_marketplace_id: str = "EBAY_DE"
+    ebay_request_timeout_s: float = 15.0
+    ebay_max_retries: int = 2
+    ebay_api_shadow_mode: bool = True
+    ebay_api_include_in_pricing: bool = False
 
     recognition_reference_dir: str = "./app/data/tonie_refs"
     recognition_index_path: str = "./app/data/tonie_reference_index.json"
