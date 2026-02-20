@@ -164,6 +164,41 @@ struct WatchlistAlert: Identifiable {
     let previousPrice: Double?
     let targetPrice: Double?
     let isUnread: Bool
+    let createdAt: String
+
+    var displayType: String {
+        switch alertType.lowercased() {
+        case "price_below_target":
+            return "Preis unter Zielpreis"
+        case "price_drop_15pct":
+            return "Preisabfall über Schwellwert"
+        default:
+            return "Preis-Alert"
+        }
+    }
+
+    var whyTriggeredText: String {
+        if !message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return message
+        }
+
+        switch alertType.lowercased() {
+        case "price_below_target":
+            return "Der aktuelle Preis liegt unter deinem Zielpreis."
+        case "price_drop_15pct":
+            return "Der Preis ist deutlich gefallen und hat den Schwellwert überschritten."
+        default:
+            return "Für diesen Tonie wurde ein Preis-Alert ausgelöst."
+        }
+    }
+
+    var createdAtDisplay: String {
+        let iso = ISO8601DateFormatter()
+        if let date = iso.date(from: createdAt) {
+            return date.formatted(date: .abbreviated, time: .shortened)
+        }
+        return createdAt
+    }
 }
 
 protocol AlertsAPI {
@@ -1027,7 +1062,9 @@ final class AlertsViewModel: ObservableObject {
                 alerts = loaded
 
                 if loaded.isEmpty {
-                    infoText = requestedUnreadOnly ? "Keine ungelesenen Alerts." : "Keine Alerts vorhanden."
+                    infoText = requestedUnreadOnly
+                        ? "Keine neuen Alerts. Deaktiviere den Filter oder aktualisiere die Watchlist."
+                        : "Keine Alerts vorhanden. Setze einen Zielpreis oder aktualisiere die Watchlist, um Alerts zu erhalten."
                 }
             } catch {
                 guard !Task.isCancelled else { return }
@@ -1490,6 +1527,7 @@ final class APIClient {
         let previous_price: Double?
         let target_price: Double?
         let unread: Bool?
+        let created_at: String?
 
         private enum CodingKeys: String, CodingKey {
             case id
@@ -1501,6 +1539,7 @@ final class APIClient {
             case previous_price
             case target_price
             case unread
+            case created_at
         }
 
         init(from decoder: Decoder) throws {
@@ -1520,6 +1559,7 @@ final class APIClient {
             previous_price = try container.decodeIfPresent(Double.self, forKey: .previous_price)
             target_price = try container.decodeIfPresent(Double.self, forKey: .target_price)
             unread = try container.decodeIfPresent(Bool.self, forKey: .unread)
+            created_at = try container.decodeIfPresent(String.self, forKey: .created_at)
         }
     }
 
@@ -1879,7 +1919,8 @@ final class APIClient {
                 currentPrice: $0.current_price,
                 previousPrice: $0.previous_price,
                 targetPrice: $0.target_price,
-                isUnread: $0.unread ?? false
+                isUnread: $0.unread ?? false,
+                createdAt: $0.created_at ?? "-"
             )
         }
     }
@@ -2524,8 +2565,12 @@ struct AlertsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Toggle("Nur ungelesene", isOn: $vm.unreadOnly)
-                    .disabled(vm.isLoading)
+                Picker("Filter", selection: $vm.unreadOnly) {
+                    Text("Alle").tag(false)
+                    Text("Neu").tag(true)
+                }
+                .pickerStyle(.segmented)
+                .disabled(vm.isLoading)
 
                 if vm.isLoading {
                     ProgressView("Lade Alerts …")
@@ -2552,12 +2597,17 @@ struct AlertsView: View {
                 }
 
                 ForEach(vm.alerts) { alert in
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack {
-                            Text(alert.title)
-                                .font(.headline)
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(alert.title)
+                                    .font(.headline)
+                                Text("Ausgelöst: \(alert.createdAtDisplay)")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
                             Spacer()
-                            Text(alert.alertType)
+                            Text(alert.displayType)
                                 .font(.caption2)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 4)
@@ -2565,30 +2615,35 @@ struct AlertsView: View {
                                 .clipShape(Capsule())
                         }
 
-                        if !alert.message.isEmpty {
-                            Text(alert.message)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Warum dieser Alert")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                            Text(alert.whyTriggeredText)
                                 .font(.subheadline)
                         }
 
-                        if let currentPrice = alert.currentPrice {
-                            Text("Aktuell: \(currentPrice, format: .currency(code: "EUR"))")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
+                        VStack(alignment: .leading, spacing: 2) {
+                            if let currentPrice = alert.currentPrice {
+                                Text("Aktueller Preis: \(currentPrice, format: .currency(code: "EUR"))")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
 
-                        if let previousPrice = alert.previousPrice {
-                            Text("Vorher: \(previousPrice, format: .currency(code: "EUR"))")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                        }
+                            if let previousPrice = alert.previousPrice {
+                                Text("Vorheriger Preis: \(previousPrice, format: .currency(code: "EUR"))")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
 
-                        if let targetPrice = alert.targetPrice {
-                            Text("Zielpreis: \(targetPrice, format: .currency(code: "EUR"))")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
+                            if let targetPrice = alert.targetPrice {
+                                Text("Zielpreis: \(targetPrice, format: .currency(code: "EUR"))")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
-                    .padding(.vertical, 4)
+                    .padding(.vertical, 6)
                 }
             }
             .navigationTitle("Alerts")
