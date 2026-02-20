@@ -11,6 +11,7 @@ from app.core.config import settings
 from app.services.market_ingestion import (
     apply_time_window,
     build_ebay_search_queries,
+    fetch_ebay_api_listings_multi_query,
     fetch_ebay_sold_listings_multi_query,
     fetch_kleinanzeigen_listings_multi_query,
 )
@@ -380,6 +381,73 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             limit=8,
         )
 
+        use_ebay_api_in_pricing = bool(
+            settings.ebay_api_enabled
+            and settings.ebay_api_include_in_pricing
+            and not settings.ebay_api_shadow_mode
+        )
+
+        ebay_api_rows = []
+        if settings.ebay_api_enabled:
+            try:
+                ebay_api_rows = await fetch_ebay_api_listings_multi_query(
+                    queries=queries,
+                    max_items=80,
+                )
+            except Exception as exc:  # noqa: BLE001
+                logger.debug("eBay API fetch failed (tonie_id=%s): %s", tonie_id, exc)
+
+        ebay_api_records = [
+            {
+                "source": "ebay_api_listing",
+                "title": l.title,
+                "price_eur": l.price_eur,
+                "url": l.url,
+                "sold_at": l.sold_at,
+            }
+            for l in ebay_api_rows
+            if settings.market_price_min_eur <= l.price_eur <= settings.market_price_max_eur
+        ]
+
+        if ebay_api_records:
+            save_market_listings(
+                tonie_id=tonie_id,
+                source="ebay_api_listing",
+                listings=[
+                    {
+                        "title": r["title"],
+                        "price_eur": r["price_eur"],
+                        "url": r["url"],
+                        "sold_at": r["sold_at"],
+                    }
+                    for r in ebay_api_records
+                ],
+            )
+
+            if use_ebay_api_in_pricing:
+                api_points, api_raw_sample_size, api_effective_sample_size, _ = _weighted_points_from_records(
+                    ebay_api_records
+                )
+                min_effective_api = max(0.1, float(settings.market_min_effective_samples))
+                if (
+                    api_raw_sample_size >= settings.market_min_samples
+                    and api_effective_sample_size >= min_effective_api
+                ):
+                    api_result = _result_from_weighted_points(
+                        api_points,
+                        condition=condition,
+                        source="ebay_api_live_weighted",
+                        raw_sample_size=api_raw_sample_size,
+                        effective_sample_size=api_effective_sample_size,
+                    )
+                    return _record_and_return(
+                        tonie_id=tonie_id,
+                        condition=condition,
+                        result=api_result,
+                        started=started,
+                    )
+
+        # Fallback to scrape-based acquisition when API data is unavailable/insufficient
         ebay_out, offer_out = await asyncio.gather(
             fetch_ebay_sold_listings_multi_query(
                 queries=queries,
@@ -398,7 +466,7 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
         if not isinstance(ebay_out, Exception):
             ebay_rows = apply_time_window(ebay_out, days=90)
         else:
-            logger.debug("Live ebay fetch failed (tonie_id=%s): %s", tonie_id, ebay_out)
+            logger.debug("Live ebay scrape fetch failed (tonie_id=%s): %s", tonie_id, ebay_out)
 
         if not isinstance(offer_out, Exception):
             offer_rows = apply_time_window(offer_out, days=90)
@@ -458,7 +526,7 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
                 ],
             )
 
-        if ebay_records or offer_records:
+        if ebay_api_records or ebay_records or offer_records:
             prune_old_market_listings()
 
         sold_prices = _clean_price_samples([float(r["price_eur"]) for r in ebay_records])
@@ -476,6 +544,9 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             )
 
         live_records = ebay_records + offer_records
+        if use_ebay_api_in_pricing and ebay_api_records:
+            live_records = ebay_api_records + live_records
+
         points, raw_sample_size, effective_sample_size, used_sources = _weighted_points_from_records(live_records)
         has_ebay = any(src.startswith("ebay") for src in used_sources)
 

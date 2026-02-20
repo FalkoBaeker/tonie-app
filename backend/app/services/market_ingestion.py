@@ -13,6 +13,7 @@ from urllib.parse import quote_plus, urlparse, urlunparse
 import httpx
 
 from app.core.config import settings
+from app.services.ebay_api_client import ebay_api_enabled, search_item_summaries
 
 try:
     from bs4 import BeautifulSoup
@@ -514,6 +515,109 @@ def _looks_like_bot_page(html: str) -> bool:
 
     # Very tiny responses are usually challenge/blocked placeholders.
     return len(lowered.strip()) < 2000
+
+
+def _extract_ebay_api_price(item: dict) -> float | None:
+    price_obj = item.get("price") or item.get("currentBidPrice") or {}
+    if not isinstance(price_obj, dict):
+        return None
+
+    currency = str(price_obj.get("currency") or "").upper().strip()
+    if currency and currency != "EUR":
+        return None
+
+    raw_value = price_obj.get("value")
+    if raw_value is None:
+        return None
+
+    try:
+        value = float(raw_value)
+    except (TypeError, ValueError):
+        return None
+
+    if value < settings.market_price_min_eur or value > settings.market_price_max_eur:
+        return None
+
+    return value
+
+
+async def fetch_ebay_api_listings(
+    query: str,
+    max_items: int = 80,
+) -> list[MarketListing]:
+    """Fetch listing data via eBay Browse API (server-side OAuth)."""
+    if not ebay_api_enabled():
+        return []
+
+    rows = await search_item_summaries(query=query, limit=max_items)
+
+    out: list[MarketListing] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+
+        title = str(row.get("title") or "").strip()
+        if not title:
+            continue
+        if not _is_valid_listing_title(title):
+            continue
+        if not _is_relevant_to_query(title, query):
+            continue
+
+        price = _extract_ebay_api_price(row)
+        if price is None:
+            continue
+
+        raw_url = str(row.get("itemWebUrl") or row.get("itemAffiliateWebUrl") or "")
+        url = _canonicalize_listing_url(raw_url)
+        if not url:
+            continue
+
+        out.append(
+            MarketListing(
+                source="ebay_api_listing",
+                title=title,
+                price_eur=price,
+                url=url,
+                sold_at=None,
+            )
+        )
+
+    return _dedupe_listings(out)[: max(1, int(max_items))]
+
+
+async def fetch_ebay_api_listings_multi_query(
+    *,
+    queries: Iterable[str],
+    max_items: int = 80,
+    per_query_max_items: int | None = None,
+) -> list[MarketListing]:
+    query_list = [q.strip() for q in queries if q and q.strip()]
+    if not query_list:
+        return []
+
+    max_items = max(1, int(max_items))
+    per_query_max = per_query_max_items if per_query_max_items is not None else max_items
+    per_query_max = max(1, int(per_query_max))
+
+    merged: list[MarketListing] = []
+
+    for query in query_list:
+        try:
+            rows = await fetch_ebay_api_listings(
+                query=query,
+                max_items=per_query_max,
+            )
+        except Exception:
+            continue
+
+        if rows:
+            merged.extend(rows)
+            deduped = _dedupe_listings(merged)
+            if len(deduped) >= max_items:
+                return deduped[:max_items]
+
+    return _dedupe_listings(merged)[:max_items]
 
 
 async def fetch_ebay_sold_listings(
