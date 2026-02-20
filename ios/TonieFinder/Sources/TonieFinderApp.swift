@@ -1936,6 +1936,70 @@ extension APIClient: AuthAPI {}
 
 // MARK: - Views
 
+private enum AuthStatusStyle {
+    case info
+    case success
+    case error
+
+    var icon: String {
+        switch self {
+        case .info: return "info.circle.fill"
+        case .success: return "checkmark.circle.fill"
+        case .error: return "exclamationmark.triangle.fill"
+        }
+    }
+
+    var tint: Color {
+        switch self {
+        case .info: return .blue
+        case .success: return .green
+        case .error: return .red
+        }
+    }
+
+    var background: Color {
+        tint.opacity(0.12)
+    }
+}
+
+private struct AuthStatusBanner: View {
+    let text: String
+
+    private var style: AuthStatusStyle {
+        let lowered = text.lowercased()
+        if lowered.contains("auth config issue") ||
+            lowered.contains("ungültig") ||
+            lowered.contains("fehl") ||
+            lowered.contains("unauthorized") ||
+            lowered.contains("falsch") ||
+            lowered.contains("error") {
+            return .error
+        }
+
+        if lowered.contains("registrierung erfolgreich") {
+            return .success
+        }
+
+        return .info
+    }
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: style.icon)
+                .foregroundStyle(style.tint)
+                .padding(.top, 1)
+
+            Text(text)
+                .font(.footnote)
+                .foregroundStyle(.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(10)
+        .background(style.background)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+
 struct LoginView: View {
     @EnvironmentObject private var auth: AuthViewModel
 
@@ -1961,18 +2025,13 @@ struct LoginView: View {
                             }
                         }
                         .pickerStyle(.segmented)
+                        .disabled(auth.isLoading)
 
                         if AppConfig.clientAuthMode == .external {
-                            Text("External Auth aktiv (Supabase). Registrierung kann E-Mail-Bestätigung erfordern.")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            AuthStatusBanner(text: "External Auth aktiv (Supabase). Registrierung kann E-Mail-Bestätigung erfordern.")
 
                             if let issue = AppConfig.authConfigIssue {
-                                Text(issue)
-                                    .font(.footnote)
-                                    .foregroundStyle(.red)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                AuthStatusBanner(text: issue)
                             }
                         }
 
@@ -1982,30 +2041,33 @@ struct LoginView: View {
                             .padding(12)
                             .background(Color.gray.opacity(0.08))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .disabled(auth.isLoading)
 
                         SecureField("Passwort", text: $auth.password)
                             .padding(12)
                             .background(Color.gray.opacity(0.08))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .disabled(auth.isLoading)
 
                         Button(action: auth.submitAuth) {
-                            if auth.isLoading {
-                                ProgressView()
-                                    .frame(maxWidth: .infinity)
-                            } else {
-                                Text(auth.mode == .login ? "Einloggen" : "Registrieren")
+                            HStack(spacing: 10) {
+                                if auth.isLoading {
+                                    ProgressView()
+                                        .controlSize(.small)
+                                        .tint(.white)
+                                }
+
+                                Text(auth.isLoading ? (auth.mode == .login ? "Anmeldung läuft…" : "Registrierung läuft…") : (auth.mode == .login ? "Einloggen" : "Registrieren"))
                                     .bold()
-                                    .frame(maxWidth: .infinity)
                             }
+                            .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(TFColor.tonieRed)
-                        .disabled(AppConfig.authConfigIssue != nil)
+                        .disabled(AppConfig.authConfigIssue != nil || auth.isLoading)
 
                         if let status = auth.statusText, !status.isEmpty {
-                            Text(status)
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
+                            AuthStatusBanner(text: status)
                         }
                     }
                 }
