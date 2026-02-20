@@ -1146,10 +1146,14 @@ enum AppConfig {
     }
 
     static var debugLoggingEnabled: Bool {
-        debugLoggingEnabled(
+        #if DEBUG
+        return debugLoggingEnabled(
             from: ProcessInfo.processInfo.environment["TF_DEBUG_LOG"],
             plistValue: Bundle.main.object(forInfoDictionaryKey: "TF_DEBUG_LOG")
         )
+        #else
+        return false
+        #endif
     }
 
     private static func resolveString(
@@ -1299,6 +1303,44 @@ enum AppConfig {
 
     static var supportEmail: String {
         supportEmailResolved.value ?? "support@example.com"
+    }
+
+    private static func isPlaceholderURL(_ value: String) -> Bool {
+        let lowered = value.lowercased()
+        return lowered.contains("example.com") || lowered.contains("<") || lowered.contains(">")
+    }
+
+    private static func resolvedValidURL(from value: String) -> URL? {
+        guard !isPlaceholderURL(value),
+              let url = URL(string: value),
+              let scheme = url.scheme?.lowercased(),
+              ["http", "https"].contains(scheme),
+              url.host != nil else {
+            return nil
+        }
+        return url
+    }
+
+    static var privacyPolicyURLForUser: URL? {
+        resolvedValidURL(from: privacyPolicyURL)
+    }
+
+    static var termsOfServiceURLForUser: URL? {
+        resolvedValidURL(from: termsOfServiceURL)
+    }
+
+    static var supportURLForUser: URL? {
+        resolvedValidURL(from: supportURL)
+    }
+
+    static var supportEmailForUser: String? {
+        let value = supportEmail.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !value.isEmpty,
+              !value.lowercased().contains("example.com"),
+              value.contains("@") else {
+            return nil
+        }
+        return value
     }
 
     static var appVersionBuild: String {
@@ -2513,19 +2555,19 @@ struct AccountView: View {
                             .font(.headline)
                         Text(auth.email.isEmpty ? "Kein Konto" : auth.email)
                             .foregroundStyle(.secondary)
-
-                        Text("Auth Mode: \(AppConfig.clientAuthMode.rawValue)")
+                        Text("Status: \(auth.authToken == nil ? "abgemeldet" : "angemeldet")")
                             .font(.caption)
                             .foregroundStyle(.secondary)
-                        Text("Auth Mode Source: \(AppConfig.clientAuthModeResolved.source)")
-                            .font(.caption2)
+                        Text("App Version: \(AppConfig.appVersionBuild)")
+                            .font(.caption)
                             .foregroundStyle(.secondary)
                     }
                 }
 
+                #if DEBUG
                 Card {
                     VStack(alignment: .leading, spacing: 6) {
-                        Text("Diagnostics")
+                        Text("Diagnostics (Debug)")
                             .font(.headline)
                         Text("Base URL: \(AppConfig.apiBaseURL)")
                             .font(.caption)
@@ -2533,13 +2575,13 @@ struct AccountView: View {
                         Text("Base URL Source: \(AppConfig.apiBaseURLResolved.source)")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
-                        Text("Session: \(auth.authToken == nil ? "logged out" : "logged in")")
+                        Text("Auth Mode: \(AppConfig.clientAuthMode.rawValue)")
                             .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Text("Auth Mode Source: \(AppConfig.clientAuthModeResolved.source)")
+                            .font(.caption2)
                             .foregroundStyle(.secondary)
                         Text("Debug Log: \(AppConfig.debugLoggingEnabled ? "on" : "off")")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                        Text("App Version: \(AppConfig.appVersionBuild)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         if let supabaseURL = AppConfig.supabaseURL, !supabaseURL.isEmpty {
@@ -2560,30 +2602,42 @@ struct AccountView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                #endif
 
                 Card {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Rechtliches & Support")
                             .font(.headline)
 
-                        if let privacyURL = URL(string: AppConfig.privacyPolicyURL) {
+                        if let privacyURL = AppConfig.privacyPolicyURLForUser {
                             Link("Datenschutzerklärung", destination: privacyURL)
                                 .font(.subheadline)
                         }
 
-                        if let termsURL = URL(string: AppConfig.termsOfServiceURL) {
+                        if let termsURL = AppConfig.termsOfServiceURLForUser {
                             Link("AGB / Nutzungsbedingungen", destination: termsURL)
                                 .font(.subheadline)
                         }
 
-                        if let supportURL = URL(string: AppConfig.supportURL) {
+                        if let supportURL = AppConfig.supportURLForUser {
                             Link("Support", destination: supportURL)
                                 .font(.subheadline)
                         }
 
-                        Text("Support E-Mail: \(AppConfig.supportEmail)")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                        if let supportEmail = AppConfig.supportEmailForUser {
+                            Text("Support E-Mail: \(supportEmail)")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+
+                        if AppConfig.privacyPolicyURLForUser == nil,
+                           AppConfig.termsOfServiceURLForUser == nil,
+                           AppConfig.supportURLForUser == nil,
+                           AppConfig.supportEmailForUser == nil {
+                            Text("Rechtliche Links und Support-Kontakt sind aktuell noch nicht konfiguriert.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
 
                         Text("DSGVO-Hinweis")
                             .font(.subheadline)
@@ -2592,6 +2646,7 @@ struct AccountView: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
+                        #if DEBUG
                         Text("Privacy URL Source: \(AppConfig.privacyPolicyURLResolved.source)")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
@@ -2604,6 +2659,7 @@ struct AccountView: View {
                         Text("Support E-Mail Source: \(AppConfig.supportEmailResolved.source)")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
+                        #endif
                     }
                 }
 
