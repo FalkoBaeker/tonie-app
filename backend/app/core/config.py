@@ -33,7 +33,12 @@ class Settings(BaseSettings):
     market_default_source_weight: float = 1.0
     market_source_weights: dict[str, float] = Field(
         default_factory=lambda: {
+            # Primary sold-data signal
             "ebay_sold": 1.0,
+            # API search/listing data can be high quality but usually reflects offers, not sold outcomes.
+            "ebay_api_listing": 0.8,
+            # Reserved for future sold/completed API feeds.
+            "ebay_api_sold": 1.0,
             # Lower influence for classifieds/listing sources unless proven against sold data.
             "kleinanzeigen_listing": 0.35,
             "kleinanzeigen_offer": 0.35,
