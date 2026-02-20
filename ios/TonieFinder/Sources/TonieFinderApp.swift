@@ -164,7 +164,7 @@ struct WatchlistAlert: Identifiable {
     let previousPrice: Double?
     let targetPrice: Double?
     let isUnread: Bool
-    let createdAt: String
+    let createdAt: String? = nil
 
     var displayType: String {
         switch alertType.lowercased() {
@@ -193,6 +193,7 @@ struct WatchlistAlert: Identifiable {
     }
 
     var createdAtDisplay: String {
+        guard let createdAt, !createdAt.isEmpty else { return "-" }
         let iso = ISO8601DateFormatter()
         if let date = iso.date(from: createdAt) {
             return date.formatted(date: .abbreviated, time: .shortened)
