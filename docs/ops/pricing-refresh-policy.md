@@ -11,7 +11,14 @@ Preise für Nutzer nachvollziehbar aktuell halten und gleichzeitig Last begrenze
 - **Pricing-View:** Button `Preis aktualisieren` lädt den aktuell ausgewählten Tonie neu.
 - **Watchlist-View:** Button `Preise aktualisieren` sowie Pull-to-refresh laden `/watchlist?refresh=true`.
 
-### 2) UI-Freshness
+### 2) Automatischer Refresh (Backend)
+- Ziel-Frequenz: **1x pro Woche** (`MARKET_AUTO_REFRESH_INTERVAL_MINUTES=10080`).
+- Aktivierung über Runtime-Env:
+  - `MARKET_AUTO_REFRESH_ENABLED=true`
+  - `MARKET_AUTO_REFRESH_INTERVAL_MINUTES=10080`
+- Begründung: realistischer Markt-Rhythmus bei geringer Last.
+
+### 3) UI-Freshness
 - Pricing zeigt: `Zuletzt aktualisiert: <Zeitpunkt>` basierend auf dem Fetch-Zeitpunkt.
 - Watchlist zeigt pro Eintrag: `Zuletzt aktualisiert: <updated_at>` (falls vorhanden).
 - Bei schwacher Datenlage/stale Quelle wird ein Hinweis angezeigt.

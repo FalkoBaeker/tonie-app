@@ -173,10 +173,21 @@ python scripts/generate_coverage_report.py --fresh-minutes 360 --min-effective-s
 Automatic refresh (optional):
 - enable in `.env`:
   - `MARKET_AUTO_REFRESH_ENABLED=true`
-  - `MARKET_AUTO_REFRESH_INTERVAL_MINUTES=360`
+  - `MARKET_AUTO_REFRESH_INTERVAL_MINUTES=10080` (weekly)
   - `MARKET_AUTO_REFRESH_LIMIT=0`
   - `MARKET_AUTO_REFRESH_DELAY_MS=200`
   - `MARKET_AUTO_REFRESH_MAX_ITEMS=80`
+
+eBay API (optional, server-side only):
+- `EBAY_API_ENABLED=true`
+- `EBAY_ENV=production` (or `sandbox`)
+- `EBAY_CLIENT_ID=...`
+- `EBAY_CLIENT_SECRET=...`
+- `EBAY_MARKETPLACE_ID=EBAY_DE`
+- `EBAY_REQUEST_TIMEOUT_S=15`
+- `EBAY_MAX_RETRIES=2`
+- `EBAY_API_SHADOW_MODE=true` (collect, but do not affect pricing)
+- `EBAY_API_INCLUDE_IN_PRICING=false` (set true after calibration)
 
 Data-quality tuning (optional):
 - `MARKET_PRICE_MIN_EUR=3.0`
@@ -184,7 +195,7 @@ Data-quality tuning (optional):
 - `MARKET_OUTLIER_IQR_FACTOR=1.8`
 - `MARKET_MIN_EFFECTIVE_SAMPLES=5`
 - `MARKET_DEFAULT_SOURCE_WEIGHT=1.0`
-- `MARKET_SOURCE_WEIGHTS={"ebay_sold":1.0,"kleinanzeigen_offer":0.35}`
+- `MARKET_SOURCE_WEIGHTS={"ebay_sold":1.0,"ebay_api_listing":0.8,"kleinanzeigen_offer":0.35}`
 
 Photo-recognition tuning (optional):
 - `RECOGNITION_REFERENCE_DIR=./app/data/tonie_refs`
