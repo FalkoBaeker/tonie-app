@@ -168,7 +168,7 @@ final class AuthViewModelTests: XCTestCase {
         try? await Task.sleep(nanoseconds: 200_000_000)
 
         XCTAssertFalse(vm.isLoggedIn)
-        XCTAssertEqual(vm.statusText, "Registrierung erfolgreich. Bitte E-Mail bestätigen und danach einloggen.")
+        XCTAssertEqual(vm.statusText, "Bitte E-Mail bestätigen und danach einloggen.")
         XCTAssertNil(store.token)
     }
 
