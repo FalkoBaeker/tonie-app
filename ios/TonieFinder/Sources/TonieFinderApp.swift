@@ -1249,6 +1249,58 @@ enum AppConfig {
         return nil
     }
 
+    static var privacyPolicyURLResolved: ResolvedString {
+        resolveString(
+            envKey: "TF_PRIVACY_POLICY_URL",
+            plistKey: "TF_PRIVACY_POLICY_URL",
+            defaultValue: "https://example.com/privacy",
+            defaultSource: "built-in-default"
+        )
+    }
+
+    static var privacyPolicyURL: String {
+        privacyPolicyURLResolved.value ?? "https://example.com/privacy"
+    }
+
+    static var termsOfServiceURLResolved: ResolvedString {
+        resolveString(
+            envKey: "TF_TERMS_URL",
+            plistKey: "TF_TERMS_URL",
+            defaultValue: "https://example.com/terms",
+            defaultSource: "built-in-default"
+        )
+    }
+
+    static var termsOfServiceURL: String {
+        termsOfServiceURLResolved.value ?? "https://example.com/terms"
+    }
+
+    static var supportURLResolved: ResolvedString {
+        resolveString(
+            envKey: "TF_SUPPORT_URL",
+            plistKey: "TF_SUPPORT_URL",
+            defaultValue: "https://example.com/support",
+            defaultSource: "built-in-default"
+        )
+    }
+
+    static var supportURL: String {
+        supportURLResolved.value ?? "https://example.com/support"
+    }
+
+    static var supportEmailResolved: ResolvedString {
+        resolveString(
+            envKey: "TF_SUPPORT_EMAIL",
+            plistKey: "TF_SUPPORT_EMAIL",
+            defaultValue: "support@example.com",
+            defaultSource: "built-in-default"
+        )
+    }
+
+    static var supportEmail: String {
+        supportEmailResolved.value ?? "support@example.com"
+    }
+
     static var appVersionBuild: String {
         let version = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "-"
         let build = (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? "-"
@@ -2504,6 +2556,52 @@ struct AccountView: View {
                                 .foregroundStyle(.red)
                         }
                         Text("Device-Test Hint: Bei WLAN-IP-Wechsel Base URL prüfen.")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                Card {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Rechtliches & Support")
+                            .font(.headline)
+
+                        if let privacyURL = URL(string: AppConfig.privacyPolicyURL) {
+                            Link("Datenschutzerklärung", destination: privacyURL)
+                                .font(.subheadline)
+                        }
+
+                        if let termsURL = URL(string: AppConfig.termsOfServiceURL) {
+                            Link("AGB / Nutzungsbedingungen", destination: termsURL)
+                                .font(.subheadline)
+                        }
+
+                        if let supportURL = URL(string: AppConfig.supportURL) {
+                            Link("Support", destination: supportURL)
+                                .font(.subheadline)
+                        }
+
+                        Text("Support E-Mail: \(AppConfig.supportEmail)")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        Text("DSGVO-Hinweis")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner personenbezogenen Daten. Details und Kontakt findest du in der Datenschutzerklärung.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        Text("Privacy URL Source: \(AppConfig.privacyPolicyURLResolved.source)")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                        Text("Terms URL Source: \(AppConfig.termsOfServiceURLResolved.source)")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                        Text("Support URL Source: \(AppConfig.supportURLResolved.source)")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                        Text("Support E-Mail Source: \(AppConfig.supportEmailResolved.source)")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
