@@ -428,7 +428,15 @@ final class AuthViewModel: ObservableObject {
                         }
 
                         guard let createdSession = registerResult.session else {
-                            statusText = "Registrierung erfolgreich. Bitte E-Mail bestätigen und dann einloggen."
+                            // Supabase can return no session both for "confirm email required"
+                            // and for existing-account anti-enumeration flows. Try login to disambiguate UX.
+                            do {
+                                _ = try await api.externalLogin(email: normalizedEmail, password: password)
+                                statusText = "Konto scheint bereits zu existieren. Bitte einloggen."
+                            } catch {
+                                statusText = "Registrierung erfolgreich. Bitte E-Mail bestätigen und dann einloggen."
+                            }
+
                             password = ""
                             return
                         }

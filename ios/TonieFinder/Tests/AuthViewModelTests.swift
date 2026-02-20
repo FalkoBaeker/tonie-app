@@ -148,8 +148,7 @@ final class AuthViewModelTests: XCTestCase {
                 return ClientAuthSession(token: "", userId: 0, userEmail: "", expiresAt: "")
             },
             externalLoginHandler: { _, _ in
-                XCTFail("external login should not be called")
-                return ClientAuthSession(token: "", userId: 0, userEmail: "", expiresAt: "")
+                throw APIError.unauthorized(detail: "invalid credentials")
             },
             externalRegisterHandler: { _, _ in
                 ExternalRegisterResult(session: nil, requiresEmailVerification: true)
@@ -169,7 +168,46 @@ final class AuthViewModelTests: XCTestCase {
         try? await Task.sleep(nanoseconds: 200_000_000)
 
         XCTAssertFalse(vm.isLoggedIn)
-        XCTAssertEqual(vm.statusText, "Bitte E-Mail bestätigen und danach einloggen.")
+        XCTAssertEqual(vm.statusText, "Registrierung erfolgreich. Bitte E-Mail bestätigen und dann einloggen.")
         XCTAssertNil(store.token)
+    }
+
+    func testExternalRegisterWithoutSessionButLoginWorks_showsAccountExistsHint() async {
+        setenv("TF_AUTH_MODE", "external", 1)
+        setenv("TF_SUPABASE_URL", "https://example.supabase.co", 1)
+        setenv("TF_SUPABASE_ANON_KEY", "dummy", 1)
+        let store = InMemoryTokenStore()
+
+        let api = MockAuthAPI(
+            loginHandler: { _, _ in
+                XCTFail("local login should not be called")
+                return ClientAuthSession(token: "", userId: 0, userEmail: "", expiresAt: "")
+            },
+            registerHandler: { _, _ in
+                XCTFail("local register should not be called")
+                return ClientAuthSession(token: "", userId: 0, userEmail: "", expiresAt: "")
+            },
+            externalLoginHandler: { _, _ in
+                ClientAuthSession(token: "external", userId: 0, userEmail: "x@example.com", expiresAt: "")
+            },
+            externalRegisterHandler: { _, _ in
+                ExternalRegisterResult(session: nil, requiresEmailVerification: true)
+            },
+            meHandler: { _ in
+                XCTFail("me should not be called")
+                return ClientUser(id: 1, email: "x@example.com")
+            }
+        )
+
+        let vm = AuthViewModel(api: api, tokenStore: store)
+        vm.email = "ext@example.com"
+        vm.password = "secret123"
+        vm.mode = .register
+        vm.submitAuth()
+
+        try? await Task.sleep(nanoseconds: 200_000_000)
+
+        XCTAssertEqual(vm.statusText, "Konto scheint bereits zu existieren. Bitte einloggen.")
+        XCTAssertFalse(vm.isLoggedIn)
     }
 }
