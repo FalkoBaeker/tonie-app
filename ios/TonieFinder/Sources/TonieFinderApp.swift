@@ -118,6 +118,42 @@ struct PriceTriple {
     let source: String?
     let qualityTier: String?
     let confidenceScore: Double?
+    let fetchedAt: Date?
+
+    init(
+        instant: Double,
+        fair: Double,
+        patience: Double,
+        sampleSize: Int?,
+        effectiveSampleSize: Double?,
+        source: String?,
+        qualityTier: String?,
+        confidenceScore: Double?,
+        fetchedAt: Date? = nil
+    ) {
+        self.instant = instant
+        self.fair = fair
+        self.patience = patience
+        self.sampleSize = sampleSize
+        self.effectiveSampleSize = effectiveSampleSize
+        self.source = source
+        self.qualityTier = qualityTier
+        self.confidenceScore = confidenceScore
+        self.fetchedAt = fetchedAt
+    }
+
+    var freshnessText: String {
+        guard let fetchedAt else { return "Zuletzt aktualisiert: unbekannt" }
+        return "Zuletzt aktualisiert: \(fetchedAt.formatted(date: .abbreviated, time: .shortened))"
+    }
+
+    var staleHint: String? {
+        let normalized = (source ?? "").lowercased()
+        if normalized.contains("stale") || normalized.contains("fallback") {
+            return "Hinweis: Preis basiert auf älteren oder eingeschränkten Marktdaten."
+        }
+        return nil
+    }
 }
 
 struct WatchItem: Identifiable {
@@ -127,6 +163,41 @@ struct WatchItem: Identifiable {
     let title: String
     let condition: TonieCondition
     let lastFairPrice: Double
+    let updatedAt: String?
+
+    init(
+        id: String,
+        backendId: Int?,
+        tonieId: String,
+        title: String,
+        condition: TonieCondition,
+        lastFairPrice: Double,
+        updatedAt: String? = nil
+    ) {
+        self.id = id
+        self.backendId = backendId
+        self.tonieId = tonieId
+        self.title = title
+        self.condition = condition
+        self.lastFairPrice = lastFairPrice
+        self.updatedAt = updatedAt
+    }
+
+    var updatedAtDisplay: String {
+        guard let updatedAt, !updatedAt.isEmpty else { return "unbekannt" }
+        let iso = ISO8601DateFormatter()
+        if let date = iso.date(from: updatedAt) {
+            return date.formatted(date: .abbreviated, time: .shortened)
+        }
+        return updatedAt
+    }
+
+    var isStale: Bool {
+        guard let updatedAt, !updatedAt.isEmpty else { return true }
+        let iso = ISO8601DateFormatter()
+        guard let date = iso.date(from: updatedAt) else { return true }
+        return Date().timeIntervalSince(date) > 24 * 60 * 60
+    }
 }
 
 protocol WatchlistAPI {
@@ -801,7 +872,11 @@ final class PricingViewModel: ObservableObject {
                 else { return }
 
                 prices = backendPrices
-                infoText = nil
+                if let fetchedAt = backendPrices.fetchedAt {
+                    infoText = "Preis aktualisiert: \(fetchedAt.formatted(date: .abbreviated, time: .shortened))"
+                } else {
+                    infoText = "Preis aktualisiert."
+                }
                 reportTiming(step: "pricing_fetch", startedAt: startedAt, context: [
                     "tonie_id": selectedID,
                     "condition": selectedCondition.apiValue
@@ -831,6 +906,15 @@ final class PricingViewModel: ObservableObject {
         } else {
             search()
         }
+    }
+
+    func refreshSelectedPricing() {
+        guard let selected else {
+            errorText = "Bitte erst einen Treffer auswählen."
+            return
+        }
+        infoText = "Preis wird aktualisiert …"
+        choose(selected)
     }
 
     func addSelectedToWatchlist(authToken: String?) {
@@ -910,7 +994,8 @@ final class WatchlistViewModel: ObservableObject {
             tonieId: "local_1",
             title: "Der Löwe, der nicht schreiben konnte",
             condition: .veryGood,
-            lastFairPrice: 18.50
+            lastFairPrice: 18.50,
+            updatedAt: nil
         ),
         WatchItem(
             id: UUID().uuidString,
@@ -918,7 +1003,8 @@ final class WatchlistViewModel: ObservableObject {
             tonieId: "local_2",
             title: "Benjamin Blümchen – Der Zoo-Kindergarten",
             condition: .good,
-            lastFairPrice: 14.90
+            lastFairPrice: 14.90,
+            updatedAt: nil
         ),
     ]
 
@@ -1538,6 +1624,7 @@ final class APIClient {
         let title: String
         let condition: String
         let last_fair_price: Double
+        let updated_at: String?
     }
 
     struct WatchlistAlertDTO: Decodable {
@@ -1754,7 +1841,8 @@ final class APIClient {
             effectiveSampleSize: decoded.effective_sample_size,
             source: decoded.source,
             qualityTier: decoded.quality_tier,
-            confidenceScore: decoded.confidence_score
+            confidenceScore: decoded.confidence_score,
+            fetchedAt: Date()
         )
     }
 
@@ -1916,7 +2004,8 @@ final class APIClient {
                 tonieId: $0.tonie_id,
                 title: $0.title,
                 condition: TonieCondition(apiValue: $0.condition) ?? .good,
-                lastFairPrice: $0.last_fair_price
+                lastFairPrice: $0.last_fair_price,
+                updatedAt: $0.updated_at
             )
         }
     }
@@ -1979,7 +2068,8 @@ final class APIClient {
             tonieId: item.tonie_id,
             title: item.title,
             condition: TonieCondition(apiValue: item.condition) ?? .good,
-            lastFairPrice: item.last_fair_price
+            lastFairPrice: item.last_fair_price,
+            updatedAt: item.updated_at
         )
     }
 
@@ -2348,6 +2438,16 @@ struct PricingView: View {
                                             .foregroundStyle(.secondary)
                                     }
 
+                                    Text(p.freshnessText)
+                                        .font(.caption2)
+                                        .foregroundStyle(.secondary)
+
+                                    if let staleHint = p.staleHint {
+                                        Text(staleHint)
+                                            .font(.caption2)
+                                            .foregroundStyle(.orange)
+                                    }
+
                                     if let sample = p.sampleSize, sample > 0 {
                                         Text("Datenbasis: \(sample) Verkäufe")
                                             .font(.caption)
@@ -2371,6 +2471,22 @@ struct PricingView: View {
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }
+
+                                    Button {
+                                        vm.refreshSelectedPricing()
+                                    } label: {
+                                        HStack {
+                                            if vm.isPricingLoading {
+                                                ProgressView()
+                                                    .controlSize(.small)
+                                            }
+                                            Text("Preis aktualisieren")
+                                                .bold()
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                    }
+                                    .buttonStyle(.bordered)
+                                    .disabled(vm.isPricingLoading)
 
                                     Button {
                                         vm.addSelectedToWatchlist(authToken: auth.authToken)
@@ -2497,6 +2613,14 @@ struct WatchlistView: View {
                         Text("\(item.condition.rawValue) · Fair \(item.lastFairPrice, format: .currency(code: "EUR"))")
                             .font(.caption)
                             .foregroundStyle(.secondary)
+                        Text("Zuletzt aktualisiert: \(item.updatedAtDisplay)")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                        if item.isStale {
+                            Text("Hinweis: Preisstand möglicherweise veraltet. Bitte aktualisieren.")
+                                .font(.caption2)
+                                .foregroundStyle(.orange)
+                        }
                     }
                 }
                 .onDelete { offsets in
