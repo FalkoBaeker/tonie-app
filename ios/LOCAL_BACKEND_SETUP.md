@@ -50,8 +50,15 @@ Die iOS-App unterstützt zwei Modi über Build-Settings / Info.plist:
   - sendet Supabase Bearer Token an Backend (`AUTH_MODE=external`)
 
 Zusätzliche Werte für external mode:
-- `TF_SUPABASE_URL=https://<project-ref>.supabase.co`
-- `TF_SUPABASE_ANON_KEY=<supabase-anon-key>`
+- `TF_SUPABASE_URL=https://<project-ref>.supabase.co` (Platzhalter `<project-ref>` durch echten Wert ersetzen)
+- `TF_SUPABASE_ANON_KEY=<supabase-anon-key>` (Platzhalter ersetzen)
+
+Wichtig:
+- App nach Env-Änderungen aus Xcode neu starten (ggf. App auf Device einmal löschen), sonst läuft evtl. noch alte Config.
+- In **Account -> Diagnostics** prüfen:
+  - `Auth Mode: external`
+  - `Base URL` zeigt Staging URL
+  - `... Source` zeigt, ob Wert aus `env:` oder `plist:` kommt
 
 Hinweis:
 - Bei aktivierter Email-Verifikation zeigt die App nach Registrierung einen Hinweis zur Bestätigungsmail.

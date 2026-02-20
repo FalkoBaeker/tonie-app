@@ -395,6 +395,11 @@ final class AuthViewModel: ObservableObject {
     }
 
     func submitAuth() {
+        if let authConfigIssue = AppConfig.authConfigIssue {
+            statusText = authConfigIssue
+            return
+        }
+
         let normalizedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         guard !normalizedEmail.isEmpty, !password.isEmpty else {
             statusText = "Bitte E-Mail und Passwort eingeben."
@@ -1108,6 +1113,11 @@ enum AppConfig {
     private static let simulatorDefault = "http://127.0.0.1:8787/api"
     private static let deviceDefault = "http://192.168.2.133:8787/api"
 
+    struct ResolvedString {
+        let value: String?
+        let source: String
+    }
+
     static func debugLoggingEnabled(from envValue: String?, plistValue: Any?) -> Bool {
         let envNormalized = envValue?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         if let envNormalized, !envNormalized.isEmpty {
@@ -1134,57 +1144,98 @@ enum AppConfig {
         )
     }
 
-    static var apiBaseURL: String {
-        if let env = ProcessInfo.processInfo.environment["TF_API_BASE_URL"], !env.isEmpty {
-            return env
+    private static func resolveString(
+        envKey: String,
+        plistKey: String,
+        defaultValue: String? = nil,
+        defaultSource: String = "default"
+    ) -> ResolvedString {
+        if let env = ProcessInfo.processInfo.environment[envKey]?.trimmingCharacters(in: .whitespacesAndNewlines), !env.isEmpty {
+            return ResolvedString(value: env, source: "env:\(envKey)")
         }
 
-        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_API_BASE_URL") as? String,
+        if let plistValue = Bundle.main.object(forInfoDictionaryKey: plistKey) as? String,
            !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return plistValue
+            return ResolvedString(value: plistValue.trimmingCharacters(in: .whitespacesAndNewlines), source: "plist:\(plistKey)")
         }
 
+        return ResolvedString(value: defaultValue, source: defaultSource)
+    }
+
+    static var apiBaseURLResolved: ResolvedString {
         #if targetEnvironment(simulator)
-        return simulatorDefault
+        let fallback = simulatorDefault
         #else
-        return deviceDefault
+        let fallback = deviceDefault
         #endif
+
+        return resolveString(
+            envKey: "TF_API_BASE_URL",
+            plistKey: "TF_API_BASE_URL",
+            defaultValue: fallback,
+            defaultSource: "built-in-default"
+        )
+    }
+
+    static var apiBaseURL: String {
+        apiBaseURLResolved.value ?? simulatorDefault
+    }
+
+    static var clientAuthModeResolved: ResolvedString {
+        resolveString(
+            envKey: "TF_AUTH_MODE",
+            plistKey: "TF_AUTH_MODE",
+            defaultValue: ClientAuthBackendMode.local.rawValue,
+            defaultSource: "built-in-default"
+        )
     }
 
     static var clientAuthMode: ClientAuthBackendMode {
-        if let env = ProcessInfo.processInfo.environment["TF_AUTH_MODE"], !env.isEmpty {
-            return ClientAuthBackendMode(rawValue: env.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()) ?? .local
-        }
+        ClientAuthBackendMode(rawValue: (clientAuthModeResolved.value ?? "local").lowercased()) ?? .local
+    }
 
-        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_AUTH_MODE") as? String,
-           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return ClientAuthBackendMode(rawValue: plistValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()) ?? .local
-        }
-
-        return .local
+    static var supabaseURLResolved: ResolvedString {
+        resolveString(envKey: "TF_SUPABASE_URL", plistKey: "TF_SUPABASE_URL", defaultValue: nil)
     }
 
     static var supabaseURL: String? {
-        if let env = ProcessInfo.processInfo.environment["TF_SUPABASE_URL"], !env.isEmpty {
-            return env.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
+        supabaseURLResolved.value
+    }
 
-        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_SUPABASE_URL") as? String,
-           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return plistValue.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
-
-        return nil
+    static var supabaseAnonKeyResolved: ResolvedString {
+        resolveString(envKey: "TF_SUPABASE_ANON_KEY", plistKey: "TF_SUPABASE_ANON_KEY", defaultValue: nil)
     }
 
     static var supabaseAnonKey: String? {
-        if let env = ProcessInfo.processInfo.environment["TF_SUPABASE_ANON_KEY"], !env.isEmpty {
-            return env.trimmingCharacters(in: .whitespacesAndNewlines)
+        supabaseAnonKeyResolved.value
+    }
+
+    static var authConfigIssue: String? {
+        guard clientAuthMode == .external else { return nil }
+
+        let base = apiBaseURL
+        guard let baseURL = URL(string: base), baseURL.scheme != nil, baseURL.host != nil else {
+            return "External Auth aktiv, aber TF_API_BASE_URL ist ungültig."
         }
 
-        if let plistValue = Bundle.main.object(forInfoDictionaryKey: "TF_SUPABASE_ANON_KEY") as? String,
-           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return plistValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let supabaseURL, !supabaseURL.isEmpty else {
+            return "External Auth aktiv, aber TF_SUPABASE_URL fehlt."
+        }
+
+        if supabaseURL.contains("<") || supabaseURL.contains(">") {
+            return "TF_SUPABASE_URL enthält Platzhalter (<...>). Bitte echte Projekt-URL setzen."
+        }
+
+        guard let parsedSupabaseURL = URL(string: supabaseURL), parsedSupabaseURL.scheme?.hasPrefix("http") == true else {
+            return "TF_SUPABASE_URL ist ungültig."
+        }
+
+        guard let anonKey = supabaseAnonKey, !anonKey.isEmpty else {
+            return "External Auth aktiv, aber TF_SUPABASE_ANON_KEY fehlt."
+        }
+
+        if anonKey.contains("<") || anonKey.contains(">") {
+            return "TF_SUPABASE_ANON_KEY enthält Platzhalter (<...>). Bitte echten Key setzen."
         }
 
         return nil
@@ -1814,6 +1865,13 @@ struct LoginView: View {
                                 .font(.footnote)
                                 .foregroundStyle(.secondary)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+
+                            if let issue = AppConfig.authConfigIssue {
+                                Text(issue)
+                                    .font(.footnote)
+                                    .foregroundStyle(.red)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
 
                         TextField("E-Mail", text: $auth.email)
@@ -1840,6 +1898,7 @@ struct LoginView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(TFColor.tonieRed)
+                        .disabled(AppConfig.authConfigIssue != nil)
 
                         if let status = auth.statusText, !status.isEmpty {
                             Text(status)
@@ -2398,6 +2457,9 @@ struct AccountView: View {
                         Text("Auth Mode: \(AppConfig.clientAuthMode.rawValue)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
+                        Text("Auth Mode Source: \(AppConfig.clientAuthModeResolved.source)")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
                     }
                 }
 
@@ -2407,6 +2469,9 @@ struct AccountView: View {
                             .font(.headline)
                         Text("Base URL: \(AppConfig.apiBaseURL)")
                             .font(.caption)
+                            .foregroundStyle(.secondary)
+                        Text("Base URL Source: \(AppConfig.apiBaseURLResolved.source)")
+                            .font(.caption2)
                             .foregroundStyle(.secondary)
                         Text("Session: \(auth.authToken == nil ? "logged out" : "logged in")")
                             .font(.caption)
@@ -2421,6 +2486,14 @@ struct AccountView: View {
                             Text("Supabase URL: \(supabaseURL)")
                                 .font(.caption2)
                                 .foregroundStyle(.secondary)
+                            Text("Supabase URL Source: \(AppConfig.supabaseURLResolved.source)")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+                        if let issue = AppConfig.authConfigIssue {
+                            Text("Auth Config Issue: \(issue)")
+                                .font(.caption2)
+                                .foregroundStyle(.red)
                         }
                         Text("Device-Test Hint: Bei WLAN-IP-Wechsel Base URL prüfen.")
                             .font(.caption2)
