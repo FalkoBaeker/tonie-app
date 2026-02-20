@@ -57,7 +57,8 @@ Current status:
   - token-overlap gating on top of fuzzy score for higher precision
 - `/api/pricing/{tonie_id}` uses a cache-first pricing engine:
   - tries fresh cached market listings from SQLite
-  - falls back to live dual-source fetch (eBay sold + Kleinanzeigen offers) when cache is stale/empty
+  - live-source priority: eBay API -> eBay scrape -> Kleinanzeigen -> deterministic fallback
+  - eBay API can run in shadow mode (`EBAY_API_SHADOW_MODE=true`) while scrape remains active fallback
   - persists fetched listings back to SQLite
   - computes quantiles Q25/Q50/Q75 + condition factors
   - supports source-weighted blending for multi-source cache data (e.g. classifieds with reduced weight)

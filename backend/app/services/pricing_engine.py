@@ -381,14 +381,15 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             limit=8,
         )
 
+        api_enabled = bool(settings.ebay_api_enabled)
         use_ebay_api_in_pricing = bool(
-            settings.ebay_api_enabled
+            api_enabled
             and settings.ebay_api_include_in_pricing
             and not settings.ebay_api_shadow_mode
         )
 
         ebay_api_rows = []
-        if settings.ebay_api_enabled:
+        if api_enabled:
             try:
                 ebay_api_rows = await fetch_ebay_api_listings_multi_query(
                     queries=queries,
@@ -408,6 +409,17 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             for l in ebay_api_rows
             if settings.market_price_min_eur <= l.price_eur <= settings.market_price_max_eur
         ]
+
+        if api_enabled and not ebay_api_records:
+            logger.info("eBay API had no usable rows (tonie_id=%s) -> scrape fallback path", tonie_id)
+        elif api_enabled:
+            logger.info(
+                "eBay API rows available (tonie_id=%s rows=%s shadow_mode=%s include_in_pricing=%s)",
+                tonie_id,
+                len(ebay_api_records),
+                settings.ebay_api_shadow_mode,
+                settings.ebay_api_include_in_pricing,
+            )
 
         if ebay_api_records:
             save_market_listings(
@@ -531,10 +543,14 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
 
         sold_prices = _clean_price_samples([float(r["price_eur"]) for r in ebay_records])
         if len(sold_prices) >= settings.market_min_samples:
+            sold_source = "ebay_sold_live_q25_q50_q75"
+            if api_enabled and (not use_ebay_api_in_pricing or not ebay_api_records):
+                sold_source = f"{sold_source}_scrape_fallback"
+
             live_result = _result_from_prices(
                 sold_prices,
                 condition=condition,
-                source="ebay_sold_live_q25_q50_q75",
+                source=sold_source,
             )
             return _record_and_return(
                 tonie_id=tonie_id,
@@ -555,7 +571,15 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             min_effective = max(1.5, min_effective * 0.45)
 
         if raw_sample_size >= settings.market_min_samples and effective_sample_size >= min_effective:
-            live_source = "market_live_blended_weighted" if has_ebay else "market_live_offer_only_weighted"
+            has_ebay_api = any(src.startswith("ebay_api") for src in used_sources)
+
+            if has_ebay_api:
+                live_source = "market_live_ebay_api_weighted"
+            elif has_ebay:
+                live_source = "market_live_blended_weighted_scrape_fallback" if api_enabled else "market_live_blended_weighted"
+            else:
+                live_source = "market_live_offer_only_weighted"
+
             live_weighted_result = _result_from_weighted_points(
                 points,
                 condition=condition,
