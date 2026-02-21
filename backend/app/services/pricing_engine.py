@@ -11,6 +11,7 @@ from app.core.config import settings
 from app.services.market_ingestion import (
     apply_time_window,
     build_ebay_search_queries,
+    filter_market_records_for_tonie,
     fetch_ebay_api_listings_multi_query,
     fetch_ebay_sold_listings_multi_query,
     fetch_kleinanzeigen_listings_multi_query,
@@ -135,6 +136,7 @@ def _result_from_prices(prices: list[float], condition: str, source: str) -> Eng
     q25 = _quantile(prices, 0.25)
     q50 = _quantile(prices, 0.50)
     q75 = _quantile(prices, 0.75)
+    q25, q50, q75 = _apply_quantile_guardrail(q25=q25, q50=q50, q75=q75)
 
     factor = CONDITION_FACTORS.get(condition, CONDITION_FACTORS["good"])
     return EnginePriceResult(
@@ -158,6 +160,7 @@ def _result_from_weighted_points(
     q25 = _weighted_quantile(points, 0.25)
     q50 = _weighted_quantile(points, 0.50)
     q75 = _weighted_quantile(points, 0.75)
+    q25, q50, q75 = _apply_quantile_guardrail(q25=q25, q50=q50, q75=q75)
 
     factor = CONDITION_FACTORS.get(condition, CONDITION_FACTORS["good"])
 
@@ -199,6 +202,30 @@ def _clean_price_samples(raw_prices: list[float]) -> list[float]:
     # Avoid over-aggressive trimming: require enough data retention.
     min_keep = max(settings.market_min_samples, int(math.ceil(len(bounded) * 0.5)))
     return filtered if len(filtered) >= min_keep else bounded
+
+
+def _apply_quantile_guardrail(*, q25: float, q50: float, q75: float) -> tuple[float, float, float]:
+    """Clamp implausible Q25 << Q50 spreads typically caused by polluted low-end offers.
+
+    Rationale:
+    - In healthy Tonie pricing samples, instant-price Q25 can be below Q50, but extreme drops
+      (e.g. very low out-of-category classifieds hits) are usually query pollution.
+    - Guard activates only when both ratio and absolute-gap thresholds are breached.
+    """
+    if q50 <= 0:
+        return q25, q50, q75
+
+    min_ratio = max(0.1, min(0.99, float(settings.market_instant_q25_min_ratio_to_q50)))
+    min_gap = max(0.0, float(settings.market_instant_guardrail_min_gap_eur))
+
+    ratio = q25 / q50 if q50 > 0 else 1.0
+    gap = q50 - q25
+    if ratio < min_ratio and gap >= min_gap:
+        q25 = q50 * min_ratio
+
+    q25 = min(q25, q50)
+    q75 = max(q75, q50)
+    return q25, q50, q75
 
 
 def _weighted_points_from_records(
@@ -246,11 +273,21 @@ def _try_cached_result(
     *,
     max_age_minutes: int | None,
     source: str,
+    tonie_title: str,
+    aliases: list[str] | None = None,
+    series: str | None = None,
 ) -> EnginePriceResult | None:
     cached = get_market_listings(
         tonie_id=tonie_id,
         max_age_minutes=max_age_minutes,
         limit=400,
+    )
+    cached = filter_market_records_for_tonie(
+        records=cached,
+        tonie_title=tonie_title,
+        aliases=aliases,
+        series=series,
+        sources={"kleinanzeigen_offer"},
     )
 
     points, raw_sample_size, effective_sample_size, used_sources = _weighted_points_from_records(cached)
@@ -359,11 +396,18 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             started=started,
         )
 
+    tonie_title = str(item.get("title") or "")
+    tonie_aliases = [str(a) for a in (item.get("aliases") or [])]
+    tonie_series = str(item.get("series") or "").strip() or None
+
     fresh_cached = _try_cached_result(
         tonie_id,
         condition,
         max_age_minutes=settings.market_cache_ttl_minutes,
         source="ebay_sold_cached_q25_q50_q75",
+        tonie_title=tonie_title,
+        aliases=tonie_aliases,
+        series=tonie_series,
     )
     if fresh_cached:
         return _record_and_return(
@@ -375,13 +419,15 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
 
     try:
         queries = build_ebay_search_queries(
-            title=str(item.get("title") or ""),
-            aliases=item.get("aliases") or [],
-            series=item.get("series"),
+            title=tonie_title,
+            aliases=tonie_aliases,
+            series=tonie_series,
             limit=8,
         )
 
         api_enabled = bool(settings.ebay_api_enabled)
+        # Controlled rollout: eBay API data can be promoted into pricing only when
+        # include_in_pricing=true and shadow_mode=false. This avoids blind hard switches.
         use_ebay_api_in_pricing = bool(
             api_enabled
             and settings.ebay_api_include_in_pricing
@@ -507,6 +553,13 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             for l in offer_rows
             if settings.market_price_min_eur <= l.price_eur <= settings.market_price_max_eur
         ]
+        offer_records = filter_market_records_for_tonie(
+            records=offer_records,
+            tonie_title=tonie_title,
+            aliases=tonie_aliases,
+            series=tonie_series,
+            sources={"kleinanzeigen_offer"},
+        )
 
         if ebay_records:
             save_market_listings(
@@ -613,6 +666,9 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
         condition,
         max_age_minutes=None,
         source="ebay_sold_cached_stale_q25_q50_q75",
+        tonie_title=tonie_title,
+        aliases=tonie_aliases,
+        series=tonie_series,
     )
     if stale_cached:
         return _record_and_return(

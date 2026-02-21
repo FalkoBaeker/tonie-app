@@ -193,9 +193,17 @@ Data-quality tuning (optional):
 - `MARKET_PRICE_MIN_EUR=3.0`
 - `MARKET_PRICE_MAX_EUR=250.0`
 - `MARKET_OUTLIER_IQR_FACTOR=1.8`
+- `MARKET_INSTANT_Q25_MIN_RATIO_TO_Q50=0.65` (guardrail against polluted low-end instant prices)
+- `MARKET_INSTANT_GUARDRAIL_MIN_GAP_EUR=4.0`
 - `MARKET_MIN_EFFECTIVE_SAMPLES=5`
 - `MARKET_DEFAULT_SOURCE_WEIGHT=1.0`
 - `MARKET_SOURCE_WEIGHTS={"ebay_sold":1.0,"ebay_api_listing":0.8,"kleinanzeigen_offer":0.35}`
+
+Pollution cleanup (safe, source-scoped):
+- preview only (default dry-run):
+  - `python scripts/cleanup_polluted_offers.py --limit 2000`
+- apply capped cleanup (no blanket delete):
+  - `python scripts/cleanup_polluted_offers.py --apply --max-delete 250`
 
 Photo-recognition tuning (optional):
 - `RECOGNITION_REFERENCE_DIR=./app/data/tonie_refs`

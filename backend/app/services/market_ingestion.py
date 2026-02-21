@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import difflib
 import html as html_lib
 import random
 import re
@@ -59,6 +60,16 @@ _EXCLUDE_KEYWORDS = {
     "dvd",
     "blu-ray",
     "buch",
+    "hardcover",
+    "paperback",
+    "taschenbuch",
+    "comic",
+    "hoerbuch",
+    "hörbuch",
+    "cd",
+    "audio cd",
+    "musik cd",
+    "film",
     "roman",
     "mp3",
     "download",
@@ -84,6 +95,7 @@ _TONIE_CONTEXT_KEYWORDS = {
     "tonies",
     "hoerfigur",
     "hörfigur",
+    "horfigur",
 }
 
 _GENERIC_MATCH_TOKENS = {
@@ -111,6 +123,31 @@ _GENERIC_MATCH_TOKENS = {
 }
 
 _DASH_SPLIT_RE = re.compile(r"\s+[–—-]\s+")
+
+# Keep this list explicit/reviewable: these terms are high-signal non-figure media noise
+# that frequently pollute classifieds query results for Tonies.
+_OFFER_MEDIA_NOISE_KEYWORDS = {
+    "cd",
+    "audio cd",
+    "hoerspiel cd",
+    "hörspiel cd",
+    "hoerbuch",
+    "hörbuch",
+    "buch",
+    "hardcover",
+    "paperback",
+    "taschenbuch",
+    "comic",
+    "dvd",
+    "blu ray",
+    "blu-ray",
+    "kassette",
+    "vinyl",
+    "schallplatte",
+    "ebook",
+}
+
+_TONIE_REQUIRED_TERMS = ("tonie", "tonies", "hoerfigur", "hörfigur", "horfigur")
 
 _EBAY_USER_AGENTS = [
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -233,6 +270,111 @@ def _is_relevant_to_query(title: str, query: str) -> bool:
     if len(query_tokens) <= 4:
         return overlap >= 2
     return overlap >= 3
+
+
+def _target_overlap_score(title: str, target: str) -> tuple[int, int, float]:
+    title_tokens = _tokenize_for_match(title)
+    target_tokens = _tokenize_for_match(target)
+    if not title_tokens or not target_tokens:
+        return 0, len(target_tokens), 0.0
+
+    overlap = len(title_tokens & target_tokens)
+    return overlap, len(target_tokens), overlap / max(1, len(target_tokens))
+
+
+def _contains_phrase(text: str, phrase: str) -> bool:
+    normalized_phrase = _normalize_token_text(phrase).strip()
+    if not normalized_phrase:
+        return False
+    pattern = rf"(?<![a-z0-9]){re.escape(normalized_phrase)}(?![a-z0-9])"
+    return re.search(pattern, text) is not None
+
+
+def is_relevant_offer_title_for_tonie(
+    *,
+    offer_title: str,
+    tonie_title: str,
+    aliases: Iterable[str] | None = None,
+    series: str | None = None,
+) -> bool:
+    normalized_offer = _normalize_token_text(offer_title)
+    if not normalized_offer:
+        return False
+
+    # Explicit Tonie context terms are required for classifieds offer data.
+    if not any(_contains_phrase(normalized_offer, term) for term in _TONIE_REQUIRED_TERMS):
+        return False
+
+    if any(_contains_phrase(normalized_offer, k) for k in _OFFER_MEDIA_NOISE_KEYWORDS):
+        return False
+
+    target_candidates: list[str] = [tonie_title]
+    if series:
+        target_candidates.append(series)
+        target_candidates.append(f"{series} {tonie_title}")
+    for alias in aliases or []:
+        target_candidates.append(str(alias))
+
+    # Title relevance gate:
+    # 1) token overlap threshold per candidate target, then
+    # 2) fuzzy fallback to support punctuation/word-order variants.
+    for target in target_candidates:
+        target_norm = _normalize_token_text(str(target))
+        if not target_norm:
+            continue
+
+        if target_norm in normalized_offer:
+            return True
+
+        overlap, target_size, overlap_ratio = _target_overlap_score(normalized_offer, target_norm)
+        if target_size <= 2 and overlap >= 1:
+            return True
+        if target_size <= 4 and overlap >= 2:
+            return True
+        if target_size >= 5 and (overlap >= 3 or overlap_ratio >= 0.55):
+            return True
+
+        fuzzy = difflib.SequenceMatcher(a=normalized_offer, b=target_norm).ratio()
+        if fuzzy >= 0.78 and overlap >= 1:
+            return True
+
+    return False
+
+
+def filter_market_records_for_tonie(
+    *,
+    records: list[dict],
+    tonie_title: str,
+    aliases: Iterable[str] | None = None,
+    series: str | None = None,
+    sources: set[str] | None = None,
+) -> list[dict]:
+    """Filter polluted offer records for one Tonie target.
+
+    Only records from `sources` are filtered; all other sources pass through unchanged.
+    """
+    scoped_sources = {s.lower() for s in (sources or {"kleinanzeigen_offer"})}
+    out: list[dict] = []
+
+    for row in records:
+        source = str(row.get("source") or "").strip().lower()
+        if source not in scoped_sources:
+            out.append(row)
+            continue
+
+        title = str(row.get("title") or "").strip()
+        if not title:
+            continue
+
+        if is_relevant_offer_title_for_tonie(
+            offer_title=title,
+            tonie_title=tonie_title,
+            aliases=aliases,
+            series=series,
+        ):
+            out.append(row)
+
+    return out
 
 
 def _normalize_search_query(value: str) -> str:

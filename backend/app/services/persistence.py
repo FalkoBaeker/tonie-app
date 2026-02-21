@@ -631,7 +631,7 @@ def get_market_listings(
     limit: int = 250,
 ) -> list[dict]:
     query = (
-        "SELECT source, title, price_eur, url, sold_at, fetched_at "
+        "SELECT id, source, title, price_eur, url, sold_at, fetched_at "
         "FROM market_listings WHERE tonie_id = ?"
     )
     params: list[object] = [tonie_id]
@@ -649,6 +649,7 @@ def get_market_listings(
 
     return [
         {
+            "id": int(r["id"]),
             "source": str(r["source"]),
             "title": str(r["title"]),
             "price_eur": float(r["price_eur"]),
@@ -658,6 +659,60 @@ def get_market_listings(
         }
         for r in rows
     ]
+
+
+def list_market_listings_for_source(
+    *,
+    source: str,
+    tonie_id: str | None = None,
+    limit: int = 2000,
+) -> list[dict]:
+    query = (
+        "SELECT id, tonie_id, source, title, price_eur, url, sold_at, fetched_at "
+        "FROM market_listings WHERE source = ?"
+    )
+    params: list[object] = [str(source)]
+
+    if tonie_id:
+        query += " AND tonie_id = ?"
+        params.append(str(tonie_id))
+
+    query += " ORDER BY fetched_at DESC, id DESC LIMIT ?"
+    params.append(max(1, int(limit)))
+
+    with _connect() as conn:
+        rows = conn.execute(query, tuple(params)).fetchall()
+
+    return [
+        {
+            "id": int(r["id"]),
+            "tonie_id": str(r["tonie_id"]),
+            "source": str(r["source"]),
+            "title": str(r["title"]),
+            "price_eur": float(r["price_eur"]),
+            "url": str(r["url"]),
+            "sold_at": str(r["sold_at"]) if r["sold_at"] else None,
+            "fetched_at": str(r["fetched_at"]),
+        }
+        for r in rows
+    ]
+
+
+def delete_market_listings_by_ids(*, ids: list[int], source: str | None = None) -> int:
+    cleaned_ids = [int(x) for x in ids if int(x) > 0]
+    if not cleaned_ids:
+        return 0
+
+    placeholders = ", ".join(["?"] * len(cleaned_ids))
+    query = f"DELETE FROM market_listings WHERE id IN ({placeholders})"
+    params: list[object] = list(cleaned_ids)
+    if source:
+        query += " AND source = ?"
+        params.append(str(source))
+
+    with _connect() as conn:
+        cursor = conn.execute(query, tuple(params))
+        return int(cursor.rowcount)
 
 
 def prune_old_market_listings(max_age_days: int | None = None) -> int:

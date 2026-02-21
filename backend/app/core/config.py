@@ -30,6 +30,10 @@ class Settings(BaseSettings):
     market_price_min_eur: float = 3.0
     market_price_max_eur: float = 250.0
     market_outlier_iqr_factor: float = 1.8
+    # Guardrail for instant-price stability:
+    # if Q25 drops far below Q50 due low-end pollution, clamp Q25 to this ratio * Q50.
+    market_instant_q25_min_ratio_to_q50: float = 0.65
+    market_instant_guardrail_min_gap_eur: float = 4.0
     market_default_source_weight: float = 1.0
     market_source_weights: dict[str, float] = Field(
         default_factory=lambda: {
