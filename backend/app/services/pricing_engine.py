@@ -117,6 +117,21 @@ def _source_weight(source: str | None) -> float:
     return max(0.0, float(weights.get(key, default_weight)))
 
 
+def _is_rare_tonie(item: dict | None) -> bool:
+    if not item:
+        return False
+
+    availability = str(item.get("availability_state") or "").strip().lower()
+    return availability in {"endoflife", "sold-out"}
+
+
+def _price_bounds_for_tonie(item: dict | None) -> tuple[float, float]:
+    min_price = float(settings.market_price_min_eur)
+    if _is_rare_tonie(item):
+        return min_price, max(min_price, float(settings.market_price_max_eur_rare))
+    return min_price, max(min_price, float(settings.market_price_max_eur))
+
+
 def _fallback_from_tonie(tonie_id: str, condition: str) -> EnginePriceResult:
     # Deterministic fallback while ingestion is unavailable.
     seed = (sum(ord(c) for c in tonie_id) % 1500) / 100 + 10
@@ -174,12 +189,20 @@ def _result_from_weighted_points(
     )
 
 
-def _clean_price_samples(raw_prices: list[float]) -> list[float]:
+def _clean_price_samples(
+    raw_prices: list[float],
+    *,
+    min_price: float | None = None,
+    max_price: float | None = None,
+) -> list[float]:
+    lo = float(settings.market_price_min_eur if min_price is None else min_price)
+    hi = float(settings.market_price_max_eur if max_price is None else max_price)
+
     bounded = sorted(
         p
         for p in raw_prices
         if math.isfinite(p)
-        and settings.market_price_min_eur <= p <= settings.market_price_max_eur
+        and lo <= p <= hi
     )
     if not bounded:
         return []
@@ -194,8 +217,8 @@ def _clean_price_samples(raw_prices: list[float]) -> list[float]:
     if iqr <= 0:
         return bounded
 
-    low = max(settings.market_price_min_eur, q1 - (settings.market_outlier_iqr_factor * iqr))
-    high = min(settings.market_price_max_eur, q3 + (settings.market_outlier_iqr_factor * iqr))
+    low = max(lo, q1 - (settings.market_outlier_iqr_factor * iqr))
+    high = min(hi, q3 + (settings.market_outlier_iqr_factor * iqr))
 
     filtered = [p for p in bounded if low <= p <= high]
 
@@ -230,6 +253,9 @@ def _apply_quantile_guardrail(*, q25: float, q50: float, q75: float) -> tuple[fl
 
 def _weighted_points_from_records(
     records: list[dict],
+    *,
+    min_price: float | None = None,
+    max_price: float | None = None,
 ) -> tuple[list[tuple[float, float]], int, float, set[str]]:
     prices_by_source: dict[str, list[float]] = defaultdict(list)
 
@@ -251,7 +277,7 @@ def _weighted_points_from_records(
     effective_sample_size = 0.0
 
     for source, source_prices in prices_by_source.items():
-        cleaned = _clean_price_samples(source_prices)
+        cleaned = _clean_price_samples(source_prices, min_price=min_price, max_price=max_price)
         if not cleaned:
             continue
 
@@ -276,6 +302,8 @@ def _try_cached_result(
     tonie_title: str,
     aliases: list[str] | None = None,
     series: str | None = None,
+    min_price: float | None = None,
+    max_price: float | None = None,
 ) -> EnginePriceResult | None:
     cached = get_market_listings(
         tonie_id=tonie_id,
@@ -290,7 +318,11 @@ def _try_cached_result(
         sources={"kleinanzeigen_offer"},
     )
 
-    points, raw_sample_size, effective_sample_size, used_sources = _weighted_points_from_records(cached)
+    points, raw_sample_size, effective_sample_size, used_sources = _weighted_points_from_records(
+        cached,
+        min_price=min_price,
+        max_price=max_price,
+    )
     if raw_sample_size < settings.market_min_samples:
         return None
 
@@ -319,8 +351,14 @@ def _try_cached_result(
     )
 
 
-def _estimate_from_offer_prices(prices: list[float], condition: str) -> EnginePriceResult | None:
-    cleaned = _clean_price_samples(prices)
+def _estimate_from_offer_prices(
+    prices: list[float],
+    condition: str,
+    *,
+    min_price: float | None = None,
+    max_price: float | None = None,
+) -> EnginePriceResult | None:
+    cleaned = _clean_price_samples(prices, min_price=min_price, max_price=max_price)
     if len(cleaned) < max(4, settings.market_min_samples - 1):
         return None
 
@@ -399,6 +437,7 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
     tonie_title = str(item.get("title") or "")
     tonie_aliases = [str(a) for a in (item.get("aliases") or [])]
     tonie_series = str(item.get("series") or "").strip() or None
+    min_price, max_price = _price_bounds_for_tonie(item)
 
     fresh_cached = _try_cached_result(
         tonie_id,
@@ -408,6 +447,8 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
         tonie_title=tonie_title,
         aliases=tonie_aliases,
         series=tonie_series,
+        min_price=min_price,
+        max_price=max_price,
     )
     if fresh_cached:
         return _record_and_return(
@@ -453,7 +494,7 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
                 "sold_at": l.sold_at,
             }
             for l in ebay_api_rows
-            if settings.market_price_min_eur <= l.price_eur <= settings.market_price_max_eur
+            if min_price <= l.price_eur <= max_price
         ]
 
         if api_enabled and not ebay_api_records:
@@ -484,7 +525,9 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
 
             if use_ebay_api_in_pricing:
                 api_points, api_raw_sample_size, api_effective_sample_size, _ = _weighted_points_from_records(
-                    ebay_api_records
+                    ebay_api_records,
+                    min_price=min_price,
+                    max_price=max_price,
                 )
                 min_effective_api = max(0.1, float(settings.market_min_effective_samples))
                 if (
@@ -540,7 +583,7 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
                 "sold_at": l.sold_at,
             }
             for l in ebay_rows
-            if settings.market_price_min_eur <= l.price_eur <= settings.market_price_max_eur
+            if min_price <= l.price_eur <= max_price
         ]
         offer_records = [
             {
@@ -551,7 +594,7 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
                 "sold_at": l.sold_at,
             }
             for l in offer_rows
-            if settings.market_price_min_eur <= l.price_eur <= settings.market_price_max_eur
+            if min_price <= l.price_eur <= max_price
         ]
         offer_records = filter_market_records_for_tonie(
             records=offer_records,
@@ -594,7 +637,11 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
         if ebay_api_records or ebay_records or offer_records:
             prune_old_market_listings()
 
-        sold_prices = _clean_price_samples([float(r["price_eur"]) for r in ebay_records])
+        sold_prices = _clean_price_samples(
+            [float(r["price_eur"]) for r in ebay_records],
+            min_price=min_price,
+            max_price=max_price,
+        )
         if len(sold_prices) >= settings.market_min_samples:
             sold_source = "ebay_sold_live_q25_q50_q75"
             if api_enabled and (not use_ebay_api_in_pricing or not ebay_api_records):
@@ -616,7 +663,11 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
         if use_ebay_api_in_pricing and ebay_api_records:
             live_records = ebay_api_records + live_records
 
-        points, raw_sample_size, effective_sample_size, used_sources = _weighted_points_from_records(live_records)
+        points, raw_sample_size, effective_sample_size, used_sources = _weighted_points_from_records(
+            live_records,
+            min_price=min_price,
+            max_price=max_price,
+        )
         has_ebay = any(src.startswith("ebay") for src in used_sources)
 
         min_effective = max(0.1, float(settings.market_min_effective_samples))
@@ -650,6 +701,8 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
         offer_estimate = _estimate_from_offer_prices(
             [float(r["price_eur"]) for r in offer_records],
             condition=condition,
+            min_price=min_price,
+            max_price=max_price,
         )
         if offer_estimate is not None:
             return _record_and_return(
@@ -669,6 +722,8 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
         tonie_title=tonie_title,
         aliases=tonie_aliases,
         series=tonie_series,
+        min_price=min_price,
+        max_price=max_price,
     )
     if stale_cached:
         return _record_and_return(

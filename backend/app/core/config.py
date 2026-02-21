@@ -29,6 +29,9 @@ class Settings(BaseSettings):
     market_min_effective_samples: float = 5.0
     market_price_min_eur: float = 3.0
     market_price_max_eur: float = 250.0
+    market_price_max_eur_rare: float = 1000.0
+    # Raw ingestion cap can be higher than pricing cap so rare high-price listings are not lost early.
+    market_raw_price_max_eur: float = 2000.0
     market_outlier_iqr_factor: float = 1.8
     # Guardrail for instant-price stability:
     # if Q25 drops far below Q50 due low-end pollution, clamp Q25 to this ratio * Q50.
@@ -39,8 +42,8 @@ class Settings(BaseSettings):
         default_factory=lambda: {
             # Primary sold-data signal
             "ebay_sold": 1.0,
-            # API search/listing data can be high quality but usually reflects offers, not sold outcomes.
-            "ebay_api_listing": 0.8,
+            # API listing data gets a higher default weight for stronger price signal.
+            "ebay_api_listing": 0.95,
             # Reserved for future sold/completed API feeds.
             "ebay_api_sold": 1.0,
             # Lower influence for classifieds/listing sources unless proven against sold data.
@@ -64,8 +67,8 @@ class Settings(BaseSettings):
     ebay_marketplace_id: str = "EBAY_DE"
     ebay_request_timeout_s: float = 15.0
     ebay_max_retries: int = 2
-    ebay_api_shadow_mode: bool = True
-    ebay_api_include_in_pricing: bool = False
+    ebay_api_shadow_mode: bool = False
+    ebay_api_include_in_pricing: bool = True
 
     recognition_reference_dir: str = "./app/data/tonie_refs"
     recognition_index_path: str = "./app/data/tonie_reference_index.json"

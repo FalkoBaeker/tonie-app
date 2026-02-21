@@ -58,7 +58,7 @@ Current status:
 - `/api/pricing/{tonie_id}` uses a cache-first pricing engine:
   - tries fresh cached market listings from SQLite
   - live-source priority: eBay API -> eBay scrape -> Kleinanzeigen -> deterministic fallback
-  - eBay API can run in shadow mode (`EBAY_API_SHADOW_MODE=true`) while scrape remains active fallback
+  - eBay API is intended as a primary signal (`EBAY_API_INCLUDE_IN_PRICING=true`) with scrape fallback
   - persists fetched listings back to SQLite
   - computes quantiles Q25/Q50/Q75 + condition factors
   - supports source-weighted blending for multi-source cache data (e.g. classifieds with reduced weight)
@@ -186,18 +186,20 @@ eBay API (optional, server-side only):
 - `EBAY_MARKETPLACE_ID=EBAY_DE`
 - `EBAY_REQUEST_TIMEOUT_S=15`
 - `EBAY_MAX_RETRIES=2`
-- `EBAY_API_SHADOW_MODE=true` (collect, but do not affect pricing)
-- `EBAY_API_INCLUDE_IN_PRICING=false` (set true after calibration)
+- `EBAY_API_SHADOW_MODE=false` (disabled by default so API data can affect pricing)
+- `EBAY_API_INCLUDE_IN_PRICING=true`
 
 Data-quality tuning (optional):
 - `MARKET_PRICE_MIN_EUR=3.0`
-- `MARKET_PRICE_MAX_EUR=250.0`
+- `MARKET_PRICE_MAX_EUR=250.0` (normal Tonies)
+- `MARKET_PRICE_MAX_EUR_RARE=1000.0` (used for rarity states like sold-out/endOfLife)
+- `MARKET_RAW_PRICE_MAX_EUR=2000.0` (ingestion cap, keeps rare highs for downstream filtering)
 - `MARKET_OUTLIER_IQR_FACTOR=1.8`
 - `MARKET_INSTANT_Q25_MIN_RATIO_TO_Q50=0.65` (guardrail against polluted low-end instant prices)
 - `MARKET_INSTANT_GUARDRAIL_MIN_GAP_EUR=4.0`
 - `MARKET_MIN_EFFECTIVE_SAMPLES=5`
 - `MARKET_DEFAULT_SOURCE_WEIGHT=1.0`
-- `MARKET_SOURCE_WEIGHTS={"ebay_sold":1.0,"ebay_api_listing":0.8,"kleinanzeigen_offer":0.35}`
+- `MARKET_SOURCE_WEIGHTS={"ebay_sold":1.0,"ebay_api_listing":0.95,"kleinanzeigen_offer":0.35}`
 
 Pollution cleanup (safe, source-scoped):
 - preview only (default dry-run):

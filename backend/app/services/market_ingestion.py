@@ -195,7 +195,7 @@ def _parse_euro(raw: str) -> float | None:
     except ValueError:
         return None
 
-    if value < settings.market_price_min_eur or value > settings.market_price_max_eur:
+    if value < settings.market_price_min_eur or value > settings.market_raw_price_max_eur:
         return None
 
     return value
@@ -677,7 +677,7 @@ def _extract_ebay_api_price(item: dict) -> float | None:
     except (TypeError, ValueError):
         return None
 
-    if value < settings.market_price_min_eur or value > settings.market_price_max_eur:
+    if value < settings.market_price_min_eur or value > settings.market_raw_price_max_eur:
         return None
 
     return value

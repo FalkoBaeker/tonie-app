@@ -6,6 +6,7 @@ from app.core.config import settings
 from app.services.market_ingestion import filter_market_records_for_tonie
 from app.services.pricing_engine import (
     _apply_quantile_guardrail,
+    _price_bounds_for_tonie,
     _weighted_points_from_records,
     _weighted_quantile,
 )
@@ -23,6 +24,13 @@ class PricingPollutionGuardrailsTests(unittest.TestCase):
         self.assertAlmostEqual(q25, 14.0)
         self.assertAlmostEqual(q50, 20.0)
         self.assertAlmostEqual(q75, 23.0)
+
+    def test_rarity_price_bounds_raise_upper_limit(self) -> None:
+        normal_min, normal_max = _price_bounds_for_tonie({"availability_state": "orderable"})
+        rare_min, rare_max = _price_bounds_for_tonie({"availability_state": "endOfLife"})
+
+        self.assertEqual(normal_min, rare_min)
+        self.assertGreater(rare_max, normal_max)
 
     def test_problematic_tonie_before_after_proof(self) -> None:
         # Repro case: query pollution ("CD/Buch") pushes low-end offer quantile far below fair quantile.
