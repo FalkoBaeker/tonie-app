@@ -266,8 +266,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tonie Finder";
 				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
-				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]" = "http://192.168.178.100:8787/api";
-				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphonesimulator*]" = "http://127.0.0.1:8787/api";
+				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]" = "https://toniefinder-backend-staging.onrender.com/api";
+				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphonesimulator*]" = "https://toniefinder-backend-staging.onrender.com/api";
 				INFOPLIST_KEY_TF_AUTH_MODE = local;
 				INFOPLIST_KEY_TF_SUPABASE_ANON_KEY = "";
 				INFOPLIST_KEY_TF_SUPABASE_URL = "";
@@ -310,8 +310,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tonie Finder";
 				INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads = YES;
-				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]" = "http://192.168.178.100:8787/api";
-				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphonesimulator*]" = "http://127.0.0.1:8787/api";
+				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphoneos*]" = "https://toniefinder-backend-staging.onrender.com/api";
+				"INFOPLIST_KEY_TF_API_BASE_URL[sdk=iphonesimulator*]" = "https://toniefinder-backend-staging.onrender.com/api";
 				INFOPLIST_KEY_TF_AUTH_MODE = local;
 				INFOPLIST_KEY_TF_SUPABASE_ANON_KEY = "";
 				INFOPLIST_KEY_TF_SUPABASE_URL = "";

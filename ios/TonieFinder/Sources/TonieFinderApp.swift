@@ -1306,8 +1306,8 @@ enum ClientAuthBackendMode: String {
 }
 
 enum AppConfig {
-    private static let simulatorDefault = "http://127.0.0.1:8787/api"
-    private static let deviceDefault = "http://192.168.2.133:8787/api"
+    private static let simulatorDefault = "https://toniefinder-backend-staging.onrender.com/api"
+    private static let deviceDefault = "https://toniefinder-backend-staging.onrender.com/api"
 
     struct ResolvedString {
         let value: String?
