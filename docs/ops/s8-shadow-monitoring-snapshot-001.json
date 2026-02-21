@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-02-20T23:56:08.550911+00:00",
+  "refresh_policy_minutes": 10080,
+  "cache_status": {
+    "tonie_id": null,
+    "listing_count": 40762,
+    "tonie_count": 592,
+    "latest_fetched_at": "2026-02-20T23:55:20.293061+00:00",
+    "fresh_window_minutes": 10080,
+    "fresh_listing_count": 40762,
+    "fresh_tonie_count": 592
+  },
+  "quality_status": {
+    "window_hours": 168,
+    "cutoff": "2026-02-13T23:56:08.335325+00:00",
+    "low_sample_threshold": 5,
+    "total_requests": 71,
+    "fallback_count": 5,
+    "fallback_rate": 7.04,
+    "live_count": 10,
+    "fresh_cache_count": 26,
+    "stale_cache_count": 3,
+    "low_sample_count": 5,
+    "avg_sample_size": 54.23,
+    "avg_latency_ms": 2209.94,
+    "latest_event_at": "2026-02-20T23:55:34.126959+00:00",
+    "fallback_top": [
+      {
+        "tonie_id": "tn_999",
+        "requests": 3,
+        "avg_sample_size": 0.0
+      },
+      {
+        "tonie_id": "tn_013",
+        "requests": 2,
+        "avg_sample_size": 0.0
+      }
+    ]
+  },
+  "coverage_summary": {
+    "total_tonies": 592,
+    "covered_tonies": 574,
+    "coverage_rate_percent": 96.96,
+    "effective_target": 5.0,
+    "top_gaps": [
+      {
+        "tonie_id": "tn_096",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T15:28:40.807545+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_097",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T16:04:36.644405+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_129",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T15:28:40.807545+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_130",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T15:28:40.807545+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_131",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T15:28:40.807545+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_132",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T15:36:58.041710+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_361",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T15:57:50.854315+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_378",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T16:04:38.118731+00:00",
+        "source_counts": {
+          "manual_seed": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_479",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T12:42:09.491375+00:00",
+        "source_counts": {
+          "ebay_sold": 3
+        },
+        "meets_target": false
+      },
+      {
+        "tonie_id": "tn_483",
+        "raw_samples": 3,
+        "effective_samples": 3.0,
+        "latest_fetched_at": "2026-02-18T12:42:19.135280+00:00",
+        "source_counts": {
+          "ebay_sold": 3
+        },
+        "meets_target": false
+      }
+    ]
+  },
+  "latest_refresh_run": null
+}

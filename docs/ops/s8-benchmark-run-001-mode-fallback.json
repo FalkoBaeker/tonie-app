@@ -1,0 +1,89 @@
+{
+  "run": "S8-BENCHMARK-001",
+  "mode": "api_disabled_fallback",
+  "generated_at": "2026-02-20T23:55:34.130116+00:00",
+  "ids": [
+    "tn_001",
+    "tn_002",
+    "tn_003",
+    "tn_004",
+    "tn_005",
+    "tn_006",
+    "tn_007",
+    "tn_008"
+  ],
+  "results": [
+    {
+      "tonie_id": "tn_001",
+      "source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "sample_size": 190,
+      "effective_sample_size": 149.25,
+      "fair_price": 9.9,
+      "api_in_source": false,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_002",
+      "source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "sample_size": 174,
+      "effective_sample_size": 126.95,
+      "fair_price": 14.85,
+      "api_in_source": false,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_003",
+      "source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "sample_size": 145,
+      "effective_sample_size": 107.0,
+      "fair_price": 10.8,
+      "api_in_source": false,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_004",
+      "source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "sample_size": 162,
+      "effective_sample_size": 121.25,
+      "fair_price": 9.28,
+      "api_in_source": false,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_005",
+      "source": "ebay_sold_cached_q25_q50_q75",
+      "sample_size": 41,
+      "effective_sample_size": 32.8,
+      "fair_price": 14.08,
+      "api_in_source": false,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_006",
+      "source": "ebay_sold_cached_q25_q50_q75",
+      "sample_size": 40,
+      "effective_sample_size": 32.0,
+      "fair_price": 13.49,
+      "api_in_source": false,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_007",
+      "source": "ebay_sold_cached_q25_q50_q75",
+      "sample_size": 51,
+      "effective_sample_size": 40.8,
+      "fair_price": 17.84,
+      "api_in_source": false,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_008",
+      "source": "ebay_sold_cached_q25_q50_q75",
+      "sample_size": 47,
+      "effective_sample_size": 37.6,
+      "fair_price": 17.72,
+      "api_in_source": false,
+      "valid_price": true
+    }
+  ]
+}

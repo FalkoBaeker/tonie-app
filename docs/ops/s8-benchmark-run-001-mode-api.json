@@ -1,0 +1,89 @@
+{
+  "run": "S8-BENCHMARK-001",
+  "mode": "api_live_enabled",
+  "generated_at": "2026-02-20T23:55:20.305098+00:00",
+  "ids": [
+    "tn_001",
+    "tn_002",
+    "tn_003",
+    "tn_004",
+    "tn_005",
+    "tn_006",
+    "tn_007",
+    "tn_008"
+  ],
+  "results": [
+    {
+      "tonie_id": "tn_001",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 77,
+      "effective_sample_size": 61.6,
+      "fair_price": 13.5,
+      "api_in_source": true,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_002",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 76,
+      "effective_sample_size": 60.8,
+      "fair_price": 17.01,
+      "api_in_source": true,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_003",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 34,
+      "effective_sample_size": 27.2,
+      "fair_price": 15.29,
+      "api_in_source": true,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_004",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 38,
+      "effective_sample_size": 30.4,
+      "fair_price": 13.5,
+      "api_in_source": true,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_005",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 41,
+      "effective_sample_size": 32.8,
+      "fair_price": 14.08,
+      "api_in_source": true,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_006",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 40,
+      "effective_sample_size": 32.0,
+      "fair_price": 13.49,
+      "api_in_source": true,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_007",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 51,
+      "effective_sample_size": 40.8,
+      "fair_price": 17.84,
+      "api_in_source": true,
+      "valid_price": true
+    },
+    {
+      "tonie_id": "tn_008",
+      "source": "ebay_api_live_weighted",
+      "sample_size": 47,
+      "effective_sample_size": 37.6,
+      "fair_price": 17.72,
+      "api_in_source": true,
+      "valid_price": true
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "run": "S8-BENCHMARK-001",
+  "sample_count": 8,
+  "api_mode_api_source_hits": 8,
+  "fallback_mode_valid_non_api_prices": 8,
+  "avg_abs_delta_fair_price": 1.81,
+  "median_abs_delta_fair_price": 1.08,
+  "rows": [
+    {
+      "tonie_id": "tn_001",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "api_fair": 13.5,
+      "fallback_fair": 9.9,
+      "delta": 3.6,
+      "abs_delta": 3.6,
+      "rel_pct_vs_fallback": 36.36
+    },
+    {
+      "tonie_id": "tn_002",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "api_fair": 17.01,
+      "fallback_fair": 14.85,
+      "delta": 2.16,
+      "abs_delta": 2.16,
+      "rel_pct_vs_fallback": 14.55
+    },
+    {
+      "tonie_id": "tn_003",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "api_fair": 15.29,
+      "fallback_fair": 10.8,
+      "delta": 4.49,
+      "abs_delta": 4.49,
+      "rel_pct_vs_fallback": 41.57
+    },
+    {
+      "tonie_id": "tn_004",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75_blended_weighted",
+      "api_fair": 13.5,
+      "fallback_fair": 9.28,
+      "delta": 4.22,
+      "abs_delta": 4.22,
+      "rel_pct_vs_fallback": 45.47
+    },
+    {
+      "tonie_id": "tn_005",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75",
+      "api_fair": 14.08,
+      "fallback_fair": 14.08,
+      "delta": 0.0,
+      "abs_delta": 0.0,
+      "rel_pct_vs_fallback": 0.0
+    },
+    {
+      "tonie_id": "tn_006",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75",
+      "api_fair": 13.49,
+      "fallback_fair": 13.49,
+      "delta": 0.0,
+      "abs_delta": 0.0,
+      "rel_pct_vs_fallback": 0.0
+    },
+    {
+      "tonie_id": "tn_007",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75",
+      "api_fair": 17.84,
+      "fallback_fair": 17.84,
+      "delta": 0.0,
+      "abs_delta": 0.0,
+      "rel_pct_vs_fallback": 0.0
+    },
+    {
+      "tonie_id": "tn_008",
+      "api_source": "ebay_api_live_weighted",
+      "fallback_source": "ebay_sold_cached_q25_q50_q75",
+      "api_fair": 17.72,
+      "fallback_fair": 17.72,
+      "delta": 0.0,
+      "abs_delta": 0.0,
+      "rel_pct_vs_fallback": 0.0
+    }
+  ]
+}
