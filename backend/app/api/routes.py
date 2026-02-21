@@ -1,5 +1,6 @@
 from datetime import UTC, datetime
 from enum import Enum
+from statistics import median
 
 from fastapi import APIRouter, Depends, File, Header, HTTPException, Query, UploadFile, status
 from pydantic import BaseModel, Field
@@ -22,6 +23,7 @@ from app.services.persistence import (
     get_fresh_listing_counts,
     get_market_cache_status,
     get_market_coverage_report,
+    get_market_listings,
     get_or_create_user_by_email,
     get_pricing_quality_status,
     get_user_by_token,
@@ -49,6 +51,7 @@ class ResolveCandidate(BaseModel):
     tonie_id: str
     title: str
     score: float
+    rarity_label: str | None = None
 
 
 class ResolveResponse(BaseModel):
@@ -92,6 +95,12 @@ class PricingResponse(BaseModel):
     quality_tier: str
     confidence_band: str
     confidence_score: float
+    trend_direction: str
+    trend_label: str
+    trend_delta_pct: float | None = None
+    rarity_label: str | None = None
+    rarity_reason: str | None = None
+    availability_state: str | None = None
 
 
 class AuthRequest(BaseModel):
@@ -316,6 +325,85 @@ def _quality_band_from_tier(tier: str) -> str:
     if t == "medium":
         return "B"
     return "C"
+
+
+def _parse_iso_datetime(raw: str | None) -> datetime | None:
+    value = (raw or "").strip()
+    if not value:
+        return None
+
+    normalized = value.replace("Z", "+00:00")
+    try:
+        dt = datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=UTC)
+    return dt.astimezone(UTC)
+
+
+def _derive_price_trend(rows: list[dict]) -> tuple[str, str, float | None]:
+    points: list[tuple[datetime, float]] = []
+    for row in rows:
+        try:
+            price = float(row.get("price_eur") or 0.0)
+        except (TypeError, ValueError):
+            continue
+
+        if price <= 0:
+            continue
+
+        dt = _parse_iso_datetime(str(row.get("fetched_at") or ""))
+        if dt is None:
+            continue
+
+        points.append((dt, price))
+
+    if len(points) < 4:
+        return "right", "konstant", None
+
+    points.sort(key=lambda item: item[0])
+    prices = [price for _, price in points]
+    split_at = len(prices) // 2
+    older = prices[:split_at]
+    newer = prices[split_at:]
+
+    if not older or not newer:
+        return "right", "konstant", None
+
+    old_med = float(median(older))
+    new_med = float(median(newer))
+    if old_med <= 0:
+        return "right", "konstant", None
+
+    delta_pct = (new_med - old_med) / old_med
+
+    if delta_pct >= 0.12:
+        return "up", "steigend", round(delta_pct, 4)
+    if delta_pct >= 0.03:
+        return "up_right", "leicht steigend", round(delta_pct, 4)
+    if delta_pct <= -0.12:
+        return "down", "sinkend", round(delta_pct, 4)
+    if delta_pct <= -0.03:
+        return "down_right", "eher sinkend", round(delta_pct, 4)
+    return "right", "konstant", round(delta_pct, 4)
+
+
+def _derive_rarity(item: dict | None) -> tuple[str | None, str | None, str | None]:
+    if not item:
+        return None, None, None
+
+    state = str(item.get("availability_state") or "").strip()
+    lowered = state.lower()
+
+    if lowered == "endoflife":
+        return "Rarität", "Auf der Tonies-Seite als nicht mehr verfügbar/End of Life markiert.", state
+
+    if lowered == "sold-out":
+        return "Vermutlich bald Rarität", "Auf der Tonies-Seite als ausverkauft markiert.", state
+
+    return None, None, state or None
 
 
 def _watchlist_item_response(item: dict) -> WatchlistItemResponse:
@@ -665,10 +753,16 @@ async def resolve_tonie(payload: ResolveRequest) -> ResolveResponse:
     if result.status == "not_found":
         raise HTTPException(status_code=404, detail="tonie not found")
 
+    by_id = {str(item.get("id")): item for item in resolver.catalog}
     return ResolveResponse(
         status=result.status,
         candidates=[
-            ResolveCandidate(tonie_id=c.tonie_id, title=c.title, score=c.score)
+            ResolveCandidate(
+                tonie_id=c.tonie_id,
+                title=c.title,
+                score=c.score,
+                rarity_label=_derive_rarity(by_id.get(c.tonie_id))[0],
+            )
             for c in result.candidates
         ],
     )
@@ -714,8 +808,8 @@ async def pricing(
     condition: Condition = Query(default=Condition.good),
 ) -> PricingResponse:
     resolver = get_resolver()
-    known_ids = {str(item["id"]) for item in resolver.catalog}
-    if tonie_id not in known_ids:
+    item = next((x for x in resolver.catalog if str(x.get("id")) == tonie_id), None)
+    if item is None:
         raise HTTPException(status_code=404, detail="tonie not found")
 
     price = await compute_prices_for_tonie(tonie_id=tonie_id, condition=condition.value)
@@ -724,6 +818,12 @@ async def pricing(
         price.source,
         price.effective_sample_size,
     )
+
+    market_rows = get_market_listings(tonie_id=tonie_id, limit=120)
+
+    trend_direction, trend_label, trend_delta_pct = _derive_price_trend(market_rows)
+    rarity_label, rarity_reason, availability_state = _derive_rarity(item)
+
     return PricingResponse(
         tonie_id=tonie_id,
         condition=condition,
@@ -737,6 +837,12 @@ async def pricing(
         quality_tier=quality_tier,
         confidence_band=_quality_band_from_tier(quality_tier),
         confidence_score=round(confidence_score, 2),
+        trend_direction=trend_direction,
+        trend_label=trend_label,
+        trend_delta_pct=trend_delta_pct,
+        rarity_label=rarity_label,
+        rarity_reason=rarity_reason,
+        availability_state=availability_state,
     )
 
 

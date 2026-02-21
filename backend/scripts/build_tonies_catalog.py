@@ -29,6 +29,7 @@ class ScrapedTonie:
     source_url: str
     series: str
     name: str
+    availability_state: str | None = None
 
     @property
     def title(self) -> str:
@@ -189,10 +190,17 @@ async def _fetch_product(client: httpx.AsyncClient, build_id: str, product_url: 
     if not name or not series:
         return None
 
+    availability_raw = product.get("availability")
+    availability_state: str | None = None
+    if isinstance(availability_raw, dict):
+        state = str(availability_raw.get("state") or "").strip()
+        availability_state = state or None
+
     return ScrapedTonie(
         source_url=product_url,
         series=series,
         name=name,
+        availability_state=availability_state,
     )
 
 
@@ -280,6 +288,7 @@ def main() -> int:
             list(legacy.get("aliases") or []),
             _aliases_for_scraped(source),
         )
+        legacy["availability_state"] = source.availability_state
 
     # Add new rows for scraped titles that are not in legacy seed.
     new_rows: list[dict] = []
@@ -301,6 +310,7 @@ def main() -> int:
                 "title": source.title,
                 "series": source.series,
                 "aliases": aliases,
+                "availability_state": source.availability_state,
             }
         )
 

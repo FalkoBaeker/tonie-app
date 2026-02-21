@@ -226,7 +226,8 @@
     "aliases": [
       "100% Wolf - Das Original-Hörspiel zum Kinofilm",
       "100% Wolf - Das Original-Hoerspiel zum Kinofilm"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_028",
@@ -234,7 +235,8 @@
     "series": "101 Dalmatiner",
     "aliases": [
       "101 Dalmatiner"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_029",
@@ -243,7 +245,8 @@
     "aliases": [
       "[EN] 101 Dalmatians",
       "101 Dalmatiner [EN] 101 Dalmatians"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_030",
@@ -252,7 +255,8 @@
     "aliases": [
       "Adventskalender 2025 – Flöckchen und die verschwundenen Weihnachtslichter",
       "Adventskalender 2025 – Floeckchen und die verschwundenen Weihnachtslichter"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_031",
@@ -263,7 +267,8 @@
       "Ein Fest fuer die Waldfreunde",
       "Adventskalender Ein Fest für die Waldfreunde",
       "Adventskalender Ein Fest fuer die Waldfreunde"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_032",
@@ -274,7 +279,8 @@
       "Wuensch dir was, kleines Rentier - Adventskalender-Weihnachtshoerspiel",
       "Adventskalender Wünsch dir was, kleines Rentier - Adventskalender-Weihnachtshörspiel",
       "Adventskalender Wuensch dir was, kleines Rentier - Adventskalender-Weihnachtshoerspiel"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_033",
@@ -283,7 +289,8 @@
     "aliases": [
       "Die Abenteuer von Affenzahn",
       "Affenzahn Die Abenteuer von Affenzahn"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_034",
@@ -292,7 +299,8 @@
     "aliases": [
       "[EN] Aladdin",
       "Aladdin [EN] Aladdin"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_035",
@@ -300,7 +308,8 @@
     "series": "Aladdin",
     "aliases": [
       "Aladdin"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_036",
@@ -309,7 +318,8 @@
     "aliases": [
       "Die Magie der Nixen",
       "Alea Aquarius Die Magie der Nixen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_037",
@@ -317,7 +327,8 @@
     "series": "Alles steht Kopf",
     "aliases": [
       "Alles steht Kopf"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_038",
@@ -326,7 +337,8 @@
     "aliases": [
       "12 Lieder zum Singen, Spielen und Tanzen",
       "Anne Kaffeekanne 12 Lieder zum Singen, Spielen und Tanzen"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_039",
@@ -335,7 +347,8 @@
     "aliases": [
       "[EN] The Little Mermaid",
       "Arielle, die Meerjungfrau [EN] The Little Mermaid"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_040",
@@ -343,7 +356,8 @@
     "series": "Arielle, die Meerjungfrau",
     "aliases": [
       "Arielle die Meerjungfrau"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_041",
@@ -351,7 +365,8 @@
     "series": "Aristocats",
     "aliases": [
       "Aristocats"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_042",
@@ -359,7 +374,8 @@
     "series": "Asterix",
     "aliases": [
       "Asterix - Die Odyssee"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_043",
@@ -367,7 +383,8 @@
     "series": "Asterix",
     "aliases": [
       "Asterix, der Gallier"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_044",
@@ -376,7 +393,8 @@
     "aliases": [
       "Die goldene Sichel",
       "Asterix Die goldene Sichel"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_045",
@@ -385,7 +403,8 @@
     "aliases": [
       "Beste Freunde",
       "Bakabu Beste Freunde"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_046",
@@ -394,7 +413,8 @@
     "aliases": [
       "[EN] Bambi",
       "Bambi [EN] Bambi"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_047",
@@ -402,7 +422,8 @@
     "series": "Bambi",
     "aliases": [
       "Bambi"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_048",
@@ -411,7 +432,8 @@
     "aliases": [
       "Princess Adventure",
       "Barbie Princess Adventure"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_049",
@@ -420,7 +442,8 @@
     "aliases": [
       "Batman™",
       "BatmanTM"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_050",
@@ -429,7 +452,8 @@
     "aliases": [
       "Beethoven für Kids - Gelesen von Daniel Hope",
       "Beethoven fuer Kids - Gelesen von Daniel Hope"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_051",
@@ -439,7 +463,8 @@
       "Benjamin als Baggerfahrer",
       "Benjamin Blümchen Benjamin als Baggerfahrer",
       "Benjamin Bluemchen Benjamin als Baggerfahrer"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_052",
@@ -449,7 +474,8 @@
       "Benjamin als Weihnachtsmann",
       "Benjamin Blümchen Benjamin als Weihnachtsmann",
       "Benjamin Bluemchen Benjamin als Weihnachtsmann"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_053",
@@ -458,7 +484,8 @@
     "aliases": [
       "Benjamin Blümchen als Ritter",
       "Benjamin Bluemchen als Ritter"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_054",
@@ -469,7 +496,8 @@
       "Die Maerchennacht im Zoo",
       "Benjamin Blümchen Die Märchennacht im Zoo",
       "Benjamin Bluemchen Die Maerchennacht im Zoo"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_055",
@@ -480,7 +508,8 @@
       "Ein Toeroeoeoe fuer alle Faelle",
       "Benjamin Blümchen Ein Törööö für alle Fälle",
       "Benjamin Bluemchen Ein Toeroeoeoe fuer alle Faelle"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_056",
@@ -491,7 +520,8 @@
       "Gute-Nacht-Geschichten - Pluesch",
       "Benjamin Blümchen Gute-Nacht-Geschichten - Plüsch",
       "Benjamin Bluemchen Gute-Nacht-Geschichten - Pluesch"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_057",
@@ -500,7 +530,8 @@
     "aliases": [
       "Bewegungsgeschichten mit Affe Marty - Mit lustigen Übungen zum Mitspielen",
       "Bewegungsgeschichten mit Affe Marty - Mit lustigen Uebungen zum Mitspielen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_058",
@@ -509,7 +540,8 @@
     "aliases": [
       "Das Waisenfohlen",
       "Bibi & Tina Das Waisenfohlen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_059",
@@ -518,7 +550,8 @@
     "aliases": [
       "Die Heukrise (Neuauflage 2025)",
       "Bibi & Tina Die Heukrise (Neuauflage 2025)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_060",
@@ -527,7 +560,8 @@
     "aliases": [
       "Die verlorene Freundschaft (Neuauflage 2025)",
       "Bibi & Tina Die verlorene Freundschaft (Neuauflage 2025)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_061",
@@ -538,7 +572,8 @@
       "Die Waschbaeren sind los",
       "Bibi & Tina Die Waschbären sind los",
       "Bibi & Tina Die Waschbaeren sind los"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_062",
@@ -547,7 +582,8 @@
     "aliases": [
       "Die Wildpferde – Teil 1",
       "Bibi & Tina Die Wildpferde – Teil 1"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_063",
@@ -556,7 +592,8 @@
     "aliases": [
       "Ausgehext!",
       "Bibi Blocksberg Ausgehext!"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_064",
@@ -567,7 +604,8 @@
       "Die grosse Hexenparty",
       "Bibi Blocksberg Die große Hexenparty",
       "Bibi Blocksberg Die grosse Hexenparty"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_065",
@@ -576,7 +614,8 @@
     "aliases": [
       "Die Junghexenbande",
       "Bibi Blocksberg Die Junghexenbande"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_066",
@@ -585,7 +624,8 @@
     "aliases": [
       "Die Prinzessinnen von Thunderstorm",
       "Bibi Blocksberg Die Prinzessinnen von Thunderstorm"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_067",
@@ -596,7 +636,8 @@
       "Hexenbesengeschichten - Pluesch",
       "Bibi Blocksberg Hexenbesengeschichten - Plüsch",
       "Bibi Blocksberg Hexenbesengeschichten - Pluesch"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_068",
@@ -607,7 +648,8 @@
       "Mami spielt verrueckt",
       "Bibi Blocksberg Mami spielt verrückt",
       "Bibi Blocksberg Mami spielt verrueckt"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_069",
@@ -615,7 +657,8 @@
     "series": "Billie, der Regenbogentiger",
     "aliases": [
       "Billie, der Regenbogentiger"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_070",
@@ -625,7 +668,8 @@
       "Bissig!",
       "Bitte nicht öffnen Bissig!",
       "Bitte nicht oeffnen Bissig!"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_071",
@@ -636,7 +680,8 @@
       "Bob der Kuechenmeister",
       "Bob der Baumeister Bob der Küchenmeister",
       "Bob der Baumeister Bob der Kuechenmeister"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_072",
@@ -646,7 +691,8 @@
       "Bobo beim Kinderarzt und weitere Folgen",
       "Bobo Siebenschläfer Bobo beim Kinderarzt und weitere Folgen",
       "Bobo Siebenschlaefer Bobo beim Kinderarzt und weitere Folgen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_073",
@@ -656,7 +702,8 @@
       "Bobo feiert Kindergeburtstag",
       "Bobo Siebenschläfer Bobo feiert Kindergeburtstag",
       "Bobo Siebenschlaefer Bobo feiert Kindergeburtstag"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_074",
@@ -666,7 +713,8 @@
       "Bobos Ausflug zum Spielplatz",
       "Bobo Siebenschläfer Bobos Ausflug zum Spielplatz",
       "Bobo Siebenschlaefer Bobos Ausflug zum Spielplatz"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_075",
@@ -677,7 +725,8 @@
       "Immer lustig in Bullerbue",
       "Bullerbü Immer lustig in Bullerbü",
       "Bullerbue Immer lustig in Bullerbue"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_076",
@@ -686,7 +735,8 @@
     "aliases": [
       "Irgendwas Bestimmtes",
       "Bummelkasten Irgendwas Bestimmtes"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_077",
@@ -695,7 +745,8 @@
     "aliases": [
       "Sternschnuppen und weitere Geschichten",
       "Caillou Sternschnuppen und weitere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_078",
@@ -703,7 +754,8 @@
     "series": "Cap und Capper",
     "aliases": [
       "Cap und Capper"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_079",
@@ -712,7 +764,8 @@
     "aliases": [
       "[EN] Cars 2",
       "Cars [EN] Cars 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_080",
@@ -720,7 +773,8 @@
     "series": "Cars",
     "aliases": [
       "Cars"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_081",
@@ -728,7 +782,8 @@
     "series": "Cars",
     "aliases": [
       "Cars 2"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_082",
@@ -737,7 +792,8 @@
     "aliases": [
       "[FR] Cendrillon",
       "Cinderella [FR] Cendrillon"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_083",
@@ -745,7 +801,8 @@
     "series": "Cinderella",
     "aliases": [
       "Cinderella"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_084",
@@ -754,7 +811,8 @@
     "aliases": [
       "[EN] Coco",
       "Coco [EN] Coco"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_085",
@@ -762,7 +820,8 @@
     "series": "Coco",
     "aliases": [
       "Coco"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_086",
@@ -771,7 +830,8 @@
     "aliases": [
       "[EN] Getting Ready with JJ",
       "Cocomelon [EN] Getting Ready with JJ"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_087",
@@ -780,7 +840,8 @@
     "aliases": [
       "[EN] Outdoor Adventures with JJ",
       "Cocomelon [EN] Outdoor Adventures with JJ"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_088",
@@ -789,7 +850,8 @@
     "aliases": [
       "Mit JJ durch den Tag",
       "Cocomelon Mit JJ durch den Tag"
-    ]
+    ],
+    "availability_state": "preorderable"
   },
   {
     "id": "tn_089",
@@ -798,7 +860,8 @@
     "aliases": [
       "Raus in die Welt mit JJ",
       "Cocomelon Raus in die Welt mit JJ"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_090",
@@ -809,7 +872,8 @@
       "Spiel und Spass mit JJ",
       "Cocomelon Spiel und Spaß mit JJ",
       "Cocomelon Spiel und Spass mit JJ"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_091",
@@ -817,7 +881,8 @@
     "series": "Conni",
     "aliases": [
       "Conni auf dem Bauernhof / Conni und das neue Baby (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_092",
@@ -825,7 +890,8 @@
     "series": "Conni",
     "aliases": [
       "Conni backt Pizza / Conni lernt Rad fahren"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_093",
@@ -834,7 +900,8 @@
     "aliases": [
       "Conni kommt in den Kindergarten/ Conni geht aufs Töpfchen",
       "Conni kommt in den Kindergarten/ Conni geht aufs Toepfchen"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_094",
@@ -843,7 +910,8 @@
     "aliases": [
       "[EN] The Jungle Book",
       "Das Dschungelbuch [EN] The Jungle Book"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_095",
@@ -852,7 +920,8 @@
     "aliases": [
       "[FR] Le Livre De La Jungle",
       "Das Dschungelbuch [FR] Le Livre De La Jungle"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_096",
@@ -860,7 +929,8 @@
     "series": "Das Dschungelbuch",
     "aliases": [
       "Das Dschungelbuch"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_097",
@@ -869,7 +939,8 @@
     "aliases": [
       "Das kleine Böse Buch",
       "Das kleine Boese Buch"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_098",
@@ -877,7 +948,8 @@
     "series": "Das kleine Gespenst",
     "aliases": [
       "Das kleine Gespenst (Neuauflage 2022)"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_099",
@@ -886,7 +958,8 @@
     "aliases": [
       "Das kleine Hörbuch vom großen Glück - Die Glücksfee",
       "Das kleine Hoerbuch vom grossen Glueck - Die Gluecksfee"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_100",
@@ -895,7 +968,8 @@
     "aliases": [
       "Im Tal der Dinosaurier",
       "Das magische Baumhaus Im Tal der Dinosaurier"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_101",
@@ -903,7 +977,8 @@
     "series": "Das NEINhorn",
     "aliases": [
       "Das NEINhorn & Das NEINhorn und die SchLANGEWEILE"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_102",
@@ -914,7 +989,8 @@
       "Am Samstag kam das Sams zurueck",
       "Das Sams Am Samstag kam das Sams zurück",
       "Das Sams Am Samstag kam das Sams zurueck"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_103",
@@ -923,7 +999,8 @@
     "aliases": [
       "Eine Woche voller Samstage",
       "Das Sams Eine Woche voller Samstage"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_104",
@@ -931,7 +1008,8 @@
     "series": "DC: Batwheels",
     "aliases": [
       "DC - Batwheels"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_105",
@@ -940,7 +1018,8 @@
     "aliases": [
       "Das Gelbe von Drei",
       "Deine Freunde Das Gelbe von Drei"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_106",
@@ -949,7 +1028,8 @@
     "aliases": [
       "Der glückliche Löwe",
       "Der glueckliche Loewe"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_107",
@@ -957,7 +1037,8 @@
     "series": "Der Grolltroll",
     "aliases": [
       "Der Grolltroll – Das Liederalbum"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_108",
@@ -968,7 +1049,8 @@
       "Das Grueffelokind",
       "Der Grüffelo Das Grüffelokind",
       "Der Grueffelo Das Grueffelokind"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_109",
@@ -977,7 +1059,8 @@
     "aliases": [
       "Der Grüffelo & Das Grüffelokind (Relaunch 2026)",
       "Der Grueffelo & Das Grueffelokind (Relaunch 2026)"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_110",
@@ -988,7 +1071,8 @@
       "Hörspiel zur TV-Serie 04",
       "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 04",
       "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 04"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_111",
@@ -999,7 +1083,8 @@
       "Hoerspiel zur TV-Serie 01",
       "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 01",
       "Der kleine Drache Kokosnuss Hoerspiel zur TV-Serie 01"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_112",
@@ -1010,7 +1095,8 @@
       "Hoerspiel zur TV-Serie 02",
       "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 02",
       "Der kleine Drache Kokosnuss Hoerspiel zur TV-Serie 02"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_113",
@@ -1021,7 +1107,8 @@
       "Hoerspiel zur TV-Serie 03",
       "Der kleine Drache Kokosnuss Hörspiel zur TV-Serie 03",
       "Der kleine Drache Kokosnuss Hoerspiel zur TV-Serie 03"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_114",
@@ -1030,7 +1117,8 @@
     "aliases": [
       "Der kleine Elefant, der so gerne einschlafen möchte",
       "Der kleine Elefant, der so gerne einschlafen moechte"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_115",
@@ -1039,7 +1127,8 @@
     "aliases": [
       "Schatzjagd im Museum/Magische Meisterschaft",
       "Der kleine Hui Buh Schatzjagd im Museum/Magische Meisterschaft"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_116",
@@ -1048,7 +1137,8 @@
     "aliases": [
       "Wie Hui Buh seine Rasselkette bekam/Die Halloween-Party",
       "Der kleine Hui Buh Wie Hui Buh seine Rasselkette bekam/Die Halloween-Party"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_117",
@@ -1056,7 +1146,8 @@
     "series": "Der kleine Nick",
     "aliases": [
       "Der kleine Nick ist der Beste"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_118",
@@ -1064,7 +1155,8 @@
     "series": "Der kleine Prinz",
     "aliases": [
       "Der kleine Prinz (Neuauflage 2025)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_119",
@@ -1073,7 +1165,8 @@
     "aliases": [
       "Alles erlaubt?",
       "Der kleine Rabe Socke Alles erlaubt?"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_120",
@@ -1082,7 +1175,8 @@
     "aliases": [
       "Alles Schule!",
       "Der kleine Rabe Socke Alles Schule!"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_121",
@@ -1091,7 +1185,8 @@
     "aliases": [
       "Alles vermurkst!",
       "Der kleine Rabe Socke Alles vermurkst!"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_122",
@@ -1102,7 +1197,8 @@
       "Die Geschichte vom kleinen Siebenschlaefer, der nicht einschlafen konnte",
       "Der kleine Siebenschläfer Die Geschichte vom kleinen Siebenschläfer, der nicht einschlafen konnte",
       "Der kleine Siebenschlaefer Die Geschichte vom kleinen Siebenschlaefer, der nicht einschlafen konnte"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_123",
@@ -1110,7 +1206,8 @@
     "series": "Der kleine Wassermann",
     "aliases": [
       "Der kleine Wassermann (Neuauflage 2022)"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_124",
@@ -1120,7 +1217,8 @@
       "[EN] The Lion King",
       "Der König der Löwen [EN] The Lion King",
       "Der Koenig der Loewen [EN] The Lion King"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_125",
@@ -1129,7 +1227,8 @@
     "aliases": [
       "Der König der Löwen",
       "Der Koenig der Loewen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_126",
@@ -1138,7 +1237,8 @@
     "aliases": [
       "Der Löwe in dir und andere Geschichten",
       "Der Loewe in dir und andere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_127",
@@ -1147,7 +1247,8 @@
     "aliases": [
       "Ein Geheimnis kommt selten allein",
       "Der magische Blumenladen Ein Geheimnis kommt selten allein"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_128",
@@ -1155,7 +1256,8 @@
     "series": "Der Regenbogenfisch",
     "aliases": [
       "Der Regenbogenfisch"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_129",
@@ -1164,7 +1266,8 @@
     "aliases": [
       "Der Räuber Hotzenplotz",
       "Der Raeuber Hotzenplotz"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_130",
@@ -1175,7 +1278,8 @@
       "Neues vom Raeuber Hotzenplotz",
       "Der Räuber Hotzenplotz Neues vom Räuber Hotzenplotz",
       "Der Raeuber Hotzenplotz Neues vom Raeuber Hotzenplotz"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_131",
@@ -1186,7 +1290,8 @@
       "Schluss mit der Raeuberei",
       "Der Räuber Hotzenplotz Schluss mit der Räuberei",
       "Der Raeuber Hotzenplotz Schluss mit der Raeuberei"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_132",
@@ -1196,7 +1301,8 @@
       "Und die Mondrakete",
       "Der Räuber Hotzenplotz Und die Mondrakete",
       "Der Raeuber Hotzenplotz Und die Mondrakete"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_133",
@@ -1207,7 +1313,8 @@
       "Lieder und Hoerspiel zur guten Nacht",
       "Der Sternenmann Lieder und Hörspiel zur guten Nacht",
       "Der Sternenmann Lieder und Hoerspiel zur guten Nacht"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_134",
@@ -1216,7 +1323,8 @@
     "aliases": [
       "Geschichtenlieder",
       "Der Traumzauberbaum Geschichtenlieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_135",
@@ -1225,7 +1333,8 @@
     "aliases": [
       "[EN] The birth of Maya",
       "Die Biene Maja [EN] The birth of Maya"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_136",
@@ -1234,7 +1343,8 @@
     "aliases": [
       "[FR] Maya L'Abeille",
       "Die Biene Maja [FR] Maya L'Abeille"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_137",
@@ -1243,7 +1353,8 @@
     "aliases": [
       "Der Bienentanz",
       "Die Biene Maja Der Bienentanz"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_138",
@@ -1252,7 +1363,8 @@
     "aliases": [
       "Der Schmetterlingsball",
       "Die Biene Maja Der Schmetterlingsball"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_139",
@@ -1261,7 +1373,8 @@
     "aliases": [
       "Majas Geburt",
       "Die Biene Maja Majas Geburt"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_140",
@@ -1270,7 +1383,8 @@
     "aliases": [
       "Das Geheimnis der alten Villa",
       "Die drei !!! Das Geheimnis der alten Villa"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_141",
@@ -1279,7 +1393,8 @@
     "aliases": [
       "Das rote Phantom",
       "Die drei !!! Das rote Phantom"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_142",
@@ -1288,7 +1403,8 @@
     "aliases": [
       "Mission Pferdeshow",
       "Die drei !!! Mission Pferdeshow"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_143",
@@ -1297,7 +1413,8 @@
     "aliases": [
       "Der Super-Papagei",
       "Die drei ??? Der Super-Papagei"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_144",
@@ -1306,7 +1423,8 @@
     "aliases": [
       "Invasion der Fliegen",
       "Die drei ??? Kids Invasion der Fliegen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_145",
@@ -1315,7 +1433,8 @@
     "aliases": [
       "Radio Rocky Beach",
       "Die drei ??? Kids Radio Rocky Beach"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_146",
@@ -1324,7 +1443,8 @@
     "aliases": [
       "Die drei Räuber",
       "Die drei Raeuber"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_147",
@@ -1334,7 +1454,8 @@
       "[EN] Frozen 2",
       "Die Eiskönigin II [EN] Frozen 2",
       "Die Eiskoenigin II [EN] Frozen 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_148",
@@ -1345,7 +1466,8 @@
       "Die Eiskoenigin 2",
       "Die Eiskönigin II Die Eiskönigin 2",
       "Die Eiskoenigin II Die Eiskoenigin 2"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_149",
@@ -1355,7 +1477,8 @@
       "[EN] Olaf's Frozen Adventure",
       "Die Eiskönigin – Olaf taut auf [EN] Olaf's Frozen Adventure",
       "Die Eiskoenigin – Olaf taut auf [EN] Olaf's Frozen Adventure"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_150",
@@ -1364,7 +1487,8 @@
     "aliases": [
       "Die Eiskönigin - Olaf taut auf",
       "Die Eiskoenigin - Olaf taut auf"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_151",
@@ -1374,7 +1498,8 @@
       "[EN] Frozen",
       "Die Eiskönigin – Völlig unverfroren [EN] Frozen",
       "Die Eiskoenigin – Voellig unverfroren [EN] Frozen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_152",
@@ -1384,7 +1509,8 @@
       "[FR] La Reine Des Neiges",
       "Die Eiskönigin – Völlig unverfroren [FR] La Reine Des Neiges",
       "Die Eiskoenigin – Voellig unverfroren [FR] La Reine Des Neiges"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_153",
@@ -1395,7 +1521,8 @@
       "Die Eiskoenigin",
       "Die Eiskönigin – Völlig unverfroren Die Eiskönigin",
       "Die Eiskoenigin – Voellig unverfroren Die Eiskoenigin"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_154",
@@ -1404,7 +1531,8 @@
     "aliases": [
       "Der Skandal im Hof/Die Spur des Riesen",
       "Die Fuchsbande Der Skandal im Hof/Die Spur des Riesen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_155",
@@ -1413,7 +1541,8 @@
     "aliases": [
       "Das kleine Ich bin Ich/Die Geggis",
       "Die Geggis Das kleine Ich bin Ich/Die Geggis"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_156",
@@ -1424,7 +1553,8 @@
       "Miss Crayon auf heisser Spur",
       "Die Glubschis Miss Crayon auf heißer Spur",
       "Die Glubschis Miss Crayon auf heisser Spur"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_157",
@@ -1435,7 +1565,8 @@
       "D!e Gaeng",
       "Die Gäng D!e Gäng",
       "Die Gaeng D!e Gaeng"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_158",
@@ -1444,7 +1575,8 @@
     "aliases": [
       "Flausen im Schopf",
       "Die Haferhorde Flausen im Schopf"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_159",
@@ -1455,7 +1587,8 @@
       "Immer den Nuestern nach",
       "Die Haferhorde Immer den Nüstern nach",
       "Die Haferhorde Immer den Nuestern nach"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_160",
@@ -1466,7 +1599,8 @@
       "Volle Maehne!",
       "Die Haferhorde Volle Mähne!",
       "Die Haferhorde Volle Maehne!"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_161",
@@ -1477,7 +1611,8 @@
       "Die neue Haeschenschule",
       "Die Häschenschule Die neue Häschenschule",
       "Die Haeschenschule Die neue Haeschenschule"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_162",
@@ -1486,7 +1621,8 @@
     "aliases": [
       "Die Eule mit der Beule",
       "Die kleine Eule Die Eule mit der Beule"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_163",
@@ -1494,7 +1630,8 @@
     "series": "Die kleine Eule",
     "aliases": [
       "Die kleine Eule feiert Weihnachten"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_164",
@@ -1502,7 +1639,8 @@
     "series": "Die kleine Eule",
     "aliases": [
       "Die kleine Eule singt und tanzt – Das 2. Liederalbum"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_165",
@@ -1511,7 +1649,8 @@
     "aliases": [
       "Gute Nacht, kleine Eule",
       "Die kleine Eule Gute Nacht, kleine Eule"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_166",
@@ -1520,7 +1659,8 @@
     "aliases": [
       "Liederalbum",
       "Die kleine Eule Liederalbum"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_167",
@@ -1528,7 +1668,8 @@
     "series": "Die kleine Hexe",
     "aliases": [
       "Die kleine Hexe"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_168",
@@ -1537,7 +1678,8 @@
     "aliases": [
       "Die neugierige kleine Hexe / Die kleine Hexe hat Geburtstag",
       "Die kleine Hexe Die neugierige kleine Hexe / Die kleine Hexe hat Geburtstag"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_169",
@@ -1546,7 +1688,8 @@
     "aliases": [
       "Die kleine Hummel Bommel / Die kleine Hummel Bommel sucht das Glück",
       "Die kleine Hummel Bommel / Die kleine Hummel Bommel sucht das Glueck"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_170",
@@ -1555,7 +1698,8 @@
     "aliases": [
       "Schlaf gut! Die kleine Raupe Nimmersatt und weitere Geschichten",
       "Die kleine Raupe Nimmersatt Schlaf gut! Die kleine Raupe Nimmersatt und weitere Geschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_171",
@@ -1566,7 +1710,8 @@
       "Warum stolpern Tausendfuessler nicht?",
       "Die kleine Schnecke Monika Häuschen Warum stolpern Tausendfüßler nicht?",
       "Die kleine Schnecke Monika Haeuschen Warum stolpern Tausendfuessler nicht?"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_172",
@@ -1575,7 +1720,8 @@
     "aliases": [
       "[EN] Monsters Inc.",
       "Die Monster AG [EN] Monsters Inc."
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_173",
@@ -1583,7 +1729,8 @@
     "series": "Die Monster AG",
     "aliases": [
       "Die Monster AG"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_174",
@@ -1592,7 +1739,8 @@
     "aliases": [
       "Die Monster Uni",
       "Die Monster AG Die Monster Uni"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_175",
@@ -1601,7 +1749,8 @@
     "aliases": [
       "Das Erbe der Piraten",
       "Die Olchi-Detektive Das Erbe der Piraten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_176",
@@ -1610,7 +1759,8 @@
     "aliases": [
       "Ritter der Popelrunde",
       "Die Olchi-Detektive Ritter der Popelrunde"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_177",
@@ -1618,7 +1768,8 @@
     "series": "Die Olchis",
     "aliases": [
       "Die Olchis auf Geburtstagsreise"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_178",
@@ -1626,7 +1777,8 @@
     "series": "Die Olchis",
     "aliases": [
       "Die Olchis und der schwarze Pirat"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_179",
@@ -1635,7 +1787,8 @@
     "aliases": [
       "Die Olchis werden Fußballmeister",
       "Die Olchis werden Fussballmeister"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_180",
@@ -1646,7 +1799,8 @@
       "Das Turnier auf der Koenigsritterburg",
       "Die Playmos Das Turnier auf der Königsritterburg",
       "Die Playmos Das Turnier auf der Koenigsritterburg"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_181",
@@ -1655,7 +1809,8 @@
     "aliases": [
       "Der Ball im Prinzessinnen-Schloss",
       "Die Playmos Der Ball im Prinzessinnen-Schloss"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_182",
@@ -1664,7 +1819,8 @@
     "aliases": [
       "Der Schatz der Teufelsinsel",
       "Die Playmos Der Schatz der Teufelsinsel"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_183",
@@ -1675,7 +1831,8 @@
       "Grossbrand in der Feuerwache",
       "Die Playmos Großbrand in der Feuerwache",
       "Die Playmos Grossbrand in der Feuerwache"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_184",
@@ -1684,7 +1841,8 @@
     "aliases": [
       "Licht aus dem Drachenland",
       "Die Playmos Licht aus dem Drachenland"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_185",
@@ -1695,7 +1853,8 @@
       "Buehne frei fuer die Punkies",
       "Die Punkies Bühne frei für die Punkies",
       "Die Punkies Buehne frei fuer die Punkies"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_186",
@@ -1705,7 +1864,8 @@
       "[FR] Les Schtroumpfs Et Le Livre Qui Dit Tout",
       "Die Schlümpfe [FR] Les Schtroumpfs Et Le Livre Qui Dit Tout",
       "Die Schluempfe [FR] Les Schtroumpfs Et Le Livre Qui Dit Tout"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_187",
@@ -1715,7 +1875,8 @@
       "Der doppelte Papa Schlumpf & 3 weitere schlumpfige Abenteuer",
       "Die Schlümpfe Der doppelte Papa Schlumpf & 3 weitere schlumpfige Abenteuer",
       "Die Schluempfe Der doppelte Papa Schlumpf & 3 weitere schlumpfige Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_188",
@@ -1725,7 +1886,8 @@
       "Ein tollpatschiger Held & 3 weitere schlumpfige Abenteuer",
       "Die Schlümpfe Ein tollpatschiger Held & 3 weitere schlumpfige Abenteuer",
       "Die Schluempfe Ein tollpatschiger Held & 3 weitere schlumpfige Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_189",
@@ -1736,7 +1898,8 @@
       "Ein unwiderschlumpfliches Laecheln & 3 weitere schlumpfige Abenteuer",
       "Die Schlümpfe Ein unwiderschlumpfliches Lächeln & 3 weitere schlumpfige Abenteuer",
       "Die Schluempfe Ein unwiderschlumpfliches Laecheln & 3 weitere schlumpfige Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_190",
@@ -1746,7 +1909,8 @@
       "Hefty Schlumpf - Wer ist heftiger? & 3 weitere schlumpfige Abenteuer",
       "Die Schlümpfe Hefty Schlumpf - Wer ist heftiger? & 3 weitere schlumpfige Abenteuer",
       "Die Schluempfe Hefty Schlumpf - Wer ist heftiger? & 3 weitere schlumpfige Abenteuer"
-    ]
+    ],
+    "availability_state": "preorderable"
   },
   {
     "id": "tn_191",
@@ -1754,7 +1918,8 @@
     "series": "Die Schule der magischen Tiere",
     "aliases": [
       "Die Schule der magischen Tiere"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_192",
@@ -1764,7 +1929,8 @@
       "[EN] Beauty and the Beast",
       "Die Schöne und das Biest [EN] Beauty and the Beast",
       "Die Schoene und das Biest [EN] Beauty and the Beast"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_193",
@@ -1774,7 +1940,8 @@
       "[FR] La Belle Et La Bête",
       "Die Schöne und das Biest [FR] La Belle Et La Bête",
       "Die Schoene und das Biest [FR] La Belle Et La Bête"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_194",
@@ -1783,7 +1950,8 @@
     "aliases": [
       "Die Schöne und das Biest",
       "Die Schoene und das Biest"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_195",
@@ -1794,7 +1962,8 @@
       "Schlaf schoen! (Neuauflage 2023)",
       "Die Sendung mit dem Elefanten Schlaf schön! (Neuauflage 2023)",
       "Die Sendung mit dem Elefanten Schlaf schoen! (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_196",
@@ -1805,7 +1974,8 @@
       "Teil 1: Die grosse Suche",
       "Die unendliche Geschichte Teil 1: Die große Suche",
       "Die unendliche Geschichte Teil 1: Die grosse Suche"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_197",
@@ -1813,7 +1983,8 @@
     "series": "Die Unglaublichen",
     "aliases": [
       "Die Unglaublichen – The Incredibles"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_198",
@@ -1822,7 +1993,8 @@
     "aliases": [
       "Oh Yeah!",
       "DIKKA Oh Yeah!"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_199",
@@ -1833,7 +2005,8 @@
       "Maechtig Aerger fuer Jon & 3 weitere Abenteuer",
       "Dino Ranch Mächtig Ärger für Jon & 3 weitere Abenteuer",
       "Dino Ranch Maechtig Aerger fuer Jon & 3 weitere Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_200",
@@ -1843,7 +2016,8 @@
       "[EN] Doc McStuffins",
       "Doc McStuffins, Spielzeugärztin [EN] Doc McStuffins",
       "Doc McStuffins, Spielzeugaerztin [EN] Doc McStuffins"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_201",
@@ -1853,7 +2027,8 @@
       "Buh machst du! & 3 weitere Geschichten",
       "Doc McStuffins, Spielzeugärztin Buh machst du! & 3 weitere Geschichten",
       "Doc McStuffins, Spielzeugaerztin Buh machst du! & 3 weitere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_202",
@@ -1861,7 +2036,8 @@
     "series": "Dora",
     "aliases": [
       "Dora"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_203",
@@ -1870,7 +2046,8 @@
     "aliases": [
       "Dornröschen",
       "Dornroeschen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_204",
@@ -1878,7 +2055,8 @@
     "series": "Dr. Brumm",
     "aliases": [
       "Dr. Brumm steckt fest/Dr. Brumm geht baden"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_205",
@@ -1888,7 +2066,8 @@
       "[EN] How to train your Dragon",
       "Drachenzähmen leicht gemacht [EN] How to train your Dragon",
       "Drachenzaehmen leicht gemacht [EN] How to train your Dragon"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_206",
@@ -1897,7 +2076,8 @@
     "aliases": [
       "Drachenzähmen leicht gemacht 1",
       "Drachenzaehmen leicht gemacht 1"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_207",
@@ -1906,7 +2086,8 @@
     "aliases": [
       "Drachenzähmen leicht gemacht 2",
       "Drachenzaehmen leicht gemacht 2"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_208",
@@ -1915,7 +2096,8 @@
     "aliases": [
       "[EN] Spirit – Riding Free",
       "Dreamworks [EN] Spirit – Riding Free"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_209",
@@ -1924,7 +2106,8 @@
     "aliases": [
       "Woohoo! / Die Suche nach Atlantis",
       "DuckTales Woohoo! / Die Suche nach Atlantis"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_210",
@@ -1932,7 +2115,8 @@
     "series": "Dumbo",
     "aliases": [
       "Dumbo"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_211",
@@ -1940,7 +2124,8 @@
     "series": "Ein Freund wie kein anderer",
     "aliases": [
       "Ein Freund wie kein Anderer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_212",
@@ -1948,7 +2133,8 @@
     "series": "Ella",
     "aliases": [
       "Ella in der Schule"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_213",
@@ -1957,7 +2143,8 @@
     "aliases": [
       "[EN] Elmer and Friends Story Collection",
       "Elmar [EN] Elmer and Friends Story Collection"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_214",
@@ -1966,7 +2153,8 @@
     "aliases": [
       "Kunterbunte Geschichten",
       "Elmar Kunterbunte Geschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_215",
@@ -1977,7 +2165,8 @@
       "Janoschs Emil Gruenbaer und die Bande – Abenteuer im Wald",
       "Emil Grünbär Janoschs Emil Grünbär und die Bande – Abenteuer im Wald",
       "Emil Gruenbaer Janoschs Emil Gruenbaer und die Bande – Abenteuer im Wald"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_216",
@@ -1985,7 +2174,8 @@
     "series": "Encanto",
     "aliases": [
       "Encanto"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_217",
@@ -1994,7 +2184,8 @@
     "aliases": [
       "Zauberhafte Geschichten aus dem Erdbeergarten",
       "Erdbeerinchen Erdbeerfee Zauberhafte Geschichten aus dem Erdbeergarten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_218",
@@ -2003,7 +2194,8 @@
     "aliases": [
       "Auf Europatour",
       "Eule findet den Beat Auf Europatour"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_219",
@@ -2012,7 +2204,8 @@
     "aliases": [
       "Ein Entdeckerflug durch die Musikwelt",
       "Eule findet den Beat Ein Entdeckerflug durch die Musikwelt"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_220",
@@ -2023,7 +2216,8 @@
       "Mit Gefuehl",
       "Eule findet den Beat Mit Gefühl",
       "Eule findet den Beat Mit Gefuehl"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_221",
@@ -2032,7 +2226,8 @@
     "aliases": [
       "Ed & Edda – Grand Prix of Europe",
       "Europa-Park Ed & Edda – Grand Prix of Europe"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_222",
@@ -2041,7 +2236,8 @@
     "aliases": [
       "[EN] Fantasia",
       "Fantasia [EN] Fantasia"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_223",
@@ -2049,7 +2245,8 @@
     "series": "Fantasia",
     "aliases": [
       "Fantasia"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_224",
@@ -2058,7 +2255,8 @@
     "aliases": [
       "8 besondere Orte zum Entspannen",
       "Fantasiereisen mit Faultier Mo 8 besondere Orte zum Entspannen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_225",
@@ -2067,7 +2265,8 @@
     "aliases": [
       "Briefe von Felix",
       "Felix Briefe von Felix"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_226",
@@ -2076,7 +2275,8 @@
     "aliases": [
       "Weltbeste Briefe von Felix",
       "Felix Weltbeste Briefe von Felix"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_227",
@@ -2085,7 +2285,8 @@
     "aliases": [
       "[EN] The Pontypandy Pack",
       "Feuerwehrmann Sam [EN] The Pontypandy Pack"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_228",
@@ -2094,7 +2295,8 @@
     "aliases": [
       "Eine Insel voller Abenteuer",
       "Feuerwehrmann Sam Eine Insel voller Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_229",
@@ -2103,7 +2305,8 @@
     "aliases": [
       "Wettlauf gegen die Zeit!",
       "Feuerwehrmann Sam Wettlauf gegen die Zeit!"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_230",
@@ -2112,7 +2315,8 @@
     "aliases": [
       "Findet Dorie",
       "Findet Nemo Findet Dorie"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_231",
@@ -2120,7 +2324,8 @@
     "series": "Findet Nemo",
     "aliases": [
       "Findet Nemo"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_232",
@@ -2129,7 +2334,8 @@
     "aliases": [
       "Frederick und seine Mäusefreunde",
       "Frederick und seine Maeusefreunde"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_233",
@@ -2138,7 +2344,8 @@
     "aliases": [
       "Zugabe",
       "Fredrik Vahle Zugabe"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_234",
@@ -2147,7 +2354,8 @@
     "aliases": [
       "Furzipups - 3 Geschichten und 6 Songs",
       "Furzipups, der Knatterdrache Furzipups - 3 Geschichten und 6 Songs"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_235",
@@ -2156,7 +2364,8 @@
     "aliases": [
       "Fünf Freunde auf der Suche nach Timmy",
       "Fuenf Freunde auf der Suche nach Timmy"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_236",
@@ -2165,7 +2374,8 @@
     "aliases": [
       "Fünf Freunde und das versunkene Schiff",
       "Fuenf Freunde und das versunkene Schiff"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_237",
@@ -2174,7 +2384,8 @@
     "aliases": [
       "Fünf Freunde und der Großalarm in Kirrin",
       "Fuenf Freunde und der Grossalarm in Kirrin"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_238",
@@ -2183,7 +2394,8 @@
     "aliases": [
       "Fünf Freunde und die doppelte Erfindung",
       "Fuenf Freunde und die doppelte Erfindung"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_239",
@@ -2192,7 +2404,8 @@
     "aliases": [
       "Fünf Freunde und die verlassene Jagdhütte",
       "Fuenf Freunde und die verlassene Jagdhuette"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_240",
@@ -2201,7 +2414,8 @@
     "aliases": [
       "Für Hund und Katz ist auch noch Platz/Wo ist Mami?",
       "Fuer Hund und Katz ist auch noch Platz/Wo ist Mami?"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_241",
@@ -2210,7 +2424,8 @@
     "aliases": [
       "Das Raumschiff / Gabby hat einen Schluckauf",
       "Gabby's Dollhouse Das Raumschiff / Gabby hat einen Schluckauf"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_242",
@@ -2219,7 +2434,8 @@
     "aliases": [
       "Der Cupcake-Baum / Die Puppenhausdetektive",
       "Gabby's Dollhouse Der Cupcake-Baum / Die Puppenhausdetektive"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_243",
@@ -2230,7 +2446,8 @@
       "Eroeffnungsfeier im Puppenhaus / Kitty Fees Uebernachtungsparty",
       "Gabby's Dollhouse Eröffnungsfeier im Puppenhaus / Kitty Fees Übernachtungsparty",
       "Gabby's Dollhouse Eroeffnungsfeier im Puppenhaus / Kitty Fees Uebernachtungsparty"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_244",
@@ -2241,7 +2458,8 @@
       "Gabby, ich habe die Kaetzchen geschrumpft! / Der Eisbaer Pete",
       "Gabby's Dollhouse Gabby, ich habe die Kätzchen geschrumpft! / Der Eisbär Pete",
       "Gabby's Dollhouse Gabby, ich habe die Kaetzchen geschrumpft! / Der Eisbaer Pete"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_245",
@@ -2252,7 +2470,8 @@
       "Die Geschichte vom Loewen, der nicht schreiben konnte und zwei weitere Loewengeschichten",
       "Geschichten vom Löwen Die Geschichte vom Löwen, der nicht schreiben konnte und zwei weitere Löwengeschichten",
       "Geschichten vom Loewen Die Geschichte vom Loewen, der nicht schreiben konnte und zwei weitere Loewengeschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_246",
@@ -2261,7 +2480,8 @@
     "aliases": [
       "Mazus Mutprobe",
       "Gigantosaurus Mazus Mutprobe"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_247",
@@ -2270,7 +2490,8 @@
     "aliases": [
       "Die Giraffenaffen Lieblingslieder",
       "Giraffenaffen Die Giraffenaffen Lieblingslieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_248",
@@ -2279,7 +2500,8 @@
     "aliases": [
       "Die Giraffenaffen Partyhits",
       "Giraffenaffen Die Giraffenaffen Partyhits"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_249",
@@ -2289,7 +2511,8 @@
       "Bezaubernde Gutenachtgeschichten",
       "Gloria Glühwürmchen Bezaubernde Gutenachtgeschichten",
       "Gloria Gluehwuermchen Bezaubernde Gutenachtgeschichten"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_250",
@@ -2297,7 +2520,8 @@
     "series": "Green Team",
     "aliases": [
       "Green Team - Mission: Rettung an Land mit Nina dem roten Panda"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_251",
@@ -2306,7 +2530,8 @@
     "aliases": [
       "Green Team - Mission: Rettung im Wasser mit Bobby, der Meeresschildkröte",
       "Green Team - Mission: Rettung im Wasser mit Bobby, der Meeresschildkroete"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_252",
@@ -2314,7 +2539,8 @@
     "series": "Green Team",
     "aliases": [
       "Green Team - Mission: Rettung in den Bergen mit Uli, dem Leoparden"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_253",
@@ -2322,7 +2548,8 @@
     "series": "Green Team",
     "aliases": [
       "Green Team - Mission: Rettung in der Luft mit John, der Schneeeule"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_254",
@@ -2331,7 +2558,8 @@
     "aliases": [
       "Von Idioten umzingelt",
       "Greg's Tagebuch Von Idioten umzingelt"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_255",
@@ -2339,7 +2567,8 @@
     "series": "Griechische Sagen",
     "aliases": [
       "Griechische Sagen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_256",
@@ -2348,7 +2577,8 @@
     "aliases": [
       "Die Legende von Gus und drei weitere Geschichten",
       "Gus, der klitzekleine Ritter Die Legende von Gus und drei weitere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_257",
@@ -2357,7 +2587,8 @@
     "aliases": [
       "Gute Nacht, Gorilla und weitere Einschlafhörspiele",
       "Gute Nacht, Gorilla und weitere Einschlafhoerspiele"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_258",
@@ -2365,7 +2596,8 @@
     "series": "Hanni und Nanni",
     "aliases": [
       "Hanni und Nanni im Hochzeitsrausch"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_259",
@@ -2373,7 +2605,8 @@
     "series": "Hanni und Nanni",
     "aliases": [
       "Hanni und Nanni voll im Trend"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_260",
@@ -2382,7 +2615,8 @@
     "aliases": [
       "Nur noch kurz die Ohren kraulen? Hasenkinds Mitmach-Geschichten",
       "Hasenkind Nur noch kurz die Ohren kraulen? Hasenkinds Mitmach-Geschichten"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_261",
@@ -2391,7 +2625,8 @@
     "aliases": [
       "Pommesgabel - Best of Dino Metal (Neuauflage 2025)",
       "Heavysaurus Pommesgabel - Best of Dino Metal (Neuauflage 2025)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_262",
@@ -2402,7 +2637,8 @@
       "Die Reise zum Grossvater",
       "Heidi Die Reise zum Großvater",
       "Heidi Die Reise zum Grossvater"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_263",
@@ -2413,7 +2649,8 @@
       "Ein Wolf im Doerfli",
       "Heidi Ein Wolf im Dörfli",
       "Heidi Ein Wolf im Doerfli"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_264",
@@ -2424,7 +2661,8 @@
       "Freunde fuer immer",
       "Heidi Freunde für immer",
       "Heidi Freunde fuer immer"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_265",
@@ -2432,7 +2670,8 @@
     "series": "Hercules",
     "aliases": [
       "Hercules"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_266",
@@ -2441,7 +2680,8 @@
     "aliases": [
       "Emma, die Ente – Das Beste von herrH",
       "herrH Emma, die Ente – Das Beste von herrH"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_267",
@@ -2450,7 +2690,8 @@
     "aliases": [
       "Heule Eule und andere Geschichten – Die Hörspiele",
       "Heule Eule und andere Geschichten – Die Hoerspiele"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_268",
@@ -2458,7 +2699,8 @@
     "series": "Hot Wheels",
     "aliases": [
       "Hot Wheels"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_269",
@@ -2466,7 +2708,8 @@
     "series": "Hurra Kinderlieder",
     "aliases": [
       "Hurra Kinderlieder - Best of"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_270",
@@ -2475,7 +2718,8 @@
     "aliases": [
       "[EN] The Junior Novel",
       "Ich - einfach unverbesserlich [EN] The Junior Novel"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_271",
@@ -2483,7 +2727,8 @@
     "series": "Ich - einfach unverbesserlich",
     "aliases": [
       "Ich - einfach unverbesserlich 1"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_272",
@@ -2491,7 +2736,8 @@
     "series": "Ich - einfach unverbesserlich",
     "aliases": [
       "Ich – Einfach unverbesserlich 4"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_273",
@@ -2502,7 +2748,8 @@
       "8 Raetsel und 2 Lieder",
       "Jan & Henry 8 Rätsel und 2 Lieder",
       "Jan & Henry 8 Raetsel und 2 Lieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_274",
@@ -2510,7 +2757,8 @@
     "series": "Jan Tenner",
     "aliases": [
       "Jan Tenner - Planet der 1000 Wunder"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_275",
@@ -2521,7 +2769,8 @@
       "Als Tiger und Baer beinahe das Beste verpassten",
       "Janosch Als Tiger und Bär beinahe das Beste verpassten",
       "Janosch Als Tiger und Baer beinahe das Beste verpassten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_276",
@@ -2532,7 +2781,8 @@
       "Ich mach dich gesund, sagte der Baer",
       "Janosch Ich mach dich gesund, sagte der Bär",
       "Janosch Ich mach dich gesund, sagte der Baer"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_277",
@@ -2543,7 +2793,8 @@
       "Oh, wie schoen ist Panama",
       "Janosch Oh, wie schön ist Panama",
       "Janosch Oh, wie schoen ist Panama"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_278",
@@ -2554,7 +2805,8 @@
       "Post fuer den Tiger",
       "Janosch Post für den Tiger",
       "Janosch Post fuer den Tiger"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_279",
@@ -2562,7 +2814,8 @@
     "series": "Jasmin",
     "aliases": [
       "Jasmin"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_280",
@@ -2571,7 +2824,8 @@
     "aliases": [
       "Teil 1: Von Lummerland bis China",
       "Jim Knopf Teil 1: Von Lummerland bis China"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_281",
@@ -2580,7 +2834,8 @@
     "aliases": [
       "Lu kann nicht schlafen & eine weitere Geschichte",
       "JoNaLu Lu kann nicht schlafen & eine weitere Geschichte"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_282",
@@ -2589,7 +2844,8 @@
     "aliases": [
       "Folge 1: Camp Kreidezeit / Geheimnisse",
       "Jurassic World: Neue Abenteuer Folge 1: Camp Kreidezeit / Geheimnisse"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_283",
@@ -2599,7 +2855,8 @@
       "Ein musikalisches Roadmovie",
       "Kai Lüftners Kürbiskopp Ein musikalisches Roadmovie",
       "Kai Lueftners Kuerbiskopp Ein musikalisches Roadmovie"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_284",
@@ -2607,7 +2864,8 @@
     "series": "Karmas Welt",
     "aliases": [
       "Karmas Welt"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_285",
@@ -2618,7 +2876,8 @@
       "Es haet en Dieb im Zoo! / D Insle vom Pirat Ohnibart",
       "Kasperli Es hät en Dieb im Zoo! / D Insle vom Pirat Ohnibart",
       "Kasperli Es haet en Dieb im Zoo! / D Insle vom Pirat Ohnibart"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_286",
@@ -2627,7 +2886,8 @@
     "aliases": [
       "Die Mischung macht’s!",
       "Kikaninchen Die Mischung macht’s!"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_287",
@@ -2636,7 +2896,8 @@
     "aliases": [
       "Bitte alle einsteigen!",
       "Kinderliederzug Bitte alle einsteigen!"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_288",
@@ -2644,7 +2905,8 @@
     "series": "KLE!NE EXPERTEN",
     "aliases": [
       "KLE!NE EXPERTEN ... begleiten Elefanten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_289",
@@ -2652,7 +2914,8 @@
     "series": "KLE!NE EXPERTEN",
     "aliases": [
       "KLE!NE EXPERTEN ... galoppieren mit Pferden"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_290",
@@ -2661,7 +2924,8 @@
     "aliases": [
       "KLE!NE EXPERTEN muhen mit Kühen",
       "KLE!NE EXPERTEN muhen mit Kuehen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_291",
@@ -2669,7 +2933,8 @@
     "series": "KLE!NE EXPERTEN",
     "aliases": [
       "KLE!NE EXPERTEN tauchen mit Walen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_292",
@@ -2677,7 +2942,8 @@
     "series": "KLE!NE EXPERTEN",
     "aliases": [
       "KLE!NE EXPERTEN treffen auf Dinosaurier"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_293",
@@ -2687,7 +2953,8 @@
       "Lars, hilf mir fliegen!/ Lars rettet die Rentiere",
       "Kleiner Eisbär Lars, hilf mir fliegen!/ Lars rettet die Rentiere",
       "Kleiner Eisbaer Lars, hilf mir fliegen!/ Lars rettet die Rentiere"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_294",
@@ -2697,7 +2964,8 @@
       "Lars, lass mich nicht allein! / Lars und der Angsthase",
       "Kleiner Eisbär Lars, lass mich nicht allein! / Lars und der Angsthase",
       "Kleiner Eisbaer Lars, lass mich nicht allein! / Lars und der Angsthase"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_295",
@@ -2706,7 +2974,8 @@
     "aliases": [
       "Freundschaftsgeschichten",
       "Kosmo und Klax Freundschaftsgeschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_296",
@@ -2714,7 +2983,8 @@
     "series": "Kung Fu Panda",
     "aliases": [
       "Kung Fu Panda"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_297",
@@ -2724,7 +2994,8 @@
       "Seemannsgarn",
       "Käpt'n Blaubär Seemannsgarn",
       "Kaept'n Blaubaer Seemannsgarn"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_298",
@@ -2733,7 +3004,8 @@
     "aliases": [
       "Käpt'n Sharky und das Seeungeheuer",
       "Kaept'n Sharky und das Seeungeheuer"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_299",
@@ -2742,7 +3014,8 @@
     "aliases": [
       "Käpt’n Sharky und das Geheimnis der Schatzinsel",
       "Kaept’n Sharky und das Geheimnis der Schatzinsel"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_300",
@@ -2753,7 +3026,8 @@
       "Oster- und Fruehlingsgeschichten",
       "Küken Pitti Oster- und Frühlingsgeschichten",
       "Kueken Pitti Oster- und Fruehlingsgeschichten"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_301",
@@ -2763,7 +3037,8 @@
       "[EN] The Princess and the Frog",
       "Küss den Frosch [EN] The Princess and the Frog",
       "Kuess den Frosch [EN] The Princess and the Frog"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_302",
@@ -2772,7 +3047,8 @@
     "aliases": [
       "Küss den Frosch",
       "Kuess den Frosch"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_303",
@@ -2781,7 +3057,8 @@
     "aliases": [
       "Die beste Band in Bumbaloo (Akio)",
       "Lalalinos Die beste Band in Bumbaloo (Akio)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_304",
@@ -2790,7 +3067,8 @@
     "aliases": [
       "Es groovt in Bumbaloo (Scout)",
       "Lalalinos Es groovt in Bumbaloo (Scout)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_305",
@@ -2798,7 +3076,8 @@
     "series": "Lalalinos",
     "aliases": [
       "Lalalinos - Bumbaloo Beats (Cosmo)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_306",
@@ -2809,7 +3088,8 @@
       "Freunde fuers Leben",
       "Lassie Freunde fürs Leben",
       "Lassie Freunde fuers Leben"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_307",
@@ -2818,7 +3098,8 @@
     "aliases": [
       "Die allererste Bilderbuch Geschichte & Glitzernde Gutenacht-Geschichten",
       "Lauras Stern Die allererste Bilderbuch Geschichte & Glitzernde Gutenacht-Geschichten"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_308",
@@ -2826,7 +3107,8 @@
     "series": "LEA",
     "aliases": [
       "LEAs Welt"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_309",
@@ -2837,7 +3119,8 @@
       "Das Original-Hoerspiel zu den Buechern 1",
       "Leo Lausemaus Das Original-Hörspiel zu den Büchern 1",
       "Leo Lausemaus Das Original-Hoerspiel zu den Buechern 1"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_310",
@@ -2848,7 +3131,8 @@
       "Das Original-Hoerspiel zu den Buechern 2",
       "Leo Lausemaus Das Original-Hörspiel zu den Büchern 2",
       "Leo Lausemaus Das Original-Hoerspiel zu den Buechern 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_311",
@@ -2859,7 +3143,8 @@
       "Das Original-Hoerspiel zu den Buechern 3",
       "Leo Lausemaus Das Original-Hörspiel zu den Büchern 3",
       "Leo Lausemaus Das Original-Hoerspiel zu den Buechern 3"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_312",
@@ -2870,7 +3155,8 @@
       "1, 2, 3, sei beim Aufraeumen dabei!",
       "Leos Tag 1, 2, 3, sei beim Aufräumen dabei!",
       "Leos Tag 1, 2, 3, sei beim Aufraeumen dabei!"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_313",
@@ -2881,7 +3167,8 @@
       "Achtung, fertig, Zaehneputzen!",
       "Leos Tag Achtung, fertig, Zähneputzen!",
       "Leos Tag Achtung, fertig, Zaehneputzen!"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_314",
@@ -2890,7 +3177,8 @@
     "aliases": [
       "Es ist so weit – Badezeit!",
       "Leos Tag Es ist so weit – Badezeit!"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_315",
@@ -2899,7 +3187,8 @@
     "aliases": [
       "Hoppala, wer schnieft denn da?",
       "Leos Tag Hoppala, wer schnieft denn da?"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_316",
@@ -2910,7 +3199,8 @@
       "Windel, Toepfchen, Klo - das geht so!",
       "Leos Tag Windel, Töpfchen, Klo - das geht so!",
       "Leos Tag Windel, Toepfchen, Klo - das geht so!"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_317",
@@ -2919,7 +3209,8 @@
     "aliases": [
       "Die besten Spiel- und Bewegungslieder",
       "Lichterkinder Die besten Spiel- und Bewegungslieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_318",
@@ -2928,7 +3219,8 @@
     "aliases": [
       "Die besten Weihnachts- und Winterlieder",
       "Lichterkinder Die besten Weihnachts- und Winterlieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_319",
@@ -2937,7 +3229,8 @@
     "aliases": [
       "Laternen- und Herbstlieder",
       "Lichterkinder Laternen- und Herbstlieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_320",
@@ -2945,7 +3238,8 @@
     "series": "Lichterkinder",
     "aliases": [
       "Lichterkinder Schlaflieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_321",
@@ -2954,7 +3248,8 @@
     "aliases": [
       "[EN] Bedtime & Lullabies",
       "Lieblings-Kinderlieder [EN] Bedtime & Lullabies"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_322",
@@ -2963,7 +3258,8 @@
     "aliases": [
       "[EN] Playtime & Action Songs",
       "Lieblings-Kinderlieder [EN] Playtime & Action Songs"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_323",
@@ -2972,7 +3268,8 @@
     "aliases": [
       "[FR] De Noël",
       "Lieblings-Kinderlieder [FR] De Noël"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_324",
@@ -2981,7 +3278,8 @@
     "aliases": [
       "[FR] Pour Faire la Fête",
       "Lieblings-Kinderlieder [FR] Pour Faire la Fête"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_325",
@@ -2990,7 +3288,8 @@
     "aliases": [
       "[FR] Pour S'Endormir",
       "Lieblings-Kinderlieder [FR] Pour S'Endormir"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_326",
@@ -2999,7 +3298,8 @@
     "aliases": [
       "[FR] À Mimer",
       "Lieblings-Kinderlieder [FR] À Mimer"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_327",
@@ -3008,7 +3308,8 @@
     "aliases": [
       "Englische Kinderlieder",
       "Lieblings-Kinderlieder Englische Kinderlieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_328",
@@ -3019,7 +3320,8 @@
       "Europaeische Kinderlieder",
       "Lieblings-Kinderlieder Europäische Kinderlieder",
       "Lieblings-Kinderlieder Europaeische Kinderlieder"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_329",
@@ -3030,7 +3332,8 @@
       "Fruehlingslieder",
       "Lieblings-Kinderlieder Frühlingslieder",
       "Lieblings-Kinderlieder Fruehlingslieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_330",
@@ -3039,7 +3342,8 @@
     "aliases": [
       "Geburtstagslieder",
       "Lieblings-Kinderlieder Geburtstagslieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_331",
@@ -3048,7 +3352,8 @@
     "aliases": [
       "Halloween & Spuk",
       "Lieblings-Kinderlieder Halloween & Spuk"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_332",
@@ -3057,7 +3362,8 @@
     "aliases": [
       "Herbst- und Laternenlieder",
       "Lieblings-Kinderlieder Herbst- und Laternenlieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_333",
@@ -3066,7 +3372,8 @@
     "aliases": [
       "Jahreszeitenlieder",
       "Lieblings-Kinderlieder Jahreszeitenlieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_334",
@@ -3075,7 +3382,8 @@
     "aliases": [
       "Karnevalslieder",
       "Lieblings-Kinderlieder Karnevalslieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_335",
@@ -3084,7 +3392,8 @@
     "aliases": [
       "Kindergartenlieder",
       "Lieblings-Kinderlieder Kindergartenlieder"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_336",
@@ -3093,7 +3402,8 @@
     "aliases": [
       "Reiselieder (Neuauflage 2023)",
       "Lieblings-Kinderlieder Reiselieder (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_337",
@@ -3102,7 +3412,8 @@
     "aliases": [
       "Schlaflieder",
       "Lieblings-Kinderlieder Schlaflieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_338",
@@ -3111,7 +3422,8 @@
     "aliases": [
       "Schlaflieder 2",
       "Lieblings-Kinderlieder Schlaflieder 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_339",
@@ -3120,7 +3432,8 @@
     "aliases": [
       "Spiel- und Bewegungslieder",
       "Lieblings-Kinderlieder Spiel- und Bewegungslieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_340",
@@ -3129,7 +3442,8 @@
     "aliases": [
       "Spiel- und Bewegungslieder 2 (Neuauflage 2023)",
       "Lieblings-Kinderlieder Spiel- und Bewegungslieder 2 (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_341",
@@ -3138,7 +3452,8 @@
     "aliases": [
       "Tierlieder",
       "Lieblings-Kinderlieder Tierlieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_342",
@@ -3147,7 +3462,8 @@
     "aliases": [
       "Weihnachtslieder",
       "Lieblings-Kinderlieder Weihnachtslieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_343",
@@ -3156,7 +3472,8 @@
     "aliases": [
       "Weihnachtslieder 2",
       "Lieblings-Kinderlieder Weihnachtslieder 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_344",
@@ -3167,7 +3484,8 @@
       "Zaehllieder (Neuauflage 2023)",
       "Lieblings-Kinderlieder Zähllieder (Neuauflage 2023)",
       "Lieblings-Kinderlieder Zaehllieder (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_345",
@@ -3176,7 +3494,8 @@
     "aliases": [
       "[FR] Les Fables De La Fontaine",
       "Lieblings-Klassiker [FR] Les Fables De La Fontaine"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_346",
@@ -3185,7 +3504,8 @@
     "aliases": [
       "Alice im Wunderland und zwei weitere Klassiker",
       "Lieblings-Klassiker Alice im Wunderland und zwei weitere Klassiker"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_347",
@@ -3194,7 +3514,8 @@
     "aliases": [
       "Der Zauberer von Oz und zwei weitere Klassiker",
       "Lieblings-Klassiker Der Zauberer von Oz und zwei weitere Klassiker"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_348",
@@ -3203,7 +3524,8 @@
     "aliases": [
       "Eine Weihnachtsgeschichte und vier weitere Klassiker",
       "Lieblings-Klassiker Eine Weihnachtsgeschichte und vier weitere Klassiker"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_349",
@@ -3212,7 +3534,8 @@
     "aliases": [
       "Peter Pan und 4 weitere Klassiker",
       "Lieblings-Klassiker Peter Pan und 4 weitere Klassiker"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_350",
@@ -3221,7 +3544,8 @@
     "aliases": [
       "Pinocchio (Neuauflage 2024)",
       "Lieblings-Klassiker Pinocchio (Neuauflage 2024)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_351",
@@ -3230,7 +3554,8 @@
     "aliases": [
       "Robinson Crusoe und vier weitere Klassiker",
       "Lieblings-Klassiker Robinson Crusoe und vier weitere Klassiker"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_352",
@@ -3240,7 +3565,8 @@
       "Der Nussknacker",
       "Lieblings-Meisterstücke Der Nussknacker",
       "Lieblings-Meisterstuecke Der Nussknacker"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_353",
@@ -3251,7 +3577,8 @@
       "Haensel und Gretel",
       "Lieblings-Meisterstücke Hänsel und Gretel",
       "Lieblings-Meisterstuecke Haensel und Gretel"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_354",
@@ -3261,7 +3588,8 @@
       "Schwanensee",
       "Lieblings-Meisterstücke Schwanensee",
       "Lieblings-Meisterstuecke Schwanensee"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_355",
@@ -3271,7 +3599,8 @@
       "[EN] Little Red Riding Hood",
       "Lieblings-Märchen [EN] Little Red Riding Hood",
       "Lieblings-Maerchen [EN] Little Red Riding Hood"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_356",
@@ -3281,7 +3610,8 @@
       "[FR] Le Petit Chaperon Rouge Et 3 Autres Contes",
       "Lieblings-Märchen [FR] Le Petit Chaperon Rouge Et 3 Autres Contes",
       "Lieblings-Maerchen [FR] Le Petit Chaperon Rouge Et 3 Autres Contes"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_357",
@@ -3291,7 +3621,8 @@
       "Der gestiefelte Kater (Neuauflage 2023)",
       "Lieblings-Märchen Der gestiefelte Kater (Neuauflage 2023)",
       "Lieblings-Maerchen Der gestiefelte Kater (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_358",
@@ -3301,7 +3632,8 @@
       "Rapunzel (Neuauflage 2023)",
       "Lieblings-Märchen Rapunzel (Neuauflage 2023)",
       "Lieblings-Maerchen Rapunzel (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_359",
@@ -3312,7 +3644,8 @@
       "Rotkaeppchen (Neuauflage 2023)",
       "Lieblings-Märchen Rotkäppchen (Neuauflage 2023)",
       "Lieblings-Maerchen Rotkaeppchen (Neuauflage 2023)"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_360",
@@ -3323,7 +3656,8 @@
       "Sterntaler und 4 weitere Maerchen",
       "Lieblings-Märchen Sterntaler und 4 weitere Märchen",
       "Lieblings-Maerchen Sterntaler und 4 weitere Maerchen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_361",
@@ -3334,7 +3668,8 @@
       "Ein Geburtstagsfest fuer Lieselotte und andere Geschichten",
       "Lieselotte Ein Geburtstagsfest für Lieselotte und andere Geschichten",
       "Lieselotte Ein Geburtstagsfest fuer Lieselotte und andere Geschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_362",
@@ -3343,7 +3678,8 @@
     "aliases": [
       "Ein Meerschwein ist nicht gern allein",
       "Liliane Susewind Ein Meerschwein ist nicht gern allein"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_363",
@@ -3351,7 +3687,8 @@
     "series": "Lilo & Stitch",
     "aliases": [
       "Lilo & Stitch"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_364",
@@ -3360,7 +3697,8 @@
     "aliases": [
       "Die abenteuerliche Geschichte einer fliegenden Maus",
       "Lindbergh Die abenteuerliche Geschichte einer fliegenden Maus"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_365",
@@ -3369,7 +3707,8 @@
     "aliases": [
       "Na klar, Lotta kann Rad fahren und zwei weitere Geschichten",
       "Lotta Na klar, Lotta kann Rad fahren und zwei weitere Geschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_366",
@@ -3377,7 +3716,8 @@
     "series": "Madagascar",
     "aliases": [
       "Madagascar"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_367",
@@ -3386,7 +3726,8 @@
     "aliases": [
       "Mama Muh und die Krähe",
       "Mama Muh und die Kraehe"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_368",
@@ -3395,7 +3736,8 @@
     "aliases": [
       "Spidey und seine Super-Freunde - Das Spidey Team & 3 weitere spannende Abenteuer",
       "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Das Spidey Team & 3 weitere spannende Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_369",
@@ -3404,7 +3746,8 @@
     "aliases": [
       "Spidey und seine Super-Freunde - Doc Ocks Superoktopus & 3 weitere spannende Abenteuer",
       "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Doc Ocks Superoktopus & 3 weitere spannende Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_370",
@@ -3413,7 +3756,8 @@
     "aliases": [
       "Spidey und seine Super-Freunde - Kobzilla & 3 weitere spannende Abenteuer",
       "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Kobzilla & 3 weitere spannende Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_371",
@@ -3422,7 +3766,8 @@
     "aliases": [
       "Spidey und seine Super-Freunde - Raketen-Rhino & 3 weitere spannende Abenteuer",
       "MARVEL Spidey und seine Super-Freunde Spidey und seine Super-Freunde - Raketen-Rhino & 3 weitere spannende Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_372",
@@ -3433,7 +3778,8 @@
       "Ein neuer Freund fuer Mascha",
       "Mascha und der Bär Ein neuer Freund für Mascha",
       "Mascha und der Baer Ein neuer Freund fuer Mascha"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_373",
@@ -3444,7 +3790,8 @@
       "Winterschlaf fuer alle + 5 weitere quirlige und lustige Geschichten",
       "Mascha und der Bär Winterschlaf für alle + 5 weitere quirlige und lustige Geschichten",
       "Mascha und der Baer Winterschlaf fuer alle + 5 weitere quirlige und lustige Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_374",
@@ -3453,7 +3800,8 @@
     "aliases": [
       "Vom kleinen Maulwurf, der wissen wollte, wer ihm auf den Kopf gemacht hat/Die Rache des Hans-Heinerich",
       "Maulwurf Vom kleinen Maulwurf, der wissen wollte, wer ihm auf den Kopf gemacht hat/Die Rache des Hans-Heinerich"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_375",
@@ -3462,7 +3810,8 @@
     "aliases": [
       "(M)auserlesene Lieder",
       "Maus (M)auserlesene Lieder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_376",
@@ -3471,7 +3820,8 @@
     "aliases": [
       "Mit der Maus die Welt entdecken",
       "Maus Mit der Maus die Welt entdecken"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_377",
@@ -3482,7 +3832,8 @@
       "Schlaf schoen!",
       "Maus Schlaf schön!",
       "Maus Schlaf schoen!"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_378",
@@ -3491,7 +3842,8 @@
     "aliases": [
       "Alles voller Kaninchen",
       "Mein Lotta-Leben Alles voller Kaninchen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_379",
@@ -3499,7 +3851,8 @@
     "series": "Merida – Legende der Highlands",
     "aliases": [
       "Merida - Legende der Highlands"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_380",
@@ -3508,7 +3861,8 @@
     "aliases": [
       "Ankunft in Centopia / Eine neue Hoffnung",
       "Mia and me Ankunft in Centopia / Eine neue Hoffnung"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_381",
@@ -3517,7 +3871,8 @@
     "aliases": [
       "Das goldene Einhorn / Onchao und das Paradies",
       "Mia and me Das goldene Einhorn / Onchao und das Paradies"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_382",
@@ -3528,7 +3883,8 @@
       "Als Michel den Kopf in die Suppenschuessel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)",
       "Michel aus Lönneberga Als Michel den Kopf in die Suppenschüssel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)",
       "Michel aus Loenneberga Als Michel den Kopf in die Suppenschuessel steckte / Als Michel Klein-Ida an der Fahnenstange hochzog (Neuauflage 2024)"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_383",
@@ -3537,7 +3893,8 @@
     "aliases": [
       "[EN] Mickey and Friends",
       "Micky Maus & Freunde [EN] Mickey and Friends"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_384",
@@ -3546,7 +3903,8 @@
     "aliases": [
       "[EN] Minnie - When we grow up",
       "Micky Maus & Freunde [EN] Minnie - When we grow up"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_385",
@@ -3557,7 +3915,8 @@
       "Mickys grosses Weihnachtsfest – Eingeschneit im Haus der Maus",
       "Micky Maus & Freunde Mickys großes Weihnachtsfest – Eingeschneit im Haus der Maus",
       "Micky Maus & Freunde Mickys grosses Weihnachtsfest – Eingeschneit im Haus der Maus"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_386",
@@ -3568,7 +3927,8 @@
       "Mickys total verruecktes Fussballspiel",
       "Micky Maus & Freunde Mickys total verrücktes Fußballspiel",
       "Micky Maus & Freunde Mickys total verruecktes Fussballspiel"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_387",
@@ -3579,7 +3939,8 @@
       "Minnie Maus - Helfen macht Spass",
       "Micky Maus & Freunde Minnie Maus - Helfen macht Spaß",
       "Micky Maus & Freunde Minnie Maus - Helfen macht Spass"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_388",
@@ -3588,7 +3949,8 @@
     "aliases": [
       "[EN] Miffy’s Adventures",
       "Miffy [EN] Miffy’s Adventures"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_389",
@@ -3596,7 +3958,8 @@
     "series": "Miffy",
     "aliases": [
       "Miffy"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_390",
@@ -3607,7 +3970,8 @@
       "Lieder fuer dich",
       "Minimusiker Lieder für dich",
       "Minimusiker Lieder fuer dich"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_391",
@@ -3618,7 +3982,8 @@
       "Lieder fuer dich 2",
       "Minimusiker Lieder für dich 2",
       "Minimusiker Lieder fuer dich 2"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_392",
@@ -3629,7 +3994,8 @@
       "Der Betrueger / Der Valentinstag",
       "Miraculous Der Betrüger / Der Valentinstag",
       "Miraculous Der Betrueger / Der Valentinstag"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_393",
@@ -3637,7 +4003,8 @@
     "series": "Miraculous",
     "aliases": [
       "Miraculous - Aller Anfang ist schwer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_394",
@@ -3648,7 +4015,8 @@
       "Die schoensten Geschichten",
       "Mog, der vergessliche Kater Die schönsten Geschichten",
       "Mog, der vergessliche Kater Die schoensten Geschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_395",
@@ -3657,7 +4025,8 @@
     "aliases": [
       "[EN] Mulan",
       "Mulan [EN] Mulan"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_396",
@@ -3665,7 +4034,8 @@
     "series": "Mulan",
     "aliases": [
       "Mulan"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_397",
@@ -3674,7 +4044,8 @@
     "aliases": [
       "My Little Pony - Das Original-Hörspiel zum Film",
       "My Little Pony - Das Original-Hoerspiel zum Film"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_398",
@@ -3683,7 +4054,8 @@
     "aliases": [
       "Seine ersten Abenteuer",
       "Nasreddin Hodscha Seine ersten Abenteuer"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_399",
@@ -3691,7 +4063,8 @@
     "series": "Oben",
     "aliases": [
       "Oben"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_400",
@@ -3701,7 +4074,8 @@
       "Mulles Zaubersteinchen",
       "Ohrenbär Mulles Zaubersteinchen",
       "Ohrenbaer Mulles Zaubersteinchen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_401",
@@ -3710,7 +4084,8 @@
     "aliases": [
       "Zusammen sind wir frei",
       "Ostwind Zusammen sind wir frei"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_402",
@@ -3719,7 +4094,8 @@
     "aliases": [
       "Geschichten von Paddington",
       "Paddington Geschichten von Paddington"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_403",
@@ -3728,7 +4104,8 @@
     "aliases": [
       "[EN] Chase",
       "PAW Patrol [EN] Chase"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_404",
@@ -3737,7 +4114,8 @@
     "aliases": [
       "[EN] Liberty",
       "PAW Patrol [EN] Liberty"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_405",
@@ -3746,7 +4124,8 @@
     "aliases": [
       "[EN] Rocky",
       "PAW Patrol [EN] Rocky"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_406",
@@ -3755,7 +4134,8 @@
     "aliases": [
       "[FR] Chase",
       "PAW Patrol [FR] Chase"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_407",
@@ -3764,7 +4144,8 @@
     "aliases": [
       "[FR] Stella",
       "PAW Patrol [FR] Stella"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_408",
@@ -3775,7 +4156,8 @@
       "Chase - Die Rettung der Meeresschildkroeten",
       "PAW Patrol Chase - Die Rettung der Meeresschildkröten",
       "PAW Patrol Chase - Die Rettung der Meeresschildkroeten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_409",
@@ -3784,7 +4166,8 @@
     "aliases": [
       "Everest - Ein neuer Fellfreund",
       "PAW Patrol Everest - Ein neuer Fellfreund"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_410",
@@ -3793,7 +4176,8 @@
     "aliases": [
       "Hier kommt Tracker",
       "PAW Patrol Hier kommt Tracker"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_411",
@@ -3802,7 +4186,8 @@
     "aliases": [
       "Jungle Pups: Chase",
       "PAW Patrol Jungle Pups: Chase"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_412",
@@ -3811,7 +4196,8 @@
     "aliases": [
       "Jungle Pups: Marshall",
       "PAW Patrol Jungle Pups: Marshall"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_413",
@@ -3820,7 +4206,8 @@
     "aliases": [
       "Jungle Pups: Skye",
       "PAW Patrol Jungle Pups: Skye"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_414",
@@ -3829,7 +4216,8 @@
     "aliases": [
       "Liberty findet einen neuen Freund",
       "PAW Patrol Liberty findet einen neuen Freund"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_415",
@@ -3838,7 +4226,8 @@
     "aliases": [
       "Marshall - Schneller als die Feuerwehr",
       "PAW Patrol Marshall - Schneller als die Feuerwehr"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_416",
@@ -3849,7 +4238,8 @@
       "Rex - Rettung fuer T-Rex",
       "PAW Patrol Rex - Rettung für T-Rex",
       "PAW Patrol Rex - Rettung fuer T-Rex"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_417",
@@ -3858,7 +4248,8 @@
     "aliases": [
       "Rocky - Die Hundeschau",
       "PAW Patrol Rocky - Die Hundeschau"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_418",
@@ -3867,7 +4258,8 @@
     "aliases": [
       "Rubble - Der Piratenschatz",
       "PAW Patrol Rubble - Der Piratenschatz"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_419",
@@ -3876,7 +4268,8 @@
     "aliases": [
       "Ryder",
       "PAW Patrol Ryder"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_420",
@@ -3885,7 +4278,8 @@
     "aliases": [
       "Skye - Der Delfin-Freund",
       "PAW Patrol Skye - Der Delfin-Freund"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_421",
@@ -3894,7 +4288,8 @@
     "aliases": [
       "Zuma",
       "PAW Patrol Zuma"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_422",
@@ -3903,7 +4298,8 @@
     "aliases": [
       "[EN] George Pig",
       "Peppa Pig [EN] George Pig"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_423",
@@ -3912,7 +4308,8 @@
     "aliases": [
       "[EN] On the Road with Peppa Pig",
       "Peppa Pig [EN] On the Road with Peppa Pig"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_424",
@@ -3921,7 +4318,8 @@
     "aliases": [
       "[FR] Sur La Route Avec Peppa",
       "Peppa Pig [FR] Sur La Route Avec Peppa"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_425",
@@ -3930,7 +4328,8 @@
     "aliases": [
       "Das Schulfest & 7 weitere Geschichten",
       "Peppa Pig Das Schulfest & 7 weitere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_426",
@@ -3939,7 +4338,8 @@
     "aliases": [
       "Die Ritterburg und 7 weitere Geschichten",
       "Peppa Pig Die Ritterburg und 7 weitere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_427",
@@ -3950,7 +4350,8 @@
       "Die schoensten Geschichten von Schorsch",
       "Peppa Pig Die schönsten Geschichten von Schorsch",
       "Peppa Pig Die schoensten Geschichten von Schorsch"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_428",
@@ -3959,7 +4360,8 @@
     "aliases": [
       "Gute-Nacht Geschichten mit Peppa",
       "Peppa Pig Gute-Nacht Geschichten mit Peppa"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_429",
@@ -3968,7 +4370,8 @@
     "aliases": [
       "Meine Geburtstagsparty",
       "Peppa Pig Meine Geburtstagsparty"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_430",
@@ -3977,7 +4380,8 @@
     "aliases": [
       "Peppa und das neue Baby",
       "Peppa Pig Peppa und das neue Baby"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_431",
@@ -3986,7 +4390,8 @@
     "aliases": [
       "Ein Geschichten-Schatz",
       "Peter Hase und seine Freunde Ein Geschichten-Schatz"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_432",
@@ -3994,7 +4399,8 @@
     "series": "Peter und der Wolf",
     "aliases": [
       "Peter und der Wolf"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_433",
@@ -4005,7 +4411,8 @@
       "Hoerst du wie die Baeume sprechen?",
       "Peter Wohlleben Hörst du wie die Bäume sprechen?",
       "Peter Wohlleben Hoerst du wie die Baeume sprechen?"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_434",
@@ -4014,7 +4421,8 @@
     "aliases": [
       "Verhext und festgeklebt",
       "Petronella Apfelmus Verhext und festgeklebt"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_435",
@@ -4023,7 +4431,8 @@
     "aliases": [
       "Findus und der Hahn im Korb",
       "Pettersson und Findus Findus und der Hahn im Korb"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_436",
@@ -4032,7 +4441,8 @@
     "aliases": [
       "Findus zieht um",
       "Pettersson und Findus Findus zieht um"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_437",
@@ -4041,7 +4451,8 @@
     "aliases": [
       "Wie Findus zu Pettersson kam",
       "Pettersson und Findus Wie Findus zu Pettersson kam"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_438",
@@ -4050,7 +4461,8 @@
     "aliases": [
       "Drei Landratten bauen ein Schiff",
       "Petzi Drei Landratten bauen ein Schiff"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_439",
@@ -4059,7 +4471,8 @@
     "aliases": [
       "[EN] Pippi Longstocking",
       "Pippi Langstrumpf [EN] Pippi Longstocking"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_440",
@@ -4068,7 +4481,8 @@
     "aliases": [
       "Pippi Langstrumpf - Das Hörspiel (Neuauflage 2025)",
       "Pippi Langstrumpf - Das Hoerspiel (Neuauflage 2025)"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_441",
@@ -4076,7 +4490,8 @@
     "series": "Pippi Langstrumpf",
     "aliases": [
       "Pippi Langstrumpf 2 - Pippi Langstrumpf geht an Bord"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_442",
@@ -4085,7 +4500,8 @@
     "aliases": [
       "Neue Abenteuer mit Pittiplatsch",
       "Pittiplatsch Neue Abenteuer mit Pittiplatsch"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_443",
@@ -4094,7 +4510,8 @@
     "aliases": [
       "Planeten und Sterne",
       "Pixi Wissen Planeten und Sterne"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_444",
@@ -4103,7 +4520,8 @@
     "aliases": [
       "[EN] Catboy",
       "PJ Masks [EN] Catboy"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_445",
@@ -4112,7 +4530,8 @@
     "aliases": [
       "[EN] Gekko",
       "PJ Masks [EN] Gekko"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_446",
@@ -4121,7 +4540,8 @@
     "aliases": [
       "[EN] Owlette",
       "PJ Masks [EN] Owlette"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_447",
@@ -4132,7 +4552,8 @@
       "Ein maechtiges Mondproblem",
       "PJ Masks Ein mächtiges Mondproblem",
       "PJ Masks Ein maechtiges Mondproblem"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_448",
@@ -4141,7 +4562,8 @@
     "aliases": [
       "Los geht’s Pyjamahelden",
       "PJ Masks Los geht’s Pyjamahelden"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_449",
@@ -4150,7 +4572,8 @@
     "aliases": [
       "Zeit ein Held zu sein",
       "PJ Masks Zeit ein Held zu sein"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_450",
@@ -4158,7 +4581,8 @@
     "series": "Planet Omar",
     "aliases": [
       "Planet Omar"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_451",
@@ -4166,7 +4590,8 @@
     "series": "Pocahontas",
     "aliases": [
       "Pocahontas"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_452",
@@ -4175,7 +4600,8 @@
     "aliases": [
       "Positives Denken mit Elefant Greta - Geschichten für mehr Selbstsicherheit und Achtsamkeit",
       "Positives Denken mit Elefant Greta - Geschichten fuer mehr Selbstsicherheit und Achtsamkeit"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_453",
@@ -4184,7 +4610,8 @@
     "aliases": [
       "Gute-Nacht-Geschichten - Die verzauberten Seerosen/Die goldene Perle",
       "Prinzessin Lillifee Gute-Nacht-Geschichten - Die verzauberten Seerosen/Die goldene Perle"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_454",
@@ -4192,7 +4619,8 @@
     "series": "Prinzessin Lillifee",
     "aliases": [
       "Prinzessin Lillifee"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_455",
@@ -4201,7 +4629,8 @@
     "aliases": [
       "Das Pummeleinhorn: Der Herr der Donuts & Alles versalzen",
       "Pummel & Friends Das Pummeleinhorn: Der Herr der Donuts & Alles versalzen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_456",
@@ -4210,7 +4639,8 @@
     "aliases": [
       "Spuk in der Werkstatt/Das verkaufte Bett",
       "Pumuckl Spuk in der Werkstatt/Das verkaufte Bett"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_457",
@@ -4221,7 +4651,8 @@
       "Trau dich, Koalabaer",
       "Rachel Bright Series Trau dich, Koalabär",
       "Rachel Bright Series Trau dich, Koalabaer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_458",
@@ -4230,7 +4661,8 @@
     "aliases": [
       "Das Klo",
       "Ralph Ruthe Das Klo"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_459",
@@ -4240,7 +4672,8 @@
       "[EN] Tangled",
       "Rapunzel – Neu verföhnt [EN] Tangled",
       "Rapunzel – Neu verfoehnt [EN] Tangled"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_460",
@@ -4249,7 +4682,8 @@
     "aliases": [
       "Rapunzel – Neu verföhnt",
       "Rapunzel – Neu verfoehnt"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_461",
@@ -4257,7 +4691,8 @@
     "series": "Ratatouille",
     "aliases": [
       "Ratatouille"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_462",
@@ -4265,7 +4700,8 @@
     "series": "Raya und der letzte Drache",
     "aliases": [
       "Raya und der letzte Drache"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_463",
@@ -4274,7 +4710,8 @@
     "aliases": [
       "Rico, Oskar und die Tieferschatten",
       "Rico und Oskar Rico, Oskar und die Tieferschatten"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_464",
@@ -4283,7 +4720,8 @@
     "aliases": [
       "Die Zauberinsel",
       "Ritter Rost Die Zauberinsel"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_465",
@@ -4292,7 +4730,8 @@
     "aliases": [
       "Die Schatzkiste und 3 weitere Geschichten",
       "Robin Hood - Schlitzohr von Sherwood Forest Die Schatzkiste und 3 weitere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_466",
@@ -4303,7 +4742,8 @@
       "In der Weihnachtsbaeckerei",
       "Rolf Zuckowski In der Weihnachtsbäckerei",
       "Rolf Zuckowski In der Weihnachtsbaeckerei"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_467",
@@ -4312,7 +4752,8 @@
     "aliases": [
       "Rolfs Hasengeschichte",
       "Rolf Zuckowski Rolfs Hasengeschichte"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_468",
@@ -4321,7 +4762,8 @@
     "aliases": [
       "Rolfs neue Vogelhochzeit",
       "Rolf Zuckowski Rolfs neue Vogelhochzeit"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_469",
@@ -4330,7 +4772,8 @@
     "aliases": [
       "Ronja Räubertochter",
       "Ronja Raeubertochter"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_470",
@@ -4339,7 +4782,8 @@
     "aliases": [
       "Jubel, Trubel, Heiserkeit",
       "Rotz 'n' Roll Radio Jubel, Trubel, Heiserkeit"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_471",
@@ -4348,7 +4792,8 @@
     "aliases": [
       "Osaka & Serengeti",
       "Rund um die Welt mit Fuchs und Schaf Osaka & Serengeti"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_472",
@@ -4357,7 +4802,8 @@
     "aliases": [
       "Räuber Ratte/Superwurm",
       "Raeuber Ratte/Superwurm"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_473",
@@ -4368,7 +4814,8 @@
       "Nanami und das traumhafte Tuch/Ninazu und das gruene Zauberbonbon",
       "Safiras Nanami und das traumhafte Tuch/Ninazu und das grüne Zauberbonbon",
       "Safiras Nanami und das traumhafte Tuch/Ninazu und das gruene Zauberbonbon"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_474",
@@ -4379,7 +4826,8 @@
       "Nachtlicht Tonie - Schlummerbaer",
       "Schlummerbande Nachtlicht Tonie - Schlummerbär",
       "Schlummerbande Nachtlicht Tonie - Schlummerbaer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_475",
@@ -4388,7 +4836,8 @@
     "aliases": [
       "Nachtlicht Tonie - Schlummerhase",
       "Schlummerbande Nachtlicht Tonie - Schlummerhase"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_476",
@@ -4397,7 +4846,8 @@
     "aliases": [
       "Nachtlicht Tonie - Schlummerkrokodil",
       "Schlummerbande Nachtlicht Tonie - Schlummerkrokodil"
-    ]
+    ],
+    "availability_state": "preorderable"
   },
   {
     "id": "tn_477",
@@ -4406,7 +4856,8 @@
     "aliases": [
       "Nachtlicht Tonie - Schlummerpinguin",
       "Schlummerbande Nachtlicht Tonie - Schlummerpinguin"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_478",
@@ -4415,7 +4866,8 @@
     "aliases": [
       "Nachtlicht Tonie - Schlummerschaf",
       "Schlummerbande Nachtlicht Tonie - Schlummerschaf"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_479",
@@ -4426,7 +4878,8 @@
       "Schlummerbaer - Eine Gutenachtgeschichte aus dem Schlummerwald",
       "Schlummerbande Schlummerbär - Eine Gutenachtgeschichte aus dem Schlummerwald",
       "Schlummerbande Schlummerbaer - Eine Gutenachtgeschichte aus dem Schlummerwald"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_480",
@@ -4435,7 +4888,8 @@
     "aliases": [
       "Schlummerente - Eine Klangreise durch den Schlummerwald (Limited Edition)",
       "Schlummerbande Schlummerente - Eine Klangreise durch den Schlummerwald (Limited Edition)"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_481",
@@ -4444,7 +4898,8 @@
     "aliases": [
       "Schlummerhase - Einschlafmelodien aus dem Schlummerwald",
       "Schlummerbande Schlummerhase - Einschlafmelodien aus dem Schlummerwald"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_482",
@@ -4453,7 +4908,8 @@
     "aliases": [
       "Schlummerjaguar - Einschlafmelodien aus dem Schlummerdschungel",
       "Schlummerbande Schlummerjaguar - Einschlafmelodien aus dem Schlummerdschungel"
-    ]
+    ],
+    "availability_state": "preorderable"
   },
   {
     "id": "tn_483",
@@ -4462,7 +4918,8 @@
     "aliases": [
       "Schlummerkrokodil - Eine Gutenachtgeschichte aus dem Schlummerdschungel",
       "Schlummerbande Schlummerkrokodil - Eine Gutenachtgeschichte aus dem Schlummerdschungel"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_484",
@@ -4471,7 +4928,8 @@
     "aliases": [
       "Schlummeroktopus - Eine Gutenachtgeschichte aus dem Ozean",
       "Schlummerbande Schlummeroktopus - Eine Gutenachtgeschichte aus dem Ozean"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_485",
@@ -4482,7 +4940,8 @@
       "Schlummerpinguin - Weisses Rauschen aus dem Ozean",
       "Schlummerbande Schlummerpinguin - Weißes Rauschen aus dem Ozean",
       "Schlummerbande Schlummerpinguin - Weisses Rauschen aus dem Ozean"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_486",
@@ -4491,7 +4950,8 @@
     "aliases": [
       "Schlummerschaf - Einschlafmelodien aus dem Zauberwald",
       "Schlummerbande Schlummerschaf - Einschlafmelodien aus dem Zauberwald"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_487",
@@ -4500,7 +4960,8 @@
     "aliases": [
       "Schlummerschaf – Einschlafmelodien von der Weide",
       "Schlummerbande Schlummerschaf – Einschlafmelodien von der Weide"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_488",
@@ -4509,7 +4970,8 @@
     "aliases": [
       "Schlummerwal - Einschlafmelodien aus dem Ozean",
       "Schlummerbande Schlummerwal - Einschlafmelodien aus dem Ozean"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_489",
@@ -4517,7 +4979,8 @@
     "series": "Schneewittchen und die sieben Zwerge",
     "aliases": [
       "Schneewittchen und die sieben Zwerge"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_490",
@@ -4526,7 +4989,8 @@
     "aliases": [
       "Schüttel den Apfelbaum & Schaukel das Schaf",
       "Schuettel den Apfelbaum & Schaukel das Schaf"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_491",
@@ -4534,7 +4998,8 @@
     "series": "Scooby-Doo",
     "aliases": [
       "Scooby-Doo"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_492",
@@ -4543,7 +5008,8 @@
     "aliases": [
       "Secret Science Club: Abwehrstark - Rund um Viren, Abwehrkräfte und Immunhelfer! mit Özlem & Ugur",
       "Secret Science Club: Abwehrstark - Rund um Viren, Abwehrkraefte und Immunhelfer! mit Oezlem & Ugur"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_493",
@@ -4553,7 +5019,8 @@
       "[EN] Cookie Monster",
       "Sesamstraße [EN] Cookie Monster",
       "Sesamstrasse [EN] Cookie Monster"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_494",
@@ -4563,7 +5030,8 @@
       "[EN] Elmo",
       "Sesamstraße [EN] Elmo",
       "Sesamstrasse [EN] Elmo"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_495",
@@ -4573,7 +5041,8 @@
       "Elmos Mitmachmusik",
       "Sesamstraße Elmos Mitmachmusik",
       "Sesamstrasse Elmos Mitmachmusik"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_496",
@@ -4584,7 +5053,8 @@
       "Ernies Mitmachmaerchen",
       "Sesamstraße Ernies Mitmachmärchen",
       "Sesamstrasse Ernies Mitmachmaerchen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_497",
@@ -4595,7 +5065,8 @@
       "Kruemelmonsters Mitmampfspass",
       "Sesamstraße Krümelmonsters Mitmampfspaß",
       "Sesamstrasse Kruemelmonsters Mitmampfspass"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_498",
@@ -4604,7 +5075,8 @@
     "aliases": [
       "Badetag und drei weitere schafsinnige Geschichten",
       "Shaun das Schaf Badetag und drei weitere schafsinnige Geschichten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_499",
@@ -4613,7 +5085,8 @@
     "aliases": [
       "[EN] Shrek",
       "Shrek [EN] Shrek"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_500",
@@ -4624,7 +5097,8 @@
       "Der Tollkuehne Held",
       "Shrek Der Tollkühne Held",
       "Shrek Der Tollkuehne Held"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_501",
@@ -4635,7 +5109,8 @@
       "Bagger Mats & seine Freunde: Die schoensten Fahrzeuglieder",
       "Sing Kinderlieder Bagger Mats & seine Freunde: Die schönsten Fahrzeuglieder",
       "Sing Kinderlieder Bagger Mats & seine Freunde: Die schoensten Fahrzeuglieder"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_502",
@@ -4646,7 +5121,8 @@
       "Milo, das Muellauto-Kind & seine Freunde - Abenteuer in der grossen Stadt",
       "Sing Kinderlieder Milo, das Müllauto-Kind & seine Freunde - Abenteuer in der großen Stadt",
       "Sing Kinderlieder Milo, das Muellauto-Kind & seine Freunde - Abenteuer in der grossen Stadt"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_503",
@@ -4655,7 +5131,8 @@
     "aliases": [
       "Timmy Traktor & seine Freunde: Ferien auf dem Bauernhof",
       "Sing Kinderlieder Timmy Traktor & seine Freunde: Ferien auf dem Bauernhof"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_504",
@@ -4666,7 +5143,8 @@
       "Das wahrlich grosse Geheimnis von Appelgarden",
       "Snöfrid aus dem Wiesental Das wahrlich große Geheimnis von Appelgarden",
       "Snoefrid aus dem Wiesental Das wahrlich grosse Geheimnis von Appelgarden"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_505",
@@ -4674,7 +5152,8 @@
     "series": "Soul",
     "aliases": [
       "Soul"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_506",
@@ -4685,7 +5164,8 @@
       "Zwei Wunscherfueller auf leisen Pfoten",
       "Spenden Fuchs Zwei Wunscherfüller auf leisen Pfoten",
       "Spenden Fuchs Zwei Wunscherfueller auf leisen Pfoten"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_507",
@@ -4694,7 +5174,8 @@
     "aliases": [
       "SPIRIT - Frei und Ungezähmt",
       "SPIRIT - Frei und Ungezaehmt"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_508",
@@ -4705,7 +5186,8 @@
       "Der ferngesteuerte Fahrschueler und weitere Abenteuer",
       "SpongeBob Schwammkopf Der ferngesteuerte Fahrschüler und weitere Abenteuer",
       "SpongeBob Schwammkopf Der ferngesteuerte Fahrschueler und weitere Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_509",
@@ -4714,7 +5196,8 @@
     "aliases": [
       "Entscheidung am Millerntor",
       "St. Pauli Rabauken Entscheidung am Millerntor"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_510",
@@ -4725,7 +5208,8 @@
       "Ben Teddybaer Hoerspiel",
       "Steiff Soft Cuddly Friends Ben Teddybär Hörspiel",
       "Steiff Soft Cuddly Friends Ben Teddybaer Hoerspiel"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_511",
@@ -4734,7 +5218,8 @@
     "aliases": [
       "Bodo Schimpanse",
       "Steiff Soft Cuddly Friends Bodo Schimpanse"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_512",
@@ -4743,7 +5228,8 @@
     "aliases": [
       "Dinkie Esel",
       "Steiff Soft Cuddly Friends Dinkie Esel"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_513",
@@ -4752,7 +5238,8 @@
     "aliases": [
       "Hoppie Hase",
       "Steiff Soft Cuddly Friends Hoppie Hase"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_514",
@@ -4763,7 +5250,8 @@
       "Jimmy Baer",
       "Steiff Soft Cuddly Friends Jimmy Bär",
       "Steiff Soft Cuddly Friends Jimmy Baer"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_515",
@@ -4772,7 +5260,8 @@
     "aliases": [
       "Joshi T-Rex",
       "Steiff Soft Cuddly Friends Joshi T-Rex"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_516",
@@ -4781,7 +5270,8 @@
     "aliases": [
       "Lita Lamm",
       "Steiff Soft Cuddly Friends Lita Lamm"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_517",
@@ -4790,7 +5280,8 @@
     "aliases": [
       "Unica Einhorn",
       "Steiff Soft Cuddly Friends Unica Einhorn"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_518",
@@ -4799,7 +5290,8 @@
     "aliases": [
       "Geheimnisvolle Verwandlung",
       "Sternenschweif Geheimnisvolle Verwandlung"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_519",
@@ -4807,7 +5299,8 @@
     "series": "Stockmann",
     "aliases": [
       "Stockmann"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_520",
@@ -4816,7 +5309,8 @@
     "aliases": [
       "Feuer im Wald",
       "Super Wings Feuer im Wald"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_521",
@@ -4825,7 +5319,8 @@
     "aliases": [
       "Schwimmende Schweinchen",
       "Super Wings Schwimmende Schweinchen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_522",
@@ -4833,7 +5328,8 @@
     "series": "Susi und Strolch",
     "aliases": [
       "Susi und Strolch"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_523",
@@ -4842,7 +5338,8 @@
     "aliases": [
       "Tanz den Spatz",
       "Sven van Thom Tanz den Spatz"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_524",
@@ -4853,7 +5350,8 @@
       "Das grosse Ereignis/Freunde fuers Leben",
       "Tabaluga Das große Ereignis/Freunde fürs Leben",
       "Tabaluga Das grosse Ereignis/Freunde fuers Leben"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_525",
@@ -4864,7 +5362,8 @@
       "Drachen weinen nicht & Mondsuechtig",
       "Tabaluga Drachen weinen nicht & Mondsüchtig",
       "Tabaluga Drachen weinen nicht & Mondsuechtig"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_526",
@@ -4873,7 +5372,8 @@
     "aliases": [
       "Die Abenteuer der Teenage Mutant Ninja Turtles: Leonardo",
       "Teenage Mutant Ninja Turtles Die Abenteuer der Teenage Mutant Ninja Turtles: Leonardo"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_527",
@@ -4882,7 +5382,8 @@
     "aliases": [
       "Moritz macht das Spiel!",
       "Teufelskicker Moritz macht das Spiel!"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_528",
@@ -4893,7 +5394,8 @@
       "Grosse Welt! Grosse Abenteuer!",
       "Thomas & seine Freunde Große Welt! Große Abenteuer!",
       "Thomas & seine Freunde Grosse Welt! Grosse Abenteuer!"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_529",
@@ -4903,7 +5405,8 @@
       "Mein Weg zum Traumverein",
       "Thomas Müller Mein Weg zum Traumverein",
       "Thomas Mueller Mein Weg zum Traumverein"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_530",
@@ -4912,7 +5415,8 @@
     "aliases": [
       "Das geheime Kuchenrezept",
       "Tilda Apfelkern Das geheime Kuchenrezept"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_531",
@@ -4920,7 +5424,8 @@
     "series": "Tilda Apfelkern",
     "aliases": [
       "Tilda Apfelkern - Das Drinnen-Picknick"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_532",
@@ -4929,7 +5434,8 @@
     "aliases": [
       "Tinker Bell",
       "Tinkerbell Tinker Bell"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_533",
@@ -4938,7 +5444,8 @@
     "aliases": [
       "Vorsicht: bissig!",
       "TKKG Vorsicht: bissig!"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_534",
@@ -4947,7 +5454,8 @@
     "aliases": [
       "Der rote Retter",
       "TKKG Junior Der rote Retter"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_535",
@@ -4956,7 +5464,8 @@
     "aliases": [
       "Giftige Schokolade",
       "TKKG Junior Giftige Schokolade"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_536",
@@ -4964,7 +5473,8 @@
     "series": "Toto und der Mann im Mond",
     "aliases": [
       "Toto und der Mann im Mond"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_537",
@@ -4973,7 +5483,8 @@
     "aliases": [
       "[EN] Toy Story",
       "Toy Story [EN] Toy Story"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_538",
@@ -4982,7 +5493,8 @@
     "aliases": [
       "[EN] Toy Story 2",
       "Toy Story [EN] Toy Story 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_539",
@@ -4990,7 +5502,8 @@
     "series": "Toy Story",
     "aliases": [
       "Toy Story"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_540",
@@ -4998,7 +5511,8 @@
     "series": "Toy Story",
     "aliases": [
       "Toy Story 2"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_541",
@@ -5006,7 +5520,8 @@
     "series": "Toy Story",
     "aliases": [
       "Toy Story 3"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_542",
@@ -5015,7 +5530,8 @@
     "aliases": [
       "[EN] Trolls",
       "Trolls [EN] Trolls"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_543",
@@ -5026,7 +5542,8 @@
       "Finde dein Glueck",
       "Trolls Finde dein Glück",
       "Trolls Finde dein Glueck"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_544",
@@ -5035,7 +5552,8 @@
     "aliases": [
       "Gemeinsam Stark",
       "Trolls Gemeinsam Stark"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_545",
@@ -5045,7 +5563,8 @@
       "Abends im Walde",
       "Unser Sandmännchen Abends im Walde",
       "Unser Sandmaennchen Abends im Walde"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_546",
@@ -5056,7 +5575,8 @@
       "Nachts, wenn alles schlaeft",
       "Unser Sandmännchen Nachts, wenn alles schläft",
       "Unser Sandmaennchen Nachts, wenn alles schlaeft"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_547",
@@ -5064,7 +5584,8 @@
     "series": "Unsere besten Kniereiter, Fingerspiellieder und Reime",
     "aliases": [
       "Unsere besten Kniereiter, Fingerspiellieder und Reime"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_548",
@@ -5072,7 +5593,8 @@
     "series": "Unter meinem Bett",
     "aliases": [
       "Unter meinem Bett 1"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_549",
@@ -5080,7 +5602,8 @@
     "series": "Unter meinem Bett",
     "aliases": [
       "Unter meinem Bett 2"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_550",
@@ -5088,7 +5611,8 @@
     "series": "Unter meinem Bett",
     "aliases": [
       "Unter meinem Bett 3"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_551",
@@ -5096,7 +5620,8 @@
     "series": "Unter meinem Bett",
     "aliases": [
       "Unter meinem Bett 4"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_552",
@@ -5104,7 +5629,8 @@
     "series": "Unter meinem Bett",
     "aliases": [
       "Unter meinem Bett 5"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_553",
@@ -5112,7 +5638,8 @@
     "series": "Unter meinem Bett",
     "aliases": [
       "Unter meinem Bett 6"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_554",
@@ -5120,7 +5647,8 @@
     "series": "Urmel",
     "aliases": [
       "Urmel aus dem Eis"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_555",
@@ -5129,7 +5657,8 @@
     "aliases": [
       "[EN] Vaiana",
       "Vaiana [EN] Vaiana"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_556",
@@ -5137,7 +5666,8 @@
     "series": "Vaiana",
     "aliases": [
       "Vaiana"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_557",
@@ -5145,7 +5675,8 @@
     "series": "Vaiana",
     "aliases": [
       "Vaiana 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_558",
@@ -5154,7 +5685,8 @@
     "aliases": [
       "Das ist ja zum Flattern & drei weitere Geschichten",
       "Vampirina Das ist ja zum Flattern & drei weitere Geschichten"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_559",
@@ -5165,7 +5697,8 @@
       "Das singende Kaenguru",
       "Volker Rosin Das singende Känguru",
       "Volker Rosin Das singende Kaenguru"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_560",
@@ -5174,7 +5707,8 @@
     "aliases": [
       "Der Gorilla mit der Sonnenbrille",
       "Volker Rosin Der Gorilla mit der Sonnenbrille"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_561",
@@ -5182,7 +5716,8 @@
     "series": "Vom Fuchs, der ein Reh sein wollte",
     "aliases": [
       "Vom Fuchs, der ein Reh sein wollte"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_562",
@@ -5191,7 +5726,8 @@
     "aliases": [
       "Dinosaurier / Ausgestorbene Tiere",
       "WAS IST WAS Dinosaurier / Ausgestorbene Tiere"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_563",
@@ -5200,7 +5736,8 @@
     "aliases": [
       "Pinguine/Tiere im Zoo",
       "WAS IST WAS Pinguine/Tiere im Zoo"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_564",
@@ -5209,7 +5746,8 @@
     "aliases": [
       "Raumfahrt/Der Mond",
       "WAS IST WAS Raumfahrt/Der Mond"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_565",
@@ -5218,7 +5756,8 @@
     "aliases": [
       "Wale & Delfine / Geheimnis Tiefsee",
       "WAS IST WAS Wale & Delfine / Geheimnis Tiefsee"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_566",
@@ -5227,7 +5766,8 @@
     "aliases": [
       "Wunderbare Pferde/Reitervolk Mongolen",
       "WAS IST WAS Wunderbare Pferde/Reitervolk Mongolen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_567",
@@ -5236,7 +5776,8 @@
     "aliases": [
       "Bauernhof",
       "WAS IST WAS Junior Bauernhof"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_568",
@@ -5245,7 +5786,8 @@
     "aliases": [
       "Die magische Perle & Rudolph ist verschwunden",
       "Weihnachtsmann & Co. KG Die magische Perle & Rudolph ist verschwunden"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_569",
@@ -5254,7 +5796,8 @@
     "aliases": [
       "Weißt du eigentlich, wie lieb ich dich hab?",
       "Weisst du eigentlich, wie lieb ich dich hab?"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_570",
@@ -5262,7 +5805,8 @@
     "series": "Wicked",
     "aliases": [
       "Wicked"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_571",
@@ -5273,7 +5817,8 @@
       "Die Koenigin der Winde",
       "Wickie Die Königin der Winde",
       "Wickie Die Koenigin der Winde"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_572",
@@ -5282,7 +5827,8 @@
     "aliases": [
       "Tanz mit dem Wolf und sechs weitere Episoden",
       "Wickie Tanz mit dem Wolf und sechs weitere Episoden"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_573",
@@ -5293,7 +5839,8 @@
       "Wasser auf die Muehlen",
       "Wickie Wasser auf die Mühlen",
       "Wickie Wasser auf die Muehlen"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_574",
@@ -5301,7 +5848,8 @@
     "series": "Wie kleine Tiere schlafen gehen",
     "aliases": [
       "Wie kleine Tiere schlafen gehen / Wie kleine Kinder schlafen gehen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_575",
@@ -5310,7 +5858,8 @@
     "aliases": [
       "Der Wald",
       "Wieso? Weshalb? Warum? junior Der Wald"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_576",
@@ -5319,7 +5868,8 @@
     "aliases": [
       "Die Feuerwehr/Die Rettungsfahrzeuge",
       "Wieso? Weshalb? Warum? junior Die Feuerwehr/Die Rettungsfahrzeuge"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_577",
@@ -5328,7 +5878,8 @@
     "aliases": [
       "Die Polizei",
       "Wieso? Weshalb? Warum? junior Die Polizei"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_578",
@@ -5337,7 +5888,8 @@
     "aliases": [
       "Kindischer Ozean",
       "Willy Astor Kindischer Ozean"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_579",
@@ -5346,7 +5898,8 @@
     "aliases": [
       "[EN] Winnie the Pooh",
       "Winnie Puuh [EN] Winnie the Pooh"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_580",
@@ -5355,7 +5908,8 @@
     "aliases": [
       "[FR] Winnie L'Ourson",
       "Winnie Puuh [FR] Winnie L'Ourson"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_581",
@@ -5366,7 +5920,8 @@
       "Tiggers grosses Abenteuer",
       "Winnie Puuh Tiggers großes Abenteuer",
       "Winnie Puuh Tiggers grosses Abenteuer"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_582",
@@ -5375,7 +5930,8 @@
     "aliases": [
       "Winnie Puuh auf großer Reise",
       "Winnie Puuh auf grosser Reise"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_583",
@@ -5384,7 +5940,8 @@
     "aliases": [
       "Wir sind nachher wieder da, wir müssen kurz nach Afrika",
       "Wir sind nachher wieder da, wir muessen kurz nach Afrika"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_584",
@@ -5392,7 +5949,8 @@
     "series": "Wish",
     "aliases": [
       "Wish"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_585",
@@ -5403,7 +5961,8 @@
       "Luft & Elektrizitaet",
       "Woozle Goozle Luft & Elektrizität",
       "Woozle Goozle Luft & Elektrizitaet"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_586",
@@ -5412,7 +5971,8 @@
     "aliases": [
       "Best of Kleiner Donner",
       "Yakari Best of Kleiner Donner"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_587",
@@ -5421,7 +5981,8 @@
     "aliases": [
       "Best of Regenbogen",
       "Yakari Best of Regenbogen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_588",
@@ -5430,7 +5991,8 @@
     "aliases": [
       "Best of Yakari",
       "Yakari Best of Yakari"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_589",
@@ -5441,7 +6003,8 @@
       "Mit leichten Uebungen zum Entspannen",
       "Yoga Geschichten Mit leichten Übungen zum Entspannen",
       "Yoga Geschichten Mit leichten Uebungen zum Entspannen"
-    ]
+    ],
+    "availability_state": "orderable"
   },
   {
     "id": "tn_590",
@@ -5449,7 +6012,8 @@
     "series": "Zogg",
     "aliases": [
       "Zogg/Tommi Tatze"
-    ]
+    ],
+    "availability_state": "endOfLife"
   },
   {
     "id": "tn_591",
@@ -5457,7 +6021,8 @@
     "series": "Zoomania",
     "aliases": [
       "Zoomania 1 + 2"
-    ]
+    ],
+    "availability_state": "sold-out"
   },
   {
     "id": "tn_592",
@@ -5468,6 +6033,7 @@
       "Eule / Regenbogenraetsel / Schatz Ahoi / Farbe Rosa",
       "Zoés Zauberschrank Eule / Regenbogenrätsel / Schatz Ahoi / Farbe Rosa",
       "Zoés Zauberschrank Eule / Regenbogenraetsel / Schatz Ahoi / Farbe Rosa"
-    ]
+    ],
+    "availability_state": "orderable"
   }
 ]

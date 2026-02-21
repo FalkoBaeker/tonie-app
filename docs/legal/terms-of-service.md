@@ -1,41 +1,69 @@
-# AGB / Nutzungsbedingungen (Draft)
+# Nutzungsbedingungen (AGB) – Tonie Finder
 
-Stand: 2026-02-20
+Stand: 2026-02-21
+Gilt für: iOS-App „Tonie Finder“
 
-> Hinweis: Dieser Entwurf ist eine technische Arbeitsgrundlage und ersetzt keine Rechtsberatung.
+## 1) Anbieter
+Anbieter der App „Tonie Finder“ ist:
 
-## 1. Geltungsbereich
-Diese Bedingungen regeln die Nutzung der App „Tonie Finder".
+**Falko Bäker (Tonie Finder)**  
+E-Mail: **support@tonie-finder.app**  
+Support: **https://github.com/FalkoBaeker/tonie-app/issues**
 
-## 2. Leistungsbeschreibung
-Die App unterstützt bei der Ermittlung von Marktpreisen und beim Verwalten von Watchlists/Alerts.
+## 2) Geltungsbereich
+Diese Nutzungsbedingungen regeln die Nutzung der App „Tonie Finder“ durch registrierte und nicht registrierte Nutzerinnen und Nutzer.
 
-## 3. Registrierung und Account
-- Für bestimmte Funktionen ist ein Nutzerkonto erforderlich.
-- Nutzer sind verpflichtet, korrekte Angaben zu machen und Zugangsdaten vertraulich zu behandeln.
+## 3) Leistungsbeschreibung
+Die App unterstützt bei der Ermittlung indikativ geschätzter Marktpreise für Tonies sowie bei Watchlist- und Alert-Funktionen.
 
-## 4. Preise und Inhalte
-- Angezeigte Preise sind indikative Marktwerte auf Basis verfügbarer Daten.
-- Es wird keine Gewähr für Vollständigkeit, Aktualität oder Richtigkeit einzelner Marktdaten übernommen.
-- Die App stellt keine Finanz- oder Anlageberatung dar.
+Die Preisangaben sind unverbindliche Orientierungswerte auf Basis verfügbarer Marktdaten und stellen keine verbindliche Kauf-/Verkaufsempfehlung dar.
 
-## 5. Zulässige Nutzung
+## 4) Registrierung und Account
+Für bestimmte Funktionen ist ein Nutzerkonto erforderlich.
+Nutzer verpflichten sich,
+- wahrheitsgemäße Angaben zu machen,
+- Zugangsdaten vertraulich zu behandeln,
+- unbefugte Zugriffe unverzüglich zu melden.
+
+## 5) Zulässige Nutzung
 Unzulässig sind insbesondere:
-- Missbrauch der Plattform
-- Automatisierte Überlastung/Angriffe
-- Rechtswidrige Nutzung
+- rechtswidrige Nutzung,
+- Umgehung von Sicherheitsmechanismen,
+- automatisierte oder missbräuchliche Überlastung der Dienste,
+- Eingriffe in den App- oder Backend-Betrieb.
 
-## 6. Haftung
-Soweit gesetzlich zulässig, ist die Haftung auf Vorsatz und grobe Fahrlässigkeit beschränkt; bei Verletzung wesentlicher Pflichten gelten die gesetzlichen Regeln.
+Bei Verstößen können Zugriffe vorübergehend oder dauerhaft eingeschränkt werden.
 
-## 7. Änderungen der Leistungen
-Funktionen können weiterentwickelt, geändert oder eingestellt werden, soweit für Nutzer zumutbar.
+## 6) Verfügbarkeit und Änderungen
+Ein Anspruch auf ununterbrochene Verfügbarkeit besteht nicht. Wartungen, Sicherheitsmaßnahmen, technische Änderungen sowie Weiterentwicklungen bleiben vorbehalten.
 
-## 8. Kündigung/Beendigung
-Nutzer können die Nutzung jederzeit beenden. Der Anbieter kann Konten bei Verstößen sperren.
+## 7) Preise, Inhalte und Haftungsausschluss
+- Angezeigte Preise sind indikativ und können von realen Marktpreisen abweichen.
+- Es wird keine Gewähr für Vollständigkeit, Aktualität oder Richtigkeit einzelner Marktdaten übernommen.
+- Die App bietet keine Rechts-, Steuer-, Finanz- oder Anlageberatung.
 
-## 9. Support
-Support-Kontakt: `support@example.com`
+## 8) Haftung
+Wir haften unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper oder Gesundheit.
 
-## 10. Schlussbestimmungen
-Es gilt das anwendbare Recht am Sitz des Anbieters, soweit keine zwingenden Verbraucherschutzvorschriften entgegenstehen.
+Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt.
+
+Im Übrigen ist die Haftung ausgeschlossen, soweit gesetzlich zulässig. Zwingende gesetzliche Rechte von Verbraucherinnen und Verbrauchern bleiben unberührt.
+
+## 9) Laufzeit und Beendigung
+Nutzer können die Nutzung jederzeit beenden und ihr Konto löschen lassen. Wir können Konten bei Verstößen gegen diese Bedingungen oder bei sicherheitsrelevanten Vorfällen einschränken oder sperren.
+
+## 10) Datenschutz
+Informationen zur Verarbeitung personenbezogener Daten finden sich in der Datenschutzerklärung:
+**https://github.com/FalkoBaeker/tonie-app/blob/main/docs/legal/privacy-policy.md**
+
+## 11) Schlussbestimmungen
+Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts, soweit keine zwingenden Verbraucherschutzvorschriften entgegenstehen.
+
+Sollten einzelne Bestimmungen unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.
+
+## 12) Normative Orientierung
+Diese Fassung ist an gängigen Vorgaben für digitale Nutzungsbedingungen im deutschen/EU-Kontext ausgerichtet und mit der DSGVO-Dokumentation des Produkts abgestimmt.
+
+---
+
+Hinweis: Diese Nutzungsbedingungen sind ein produktnaher Standardtext und sollten vor öffentlichem Launch rechtlich final geprüft werden (insb. Anbieterkennzeichnung/Impressum, konkrete Haftungs- und Verbraucherschutzkonstellation).

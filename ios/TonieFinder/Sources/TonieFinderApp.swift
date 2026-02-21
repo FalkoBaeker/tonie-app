@@ -107,6 +107,7 @@ struct TonieCandidate: Identifiable, Hashable {
     let id: String
     let title: String
     let score: Double
+    let rarityLabel: String? = nil
 }
 
 struct PriceTriple {
@@ -118,6 +119,12 @@ struct PriceTriple {
     let source: String?
     let qualityTier: String?
     let confidenceScore: Double?
+    let trendDirection: String?
+    let trendLabel: String?
+    let trendDeltaPct: Double?
+    let rarityLabel: String?
+    let rarityReason: String?
+    let availabilityState: String?
     let fetchedAt: Date?
 
     init(
@@ -129,6 +136,12 @@ struct PriceTriple {
         source: String?,
         qualityTier: String?,
         confidenceScore: Double?,
+        trendDirection: String? = nil,
+        trendLabel: String? = nil,
+        trendDeltaPct: Double? = nil,
+        rarityLabel: String? = nil,
+        rarityReason: String? = nil,
+        availabilityState: String? = nil,
         fetchedAt: Date? = nil
     ) {
         self.instant = instant
@@ -139,6 +152,12 @@ struct PriceTriple {
         self.source = source
         self.qualityTier = qualityTier
         self.confidenceScore = confidenceScore
+        self.trendDirection = trendDirection
+        self.trendLabel = trendLabel
+        self.trendDeltaPct = trendDeltaPct
+        self.rarityLabel = rarityLabel
+        self.rarityReason = rarityReason
+        self.availabilityState = availabilityState
         self.fetchedAt = fetchedAt
     }
 
@@ -153,6 +172,22 @@ struct PriceTriple {
             return "Hinweis: Preis basiert auf älteren oder eingeschränkten Marktdaten."
         }
         return nil
+    }
+
+    var trendSystemImage: String {
+        switch (trendDirection ?? "right").lowercased() {
+        case "up": return "arrow.up"
+        case "up_right": return "arrow.up.right"
+        case "down": return "arrow.down"
+        case "down_right": return "arrow.down.right"
+        default: return "arrow.right"
+        }
+    }
+
+    var trendDisplayLabel: String {
+        let raw = (trendLabel ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        if raw.isEmpty { return "konstant" }
+        return raw
     }
 }
 
@@ -1403,52 +1438,52 @@ enum AppConfig {
         resolveString(
             envKey: "TF_PRIVACY_POLICY_URL",
             plistKey: "TF_PRIVACY_POLICY_URL",
-            defaultValue: "https://example.com/privacy",
+            defaultValue: "https://github.com/FalkoBaeker/tonie-app/blob/main/docs/legal/privacy-policy.md",
             defaultSource: "built-in-default"
         )
     }
 
     static var privacyPolicyURL: String {
-        privacyPolicyURLResolved.value ?? "https://example.com/privacy"
+        privacyPolicyURLResolved.value ?? "https://github.com/FalkoBaeker/tonie-app/blob/main/docs/legal/privacy-policy.md"
     }
 
     static var termsOfServiceURLResolved: ResolvedString {
         resolveString(
             envKey: "TF_TERMS_URL",
             plistKey: "TF_TERMS_URL",
-            defaultValue: "https://example.com/terms",
+            defaultValue: "https://github.com/FalkoBaeker/tonie-app/blob/main/docs/legal/terms-of-service.md",
             defaultSource: "built-in-default"
         )
     }
 
     static var termsOfServiceURL: String {
-        termsOfServiceURLResolved.value ?? "https://example.com/terms"
+        termsOfServiceURLResolved.value ?? "https://github.com/FalkoBaeker/tonie-app/blob/main/docs/legal/terms-of-service.md"
     }
 
     static var supportURLResolved: ResolvedString {
         resolveString(
             envKey: "TF_SUPPORT_URL",
             plistKey: "TF_SUPPORT_URL",
-            defaultValue: "https://example.com/support",
+            defaultValue: "https://github.com/FalkoBaeker/tonie-app/issues",
             defaultSource: "built-in-default"
         )
     }
 
     static var supportURL: String {
-        supportURLResolved.value ?? "https://example.com/support"
+        supportURLResolved.value ?? "https://github.com/FalkoBaeker/tonie-app/issues"
     }
 
     static var supportEmailResolved: ResolvedString {
         resolveString(
             envKey: "TF_SUPPORT_EMAIL",
             plistKey: "TF_SUPPORT_EMAIL",
-            defaultValue: "support@example.com",
+            defaultValue: "support@tonie-finder.app",
             defaultSource: "built-in-default"
         )
     }
 
     static var supportEmail: String {
-        supportEmailResolved.value ?? "support@example.com"
+        supportEmailResolved.value ?? "support@tonie-finder.app"
     }
 
     private static func isPlaceholderURL(_ value: String) -> Bool {
@@ -1536,6 +1571,7 @@ final class APIClient {
             let tonie_id: String
             let title: String
             let score: Double
+            let rarity_label: String?
         }
         let status: String
         let candidates: [CandidateDTO]
@@ -1558,6 +1594,12 @@ final class APIClient {
         let source: String
         let quality_tier: String?
         let confidence_score: Double?
+        let trend_direction: String?
+        let trend_label: String?
+        let trend_delta_pct: Double?
+        let rarity_label: String?
+        let rarity_reason: String?
+        let availability_state: String?
     }
 
     struct AuthRequest: Encodable {
@@ -1783,7 +1825,9 @@ final class APIClient {
         try ensureSuccess(response, data: data, endpointPath: endpointPath)
 
         let decoded = try JSONDecoder().decode(ResolveResponse.self, from: data)
-        return decoded.candidates.map { TonieCandidate(id: $0.tonie_id, title: $0.title, score: $0.score) }
+        return decoded.candidates.map {
+            TonieCandidate(id: $0.tonie_id, title: $0.title, score: $0.score, rarityLabel: $0.rarity_label)
+        }
     }
 
     func recognizeToniePhoto(
@@ -1813,7 +1857,7 @@ final class APIClient {
 
         let decoded = try JSONDecoder().decode(RecognizeResponse.self, from: data)
         let mapped = decoded.candidates.map {
-            TonieCandidate(id: $0.tonie_id, title: $0.title, score: $0.score)
+            TonieCandidate(id: $0.tonie_id, title: $0.title, score: $0.score, rarityLabel: $0.rarity_label)
         }
 
         return (decoded.status, mapped, decoded.message)
@@ -1842,6 +1886,12 @@ final class APIClient {
             source: decoded.source,
             qualityTier: decoded.quality_tier,
             confidenceScore: decoded.confidence_score,
+            trendDirection: decoded.trend_direction,
+            trendLabel: decoded.trend_label,
+            trendDeltaPct: decoded.trend_delta_pct,
+            rarityLabel: decoded.rarity_label,
+            rarityReason: decoded.rarity_reason,
+            availabilityState: decoded.availability_state,
             fetchedAt: Date()
         )
     }
@@ -2376,6 +2426,11 @@ struct PricingView: View {
                                                     Text("Score: \(Int(c.score * 100))%")
                                                         .font(.caption)
                                                         .foregroundStyle(.secondary)
+                                                    if let rarity = c.rarityLabel {
+                                                        Text(rarity)
+                                                            .font(.caption2.weight(.semibold))
+                                                            .foregroundStyle(.orange)
+                                                    }
                                                 }
                                                 Spacer()
                                                 Image(systemName: "chevron.right")
@@ -2414,6 +2469,36 @@ struct PricingView: View {
                                         Text("Preisvorschlag")
                                             .font(.headline)
                                     }
+                                    HStack(spacing: 8) {
+                                        Image(systemName: p.trendSystemImage)
+                                            .font(.subheadline.weight(.semibold))
+                                        Text("Preistrend: \(p.trendDisplayLabel)")
+                                            .font(.subheadline)
+                                        if let delta = p.trendDeltaPct {
+                                            Text("(\(delta * 100, specifier: "%+.1f")%)")
+                                                .font(.caption)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+
+                                    if let rarity = p.rarityLabel {
+                                        Text(rarity)
+                                            .font(.caption.weight(.semibold))
+                                            .foregroundStyle(.orange)
+                                            .padding(.horizontal, 8)
+                                            .padding(.vertical, 4)
+                                            .background(
+                                                Capsule()
+                                                    .fill(Color.orange.opacity(0.14))
+                                            )
+
+                                        if let reason = p.rarityReason, !reason.isEmpty {
+                                            Text(reason)
+                                                .font(.caption2)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+
                                     PriceRow(title: "Sofortverkaufspreis", value: p.instant)
                                     PriceRow(title: "Fairer Marktpreis", value: p.fair)
                                     PriceRow(title: "Geduldspreis", value: p.patience)
