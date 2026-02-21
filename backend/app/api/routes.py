@@ -255,6 +255,8 @@ class RuntimeConfigResponse(BaseModel):
     environment: str
     auth_mode: str
     ebay_api_enabled: bool
+    ebay_client_id_configured: bool
+    ebay_client_secret_configured: bool
     ebay_api_shadow_mode: bool
     ebay_api_include_in_pricing: bool
     ebay_config_issue: str | None
@@ -652,6 +654,8 @@ async def runtime_config() -> RuntimeConfigResponse:
         environment=settings.environment,
         auth_mode=settings.auth_mode,
         ebay_api_enabled=bool(settings.ebay_api_enabled),
+        ebay_client_id_configured=bool((settings.ebay_client_id or "").strip()),
+        ebay_client_secret_configured=bool((settings.ebay_client_secret or "").strip()),
         ebay_api_shadow_mode=bool(settings.ebay_api_shadow_mode),
         ebay_api_include_in_pricing=bool(settings.ebay_api_include_in_pricing),
         ebay_config_issue=ebay_config_issue(),
