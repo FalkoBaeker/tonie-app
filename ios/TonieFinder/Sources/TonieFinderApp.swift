@@ -1348,15 +1348,29 @@ enum AppConfig {
         envKey: String,
         plistKey: String,
         defaultValue: String? = nil,
-        defaultSource: String = "default"
+        defaultSource: String = "default",
+        preferPlistOverEnv: Bool = false
     ) -> ResolvedString {
-        if let env = ProcessInfo.processInfo.environment[envKey]?.trimmingCharacters(in: .whitespacesAndNewlines), !env.isEmpty {
+        let env = ProcessInfo.processInfo.environment[envKey]?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let plistValue = (Bundle.main.object(forInfoDictionaryKey: plistKey) as? String)
+            ?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if preferPlistOverEnv {
+            if let plistValue, !plistValue.isEmpty {
+                return ResolvedString(value: plistValue, source: "plist:\(plistKey)")
+            }
+            if let env, !env.isEmpty {
+                return ResolvedString(value: env, source: "env:\(envKey)")
+            }
+            return ResolvedString(value: defaultValue, source: defaultSource)
+        }
+
+        if let env, !env.isEmpty {
             return ResolvedString(value: env, source: "env:\(envKey)")
         }
 
-        if let plistValue = Bundle.main.object(forInfoDictionaryKey: plistKey) as? String,
-           !plistValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return ResolvedString(value: plistValue.trimmingCharacters(in: .whitespacesAndNewlines), source: "plist:\(plistKey)")
+        if let plistValue, !plistValue.isEmpty {
+            return ResolvedString(value: plistValue, source: "plist:\(plistKey)")
         }
 
         return ResolvedString(value: defaultValue, source: defaultSource)
@@ -1373,7 +1387,8 @@ enum AppConfig {
             envKey: "TF_API_BASE_URL",
             plistKey: "TF_API_BASE_URL",
             defaultValue: fallback,
-            defaultSource: "built-in-default"
+            defaultSource: "built-in-default",
+            preferPlistOverEnv: true
         )
     }
 
