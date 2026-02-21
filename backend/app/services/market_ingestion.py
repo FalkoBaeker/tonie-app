@@ -282,6 +282,37 @@ def _target_overlap_score(title: str, target: str) -> tuple[int, int, float]:
     return overlap, len(target_tokens), overlap / max(1, len(target_tokens))
 
 
+def _specific_tokens_for_tonie(
+    *,
+    tonie_title: str,
+    aliases: Iterable[str] | None = None,
+    series: str | None = None,
+) -> set[str]:
+    series_tokens = _tokenize_for_match(series or "")
+
+    def _collect(value: str) -> set[str]:
+        norm = _normalize_token_text(value)
+        if not norm:
+            return set()
+
+        chunks = [norm]
+        parts = [p.strip() for p in _DASH_SPLIT_RE.split(norm, maxsplit=1) if p.strip()]
+        if len(parts) == 2:
+            chunks.append(parts[1])
+
+        tokens: set[str] = set()
+        for chunk in chunks:
+            tokens |= _tokenize_for_match(chunk)
+
+        return {t for t in tokens if t not in series_tokens}
+
+    out = _collect(tonie_title)
+    for alias in aliases or []:
+        out |= _collect(str(alias))
+
+    return out
+
+
 def _contains_phrase(text: str, phrase: str) -> bool:
     normalized_phrase = _normalize_token_text(phrase).strip()
     if not normalized_phrase:
@@ -296,17 +327,26 @@ def is_relevant_offer_title_for_tonie(
     tonie_title: str,
     aliases: Iterable[str] | None = None,
     series: str | None = None,
+    require_tonie_context: bool = True,
 ) -> bool:
     normalized_offer = _normalize_token_text(offer_title)
     if not normalized_offer:
         return False
 
     # Explicit Tonie context terms are required for classifieds offer data.
-    if not any(_contains_phrase(normalized_offer, term) for term in _TONIE_REQUIRED_TERMS):
+    if require_tonie_context and not any(_contains_phrase(normalized_offer, term) for term in _TONIE_REQUIRED_TERMS):
         return False
 
     if any(_contains_phrase(normalized_offer, k) for k in _OFFER_MEDIA_NOISE_KEYWORDS):
         return False
+
+    offer_tokens = _tokenize_for_match(normalized_offer)
+    specific_tokens = _specific_tokens_for_tonie(
+        tonie_title=tonie_title,
+        aliases=aliases,
+        series=series,
+    )
+    specific_hit = bool(offer_tokens & specific_tokens) if specific_tokens else True
 
     target_candidates: list[str] = [tonie_title]
     if series:
@@ -323,19 +363,23 @@ def is_relevant_offer_title_for_tonie(
         if not target_norm:
             continue
 
-        if target_norm in normalized_offer:
+        if target_norm in normalized_offer and specific_hit:
             return True
 
         overlap, target_size, overlap_ratio = _target_overlap_score(normalized_offer, target_norm)
+        overlap_match = False
         if target_size <= 2 and overlap >= 1:
-            return True
-        if target_size <= 4 and overlap >= 2:
-            return True
-        if target_size >= 5 and (overlap >= 3 or overlap_ratio >= 0.55):
+            overlap_match = True
+        elif target_size <= 4 and overlap >= 2:
+            overlap_match = True
+        elif target_size >= 5 and (overlap >= 3 or overlap_ratio >= 0.55):
+            overlap_match = True
+
+        if overlap_match and specific_hit:
             return True
 
         fuzzy = difflib.SequenceMatcher(a=normalized_offer, b=target_norm).ratio()
-        if fuzzy >= 0.78 and overlap >= 1:
+        if fuzzy >= 0.78 and overlap >= 1 and specific_hit:
             return True
 
     return False
@@ -348,12 +392,16 @@ def filter_market_records_for_tonie(
     aliases: Iterable[str] | None = None,
     series: str | None = None,
     sources: set[str] | None = None,
+    require_tonie_context_sources: set[str] | None = None,
 ) -> list[dict]:
     """Filter polluted offer records for one Tonie target.
 
     Only records from `sources` are filtered; all other sources pass through unchanged.
     """
     scoped_sources = {s.lower() for s in (sources or {"kleinanzeigen_offer"})}
+    context_sources = {
+        s.lower() for s in (require_tonie_context_sources or {"kleinanzeigen_offer", "ebay_api_listing", "ebay_sold"})
+    }
     out: list[dict] = []
 
     for row in records:
@@ -371,6 +419,7 @@ def filter_market_records_for_tonie(
             tonie_title=tonie_title,
             aliases=aliases,
             series=series,
+            require_tonie_context=source in context_sources,
         ):
             out.append(row)
 

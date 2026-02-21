@@ -315,7 +315,7 @@ def _try_cached_result(
         tonie_title=tonie_title,
         aliases=aliases,
         series=series,
-        sources={"kleinanzeigen_offer"},
+        sources={"kleinanzeigen_offer", "ebay_sold", "ebay_api_listing"},
     )
 
     points, raw_sample_size, effective_sample_size, used_sources = _weighted_points_from_records(
@@ -496,6 +496,13 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             for l in ebay_api_rows
             if min_price <= l.price_eur <= max_price
         ]
+        ebay_api_records = filter_market_records_for_tonie(
+            records=ebay_api_records,
+            tonie_title=tonie_title,
+            aliases=tonie_aliases,
+            series=tonie_series,
+            sources={"ebay_api_listing"},
+        )
 
         if api_enabled and not ebay_api_records:
             logger.info("eBay API had no usable rows (tonie_id=%s) -> scrape fallback path", tonie_id)
@@ -602,6 +609,22 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             aliases=tonie_aliases,
             series=tonie_series,
             sources={"kleinanzeigen_offer"},
+        )
+
+        ebay_records = filter_market_records_for_tonie(
+            records=ebay_records,
+            tonie_title=tonie_title,
+            aliases=tonie_aliases,
+            series=tonie_series,
+            sources={"ebay_sold"},
+        )
+
+        ebay_api_records = filter_market_records_for_tonie(
+            records=ebay_api_records,
+            tonie_title=tonie_title,
+            aliases=tonie_aliases,
+            series=tonie_series,
+            sources={"ebay_api_listing"},
         )
 
         if ebay_records:

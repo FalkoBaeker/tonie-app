@@ -17,11 +17,18 @@ from app.services.tonie_resolver import get_resolver
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Review and optionally delete polluted kleinanzeigen_offer rows "
+            "Review and optionally delete polluted market rows "
             "that fail Tonie relevance filtering."
         )
     )
     parser.add_argument("--tonie-id", type=str, default="", help="Only process one tonie_id (default: all).")
+    parser.add_argument(
+        "--source",
+        type=str,
+        default="kleinanzeigen_offer",
+        choices=("kleinanzeigen_offer", "ebay_sold", "ebay_api_listing"),
+        help="Source to clean (default: kleinanzeigen_offer).",
+    )
     parser.add_argument("--limit", type=int, default=2000, help="Max rows to inspect.")
     parser.add_argument(
         "--max-delete",
@@ -42,13 +49,15 @@ def main() -> int:
     resolver = get_resolver()
     by_id = {str(row.get("id")): row for row in resolver.catalog}
 
+    source = str(args.source).strip().lower()
+
     rows = list_market_listings_for_source(
-        source="kleinanzeigen_offer",
+        source=source,
         tonie_id=args.tonie_id.strip() or None,
         limit=max(1, int(args.limit)),
     )
     if not rows:
-        print("No kleinanzeigen_offer rows found for scope.")
+        print(f"No {source} rows found for scope.")
         return 0
 
     polluted: list[dict] = []
@@ -64,10 +73,11 @@ def main() -> int:
             tonie_title=str(item.get("title") or ""),
             aliases=[str(a) for a in (item.get("aliases") or [])],
             series=str(item.get("series") or "").strip() or None,
+            require_tonie_context=source in {"kleinanzeigen_offer", "ebay_sold", "ebay_api_listing"},
         ):
             polluted.append(row)
 
-    print("=== POLLUTED OFFERS REVIEW ===")
+    print(f"=== POLLUTED MARKET ROWS REVIEW ({source}) ===")
     print(f"Scope rows inspected: {len(rows)}")
     print(f"Rows flagged as polluted: {len(polluted)}")
     if polluted:
@@ -81,7 +91,7 @@ def main() -> int:
 
     delete_cap = max(1, int(args.max_delete))
     delete_ids = [int(row["id"]) for row in polluted[:delete_cap]]
-    deleted = delete_market_listings_by_ids(ids=delete_ids, source="kleinanzeigen_offer")
+    deleted = delete_market_listings_by_ids(ids=delete_ids, source=source)
     print(f"\nDeleted rows: {deleted} (cap={delete_cap})")
     if len(polluted) > delete_cap:
         print(f"Remaining flagged rows not deleted in this run: {len(polluted) - delete_cap}")
