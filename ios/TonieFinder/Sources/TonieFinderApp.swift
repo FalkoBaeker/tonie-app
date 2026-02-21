@@ -107,7 +107,14 @@ struct TonieCandidate: Identifiable, Hashable {
     let id: String
     let title: String
     let score: Double
-    let rarityLabel: String? = nil
+    let rarityLabel: String?
+
+    init(id: String, title: String, score: Double, rarityLabel: String? = nil) {
+        self.id = id
+        self.title = title
+        self.score = score
+        self.rarityLabel = rarityLabel
+    }
 }
 
 struct PriceTriple {
