@@ -1,3 +1,4 @@
+import os
 from datetime import UTC, datetime
 from enum import Enum
 from statistics import median
@@ -12,6 +13,7 @@ from app.services.market_refresh import (
     start_refresh_background,
 )
 from app.services.external_auth import ExternalAuthError, verify_external_jwt
+from app.services.ebay_api_client import ebay_config_issue
 from app.services.persistence import (
     authenticate_user,
     create_session,
@@ -247,6 +249,24 @@ class MarketRefreshResponse(BaseModel):
 
 class MarketRefreshRunsResponse(BaseModel):
     items: list[MarketRefreshStatusResponse]
+
+
+class RuntimeConfigResponse(BaseModel):
+    environment: str
+    auth_mode: str
+    ebay_api_enabled: bool
+    ebay_api_shadow_mode: bool
+    ebay_api_include_in_pricing: bool
+    ebay_config_issue: str | None
+    market_price_min_eur: float
+    market_price_max_eur: float
+    market_price_max_eur_rare: float
+    market_raw_price_max_eur: float
+    market_auto_refresh_enabled: bool
+    market_auto_refresh_interval_minutes: int
+    render_service_name: str | None = None
+    render_git_branch: str | None = None
+    render_git_commit: str | None = None
 
 
 def _extract_bearer(authorization: str | None) -> str | None:
@@ -624,6 +644,27 @@ async def health() -> dict:
             "total": refresh.get("total"),
         },
     }
+
+
+@router.get("/system/runtime-config", response_model=RuntimeConfigResponse)
+async def runtime_config() -> RuntimeConfigResponse:
+    return RuntimeConfigResponse(
+        environment=settings.environment,
+        auth_mode=settings.auth_mode,
+        ebay_api_enabled=bool(settings.ebay_api_enabled),
+        ebay_api_shadow_mode=bool(settings.ebay_api_shadow_mode),
+        ebay_api_include_in_pricing=bool(settings.ebay_api_include_in_pricing),
+        ebay_config_issue=ebay_config_issue(),
+        market_price_min_eur=float(settings.market_price_min_eur),
+        market_price_max_eur=float(settings.market_price_max_eur),
+        market_price_max_eur_rare=float(settings.market_price_max_eur_rare),
+        market_raw_price_max_eur=float(settings.market_raw_price_max_eur),
+        market_auto_refresh_enabled=bool(settings.market_auto_refresh_enabled),
+        market_auto_refresh_interval_minutes=int(settings.market_auto_refresh_interval_minutes),
+        render_service_name=os.getenv("RENDER_SERVICE_NAME"),
+        render_git_branch=os.getenv("RENDER_GIT_BRANCH"),
+        render_git_commit=os.getenv("RENDER_GIT_COMMIT"),
+    )
 
 
 @router.get("/market/cache-status", response_model=MarketCacheStatusResponse)
