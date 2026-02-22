@@ -351,6 +351,55 @@ def _try_cached_result(
     )
 
 
+def _estimate_sparse_rare_from_api_prices(
+    prices: list[float],
+    condition: str,
+    *,
+    min_price: float | None = None,
+    max_price: float | None = None,
+) -> EnginePriceResult | None:
+    """Conservative estimate for rare Tonies when only sparse eBay API rows exist.
+
+    This prevents hard fallback-to-placeholder prices for rare items when scrape sources are
+    unavailable but API still yields a small number of high-signal listings.
+    """
+    cleaned = _clean_price_samples(prices, min_price=min_price, max_price=max_price)
+    if not cleaned:
+        return None
+
+    if len(cleaned) >= settings.market_min_samples:
+        return None
+
+    # Avoid triggering this path for low-value sparse data.
+    if max(cleaned) < 120.0:
+        return None
+
+    scarcity_factor_map = {1: 0.70, 2: 0.75, 3: 0.80, 4: 0.85}
+    scarcity_factor = scarcity_factor_map.get(len(cleaned), 0.85)
+
+    q50 = _quantile(cleaned, 0.50)
+    q75 = _quantile(cleaned, 0.75)
+
+    fair_base = q50 * scarcity_factor
+    instant_base = fair_base * 0.85
+    patience_base = max(fair_base * 1.20, q75 * scarcity_factor)
+
+    cap = float(settings.market_price_max_eur_rare if max_price is None else max_price)
+    fair_base = min(fair_base, cap)
+    instant_base = min(instant_base, fair_base)
+    patience_base = min(patience_base, cap)
+
+    factor = CONDITION_FACTORS.get(condition, CONDITION_FACTORS["good"])
+    return EnginePriceResult(
+        instant=round(instant_base * factor, 2),
+        fair=round(fair_base * factor, 2),
+        patience=round(patience_base * factor, 2),
+        sample_size=len(cleaned),
+        source="ebay_api_sparse_rare_estimate_v1",
+        effective_sample_size=round(len(cleaned) * _source_weight("ebay_api_listing"), 2),
+    )
+
+
 def _estimate_from_offer_prices(
     prices: list[float],
     condition: str,
@@ -503,6 +552,15 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
             series=tonie_series,
             sources={"ebay_api_listing"},
         )
+
+        sparse_rare_api_result = None
+        if use_ebay_api_in_pricing and _is_rare_tonie(item):
+            sparse_rare_api_result = _estimate_sparse_rare_from_api_prices(
+                [float(r["price_eur"]) for r in ebay_api_records],
+                condition=condition,
+                min_price=min_price,
+                max_price=max_price,
+            )
 
         if api_enabled and not ebay_api_records:
             logger.info("eBay API had no usable rows (tonie_id=%s) -> scrape fallback path", tonie_id)
@@ -718,6 +776,14 @@ async def compute_prices_for_tonie(tonie_id: str, condition: str) -> EnginePrice
                 tonie_id=tonie_id,
                 condition=condition,
                 result=live_weighted_result,
+                started=started,
+            )
+
+        if sparse_rare_api_result is not None and not ebay_records:
+            return _record_and_return(
+                tonie_id=tonie_id,
+                condition=condition,
+                result=sparse_rare_api_result,
                 started=started,
             )
 

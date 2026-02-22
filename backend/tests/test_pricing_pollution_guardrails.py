@@ -6,6 +6,7 @@ from app.core.config import settings
 from app.services.market_ingestion import filter_market_records_for_tonie
 from app.services.pricing_engine import (
     _apply_quantile_guardrail,
+    _estimate_sparse_rare_from_api_prices,
     _price_bounds_for_tonie,
     _weighted_points_from_records,
     _weighted_quantile,
@@ -31,6 +32,15 @@ class PricingPollutionGuardrailsTests(unittest.TestCase):
 
         self.assertEqual(normal_min, rare_min)
         self.assertGreater(rare_max, normal_max)
+
+    def test_sparse_rare_api_estimate_prevents_placeholder_fallback(self) -> None:
+        result = _estimate_sparse_rare_from_api_prices([480.0], condition="good", max_price=1000.0)
+        self.assertIsNotNone(result)
+        assert result is not None
+        self.assertEqual(result.source, "ebay_api_sparse_rare_estimate_v1")
+        # 480 * 0.70 * 0.90 = 302.40
+        self.assertAlmostEqual(result.fair, 302.4, places=2)
+        self.assertGreater(result.patience, result.fair)
 
     def test_problematic_tonie_before_after_proof(self) -> None:
         # Repro case: query pollution ("CD/Buch") pushes low-end offer quantile far below fair quantile.
