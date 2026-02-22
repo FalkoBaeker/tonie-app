@@ -122,6 +122,31 @@ _GENERIC_MATCH_TOKENS = {
     "von",
 }
 
+_QUERY_TOKEN_STOPWORDS = {
+    "der",
+    "die",
+    "das",
+    "ein",
+    "eine",
+    "und",
+    "mit",
+    "von",
+    "fur",
+    "für",
+    "dem",
+    "den",
+    "des",
+    "soft",
+    "cuddly",
+    "friends",
+    "hoerspiel",
+    "hörspiel",
+    "hoerfigur",
+    "hörfigur",
+    "tonie",
+    "tonies",
+}
+
 _DASH_SPLIT_RE = re.compile(r"\s+[–—-]\s+")
 
 # Keep this list explicit/reviewable: these terms are high-signal non-figure media noise
@@ -435,6 +460,30 @@ def _normalize_search_query(value: str) -> str:
     return cleaned
 
 
+def _pick_primary_query_token(value: str) -> str | None:
+    norm = _normalize_token_text(value)
+    tokens = re.findall(r"[a-z0-9]+", norm)
+    for tok in tokens:
+        if len(tok) < 3:
+            continue
+        if tok in _QUERY_TOKEN_STOPWORDS:
+            continue
+        return tok
+    return None
+
+
+def _pick_series_anchor_token(value: str) -> str | None:
+    norm = _normalize_token_text(value)
+    tokens = re.findall(r"[a-z0-9]+", norm)
+    for tok in tokens:
+        if len(tok) < 3:
+            continue
+        if tok in _QUERY_TOKEN_STOPWORDS:
+            continue
+        return tok
+    return None
+
+
 def build_ebay_search_queries(
     *,
     title: str,
@@ -460,14 +509,27 @@ def build_ebay_search_queries(
 
     _append_base(title)
 
-    title_norm = _normalize_search_query(title)
-    parts = [p.strip() for p in _DASH_SPLIT_RE.split(title_norm, maxsplit=1) if p.strip()]
+    title_for_split = unicodedata.normalize("NFKC", title or "")
+    parts = [
+        _normalize_search_query(p)
+        for p in _DASH_SPLIT_RE.split(title_for_split, maxsplit=1)
+        if _normalize_search_query(p)
+    ]
     if len(parts) == 2:
         left, right = parts
         # More specific content title without franchise prefix.
         _append_base(right)
         # Keep franchise context but without punctuation noise.
         _append_base(f"{left} {right}")
+
+        # Add compact anchored variants to improve recall on listings that omit
+        # long descriptors (e.g. "Steiff Ben Tonie" instead of full subtitle).
+        primary = _pick_primary_query_token(right)
+        series_anchor = _pick_series_anchor_token(left)
+        if primary:
+            _append_base(f"{left} {primary}")
+            if series_anchor and series_anchor != primary:
+                _append_base(f"{series_anchor} {primary}")
     elif len(parts) == 1:
         _append_base(parts[0])
 

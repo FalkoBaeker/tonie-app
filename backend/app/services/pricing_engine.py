@@ -377,12 +377,15 @@ def _estimate_sparse_rare_from_api_prices(
     scarcity_factor_map = {1: 0.70, 2: 0.75, 3: 0.80, 4: 0.85}
     scarcity_factor = scarcity_factor_map.get(len(cleaned), 0.85)
 
+    q25 = _quantile(cleaned, 0.25)
     q50 = _quantile(cleaned, 0.50)
     q75 = _quantile(cleaned, 0.75)
 
-    fair_base = q50 * scarcity_factor
+    # Conservative anchor for sparse listing-only data: Q25 is less sensitive to
+    # aspirational asking prices than median on tiny samples.
+    fair_base = q25 * scarcity_factor
     instant_base = fair_base * 0.85
-    patience_base = max(fair_base * 1.20, q75 * scarcity_factor)
+    patience_base = max(fair_base * 1.20, q50 * scarcity_factor, q75 * (scarcity_factor * 0.95))
 
     cap = float(settings.market_price_max_eur_rare if max_price is None else max_price)
     fair_base = min(fair_base, cap)
