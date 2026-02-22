@@ -39,6 +39,32 @@ class MarketOfferPollutionFiltersTests(unittest.TestCase):
             )
         )
 
+    def test_ebay_rows_can_match_without_explicit_tonie_token(self) -> None:
+        records = [
+            {
+                "source": "ebay_sold",
+                "title": "Steiff Soft Cuddly Friends Ben Teddybär Hörspiel",
+                "price_eur": 299.0,
+                "url": "https://example.org/ebay-ben",
+            },
+            {
+                "source": "ebay_sold",
+                "title": "Steiff Soft Cuddly Friends Jimmy Bär Hörspiel",
+                "price_eur": 120.0,
+                "url": "https://example.org/ebay-jimmy",
+            },
+        ]
+
+        filtered = filter_market_records_for_tonie(
+            records=records,
+            tonie_title="Steiff Soft Cuddly Friends – Ben Teddybär Hörspiel",
+            aliases=["Ben Teddybär Hörspiel"],
+            series="Steiff Soft Cuddly Friends",
+            sources={"ebay_sold"},
+        )
+        self.assertEqual(len(filtered), 1)
+        self.assertEqual(filtered[0]["url"], "https://example.org/ebay-ben")
+
     def test_filter_only_scopes_kleinanzeigen_offer(self) -> None:
         records = [
             {

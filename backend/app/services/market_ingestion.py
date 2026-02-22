@@ -400,7 +400,7 @@ def filter_market_records_for_tonie(
     """
     scoped_sources = {s.lower() for s in (sources or {"kleinanzeigen_offer"})}
     context_sources = {
-        s.lower() for s in (require_tonie_context_sources or {"kleinanzeigen_offer", "ebay_api_listing", "ebay_sold"})
+        s.lower() for s in (require_tonie_context_sources or {"kleinanzeigen_offer"})
     }
     out: list[dict] = []
 

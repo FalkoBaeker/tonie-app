@@ -73,7 +73,7 @@ def main() -> int:
             tonie_title=str(item.get("title") or ""),
             aliases=[str(a) for a in (item.get("aliases") or [])],
             series=str(item.get("series") or "").strip() or None,
-            require_tonie_context=source in {"kleinanzeigen_offer", "ebay_sold", "ebay_api_listing"},
+            require_tonie_context=source in {"kleinanzeigen_offer"},
         ):
             polluted.append(row)
 
